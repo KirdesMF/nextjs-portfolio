@@ -1,4 +1,4 @@
-function setUpCanvas() {
+export function setUpCanvas() {
    let canvas = document.getElementById('canvas') as HTMLCanvasElement;
    let ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
    ctx.translate(0.5, 0.5);
