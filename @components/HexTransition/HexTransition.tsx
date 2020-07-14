@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useContext } from 'react';
 import { cubeRing } from 'utils/hexagons/Helpers';
-import { Cube } from 'utils/hexagons/Cube';
+import { Cube, TCube } from 'utils/hexagons/Cube';
 import { hexagonPoints } from 'utils/hexagons/DrawHexa';
 import { SHexTransition } from './HexTransition.styled';
 import { motion, Variants } from 'framer-motion';
