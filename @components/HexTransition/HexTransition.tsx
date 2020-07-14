@@ -8,6 +8,7 @@ import { Convert } from 'utils/hexagons/Convert';
 import Link from 'next/link';
 import { useRouter } from 'next//router';
 import { ThemeContext } from 'styled-components';
+import { TPoint } from 'utils/hexagons/Point';
 
 type THexTransProps = {
    hexSize: TPoint;
