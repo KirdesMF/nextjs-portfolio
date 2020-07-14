@@ -1,31 +1,40 @@
-import { validateNumbers } from 'utils/validateNumbers';
+export type ColorsType = typeof light;
 
-const hsl = (hue: number, saturation: number, lightness: number) => {
-   return `hsl(
-      ${validateNumbers.hue(hue)}, 
-      ${validateNumbers.percent(saturation)},
-      ${validateNumbers.percent(lightness)}
-      )`;
+const light = {
+   home: `hsl(250, 60%, 60%)`,
+   about: `hsl(200, 60%, 60%)`,
+   works: `hsl(150, 60%, 60%)`,
+   contact: `hsl(100, 60%, 60%)`,
+   active: `hsl(20, 60%, 60%)`,
+   white: `hsl(1, 100%, 100%)`,
+   black: `hsl(1, 0%, 0%)`,
+   inset: `hsl(1, 0%, 0%)`,
 };
 
-export const colors = (lightness: number) => ({
-   home: hsl(250, 50, lightness),
-   about: hsl(250, 50, lightness),
-   works: hsl(250, 50, lightness),
-   contact: hsl(250, 50, lightness),
-   black: hsl(250, 50, lightness),
-   white: hsl(250, 50, lightness),
-   active: hsl(250, 50, lightness),
-});
-
-export const lightColors: ColorsType = {
-   home: colors(80).home,
-   about: colors(50).about,
-   works: colors(60).works,
-   contact: colors(40).contact,
-   black: colors(0).black,
-   white: colors(100).white,
-   active: colors(90).active,
+const dark = {
+   home: `hsl(250, 60%, 30%)`,
+   about: `hsl(200, 60%, 30%)`,
+   works: `hsl(150, 60%, 30%)`,
+   contact: `hsl(100, 60%, 30%)`,
+   active: `hsl(20, 60%, 60%)`,
+   white: `hsl(1, 100%, 100%)`,
+   black: `hsl(1, 0%, 0%)`,
+   inset: `hsl(1, 0%, 0%)`,
 };
 
-export type ColorsType = ReturnType<typeof colors>;
+const contrast = {
+   home: `hsl(250, 100%, 60%)`,
+   about: `hsl(200, 100%, 60%)`,
+   works: `hsl(150, 100%, 60%)`,
+   contact: `hsl(100, 100%, 60%)`,
+   active: `hsl(20, 60%, 60%)`,
+   white: `hsl(1, 100%, 100%)`,
+   black: `hsl(1, 0%, 0%)`,
+   inset: `hsl(1, 0%, 0%)`,
+};
+
+export const allTheme = {
+   light,
+   dark,
+   contrast,
+};

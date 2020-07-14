@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
+/**
+ * Home Layout
+ */
 const Home = styled.div`
    width: 100%;
    height: 100%;
-   display: grid;
-   background: rebeccapurple;
 `;
 
+/**
+ * About Layout
+ */
 const About = styled.div`
    width: 100%;
    height: 100%;
@@ -14,6 +18,9 @@ const About = styled.div`
    background: blue;
 `;
 
+/**
+ * Works Layout
+ */
 const Works = styled.div`
    width: 100%;
    height: 100%;
@@ -21,6 +28,9 @@ const Works = styled.div`
    background: ${({ theme }) => theme.colors.works};
 `;
 
+/**
+ * Contact Layout
+ */
 const Contact = styled.div`
    width: 100%;
    height: 100%;
@@ -28,6 +38,10 @@ const Contact = styled.div`
    background: red;
 `;
 
+/**================= Export ================ */
+/**
+ * Object storing Layouts Pages
+ */
 export const SLayout = {
    Home,
    About,

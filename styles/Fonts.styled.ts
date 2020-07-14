@@ -1,0 +1,29 @@
+import { createGlobalStyle } from 'styled-components';
+
+const Fonts = createGlobalStyle`
+
+   body{
+      font-size: min(max(100%, calc(1rem + 2vw)), 32px);
+      @supports (font-size: clamp(100%, 1rem + 2vw, 32px)){
+         font-size: clamp(100%, 1rem + 2vw, 32px);
+      }
+   }
+
+   @font-face {
+      font-family: 'Decovar';
+      src: local('Decovar'),
+         url('/assets/fonts/DecovarAlpha-VF.ttf') format('truetype');
+      font-display: swap;
+   }
+
+   @font-face {
+      font-family: 'Amstelvar';
+      src: local('Amstelvar'),
+         url('/assets/fonts/Amstelvar-Roman[wdth,wght,opsz].ttf')
+            format('truetype');
+      font-display: swap;
+   }
+
+`;
+
+export default Fonts;

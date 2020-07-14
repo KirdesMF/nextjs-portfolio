@@ -1,12 +1,15 @@
+import { createGlobalStyle } from 'styled-components';
+
+const ResetCSS = createGlobalStyle`
 html {
    box-sizing: border-box;
-}
+};
 
 *,
 *:before,
 *:after {
    box-sizing: inherit;
-}
+};
 
 html,
 body {
@@ -14,8 +17,9 @@ body {
    padding: 0;
 
    height: 100%;
-   background: red;
+
 }
+
 body > * {
    height: inherit;
 }
@@ -41,4 +45,9 @@ li {
 a {
    text-decoration: none;
    color: unset;
+   cursor: pointer;
 }
+
+`;
+
+export default ResetCSS;

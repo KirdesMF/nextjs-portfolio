@@ -1,21 +1,23 @@
 import React from 'react';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
-import { lightColors } from './colors';
+import { allTheme } from './colors';
 import { breakpoints } from './breakpoints';
+import { fonts } from './fonts';
+import useAppContext from 'hooks/useAppContext';
 
-type ThemeProps = {
-   children: React.ReactNode;
-};
+const Theme = ({ children }: { children: React.ReactNode }) => {
+   const { theme } = useAppContext();
 
-const Theme = ({ children }: ThemeProps) => {
-   const theme: DefaultTheme = {
-      colors: { ...lightColors },
+   const myTheme: DefaultTheme = {
+      colors: allTheme[theme],
       breakpoints: {
-         medium: breakpoints(70)['medium'],
-         large: breakpoints(90)['large'],
+         ...breakpoints,
+      },
+      fonts: {
+         ...fonts,
       },
    };
-   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+   return <ThemeProvider theme={myTheme}>{children}</ThemeProvider>;
 };
 
 export default Theme;

@@ -2,11 +2,14 @@ import React from 'react';
 import Head from 'next/head';
 import { Layout } from '@components/Layout/Layout';
 
-const Welcome = () => {
+/**
+ * Home Pages Component
+ */
+const Home = () => {
    return (
       <Layout name="Home">
          <Head>
-            <title>Ced | Welcome ...</title>
+            <title>Ced | Home</title>
             <link rel="icon" href="/favicon.ico" />
          </Head>
       </Layout>
@@ -14,4 +17,4 @@ const Welcome = () => {
 };
 
 /**=============== Export ============ */
-export default Welcome;
+export default Home;
