@@ -1,4 +1,4 @@
-import { Cube, TCube } from './Cube';
+import { Cube, TCube } from './convert';
 
 type TMathCubeCoord = {
    cubeA: TCube;
@@ -52,8 +52,9 @@ const multiply = ({
       s: cubeA.s * k,
    });
 
-const length = (cube: TCube) =>
-   (Math.abs(cube.q) + Math.abs(cube.r) + Math.abs(cube.s)) / 2;
+const length = (cube: TCube) => {
+   return (Math.abs(cube.q) + Math.abs(cube.r) + Math.abs(cube.s)) / 2;
+};
 
 export const MathCubeCoord = {
    rounded,

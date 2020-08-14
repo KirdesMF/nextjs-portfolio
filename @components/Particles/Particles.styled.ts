@@ -11,6 +11,6 @@ const Canvas = styled.canvas`
    background: black;
 `;
 
-export const SCanvas = {
+export const SParticles = {
    Canvas,
 };

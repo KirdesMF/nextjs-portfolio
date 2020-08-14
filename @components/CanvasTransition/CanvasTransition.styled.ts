@@ -1,6 +1,6 @@
 import styled, { keyframes, css } from 'styled-components';
 
-const Svg = styled.svg`
+const Canvas = styled.canvas`
    width: 100%;
    height: 100%;
 
@@ -8,11 +8,11 @@ const Svg = styled.svg`
    top: 0;
    left: 0;
 
-   z-index: 100;
+   z-index: 2;
 
    background: transparent;
 `;
 
-export const SHexTransition = {
-   Svg,
+export const SCanvasHexagons = {
+   Canvas,
 };

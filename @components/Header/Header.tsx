@@ -13,7 +13,7 @@ type LinksType = {
  * Links Array
  */
 const linksNavigation: LinksType[] = [
-   { name: 'home', href: '/' },
+   { name: 'home', href: '/home' },
    { name: 'about', href: '/about' },
    { name: 'works', href: '/works' },
    { name: 'contact', href: '/contact' },

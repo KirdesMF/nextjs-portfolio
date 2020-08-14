@@ -1,87 +1,52 @@
 import React, { useRef, useEffect, useContext } from 'react';
-import { SCanvas } from './Particles.styled';
+import { SParticles } from './Particles.styled';
 import { ThemeContext } from 'styled-components';
 import { useRouter } from 'next/router';
+import {
+   createParticles,
+   renderParticles,
+   updateParticles,
+} from 'utils/particles/ParticleMarker';
+import useCanvas from 'hooks/useCanvas';
+import usePathNameToColor from 'hooks/usePathNameToColor';
 
-type CircleType = {
-   x: number;
-   y: number;
-   radius: number;
-   color: string;
-   directionX: number;
-   directionY: number;
-};
-
-const Particles = () => {
-   const ref = useRef<HTMLCanvasElement>(null!);
-   const { colors } = useContext(ThemeContext);
+export const Particles = () => {
+   const { canvasRef, canvasState } = useCanvas();
+   const { pathToColor } = usePathNameToColor();
    const { pathname } = useRouter();
-   const pageName = pathname.substring(1);
 
    useEffect(() => {
-      const canvas = ref.current;
-      const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
       let requestId: number;
 
-      const ParticleMaker = (options: CircleType) => {
-         let { x, y, radius, directionX, directionY, color } = options;
+      const {
+         canvasWidth,
+         canvasHeight,
+         ctx,
+         clearCanvas,
+      } = canvasState.current;
 
-         return {
-            draw: () => {
-               ctx.beginPath();
-               ctx.arc(x, y, radius, 0, Math.PI * 2, false);
-               ctx.fillStyle = color;
-               ctx.fill();
-            },
-
-            update: () => {
-               if (x + radius > canvas.width || x - radius < 0) {
-                  directionX = -directionX;
-               }
-               if (y + radius > canvas.width || y - radius < 0) {
-                  directionY = -directionY;
-               }
-
-               x += directionX;
-               y += directionY;
-            },
-         };
-      };
-
-      const newArray = Array.from({ length: 50 }, () => {
-         let radius = Math.random() * 10 + 1;
-         return ParticleMaker({
-            x:
-               Math.random() * (innerWidth - radius * 2 - radius * 2) +
-               radius * 2,
-            y:
-               Math.random() * (innerHeight - radius * 2 - radius * 2) +
-               radius * 2,
-            radius: radius,
-            color: colors[pageName],
-            directionY: Math.random() * 1 - 0.5,
-            directionX: Math.random() * 1 - 0.5,
-         });
-      });
+      const particles = createParticles(50, pathToColor(pathname));
 
       const animate = () => {
-         ctx.clearRect(0, 0, innerWidth, innerHeight);
-         newArray.map((arr) => arr.update());
-         newArray.map((arr) => arr.draw());
+         clearCanvas();
+
+         updateParticles({
+            circles: particles,
+            canvasHeight,
+            canvasWidth,
+         });
+
+         renderParticles({
+            ctx: ctx,
+            circles: particles,
+         });
 
          requestId = requestAnimationFrame(animate);
       };
-      animate();
+      requestAnimationFrame(animate);
 
-      return () => {
-         cancelAnimationFrame(requestId);
-      };
-   });
+      return () => cancelAnimationFrame(requestId);
+   }, [pathname]);
 
-   return <SCanvas.Canvas ref={ref}></SCanvas.Canvas>;
+   return <SParticles.Canvas ref={canvasRef}></SParticles.Canvas>;
 };
-
-export default Particles;

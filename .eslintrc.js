@@ -13,8 +13,14 @@ module.exports = {
    ],
    rules: {
       'react/prop-types': 'off',
-      '@typescript-eslint/explicit-function-return-type': 'off', // We turn off prop-types rule, as we will use TypeScript's types instead.
+      'no-use-before-define': 'off',
+      '@typescript-eslint/explicit-function-return-type': [
+         'error',
+         { variables: false },
+      ],
+      '@typescript-eslint/no-use-before-define': 'off',
    },
+
    env: {
       browser: true,
       amd: true,

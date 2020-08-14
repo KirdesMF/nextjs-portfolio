@@ -5,8 +5,9 @@ import { AppContextProvider } from 'context/AppContext';
 import ResetCSS from 'styles/GlobalStyle.styled';
 import Fonts from 'styles/Fonts.styled';
 import Colors from 'styles/Colors.styled';
-import { HexTransition } from '@components/HexTransition/HexTransition';
-import Particles from '@components/Particles/Particles';
+import { CanvasHexagons } from '@components/CanvasTransition/CanvasTransition';
+import { Particles } from '@components/Particles/Particles';
+import Header from '@components/Header/Header';
 
 /**
  * App component from nextjs
@@ -21,8 +22,9 @@ const App = ({ Component, pageProps }: AppProps) => {
          <Colors />
          <Theme>
             <Component {...pageProps} />
-            <HexTransition hexSize={{ x: 90, y: 90 }} />
+            <Header />
             <Particles />
+            <CanvasHexagons />
          </Theme>
       </AppContextProvider>
    );
