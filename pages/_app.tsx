@@ -6,7 +6,6 @@ import ResetCSS from 'styles/GlobalStyle.styled';
 import Fonts from 'styles/Fonts.styled';
 import Colors from 'styles/Colors.styled';
 import { CanvasHexagons } from '@components/CanvasTransition/CanvasTransition';
-import { Particles } from '@components/Particles/Particles';
 import Header from '@components/Header/Header';
 
 /**
@@ -23,7 +22,6 @@ const App = ({ Component, pageProps }: AppProps) => {
          <Theme>
             <Component {...pageProps} />
             <Header />
-            <Particles />
             <CanvasHexagons />
          </Theme>
       </AppContextProvider>

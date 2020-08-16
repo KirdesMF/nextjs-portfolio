@@ -28,11 +28,7 @@ function useCanvas() {
          canvas.width = window.innerWidth;
          canvas.height = window.innerHeight;
       };
-
-      window.addEventListener('resize', onResize);
-
-      return () => window.removeEventListener('resize', onResize);
-   }, []);
+   });
    return { canvasRef, canvasState };
 }
 

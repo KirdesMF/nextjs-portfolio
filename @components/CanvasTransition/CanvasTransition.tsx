@@ -1,16 +1,16 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { SCanvasHexagons } from './CanvasTransition.styled';
+
 import { useRouter } from 'next/router';
-import { TPoint } from 'utils/hexagons/convert';
+import useCanvas from 'hooks/useCanvas';
+import usePathNameToColor from 'hooks/usePathNameToColor';
 import {
    setCanvasHexagons,
    renderCanvasHexagons,
    updateCanvasHexagons,
-   filteredHexagons,
+   isHexOnScreen,
 } from '@components/CanvasTransition/hexagons-maker';
-import { SCanvasHexagons } from './CanvasTransition.styled';
-import useCanvas from 'hooks/useCanvas';
-import usePathNameToColor from 'hooks/usePathNameToColor';
-import { Utils } from 'utils/utils';
 
 export const CanvasHexagons = () => {
    const { pathname } = useRouter();
@@ -29,38 +29,6 @@ export const CanvasHexagons = () => {
 
    useEffect(() => {
       let requestId: number;
-      let finalScale = 1;
-
-      const time = {
-         start: performance.now(),
-         total: 8000,
-         elapsed: 0,
-      };
-
-      // const tick = (now: number) => {
-      //    time.elapsed = now - time.start;
-      //    const progress = Math.min(time.elapsed / time.total, 1);
-      //    const position = progress * finalScale;
-
-      //    filteredHexmap.forEach((hex) => {
-      //       if (hex.delay > 0) {
-      //          hex.delay--;
-      //          hex.scale = position;
-      //       }
-      //    });
-      //    clearCanvas();
-
-      //    renderCanvasHexagons({
-      //       hexmap: filteredHexmap,
-      //       ctx: ctx,
-      //       origin,
-      //       size,
-      //    });
-
-      //    console.log(position, now);
-      //    if (progress < 1) requestId = requestAnimationFrame(tick);
-      //    else console.log(filteredHexmap);
-      // };
 
       const {
          canvasWidth,
@@ -71,30 +39,30 @@ export const CanvasHexagons = () => {
 
       const size = 100;
       const radius = ~~(canvasWidth / size);
-      const origin: TPoint = {
+      const origin = {
          x: ~~(canvasWidth / 2),
          y: ~~(canvasHeight / 2),
       };
 
       const hexmap = setCanvasHexagons({
          radius,
-         color: { h: 360, s: 50, l: 50 },
+         color: startHexColor ?? pathToColor(pathname),
          nextColor: pathToColor(pathname),
-      });
-
-      const filteredHexmap = filteredHexagons({
-         hexmap,
-         size,
-         origin,
-         width: canvasWidth,
-         height: canvasHeight,
-      });
+      }).filter((hex) =>
+         isHexOnScreen({
+            hex: hex.cube,
+            size,
+            origin,
+            width: canvasWidth,
+            height: canvasHeight,
+         })
+      );
 
       const animate = () => {
          clearCanvas();
-         updateCanvasHexagons(filteredHexmap);
+         updateCanvasHexagons(hexmap);
          renderCanvasHexagons({
-            hexmap: filteredHexmap,
+            hexmap: hexmap,
             ctx: ctx,
             origin,
             size,

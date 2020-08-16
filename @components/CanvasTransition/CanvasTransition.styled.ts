@@ -10,7 +10,7 @@ const Canvas = styled.canvas`
 
    z-index: 2;
 
-   background: transparent;
+   background: black;
 `;
 
 export const SCanvasHexagons = {

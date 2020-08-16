@@ -29,6 +29,10 @@ const easeOutCirc = ({ i, s, c, t }: TEase) => {
    return c * Math.sqrt(1 - (i = i / t - 1) * i) + s;
 };
 
+const easeLinear = ({ i, s, c, t }: TEase) => {
+   return (c * i) / t + s;
+};
+
 // Global Utils
 const degreeToRadian = (degree: number) => (degree * Math.PI) / 180;
 const secondsToFrame = (seconds: number) => seconds * 60;
@@ -43,6 +47,7 @@ export const Utils = {
    toFixNumber,
    rangeHue,
    ease: {
+      easeLinear,
       easeInQuad,
       easeOutQuad,
       easeOutExpo,

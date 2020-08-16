@@ -2,7 +2,10 @@ import { TPoint, cubeToPoint, TCube, Cube } from '../../utils/hexagons/convert';
 import { Utils } from '../../utils/utils';
 import { cubeRing, hexCornersPoints } from '../../utils/hexagons/helpers';
 
+//TODO refactoring hexmap object, eg group scale, scaleIteration and total same with color, reverse, and loop
+
 type THsl = { h: number; s: number; l: number };
+
 type THexagons = {
    cube: TCube;
    scale: number;
@@ -34,14 +37,6 @@ type TIsHexOnScreen = {
    width: number;
 };
 
-type TfilteredHexagons = {
-   size: number;
-   origin: TPoint;
-   height: number;
-   width: number;
-   hexmap: THexagons[];
-};
-
 type TsetCanvasHexagons = {
    radius: number;
    color: THsl;
@@ -70,18 +65,6 @@ const isHexOnScreen = (props: TIsHexOnScreen) => {
    }
 };
 
-const filteredHexagons = ({
-   hexmap,
-   ...isOnScreenProps
-}: TfilteredHexagons) => {
-   return hexmap.filter((hex) =>
-      isHexOnScreen({
-         hex: hex.cube,
-         ...isOnScreenProps,
-      })
-   );
-};
-
 const setCanvasHexagons = (props: TsetCanvasHexagons) => {
    const { radius, color, nextColor } = props;
    const originCube = Cube({ q: 0, r: 0, s: 0 });
@@ -95,14 +78,14 @@ const setCanvasHexagons = (props: TsetCanvasHexagons) => {
    const flattedHexmap: THexagons[] = hexmap.flatMap((arr, index) =>
       arr.map((hex) => ({
          cube: hex,
-         delay: index * 10,
+         delay: index,
          color: color,
          nextColor: nextColor,
-         scale: 0,
+         scale: 1,
          scaleIteration: 0,
-         scaleTotalIteration: Utils.secondsToFrame(1),
+         scaleTotalIteration: Utils.secondsToFrame(0.5),
          colorIteration: 0,
-         colorTotalIteration: Utils.secondsToFrame(1),
+         colorTotalIteration: Utils.secondsToFrame(0.5),
          reverse: false,
          loop: 0,
       }))
@@ -151,40 +134,78 @@ const renderCanvasHexagons = ({ hexmap, ctx, origin, size }: TRender) => {
 
 const updateCanvasHexagons = (hexmap: THexagons[]) => {
    hexmap.forEach((hex) => {
-      if (hex.colorIteration === hex.colorTotalIteration) {
-         return;
+      if (hex.loop === 2) return;
+
+      hex.delay > 0 ? (hex.delay -= 0.1) : (hex.delay = 0);
+
+      if (
+         hex.scaleIteration === hex.scaleTotalIteration &&
+         hex.colorIteration === hex.colorTotalIteration
+      ) {
+         hex.loop++;
+         hex.reverse = !hex.reverse;
       }
 
-      if (hex.delay > 0) hex.delay--;
-      else {
-         if (hex.scaleIteration < hex.scaleTotalIteration) {
-            hex.scaleIteration++;
-            hex.scale = Utils.ease.easeOutCirc({
-               i: hex.scaleIteration,
-               s: 0,
-               c: 1,
-               t: hex.scaleTotalIteration,
-            });
-         }
+      if (hex.delay === 0) {
+         hex.colorIteration < hex.colorTotalIteration
+            ? hex.colorIteration++
+            : (hex.colorIteration = 0);
 
-         if (hex.colorIteration < hex.colorTotalIteration) {
-            ++hex.colorIteration;
-            hex.color = {
-               ...hex.color,
-               h: Utils.ease.easeOutCirc({
-                  i: hex.colorIteration,
-                  s: 0,
-                  c: hex.nextColor.h,
-                  t: hex.colorTotalIteration,
-               }),
-               s: Utils.ease.easeOutCirc({
-                  i: hex.colorIteration,
-                  s: 0,
-                  c: hex.nextColor.s,
-                  t: hex.colorTotalIteration,
-               }),
-            };
-         }
+         hex.scaleIteration < hex.scaleTotalIteration
+            ? hex.scaleIteration++
+            : (hex.scaleIteration = 0);
+
+         hex.scale = !hex.reverse
+            ? Utils.ease.easeInCirc({
+                 i: hex.scaleIteration,
+                 s: 1,
+                 c: -1,
+                 t: hex.scaleTotalIteration,
+              })
+            : Utils.ease.easeOutCirc({
+                 i: hex.scaleIteration,
+                 s: 0,
+                 c: 1,
+                 t: hex.scaleTotalIteration,
+              });
+
+         hex.color = !hex.reverse
+            ? {
+                 ...hex.color,
+
+                 h: Utils.ease.easeOutCirc({
+                    i: hex.colorIteration,
+                    s: hex.color.h,
+                    c: (Math.random() * -hex.color.h) / 50,
+                    t: hex.colorTotalIteration,
+                 }),
+
+                 s: hex.color.s,
+                 l: hex.color.l,
+              }
+            : {
+                 ...hex.color,
+                 h: Utils.ease.easeOutExpo({
+                    i: hex.colorIteration,
+                    s: 0,
+                    c: hex.nextColor.h,
+                    t: hex.colorTotalIteration,
+                 }),
+
+                 s: Utils.ease.easeOutExpo({
+                    i: hex.colorIteration,
+                    s: 0,
+                    c: hex.nextColor.s,
+                    t: hex.colorTotalIteration,
+                 }),
+
+                 l: Utils.ease.easeOutExpo({
+                    i: hex.colorIteration,
+                    s: 0,
+                    c: hex.nextColor.l,
+                    t: hex.colorTotalIteration,
+                 }),
+              };
       }
    });
 };
@@ -193,5 +214,5 @@ export {
    updateCanvasHexagons,
    renderCanvasHexagons,
    setCanvasHexagons,
-   filteredHexagons,
+   isHexOnScreen,
 };
