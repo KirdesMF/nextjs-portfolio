@@ -1,7 +1,5 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from 'styled-components';
 import useAppContext from './useAppContext';
-function usePathNameToColor() {
+function usePathName() {
    const { colors } = useAppContext();
 
    const pathnameToColors = {
@@ -12,10 +10,21 @@ function usePathNameToColor() {
       '/contact': colors.contact,
    };
 
+   const pathNameToTitle = {
+      '/': 'welcome',
+      '/home': 'home',
+      '/about': 'about',
+      '/works': 'works',
+      '/contact': 'contact',
+   };
+
    const pathToColor = (pathname: string) =>
       pathnameToColors[pathname as keyof typeof pathnameToColors];
 
-   return { pathToColor };
+   const pathToTitle = (pathname: string) =>
+      pathNameToTitle[pathname as keyof typeof pathnameToColors];
+
+   return { pathToColor, pathToTitle };
 }
 
-export default usePathNameToColor;
+export default usePathName;

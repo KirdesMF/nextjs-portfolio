@@ -13,6 +13,8 @@ export type MainContextType = {
    large: boolean;
    colors: TColors;
    setColors: (value: TColors) => void;
+   endCanvas: boolean;
+   setEndCanvas: (value: boolean) => void;
 };
 
 /** Create context */
@@ -24,6 +26,7 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
    const large = useMatchMedia(breakpoints.medium);
    const [theme, setTheme] = useState<ThemeStateType>('dark');
    const [colors, setColors] = useState<TColors>(colorSettings);
+   const [endCanvas, setEndCanvas] = useState<boolean>(false);
 
    const value: MainContextType = {
       medium,
@@ -32,6 +35,8 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
       setTheme,
       colors,
       setColors,
+      endCanvas,
+      setEndCanvas,
    };
 
    return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

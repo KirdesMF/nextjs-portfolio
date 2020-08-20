@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-
 import { SCanvasHexagons } from './CanvasTransition.styled';
-
 import { useRouter } from 'next/router';
 import useCanvas from 'hooks/useCanvas';
-import usePathNameToColor from 'hooks/usePathNameToColor';
+import usePathName from 'hooks/usePathName';
 import {
    setCanvasHexagons,
    renderCanvasHexagons,
@@ -15,7 +13,7 @@ import {
 export const CanvasHexagons = () => {
    const { pathname } = useRouter();
    const { canvasRef, canvasState } = useCanvas();
-   const { pathToColor } = usePathNameToColor();
+   const { pathToColor } = usePathName();
 
    const [startHexColor, setStartHexColor] = useState<{
       h: number;
@@ -25,7 +23,7 @@ export const CanvasHexagons = () => {
 
    useEffect(() => {
       setStartHexColor(pathToColor(pathname));
-   });
+   }, [pathname]);
 
    useEffect(() => {
       let requestId: number;
@@ -37,8 +35,8 @@ export const CanvasHexagons = () => {
          clearCanvas,
       } = canvasState.current;
 
-      const size = 100;
-      const radius = ~~(canvasWidth / size);
+      const HEX_SIZE = 100;
+      const radius = ~~(canvasWidth / HEX_SIZE);
       const origin = {
          x: ~~(canvasWidth / 2),
          y: ~~(canvasHeight / 2),
@@ -51,7 +49,7 @@ export const CanvasHexagons = () => {
       }).filter((hex) =>
          isHexOnScreen({
             hex: hex.cube,
-            size,
+            size: HEX_SIZE,
             origin,
             width: canvasWidth,
             height: canvasHeight,
@@ -65,12 +63,12 @@ export const CanvasHexagons = () => {
             hexmap: hexmap,
             ctx: ctx,
             origin,
-            size,
+            size: HEX_SIZE,
          });
 
          requestId = requestAnimationFrame(animate);
       };
-      requestAnimationFrame(animate);
+      animate();
 
       return () => cancelAnimationFrame(requestId);
    }, [pathname]);

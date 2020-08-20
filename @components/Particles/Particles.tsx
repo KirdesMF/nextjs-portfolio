@@ -8,11 +8,11 @@ import {
    updateParticles,
 } from 'utils/particles/ParticleMarker';
 import useCanvas from 'hooks/useCanvas';
-import usePathNameToColor from 'hooks/usePathNameToColor';
+import usePathName from 'hooks/usePathName';
 
 export const Particles = () => {
    const { canvasRef, canvasState } = useCanvas();
-   const { pathToColor } = usePathNameToColor();
+   const { pathToColor } = usePathName();
    const { pathname } = useRouter();
 
    useEffect(() => {

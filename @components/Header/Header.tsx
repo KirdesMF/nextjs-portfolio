@@ -1,12 +1,6 @@
 import React from 'react';
 import { SHeader } from './Header.styled';
-import { PagesNameType, URLType } from '_types/common';
 import Link from 'next/link';
-
-type LinksType = {
-   name: PagesNameType;
-   href: URLType;
-};
 
 /**================= Settings ======================= */
 /**
@@ -24,7 +18,7 @@ const linksNavigation: LinksType[] = [
  * Header Component
  * contain Navigation
  */
-const Header = () => {
+function Header() {
    return (
       <SHeader.Header>
          <SHeader.Navigation>
@@ -36,6 +30,6 @@ const Header = () => {
          </SHeader.Navigation>
       </SHeader.Header>
    );
-};
+}
 
 export default Header;
