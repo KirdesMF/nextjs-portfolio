@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion, Variants } from 'framer-motion';
 import usePathName from 'hooks/usePathName';
+import { SMaintTitle } from './MainTitle.styled';
 
 const variants: Variants = {
    initial: {
@@ -10,42 +11,29 @@ const variants: Variants = {
    out: {
       opacity: 0,
       y: 20,
-      filter: ['blur(5px)', 'blur(5px)'],
       transition: {
          duration: 1,
+         delay: 0.5,
       },
    },
    in: {
       y: 0,
       opacity: 1,
-      filter: ['blur(5px)', 'blur(0px)'],
       transition: {
          duration: 1,
       },
    },
 };
 
-function SvgTitle({ pathname }: { pathname: string }) {
+type TMaintTitle = {
+   pathname: string;
+};
+
+function MaintTitle({ pathname }: TMaintTitle) {
    const { pathToTitle } = usePathName();
    return (
-      <div
-         style={{
-            position: 'fixed',
-            height: '100%',
-            width: '100%',
-            zIndex: 3,
-            display: 'grid',
-            placeItems: 'center',
-         }}
-      >
+      <SMaintTitle.Title>
          <motion.h1
-            style={{
-               fontFamily: 'Decovar',
-               fontSize: '4em',
-               color: 'white',
-               willChange: 'filter',
-            }}
-            key="title"
             variants={variants}
             initial="initial"
             animate="in"
@@ -53,8 +41,8 @@ function SvgTitle({ pathname }: { pathname: string }) {
          >
             {pathToTitle(pathname)}
          </motion.h1>
-      </div>
+      </SMaintTitle.Title>
    );
 }
 
-export default SvgTitle;
+export default MaintTitle;

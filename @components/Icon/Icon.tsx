@@ -1,7 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ColorsType } from 'Theme/colors';
+import { TNameCOlors } from 'Theme/colors';
 import { icons, NameIconType } from './icons';
+
+type SIconType = {
+   size: string;
+   iconColor: TNameCOlors;
+   hover: TNameCOlors;
+   area: string;
+   rotation: string;
+};
+
+/**=================== Styled ============================== */
+const SIcon = styled.svg<SIconType>`
+   grid-area: ${(props) => props.area};
+   transition: color 0.5s ease-in-out;
+   width: ${(props) => props.size};
+   color: ${(props) => props.theme.colors?.[props.iconColor]};
+   transform-origin: center;
+   transform: ${(props) => props.rotation && `rotate(${props.rotation})`};
+
+   @media (hover: hover) and (pointer: fine) {
+      &:hover {
+         color: ${(props) => props.hover && props.theme.colors?.[props.hover]};
+      }
+   }
+`;
 
 type IconProps = {
    /**
@@ -13,12 +37,12 @@ type IconProps = {
     * A string wich contain a number and the unit width
     * e.g `'2vw'` `'5px'` etc.
     */
-   width: string;
+   size: string;
 
    /**
     * A color keep from {@link Theme/colors}
     */
-   color: keyof ColorsType;
+   iconColor: TNameCOlors;
 
    /**
     * @remarks
@@ -26,21 +50,10 @@ type IconProps = {
     *
     * A color keep from {@link Theme/colors}
     */
-   hover?: keyof ColorsType;
+   hover?: TNameCOlors;
    area?: string;
+   rotation?: string;
 };
-type SIconType = Omit<IconProps, 'name'>;
-
-/**=================== Styled ============================== */
-const SIcon = styled.svg<SIconType>`
-   grid-area: ${(props) => props.area};
-   transition: color 0.5s ease-in-out;
-   width: ${(props) => props.width};
-   color: ${(props) => props.theme.colors?.[props.color]};
-   &:hover {
-      color: ${(props) => props.hover && props.theme.colors?.[props.hover]};
-   }
-`;
 
 /**=================== Component ============================== */
 /**
@@ -48,7 +61,7 @@ const SIcon = styled.svg<SIconType>`
  * Component Icon
  * @param name - Icon's name
  * @param width - icon's width [vw, px, %]
- * @param  color - Icon's color [Restricted to theme colors]
+ * @param  iconColor - Icon's color [Restricted to theme colors]
  * @param  [hover] - [optional] Icon's color hover [Restricted to theme colors]
  * @param [area] - [optional] Place icon inside a grid.
  * @return  React.ReactNode
@@ -58,13 +71,14 @@ const SIcon = styled.svg<SIconType>`
  * <Icon name="about" width="2vw" color="about" hover="active"/>
  * ```
  */
-const Icon = ({ width, color, hover, name, area }: IconProps) => {
+const Icon = ({ size, iconColor, hover, name, area, rotation }: IconProps) => {
    return (
       <SIcon
-         width={width}
-         color={color}
-         hover={hover}
-         area={area}
+         size={size}
+         iconColor={iconColor}
+         hover={hover!}
+         area={area!}
+         rotation={rotation!}
          viewBox="0 0 24 24"
          xmlns="http://www.w3.org/2000/svg"
       >

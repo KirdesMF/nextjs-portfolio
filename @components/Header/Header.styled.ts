@@ -27,7 +27,7 @@ const Navigation = styled.nav`
 `;
 
 const Anchor = styled.a`
-   color: ${({ theme }) => theme.colors.white};
+   color: red;
 `;
 
 export const SHeader = {

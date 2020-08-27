@@ -92,3 +92,23 @@ export const hexCornersPoints = ({ cube, size, origin }: THexPoints) => {
 
    return corners;
 };
+
+export const createHexMapShapeHexagons = (radius: number) => {
+   const hexmap: TCube[] = [];
+   let r1: number, r2: number;
+   for (let q = -radius; q <= radius; q++) {
+      r1 = Math.max(-radius, -q - radius);
+      r2 = Math.min(radius, -q + radius);
+
+      for (let r = r1; r <= r2; r++) {
+         hexmap.push(
+            Cube({
+               q: q,
+               r: r,
+               s: -q - r,
+            })
+         );
+      }
+   }
+   return hexmap;
+};

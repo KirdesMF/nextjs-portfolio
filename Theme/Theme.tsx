@@ -1,25 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
 import { breakpoints } from './breakpoints';
 import { fonts } from './fonts';
-import useAppContext from 'hooks/useAppContext';
+import { colors } from './colors';
 
 const Theme = ({ children }: { children: React.ReactNode }) => {
-   const { colors } = useAppContext();
-
-   const createColors = (name: keyof typeof colors) => {
-      return `hsl(${colors[name].h}, ${colors[name].s}%, ${colors[name].l}%)`;
-   };
-
    const myTheme: DefaultTheme = {
-      colors: {
-         home: createColors('home'),
-         about: createColors('about'),
-         works: createColors('works'),
-         contact: createColors('contact'),
-         black: createColors('black'),
-         white: createColors('white'),
-      },
+      colors: { ...colors },
       breakpoints: {
          ...breakpoints,
       },

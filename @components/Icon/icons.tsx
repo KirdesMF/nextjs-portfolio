@@ -78,6 +78,19 @@ const icons = {
          </>
       ),
    },
+   chevron: {
+      title: 'Chevron',
+      svg: (
+         <polyline
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            points="18 15 12 9 6 15"
+         ></polyline>
+      ),
+   },
 };
 
 export { icons };

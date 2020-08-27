@@ -41,11 +41,22 @@ const toFixNumber = (num: number) => Number(num.toFixed(2));
 
 const rangeHue = (s: number, c: number, e: number) => (s < e ? c : -c);
 
+const getNumberFromString = (color: string) => {
+   const match = color.match(/\d+/g)!;
+
+   return {
+      h: parseInt(match[0]),
+      s: parseInt(match[1]),
+      l: parseInt(match[2]),
+   };
+};
+
 export const Utils = {
    degreeToRadian,
    secondsToFrame,
    toFixNumber,
    rangeHue,
+   getNumberFromString,
    ease: {
       easeLinear,
       easeInQuad,

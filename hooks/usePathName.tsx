@@ -1,30 +1,16 @@
-import useAppContext from './useAppContext';
 function usePathName() {
-   const { colors } = useAppContext();
-
-   const pathnameToColors = {
-      '/': colors.black,
-      '/home': colors.home,
-      '/about': colors.about,
-      '/works': colors.works,
-      '/contact': colors.contact,
-   };
-
    const pathNameToTitle = {
       '/': 'welcome',
       '/home': 'home',
       '/about': 'about',
       '/works': 'works',
       '/contact': 'contact',
-   };
-
-   const pathToColor = (pathname: string) =>
-      pathnameToColors[pathname as keyof typeof pathnameToColors];
+   } as const;
 
    const pathToTitle = (pathname: string) =>
-      pathNameToTitle[pathname as keyof typeof pathnameToColors];
+      pathNameToTitle[pathname as keyof typeof pathNameToTitle];
 
-   return { pathToColor, pathToTitle };
+   return { pathToTitle };
 }
 
 export default usePathName;

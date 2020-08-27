@@ -37,7 +37,7 @@ type TIsHexOnScreen = {
    width: number;
 };
 
-type TsetCanvasHexagons = {
+type TSetCanvasHexagons = {
    radius: number;
    color: THsl;
    nextColor: THsl;
@@ -65,7 +65,7 @@ const isHexOnScreen = (props: TIsHexOnScreen) => {
    }
 };
 
-const setCanvasHexagons = (props: TsetCanvasHexagons) => {
+const setCanvasHexagons = (props: TSetCanvasHexagons) => {
    const { radius, color, nextColor } = props;
    const originCube = Cube({ q: 0, r: 0, s: 0 });
 
@@ -95,19 +95,18 @@ const setCanvasHexagons = (props: TsetCanvasHexagons) => {
 };
 
 const drawCanvasHexagon = (props: TDrawHex) => {
-   let { ctx, cube, size, origin, scale, color } = props;
+   const { ctx, cube, size, origin, scale, color } = props;
 
    let hexPoints = hexCornersPoints({ cube, size, origin });
    let center = cubeToPoint({ cube, size, origin });
-
    ctx.save();
 
-   ctx.translate(center.x, center.y);
+   ctx.translate(~~center.x, ~~center.y);
    ctx.scale(scale, scale);
-   ctx.translate(-center.x, -center.y);
+   ctx.translate(~~-center.x, ~~-center.y);
 
    ctx.beginPath();
-   hexPoints.forEach((point) => ctx.lineTo(point.x, point.y));
+   hexPoints.forEach((point) => ctx.lineTo(~~point.x, ~~point.y));
    ctx.closePath();
 
    ctx.fillStyle = `hsl(${color.h}, ${color.s}%, ${color.l}%)`;
@@ -176,7 +175,7 @@ const updateCanvasHexagons = (hexmap: THexagons[]) => {
                  h: Utils.ease.easeOutCirc({
                     i: hex.colorIteration,
                     s: hex.color.h,
-                    c: (Math.random() * -hex.color.h) / 50,
+                    c: (Math.random() * -hex.color.h) / 10,
                     t: hex.colorTotalIteration,
                  }),
 

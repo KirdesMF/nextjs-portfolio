@@ -17,6 +17,7 @@ body {
    padding: 0;
 
    height: 100%;
+   background: black;
 
 }
 
@@ -46,6 +47,15 @@ a {
    text-decoration: none;
    color: unset;
    cursor: pointer;
+}
+
+button{
+   padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 `;

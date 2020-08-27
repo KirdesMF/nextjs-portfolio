@@ -7,10 +7,12 @@ import { Layout } from '@components/Layout/Layout';
  */
 const Home = () => {
    return (
-      <Head>
-         <title>Ced | Home</title>
-         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <>
+         <Head>
+            <title>Ced | Home</title>
+            <link rel="icon" href="/favicon.ico" />
+         </Head>
+      </>
    );
 };
 

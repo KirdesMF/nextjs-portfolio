@@ -6,7 +6,9 @@ import { useState, useEffect } from 'react';
  * @returns boolean
  */
 const useMatchMedia = (mediaQuery: string) => {
-   if (process.browser) {
+   const isWindow = typeof window === 'object';
+
+   if (isWindow) {
       const [isMatches, setIsMatches] = useState(
          window.matchMedia(mediaQuery).matches
       );
