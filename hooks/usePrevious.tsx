@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 
-export default function usePrevious(value: URLType) {
-   const ref = useRef<URLType>(null!);
+export default function usePrevious(value: string) {
+   const ref = useRef<string>(null!);
 
    useEffect(() => {
       ref.current = value;

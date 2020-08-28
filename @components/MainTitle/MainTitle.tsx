@@ -30,7 +30,6 @@ type TMaintTitle = {
 };
 
 function MaintTitle({ pathname }: TMaintTitle) {
-   const { pathToTitle } = usePathName();
    return (
       <SMaintTitle.Title>
          <motion.h1
@@ -39,7 +38,7 @@ function MaintTitle({ pathname }: TMaintTitle) {
             animate="in"
             exit="out"
          >
-            {pathToTitle(pathname)}
+            {pathname}
          </motion.h1>
       </SMaintTitle.Title>
    );

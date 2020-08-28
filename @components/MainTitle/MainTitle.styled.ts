@@ -13,7 +13,6 @@ const Title = styled.article`
       font-family: 'Decovar';
       font-size: 4em;
       color: ${({ theme }) => theme.colors.white};
-      will-change: filter;
    }
 `;
 

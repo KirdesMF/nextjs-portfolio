@@ -9,26 +9,25 @@ import {
 
 import usePrevious from 'hooks/usePrevious';
 import useWindowSize from 'hooks/useWindowSize';
-import usePathName from 'hooks/usePathName';
 import { ThemeContext } from 'styled-components';
 import { Utils } from 'utils/utils';
 
 type TCanvas = {
-   pathname: URLType;
+   pathname: string;
 };
+
+let requestId = 0;
+const HEX_SIZE = 160;
 
 const CanvasHexagons = ({ pathname }: TCanvas) => {
    const canvasRef = useRef<HTMLCanvasElement>(null!);
-   const { pathToTitle } = usePathName();
    const { colors } = useContext(ThemeContext);
    const prevPathname = usePrevious(pathname);
    const windowSize = useWindowSize();
 
    const prevColor =
-      prevPathname &&
-      Utils.getNumberFromString(colors[pathToTitle(prevPathname)]);
-   const nextColor =
-      pathname && Utils.getNumberFromString(colors[pathToTitle(pathname)]);
+      prevPathname && Utils.getNumberFromString(colors[prevPathname]);
+   const nextColor = pathname && Utils.getNumberFromString(colors[pathname]);
 
    useEffect(() => {
       const canvas = canvasRef.current;
@@ -37,9 +36,6 @@ const CanvasHexagons = ({ pathname }: TCanvas) => {
       const width = (canvas.width = windowSize.width);
       const height = (canvas.height = windowSize.height);
 
-      let requestId = 0;
-
-      const HEX_SIZE = 175;
       const origin = {
          x: ~~(width / 2),
          y: ~~(height / 2),

@@ -9,6 +9,7 @@ import MainTitle from '@components/MainTitle/MainTitle';
 import { AnimatePresence } from 'framer-motion';
 import Pagination from '@components/Pagination/Pagination';
 import Menu from '@components/Menu/Menu';
+import usePathName from 'hooks/usePathName';
 
 /**
  * App component from nextjs
@@ -18,6 +19,8 @@ import Menu from '@components/Menu/Menu';
 
 function App({ Component, pageProps, router }: AppProps) {
    const pathname = router.pathname as URLType;
+   const { pathToTitle } = usePathName();
+   const newPathname = pathToTitle(pathname);
 
    return (
       <>
@@ -25,8 +28,8 @@ function App({ Component, pageProps, router }: AppProps) {
          <Fonts />
          <AppContextProvider>
             <Theme>
-               <Menu pathname={pathname} />
-               <CanvasHexagons pathname={pathname} />
+               <Menu pathname={newPathname} />
+               <CanvasHexagons pathname={newPathname} />
 
                <AnimatePresence exitBeforeEnter>
                   <Pagination
@@ -37,7 +40,7 @@ function App({ Component, pageProps, router }: AppProps) {
                </AnimatePresence>
 
                <AnimatePresence exitBeforeEnter>
-                  <MainTitle pathname={pathname} key={router.route} />
+                  <MainTitle pathname={newPathname} key={router.route} />
                </AnimatePresence>
                <Component {...pageProps} />
             </Theme>

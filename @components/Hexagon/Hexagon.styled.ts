@@ -7,7 +7,6 @@ type THex = {
    originHex: TPoint;
    cube: TCube;
    sizeHex: number;
-   pathname: string;
    centers?: TPoint;
 };
 
@@ -24,7 +23,7 @@ function createAttribPoints({ originHex, cube, sizeHex }: TCreateAtt) {
 }
 
 const Hex = styled.polygon<THex>`
-   stroke-width: 5;
+   stroke-width: 3;
    stroke-linejoin: round;
    transform-origin: ${({ centers }) =>
       centers && `${~~centers.x}px ${~~centers.y}px`};
