@@ -5,24 +5,24 @@ import { SMaintTitle } from './MainTitle.styled';
 
 const variants: Variants = {
    initial: {
-      y: 20,
-      opacity: 0,
+      y: 150,
    },
-   out: {
-      opacity: 0,
-      y: 20,
+   out: (i) => ({
+      y: 150,
       transition: {
-         duration: 1,
-         delay: 0.5,
+         duration: 0.9,
+         delay: i * 0.05,
+         ease: 'circIn',
       },
-   },
-   in: {
+   }),
+   in: (i) => ({
       y: 0,
-      opacity: 1,
       transition: {
          duration: 1,
+         delay: i * 0.1,
+         ease: 'circOut',
       },
-   },
+   }),
 };
 
 type TMaintTitle = {
@@ -30,16 +30,22 @@ type TMaintTitle = {
 };
 
 function MaintTitle({ pathname }: TMaintTitle) {
+   const letters = pathname.split('');
+
    return (
       <SMaintTitle.Title>
-         <motion.h1
-            variants={variants}
-            initial="initial"
-            animate="in"
-            exit="out"
-         >
-            {pathname}
-         </motion.h1>
+         {letters.map((letter, i) => (
+            <SMaintTitle.Span
+               key={i}
+               custom={i}
+               variants={variants}
+               initial="initial"
+               animate="in"
+               exit="out"
+            >
+               {letter}
+            </SMaintTitle.Span>
+         ))}
       </SMaintTitle.Title>
    );
 }

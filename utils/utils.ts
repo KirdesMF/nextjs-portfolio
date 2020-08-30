@@ -51,12 +51,19 @@ const getNumberFromString = (color: string) => {
    };
 };
 
+const randomHue = () => ~~(Math.random() * (360 - 1) + 1);
+const randomPercent = () => ~~(Math.random() * (100 - 1) + 1);
+const randomHSL = () => {
+   return `hsl(${randomHue()}, ${randomPercent()}%, ${randomPercent()}%)`;
+};
+
 export const Utils = {
    degreeToRadian,
    secondsToFrame,
    toFixNumber,
    rangeHue,
    getNumberFromString,
+   randomHSL,
    ease: {
       easeLinear,
       easeInQuad,

@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
 const Navigation = styled.nav`
-   --height: 20%;
-
    position: fixed;
    z-index: 4;
-   right: 1%;
-   top: calc(50% - var(--height) / 2);
+   right: 3%;
+   top: 50%;
+   transform: translateY(-50%);
 
-   height: var(--height);
+   height: 20%;
    width: 8%;
 
    display: grid;
@@ -24,7 +23,6 @@ type TButton = {
 };
 const Button = styled.button<TButton>`
    grid-area: ${({ prev }) => (prev ? 'prev' : 'next')};
-   outline: none;
 `;
 
 const Title = styled.span`

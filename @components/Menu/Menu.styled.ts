@@ -1,20 +1,14 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const Button = styled.button`
-   position: fixed;
-   z-index: 5;
-   width: 8em;
-   height: 6em;
-
-   display: grid;
-   place-items: center;
-`;
-
 const Svg = styled(motion.svg)`
    width: inherit;
    height: inherit;
    filter: drop-shadow(0 0 5px black);
+
+   /* &:hover {
+      transform: scale(1.1);
+   } */
 
    > path {
       fill: transparent;
@@ -35,7 +29,6 @@ const Nav = styled.nav`
 `;
 
 export const SMenu = {
-   Button,
    Svg,
    Nav,
 };
