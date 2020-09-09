@@ -2,6 +2,7 @@ import React from 'react';
 import { SNavMenu } from './NavMenu.styled';
 import { Variants, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { ColorName } from 'Theme/colors';
 
 type TNavMenu = {
    pathname: ColorName;

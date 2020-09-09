@@ -26,4 +26,5 @@ module.exports = {
       amd: true,
       node: true,
    },
+   'eslint.linkTask.enable': true,
 };
