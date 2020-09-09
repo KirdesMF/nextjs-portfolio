@@ -99,8 +99,8 @@ export default function ColorScheme({ pathname }: { pathname: KeysColorType }) {
       contrast: 1,
    });
 
-   const light = setCSSVariables(myTheme(10, 5) as ReturnedTheme);
-   const dark = setCSSVariables(myTheme(20, 2) as ReturnedTheme);
+   const light = setCSSVariables(myTheme(100, 1) as ReturnedTheme);
+   const dark = setCSSVariables(myTheme(20, 1.5) as ReturnedTheme);
    const contrast = setCSSVariables(myTheme(5, 3) as ReturnedTheme);
 
    return <InjectColorTheme light={light} dark={dark} contrast={contrast} />;

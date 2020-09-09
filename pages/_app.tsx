@@ -28,7 +28,7 @@ function App({ Component, pageProps, router }: AppProps) {
       <>
          <ResetCSS />
          <Fonts />
-         <ColorScheme pathname={newPathname} />
+         {/* <ColorScheme pathname={newPathname} /> */}
          <ColorMode />
          <AppContextProvider>
             <Theme>
