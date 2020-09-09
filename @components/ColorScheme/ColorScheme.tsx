@@ -73,7 +73,9 @@ function createCSSVariables() {
 export default function ColorScheme() {
    const router = useRouter();
    const pathname =
-      router.pathname === '/' ? 'welcome' : router.pathname.substr(1);
+      router.pathname === '/'
+         ? 'welcome'
+         : (router.pathname.substr(1) as KeysColorType);
    const primaryScale: NamedColorScale = {
       name: 'primary',
       colorspace: 'HSL',
