@@ -25,7 +25,7 @@ const Works = styled.div`
    width: 100%;
    height: 100%;
    display: grid;
-   background: ${({ theme }) => theme.colors.works};
+   background: green;
 `;
 
 /**
