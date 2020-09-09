@@ -1,12 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { SMenu } from './Menu.styled';
-import { ThemeContext } from 'styled-components';
 import ButtonMenu from './ButtonMenu/ButtonMenu';
 import NavMenu from './NavMenu/NavMenu';
-import { KeyColorsType } from '_types/styled';
+import { ColorName } from 'Theme/colors';
 
 type TMenuProps = {
-   pathname: KeyColorsType;
+   pathname: ColorName;
 };
 
 export default function Menu({ pathname }: TMenuProps) {
