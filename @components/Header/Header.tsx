@@ -6,7 +6,7 @@ import Link from 'next/link';
 /**
  * Links Array
  */
-const linksNavigation: LinksType[] = [
+const linksNavigation = [
    { name: 'home', href: '/home' },
    { name: 'about', href: '/about' },
    { name: 'works', href: '/works' },
