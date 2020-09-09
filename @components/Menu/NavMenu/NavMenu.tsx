@@ -2,10 +2,8 @@ import React from 'react';
 import { SNavMenu } from './NavMenu.styled';
 import { Variants, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { ColorName } from 'Theme/colors';
 
 type TNavMenu = {
-   pathname: ColorName;
    isOpen: boolean;
    setIsOpen: (value: React.SetStateAction<boolean>) => void;
 };
@@ -30,21 +28,19 @@ const variants: Variants = {
    },
 };
 
-export default function NavMenu({ pathname, isOpen, setIsOpen }: TNavMenu) {
+function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
    const handleClick = () => setIsOpen((prev) => !prev);
    return (
       <AnimatePresence exitBeforeEnter>
          {isOpen && (
             <SNavMenu.Nav
                className="dark"
-               pathname={pathname}
                variants={variants}
                initial="initial"
                animate="in"
                exit="out"
             >
                <SNavMenu.Svg
-                  pathname={pathname}
                   viewBox={VIEWBOX}
                   xmlns="http://www.w3.org/2000/svg"
                   version="1.1"
@@ -65,3 +61,5 @@ export default function NavMenu({ pathname, isOpen, setIsOpen }: TNavMenu) {
       </AnimatePresence>
    );
 }
+
+export default NavMenu;

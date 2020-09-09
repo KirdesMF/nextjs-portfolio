@@ -1,13 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { ColorName, THEME } from 'Theme/colors';
 import { CSSVAR } from '@components/ColorScheme/ColorScheme';
 
-type TNav = {
-   pathname: ColorName;
-};
-
-const Nav = styled(motion.nav)<TNav>`
+const Nav = styled(motion.nav)`
    position: fixed;
    z-index: 15;
    height: 65%;
@@ -36,8 +31,8 @@ const Link = styled(motion.a)`
    color: ${CSSVAR['grey-normal-text']};
 `;
 
-const Svg = styled.svg<TNav>`
-   filter: drop-shadow(0 0 5px ${THEME.COLORS.VAR.black});
+const Svg = styled.svg`
+   filter: drop-shadow(0 0 5px ${CSSVAR['grey-high-contrast']});
    position: absolute;
    bottom: 0%;
    height: 30%;

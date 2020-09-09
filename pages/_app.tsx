@@ -1,23 +1,15 @@
 import React from 'react';
 import { AppProps } from 'next/app';
-import Theme from 'Theme/Theme';
 import { AppContextProvider } from 'context/AppContext';
-import ResetCSS from 'styles/GlobalStyle.styled';
-import Fonts from 'styles/Fonts.styled';
 import CanvasHexagons from '@components/CanvasTransition/CanvasTransition';
 import MainTitle from '@components/MainTitle/MainTitle';
 import { AnimatePresence } from 'framer-motion';
 import Pagination from '@components/Pagination/Pagination';
-import Menu from '@components/Menu/Menu';
 import usePathName from 'hooks/usePathName';
-import ColorMode from '@components/ColorMode/ColorMode';
 import ColorScheme from '@components/ColorScheme/ColorScheme';
 
-/**
- * App component from nextjs
- * import here comon component e.g. Nav Context Theme
- * even global style to be share in every pages
- */
+import 'styles/reset.css';
+import 'styles/fonts.css';
 
 function App({ Component, pageProps, router }: AppProps) {
    const pathname = router.pathname as URLType;
@@ -26,28 +18,22 @@ function App({ Component, pageProps, router }: AppProps) {
 
    return (
       <>
-         <ResetCSS />
-         <Fonts />
-         {/* <ColorScheme pathname={newPathname} /> */}
-         <ColorMode />
+         <ColorScheme pathname={newPathname} />
          <AppContextProvider>
-            <Theme>
-               <Menu pathname={newPathname} />
-               <CanvasHexagons pathname={newPathname} />
+            <CanvasHexagons pathname={newPathname} />
 
-               <AnimatePresence exitBeforeEnter>
-                  <Pagination
-                     key={router.route}
-                     router={router}
-                     pathname={pathname}
-                  />
-               </AnimatePresence>
+            <AnimatePresence exitBeforeEnter>
+               <Pagination
+                  key={router.route}
+                  router={router}
+                  pathname={pathname}
+               />
+            </AnimatePresence>
 
-               <AnimatePresence exitBeforeEnter>
-                  <MainTitle pathname={newPathname} key={router.route} />
-               </AnimatePresence>
-               <Component {...pageProps} />
-            </Theme>
+            <AnimatePresence exitBeforeEnter>
+               <MainTitle pathname={newPathname} key={router.route} />
+            </AnimatePresence>
+            <Component {...pageProps} />
          </AppContextProvider>
       </>
    );

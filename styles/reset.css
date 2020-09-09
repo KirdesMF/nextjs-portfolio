@@ -1,17 +1,12 @@
-import { createGlobalStyle } from 'styled-components';
-
-const ResetCSS = createGlobalStyle`
-
-
 html {
    box-sizing: border-box;
-};
+}
 
 *,
 *:before,
 *:after {
    box-sizing: inherit;
-};
+}
 
 html,
 body {
@@ -20,7 +15,6 @@ body {
 
    height: 100%;
    background: black;
-
 }
 
 body > * {
@@ -51,16 +45,12 @@ a {
    cursor: pointer;
 }
 
-button{
+button {
    padding: 0;
-  border: none;
-  font: inherit;
-  color: inherit;
-  background-color: transparent;
-  cursor: pointer;
-  outline: none;
+   border: none;
+   font: inherit;
+   color: inherit;
+   background-color: transparent;
+   cursor: pointer;
+   outline: none;
 }
-
-`;
-
-export default ResetCSS;

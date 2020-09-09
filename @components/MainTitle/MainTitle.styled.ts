@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { THEME } from 'Theme/colors';
 import { CSSVAR } from '@components/ColorScheme/ColorScheme';
 
 const Title = styled.article`

@@ -5,8 +5,7 @@ import Document, {
    Main,
    NextScript,
 } from 'next/document';
-import styled, { ServerStyleSheet } from 'styled-components';
-import { THEME } from 'Theme/colors';
+import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
    static async getInitialProps(ctx: DocumentContext) {

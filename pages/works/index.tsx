@@ -1,19 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
-const Example = styled.div`
-   display: grid;
-`;
+import { Layout } from '@components/Layout/Layout';
 
-const NestedGrid = styled.div`
-   display: grid;
-`;
+const title = 'Ced | Works';
 
-const Works = () => {
+function Works() {
    return (
-      <Example>
-         <NestedGrid></NestedGrid>
-      </Example>
+      <Layout name="Works" title={title}>
+         <h1>Works</h1>
+      </Layout>
    );
-};
+}
 
 export default Works;

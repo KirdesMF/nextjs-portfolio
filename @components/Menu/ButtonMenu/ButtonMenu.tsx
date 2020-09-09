@@ -1,30 +1,22 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { SButtonMenu } from './ButtonMenu.styled';
 import { Hexagon } from '@components/Hexagon/Hexagon.styled';
 import { useAnimation } from 'framer-motion';
 import { menuSettings } from './ButtonMenu.variants';
-import { Utils } from 'utils/utils';
-import { ThemeContext } from 'styled-components';
-import { KeyColorsType } from '_types/styled';
-import { THEME, ColorName } from 'Theme/colors';
 import { CSSVAR } from '@components/ColorScheme/ColorScheme';
+import { useRouter } from 'next/router';
 
 type TButtonMenu = {
-   pathname: ColorName;
    isOpen: boolean;
    setIsOpen: (value: React.SetStateAction<boolean>) => void;
 };
 
-export default function ButtonMenu({
-   isOpen,
-   setIsOpen,
-   pathname,
-}: TButtonMenu) {
+function ButtonMenu({ isOpen, setIsOpen }: TButtonMenu) {
    const { VIEWBOX, ORIGIN, burger, hexes } = menuSettings;
    const { HEXMAP, HEX_SIZE, hexesMenuVariants } = hexes;
    const { topPathVariants, midPathVariants, botPathVariants } = burger;
 
-   const { COLORS_VAR } = useContext(ThemeContext);
+   const router = useRouter();
    const controls = useAnimation();
 
    const hexesAnimation = {
@@ -35,7 +27,7 @@ export default function ButtonMenu({
 
    useEffect(() => {
       controls.start('onHoverEnd');
-   }, [pathname]);
+   }, [router.pathname]);
 
    return (
       <SButtonMenu.Button onClick={() => setIsOpen((prev) => !prev)}>
@@ -84,3 +76,4 @@ export default function ButtonMenu({
       </SButtonMenu.Button>
    );
 }
+export default ButtonMenu;

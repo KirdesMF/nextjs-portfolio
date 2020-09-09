@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import usePathName from 'hooks/usePathName';
 import { SMaintTitle } from './MainTitle.styled';
 import { Variants } from 'framer-motion';
+import { useRouter } from 'next/router';
 
 const variants: Variants = {
    initial: {
