@@ -5,7 +5,7 @@ import {
    NamedColorScale,
    ReturnedTheme,
 } from '@adobe/leonardo-contrast-colors';
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import {
    primaryRatios,
    secondaryRatios,
@@ -36,20 +36,6 @@ const InjectColorTheme = createGlobalStyle<Global>`
    }
 
 
-`;
-
-const CustomHtml = styled.html<Global>`
-   ${({ light }) => light};
-
-   &[data-theme='dark'] {
-      ${({ dark }) => dark};
-      --filter-canvas: 5%;
-   }
-
-   &[data-theme='contrast'] {
-      ${({ contrast }) => contrast};
-      --filter-canvas: 0%;
-   }
 `;
 
 function setCSSVariables(theme: ReturnedTheme) {
@@ -110,11 +96,12 @@ export default function ColorScheme({ pathname }: { pathname: KeysColorType }) {
       colorScales: [primaryScale, secondaryScale, greyScale],
       baseScale: 'primary',
       output: 'HEX',
-   }) as AdaptiveTheme;
+      contrast: 1,
+   });
 
-   const light = setCSSVariables(myTheme(50));
-   const dark = setCSSVariables(myTheme(20, 1.3));
-   const contrast = setCSSVariables(myTheme(5, 3));
+   const light = setCSSVariables(myTheme(10, 5) as ReturnedTheme);
+   const dark = setCSSVariables(myTheme(20, 2) as ReturnedTheme);
+   const contrast = setCSSVariables(myTheme(5, 3) as ReturnedTheme);
 
    return <InjectColorTheme light={light} dark={dark} contrast={contrast} />;
 }
