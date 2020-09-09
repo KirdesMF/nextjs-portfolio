@@ -13,6 +13,7 @@ import {
    keysColor,
    greyRatios,
 } from './color-scheme';
+import { useRouter } from 'next/router';
 
 type Global = {
    [key in 'dark' | 'light' | 'contrast']: Record<string, string>;
@@ -69,7 +70,10 @@ function createCSSVariables() {
    };
 }
 
-export default function ColorScheme({ pathname }: { pathname: KeysColorType }) {
+export default function ColorScheme() {
+   const router = useRouter();
+   const pathname =
+      router.pathname === '/' ? 'welcome' : router.pathname.substr(1);
    const primaryScale: NamedColorScale = {
       name: 'primary',
       colorspace: 'HSL',

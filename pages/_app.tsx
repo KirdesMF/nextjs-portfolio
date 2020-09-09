@@ -18,7 +18,7 @@ function App({ Component, pageProps, router }: AppProps) {
 
    return (
       <>
-         <ColorScheme pathname={newPathname} />
+         <ColorScheme />
          <AppContextProvider>
             <CanvasHexagons pathname={newPathname} />
 
