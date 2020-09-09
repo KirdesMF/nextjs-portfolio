@@ -10,6 +10,9 @@ import { AnimatePresence } from 'framer-motion';
 import Pagination from '@components/Pagination/Pagination';
 import Menu from '@components/Menu/Menu';
 import usePathName from 'hooks/usePathName';
+import Colors from 'styles/Colors.styled';
+import ColorMode from '@components/ColorMode/ColorMode';
+import ColorScheme from '@components/ColorScheme/ColorScheme';
 
 /**
  * App component from nextjs
@@ -26,6 +29,8 @@ function App({ Component, pageProps, router }: AppProps) {
       <>
          <ResetCSS />
          <Fonts />
+         <ColorScheme pathname={newPathname} />
+         <ColorMode />
          <AppContextProvider>
             <Theme>
                <Menu pathname={newPathname} />

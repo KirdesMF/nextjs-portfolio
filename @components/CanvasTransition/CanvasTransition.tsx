@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useContext } from 'react';
+import React, { useEffect, useRef, useContext, useState } from 'react';
 import { SCanvasHexagons } from './CanvasTransition.styled';
 import {
    setCanvasHexagons,
@@ -11,9 +11,11 @@ import usePrevious from 'hooks/usePrevious';
 import useWindowSize from 'hooks/useWindowSize';
 import { ThemeContext } from 'styled-components';
 import { Utils } from 'utils/utils';
+import { ColorName } from 'Theme/colors';
+import { CSSVAR } from '@components/ColorScheme/ColorScheme';
 
 type TCanvas = {
-   pathname: string;
+   pathname: ColorName;
 };
 
 let requestId = 0;
@@ -21,15 +23,17 @@ const HEX_SIZE = 160;
 
 const CanvasHexagons = ({ pathname }: TCanvas) => {
    const canvasRef = useRef<HTMLCanvasElement>(null!);
-   const { colors } = useContext(ThemeContext);
-   const prevPathname = usePrevious(pathname);
    const windowSize = useWindowSize();
-
-   const prevColor =
-      prevPathname && Utils.getNumberFromString(colors[prevPathname]);
-   const nextColor = pathname && Utils.getNumberFromString(colors[pathname]);
+   const [currentColor, setCurrentColor] = useState({ h: 10, s: 30, l: 50 });
 
    useEffect(() => {
+      const COLOR = getComputedStyle(document.documentElement).getPropertyValue(
+         '--background'
+      );
+
+      const colorToHsl = Utils.hexToHSL(COLOR);
+      setCurrentColor(colorToHsl);
+
       const canvas = canvasRef.current;
       const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
@@ -44,8 +48,8 @@ const CanvasHexagons = ({ pathname }: TCanvas) => {
 
       const hexmap = setCanvasHexagons({
          radius,
-         color: prevColor ?? nextColor,
-         nextColor: nextColor,
+         color: colorToHsl && currentColor,
+         nextColor: colorToHsl,
       }).filter((hex) =>
          isHexOnScreen({
             hex: hex.cube,
@@ -68,14 +72,12 @@ const CanvasHexagons = ({ pathname }: TCanvas) => {
          clear();
          updateCanvasHexagons(hexmap);
 
-         ctx.beginPath();
          renderCanvasHexagons({
             hexmap: hexmap,
             ctx: ctx,
             origin,
             size: HEX_SIZE,
          });
-         ctx.closePath();
       }
       window.requestAnimationFrame(animate);
 

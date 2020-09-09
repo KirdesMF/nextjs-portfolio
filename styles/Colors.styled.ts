@@ -1,36 +1,23 @@
 import { createGlobalStyle } from 'styled-components';
+import { THEME } from 'Theme/colors';
 
 const Colors = createGlobalStyle`
 
-   :root{
-      --h-home: 250;
-      --s-home: 50%;
-      --l-home: 40%;
-      --color-home: hsl(var(--h-home), var(--s-home), var(--l-home));
+   html{
+      ${THEME.COLORS.setTheme.light}
+      --box-shadow-big: 0px 0px 30px 10px black;
+      --box-shadow-thin: 0px 0px 10px 0px black;
+      --filter-canvas: 100%;
+   } 
 
-      --h-about: 120;
-      --s-about: 50%;
-      --l-about: 40%;
-      --color-about: hsl(var(--h-about), var(--s-about), var(--l-about));
-
-      --h-works: 90;
-      --s-works: 50%;
-      --l-works: 40%;
-      --color-works: hsl(var(--h-works), var(--s-works), var(--l-works));
-
-      --h-contact: 200;
-      --s-contact: 50%;
-      --l-contact: 40%;
-      --color-contact: hsl(var(--h-contact), var(--s-contact), var(--l-contact));
-
-      --color-black: hsla(250, 10%, 10%);
-      --color-inset-black: hsla(250, 10%, 10%, .4);
-      --color-white: hsl(0, 100%, 100%);
+   html[data-theme = 'dark']{
+      ${THEME.COLORS.setTheme.dark};
+      --filter-canvas: 0%;
    }
 
-   [data-theme='dark']{
-      --l-home: 10%;
-      --l-works: 10%;
+   html[data-theme = 'contrast']{
+      ${THEME.COLORS.setTheme.contrast};
+      --filter-canvas: 0%;
    }
 `;
 

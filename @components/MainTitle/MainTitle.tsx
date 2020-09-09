@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import usePathName from 'hooks/usePathName';
 import { SMaintTitle } from './MainTitle.styled';
+import { Variants } from 'framer-motion';
 
 const variants: Variants = {
    initial: {

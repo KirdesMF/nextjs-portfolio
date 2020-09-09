@@ -1,21 +1,30 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { SButtonMenu } from './ButtonMenu.styled';
 import { Hexagon } from '@components/Hexagon/Hexagon.styled';
 import { useAnimation } from 'framer-motion';
 import { menuSettings } from './ButtonMenu.variants';
 import { Utils } from 'utils/utils';
+import { ThemeContext } from 'styled-components';
+import { KeyColorsType } from '_types/styled';
+import { THEME, ColorName } from 'Theme/colors';
+import { CSSVAR } from '@components/ColorScheme/ColorScheme';
 
 type TButtonMenu = {
+   pathname: ColorName;
    isOpen: boolean;
    setIsOpen: (value: React.SetStateAction<boolean>) => void;
 };
 
-export default function ButtonMenu({ isOpen, setIsOpen }: TButtonMenu) {
+export default function ButtonMenu({
+   isOpen,
+   setIsOpen,
+   pathname,
+}: TButtonMenu) {
    const { VIEWBOX, ORIGIN, burger, hexes } = menuSettings;
    const { HEXMAP, HEX_SIZE, hexesMenuVariants } = hexes;
    const { topPathVariants, midPathVariants, botPathVariants } = burger;
-   const randomColor = `hsl(10, 60%, 35%)`;
 
+   const { COLORS_VAR } = useContext(ThemeContext);
    const controls = useAnimation();
 
    const hexesAnimation = {
@@ -23,6 +32,10 @@ export default function ButtonMenu({ isOpen, setIsOpen }: TButtonMenu) {
       onHoverStart: () => controls.start('onHoverStart'),
       onHoverEnd: () => controls.start('onHoverEnd'),
    };
+
+   useEffect(() => {
+      controls.start('onHoverEnd');
+   }, [pathname]);
 
    return (
       <SButtonMenu.Button onClick={() => setIsOpen((prev) => !prev)}>
@@ -43,7 +56,7 @@ export default function ButtonMenu({ isOpen, setIsOpen }: TButtonMenu) {
                      variants={hexesMenuVariants({
                         delay: i,
                         isOpen: isOpen,
-                        color: randomColor,
+                        color: CSSVAR['primary-low-contrast'],
                      })}
                      originHex={ORIGIN}
                      sizeHex={HEX_SIZE}

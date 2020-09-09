@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { THEME } from 'Theme/colors';
+import { CSSVAR } from '@components/ColorScheme/ColorScheme';
 
 const Title = styled.article`
    z-index: 3;
@@ -13,9 +15,10 @@ const Title = styled.article`
 `;
 
 const Span = styled(motion.span)`
-   font-family: 'Decovar';
+   font-family: Helvetica, sans-serif;
+   text-transform: uppercase;
    font-size: 4em;
-   color: ${({ theme }) => theme.colors.white};
+   color: ${CSSVAR['grey-normal-text']};
    will-change: transform;
 `;
 

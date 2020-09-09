@@ -9,7 +9,7 @@ type TPathCoordinates = {
 };
 function setCoordinatesPath(coordinates: TPathCoordinates) {
    const { MX, MY, LX, LY } = coordinates;
-   return `M${MX} ${MY},L ${LX} ${LY}`;
+   return `M${MX} ${MY} L ${LX} ${LY}`;
 }
 
 const SIZE = {
@@ -144,9 +144,9 @@ type THexesManu = {
 
 const hexesTransition = (i: number): Variant => ({
    transition: {
-      delay: i * 0.05,
+      delay: i * 0.02,
       ease: 'anticipate',
-      duration: 1,
+      duration: 0.8,
    },
 });
 

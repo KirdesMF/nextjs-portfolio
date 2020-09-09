@@ -8,6 +8,7 @@
       "start": "next start"
    },
    "dependencies": {
+      "@adobe/leonardo-contrast-colors": "^1.0.0-alpha.7",
       "@microsoft/tsdoc": "^0.12.20",
       "framer-motion": "^2.6.2",
       "next": "9.5.2",

@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TNameCOlors } from 'Theme/colors';
 import { icons, NameIconType } from './icons';
+import { KeyColorsType } from '_types/styled';
+import { ColorName, THEME } from 'Theme/colors';
 
 type SIconType = {
    size: string;
-   iconColor: TNameCOlors;
-   hover: TNameCOlors;
+   iconColor: ColorName;
+   hover: ColorName;
    area: string;
    rotation: string;
 };
@@ -16,13 +17,13 @@ const SIcon = styled.svg<SIconType>`
    grid-area: ${(props) => props.area};
    transition: color 0.5s ease-in-out;
    width: ${(props) => props.size};
-   color: ${(props) => props.theme.colors?.[props.iconColor]};
+   color: ${(props) => THEME.COLORS.VAR[props.iconColor]};
    transform-origin: center;
    transform: ${(props) => props.rotation && `rotate(${props.rotation})`};
 
    @media (hover: hover) and (pointer: fine) {
       &:hover {
-         color: ${(props) => props.hover && props.theme.colors?.[props.hover]};
+         color: ${(props) => props.hover && THEME.COLORS.VAR[props.hover]};
       }
    }
 `;
@@ -42,7 +43,7 @@ type IconProps = {
    /**
     * A color keep from {@link Theme/colors}
     */
-   iconColor: TNameCOlors;
+   iconColor: ColorName;
 
    /**
     * @remarks
@@ -50,7 +51,7 @@ type IconProps = {
     *
     * A color keep from {@link Theme/colors}
     */
-   hover?: TNameCOlors;
+   hover?: ColorName;
    area?: string;
    rotation?: string;
 };

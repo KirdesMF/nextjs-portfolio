@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { THEME } from 'Theme/colors';
 
 const Navigation = styled.nav`
    position: fixed;
@@ -32,11 +33,11 @@ const Title = styled.span`
    padding: 0.5rem;
    width: 100%;
    text-align: center;
-   border-top: 1px solid ${({ theme }) => theme.colors.white};
-   border-bottom: 1px solid ${({ theme }) => theme.colors.white};
+   border-top: 1px solid ${THEME.COLORS.VAR.white};
+   border-bottom: 1px solid ${THEME.COLORS.VAR.white};
 
    > h2 {
-      color: ${({ theme }) => theme.colors.white};
+      color: ${THEME.COLORS.VAR.white};
       text-transform: uppercase;
       font-family: 'Amstelvar';
       font-size: 1.3rem;
