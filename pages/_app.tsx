@@ -30,9 +30,9 @@ function App({ Component, pageProps, router }: AppProps) {
                />
             </AnimatePresence>
 
-            <AnimatePresence exitBeforeEnter>
+            {/* <AnimatePresence exitBeforeEnter>
                <MainTitle pathname={newPathname} key={router.route} />
-            </AnimatePresence>
+            </AnimatePresence> */}
             <Component {...pageProps} />
          </AppContextProvider>
       </>
