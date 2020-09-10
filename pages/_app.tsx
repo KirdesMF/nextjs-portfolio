@@ -10,6 +10,7 @@ import ColorScheme from '@components/ColorScheme/ColorScheme';
 
 import 'styles/reset.css';
 import 'styles/fonts.css';
+import Menu from '@components/Menu/Menu';
 
 function App({ Component, pageProps, router }: AppProps) {
    const pathname = router.pathname as URLType;
@@ -21,7 +22,7 @@ function App({ Component, pageProps, router }: AppProps) {
          {/* <ColorScheme /> */}
          <AppContextProvider>
             <CanvasHexagons pathname={newPathname} />
-
+            <Menu />
             <AnimatePresence exitBeforeEnter>
                <Pagination
                   key={router.route}

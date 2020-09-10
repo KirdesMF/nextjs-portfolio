@@ -32,7 +32,6 @@ function Layout({ name, title, children }: LayoutProps) {
             <title>{title}</title>
             <link rel="icon" href="/favicon.ico" />
          </Head>
-         <Menu />
          <ColorMode />
          {/* <AnimatePresence exitBeforeEnter>
             <MaintTitle
