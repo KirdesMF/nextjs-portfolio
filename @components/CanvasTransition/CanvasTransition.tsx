@@ -7,7 +7,6 @@ import {
    isHexOnScreen,
 } from '@components/CanvasTransition/hexagons-maker';
 
-import usePrevious from 'hooks/usePrevious';
 import useWindowSize from 'hooks/useWindowSize';
 import { ThemeContext } from 'styled-components';
 import { Utils } from 'utils/utils';

@@ -14,6 +14,7 @@ import {
    greyRatios,
 } from './color-scheme';
 import { useRouter } from 'next/router';
+import { Utils } from 'utils/utils';
 
 type Global = {
    [key in 'dark' | 'light' | 'contrast']: Record<string, string>;
@@ -72,28 +73,26 @@ function createCSSVariables() {
 
 export default function ColorScheme() {
    const router = useRouter();
-   const pathname =
-      router.pathname === '/'
-         ? 'welcome'
-         : (router.pathname.substr(1) as KeysColorType);
+   const pathname = Utils.customURL(router.pathname) as KeysColorType;
+
    const primaryScale: NamedColorScale = {
       name: 'primary',
       colorspace: 'HSL',
-      colorKeys: keysColor.about.primary,
+      colorKeys: keysColor[pathname].primary,
       ratios: primaryRatios,
    };
 
    const secondaryScale: NamedColorScale = {
       name: 'secondary',
       colorspace: 'HSL',
-      colorKeys: keysColor.about.secondary,
+      colorKeys: keysColor[pathname].secondary,
       ratios: secondaryRatios,
    };
 
    const greyScale: NamedColorScale = {
       name: 'grey',
       colorspace: 'HSL',
-      colorKeys: keysColor.about.grey,
+      colorKeys: keysColor[pathname].grey,
       ratios: greyRatios,
    };
 
