@@ -14,14 +14,12 @@ import Menu from '@components/Menu/Menu';
 
 function App({ Component, pageProps, router }: AppProps) {
    const pathname = router.pathname as URLType;
-   const { pathToTitle } = usePathName();
-   const newPathname = pathToTitle(pathname);
 
    return (
       <>
          <ColorScheme />
          <AppContextProvider>
-            <CanvasHexagons pathname={newPathname} />
+            <CanvasHexagons />
             <Menu />
             <AnimatePresence exitBeforeEnter>
                <Pagination

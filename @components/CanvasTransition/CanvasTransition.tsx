@@ -13,15 +13,13 @@ import { ThemeContext } from 'styled-components';
 import { Utils } from 'utils/utils';
 import { ColorName } from 'Theme/colors';
 import { CSSVAR } from '@components/ColorScheme/ColorScheme';
-
-type TCanvas = {
-   pathname: ColorName;
-};
+import { useRouter } from 'next/router';
 
 let requestId = 0;
 const HEX_SIZE = 160;
 
-const CanvasHexagons = ({ pathname }: TCanvas) => {
+const CanvasHexagons = () => {
+   const { pathname } = useRouter();
    const canvasRef = useRef<HTMLCanvasElement>(null!);
    const windowSize = useWindowSize();
    const [currentColor, setCurrentColor] = useState({ h: 10, s: 30, l: 50 });

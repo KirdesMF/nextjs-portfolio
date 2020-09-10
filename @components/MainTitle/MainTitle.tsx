@@ -4,6 +4,7 @@ import usePathName from 'hooks/usePathName';
 import { SMaintTitle } from './MainTitle.styled';
 import { Variants } from 'framer-motion';
 import { useRouter } from 'next/router';
+import { Utils } from 'utils/utils';
 
 const variants: Variants = {
    initial: {
@@ -32,9 +33,10 @@ type TMaintTitle = {
 };
 
 function MaintTitle({ pathname }: TMaintTitle) {
+   const title = Utils.customURL(pathname);
    return (
       <SMaintTitle.Title>
-         {pathname.split('').map((letter, i) => (
+         {title.split('').map((letter, i) => (
             <SMaintTitle.Span
                key={i}
                custom={i}

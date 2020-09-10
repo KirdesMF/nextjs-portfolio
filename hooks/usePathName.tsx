@@ -7,8 +7,8 @@ function usePathName() {
       '/contact': 'contact',
    } as const;
 
-   const pathToTitle = (pathname: string) =>
-      pathNameToTitle[pathname as keyof typeof pathNameToTitle];
+   const pathToTitle = (pathname: keyof typeof pathNameToTitle) =>
+      pathNameToTitle[pathname];
 
    return { pathToTitle };
 }

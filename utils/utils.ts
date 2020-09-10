@@ -92,6 +92,11 @@ const hexToHSL = (hex: string) => {
    return { h, s, l };
 };
 
+const customURL = (pathname: string) => {
+   if (pathname === '/') return 'welcome';
+   else return pathname.substr(1);
+};
+
 export const Utils = {
    degreeToRadian,
    secondsToFrame,
@@ -100,6 +105,7 @@ export const Utils = {
    getNumberFromString,
    randomHSL,
    hexToHSL,
+   customURL,
    ease: {
       easeLinear,
       easeInQuad,
