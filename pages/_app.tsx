@@ -32,7 +32,7 @@ function App({ Component, pageProps, router }: AppProps) {
             </AnimatePresence>
 
             <AnimatePresence exitBeforeEnter>
-               <MainTitle pathname={newPathname} key={router.route} />
+               <MainTitle pathname={pathname} key={router.route} />
             </AnimatePresence>
             <Component {...pageProps} />
          </AppContextProvider>
