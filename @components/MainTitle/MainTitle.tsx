@@ -32,8 +32,6 @@ type TMaintTitle = {
 };
 
 function MaintTitle({ pathname }: TMaintTitle) {
-   const letters = pathname.split('');
-
    return (
       <SMaintTitle.Title>
          {letters.map((letter, i) => (
@@ -45,7 +43,7 @@ function MaintTitle({ pathname }: TMaintTitle) {
                animate="in"
                exit="out"
             >
-               {letter}
+               {pathname.split('')}
             </SMaintTitle.Span>
          ))}
       </SMaintTitle.Title>
