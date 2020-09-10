@@ -79,21 +79,21 @@ export default function ColorScheme() {
    const primaryScale: NamedColorScale = {
       name: 'primary',
       colorspace: 'HSL',
-      colorKeys: keysColor[pathname].primary,
+      colorKeys: keysColor.about.primary,
       ratios: primaryRatios,
    };
 
    const secondaryScale: NamedColorScale = {
       name: 'secondary',
       colorspace: 'HSL',
-      colorKeys: keysColor[pathname].secondary,
+      colorKeys: keysColor.about.secondary,
       ratios: secondaryRatios,
    };
 
    const greyScale: NamedColorScale = {
       name: 'grey',
       colorspace: 'HSL',
-      colorKeys: keysColor[pathname].grey,
+      colorKeys: keysColor.about.grey,
       ratios: greyRatios,
    };
 
