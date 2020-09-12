@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { SColorMode } from './ColorMode.styled';
+import React, { Fragment, useEffect } from 'react';
+import { wrapper } from './ColorMode.styled';
 
-export default function ColorMode() {
+function ColorMode() {
    useEffect(() => {
       const currentTheme = localStorage.getItem('theme');
       if (currentTheme) {
@@ -21,13 +21,29 @@ export default function ColorMode() {
       );
    };
    return (
-      <SColorMode.Wrapper>
-         <input type="checkbox" />
-         <input type="checkbox" />
-         <input type="checkbox" />
-         <button onClick={handleClick}>LIGHT</button>
-         <button onClick={handleClick}>DARK</button>
-         <button onClick={handleClick}>CONTRAST</button>
-      </SColorMode.Wrapper>
+      <Fragment>
+         <div className={wrapper}>
+            <input type="checkbox" />
+            <input type="checkbox" />
+            <input type="checkbox" />
+            <button
+               style={{ '--color': 'blue' } as React.CSSProperties}
+               onClick={handleClick}
+            >
+               LIGHT
+            </button>
+            <button
+               style={{ '--color': 'green' } as React.CSSProperties}
+               onClick={handleClick}
+            >
+               DARK
+            </button>
+            <button data-color="red" onClick={handleClick}>
+               CONTRAST
+            </button>
+         </div>
+      </Fragment>
    );
 }
+
+export default ColorMode;

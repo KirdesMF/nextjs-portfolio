@@ -5,13 +5,12 @@ import CanvasHexagons from '@components/CanvasTransition/CanvasTransition';
 import MainTitle from '@components/MainTitle/MainTitle';
 import { AnimatePresence } from 'framer-motion';
 import Pagination from '@components/Pagination/Pagination';
-import usePathName from 'hooks/usePathName';
 import ColorScheme from '@components/ColorScheme/ColorScheme';
 
 import 'styles/reset.css';
 import 'styles/fonts.css';
 import Menu from '@components/Menu/Menu';
-
+import ColorMode from '@components/ColorMode/ColorMode';
 function App({ Component, pageProps, router }: AppProps) {
    const pathname = router.pathname as URLType;
 
@@ -21,6 +20,7 @@ function App({ Component, pageProps, router }: AppProps) {
          <AppContextProvider>
             <CanvasHexagons />
             <Menu />
+            <ColorMode />
             <AnimatePresence exitBeforeEnter>
                <Pagination
                   key={router.route}

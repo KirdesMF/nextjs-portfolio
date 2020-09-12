@@ -32,13 +32,6 @@ function Layout({ name, title, children }: LayoutProps) {
             <title>{title}</title>
             <link rel="icon" href="/favicon.ico" />
          </Head>
-         <ColorMode />
-         {/* <AnimatePresence exitBeforeEnter>
-            <MaintTitle
-               pathname={router.pathname.substr(1)}
-               key={router.route}
-            />
-         </AnimatePresence> */}
          {children}
       </Layout>
    );

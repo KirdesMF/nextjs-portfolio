@@ -3,6 +3,8 @@ import {
    generateAdaptiveTheme,
    NamedColorScale,
    ReturnedTheme,
+   Scheme,
+   Background,
 } from '@adobe/leonardo-contrast-colors';
 import { createGlobalStyle } from 'styled-components';
 import {
@@ -35,8 +37,6 @@ const InjectColorTheme = createGlobalStyle<Global>`
       ${({ contrast }) => contrast};
       --filter-canvas: 0%;
    }
-
-
 `;
 
 function setCSSVariables(theme: ReturnedTheme) {
@@ -77,21 +77,21 @@ export default function ColorScheme() {
 
    const primaryScale: NamedColorScale = {
       name: 'primary',
-      colorspace: 'HSL',
+      colorspace: 'LCH',
       colorKeys: keysColor[pathname].primary,
       ratios: primaryRatios,
    };
 
    const secondaryScale: NamedColorScale = {
       name: 'secondary',
-      colorspace: 'HSL',
+      colorspace: 'LCH',
       colorKeys: keysColor[pathname].secondary,
       ratios: secondaryRatios,
    };
 
    const greyScale: NamedColorScale = {
       name: 'grey',
-      colorspace: 'HSL',
+      colorspace: 'LCH',
       colorKeys: keysColor[pathname].grey,
       ratios: greyRatios,
    };
@@ -103,7 +103,7 @@ export default function ColorScheme() {
       contrast: 1,
    });
 
-   const light = setCSSVariables(myTheme(100, 1) as ReturnedTheme);
+   const light = setCSSVariables(myTheme(50, 1) as ReturnedTheme);
    const dark = setCSSVariables(myTheme(20, 1.5) as ReturnedTheme);
    const contrast = setCSSVariables(myTheme(5, 3) as ReturnedTheme);
 

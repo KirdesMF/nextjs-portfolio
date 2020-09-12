@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { hexCornersPoints } from 'utils/hexagons/helpers';
 import { TPoint, TCube, cubeToPoint } from 'utils/hexagons/convert';
 import { motion } from 'framer-motion';

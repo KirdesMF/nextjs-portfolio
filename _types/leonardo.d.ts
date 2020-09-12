@@ -2,9 +2,9 @@
 
 import '@adobe/leonardo-contrast-colors';
 declare module '@adobe/leonardo-contrast-colors' {
-   type Background = { background: string };
+   export type Background = { background: string };
 
-   type Scheme = {
+   export type Scheme = {
       name: string;
       values: {
          name: string;

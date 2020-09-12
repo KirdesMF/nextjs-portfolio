@@ -1,3 +1,8 @@
+import {
+   generateAdaptiveTheme,
+   NamedColorScale,
+} from '@adobe/leonardo-contrast-colors';
+
 const primaryRatios = {
    'primary-lower-contrast': 1.1,
    'primary-midlow-contrast': 1.5,
@@ -40,10 +45,9 @@ const keysColor = {
    },
    home: {
       primary: [
+         'hsl(270, 50%, 10%)',
          'hsl(270, 50%, 50%)',
-         'hsl(270, 50%, 40%)',
-         'hsl(270, 50%, 30%)',
-         'hsl(270, 50%, 20%)',
+         'hsl(270, 50%, 85%)',
       ],
       secondary: [
          'hsl(250, 50%, 50%)',
@@ -98,5 +102,74 @@ type NamesColorType =
 type KeysColorType = keyof typeof keysColor;
 
 export { primaryRatios, secondaryRatios, greyRatios, keysColor };
-
 export type { NamesColorType, KeysColorType };
+
+let valve: NamedColorScale[] = [
+   {
+      name: 'primary',
+      colorKeys: ['#5CDBFF', '#0000FF'],
+      colorspace: 'LCH',
+      ratios: {
+         'blue--largeText': 3,
+         'blue--normalText': 4.5,
+      },
+   },
+
+   {
+      name: 'secondary',
+      colorKeys: ['#5CDBFF', '#0000FF'],
+      colorspace: 'LCH',
+      ratios: {
+         'blue--largeText': 3,
+         'blue--normalText': 4.5,
+      },
+   },
+
+   {
+      name: 'grey',
+      colorKeys: ['#5CDBFF', '#0000FF'],
+      colorspace: 'LCH',
+      ratios: {
+         'blue--largeText': 3,
+         'blue--normalText': 4.5,
+      },
+   },
+];
+
+let VALVZE: NamedColorScale[] = [
+   {
+      name: 'primary',
+      colorKeys: ['hsl(50, 50%, 50%)', 'hsl(50, 50%, 50%)'],
+      colorspace: 'LCH',
+      ratios: {
+         'blue--largeText': 3,
+         'blue--normalText': 4.5,
+      },
+   },
+
+   {
+      name: 'red',
+      colorKeys: ['hsl(150, 50%, 50%)', 'hsl(150, 50%, 50%)'],
+      colorspace: 'LCH',
+      ratios: {
+         'blue--largeText': 3,
+         'blue--normalText': 4.5,
+      },
+   },
+
+   {
+      name: 'yellow',
+      colorKeys: ['hsl(250, 50%, 50%)', 'hsl(250, 50%, 50%)'],
+      colorspace: 'LCH',
+      ratios: {
+         'blue--largeText': 3,
+         'blue--normalText': 4.5,
+      },
+   },
+];
+
+const createColorScales = (name: NamedColorScale[], baseScale: string) =>
+   generateAdaptiveTheme({ colorScales: [...name], baseScale: baseScale });
+
+export const thisTheme = createColorScales(VALVZE, 'primary')(50, 1)
+console.log(createColorScales(valve, 'primary')(50, 1));

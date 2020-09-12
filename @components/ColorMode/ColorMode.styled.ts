@@ -1,17 +1,26 @@
-import styled from 'styled-components';
+import { styled } from 'linaria/react';
+import { css } from 'linaria';
 
-const Wrapper = styled.div`
-   z-index: 20;
+export const Wrapper = styled.div`
    position: fixed;
    top: 0;
    width: 30%;
    left: 20%;
+   z-index: 20;
 
-   > button {
+   & > button {
       margin-right: 1em;
    }
 `;
 
-export const SColorMode = {
-   Wrapper,
-};
+export const wrapper = css`
+   position: fixed;
+   top: 0;
+   width: 30%;
+   left: 20%;
+   z-index: 20;
+
+   & > button {
+      margin-right: 1em;
+   }
+`;
