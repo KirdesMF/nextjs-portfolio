@@ -28,7 +28,7 @@ function AdaptiveColorScheme() {
       setCSSCustomProperties(Theme);
    }
 
-   const debounceInput = Utils.debounce(handleInputs, 100);
+   const debounceInput = Utils.debounce(handleInputs, 10);
 
    useEffect(() => {
       handleInputs();

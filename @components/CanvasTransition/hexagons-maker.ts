@@ -51,9 +51,9 @@ type TRender = {
 };
 
 const isHexOnScreen = (props: TIsHexOnScreen) => {
-   let { hex, size, origin, height, width } = props;
+   const { hex, size, origin, height, width } = props;
 
-   let center = cubeToPoint({ cube: hex, size, origin });
+   const center = cubeToPoint({ cube: hex, size, origin });
 
    if (
       Math.round(center.x) < width + size &&
@@ -97,8 +97,8 @@ const setCanvasHexagons = (props: TSetCanvasHexagons) => {
 const drawCanvasHexagon = (props: TDrawHex) => {
    const { ctx, cube, size, origin, scale, color } = props;
 
-   let hexPoints = hexCornersPoints({ cube, size, origin });
-   let center = cubeToPoint({ cube, size, origin });
+   const hexPoints = hexCornersPoints({ cube, size, origin });
+   const center = cubeToPoint({ cube, size, origin });
    ctx.save();
 
    ctx.translate(~~center.x, ~~center.y);

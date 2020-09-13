@@ -10,7 +10,6 @@ import useWindowSize from 'hooks/useWindowSize';
 import { Utils } from 'utils/utils';
 import { useRouter } from 'next/router';
 import { css } from 'linaria';
-import { Theme } from 'Theme/Theme';
 
 const requestId = 0;
 const HEX_SIZE = 160;
@@ -43,7 +42,7 @@ const CanvasHexagons = () => {
 
       const hexmap = setCanvasHexagons({
          radius,
-         color: colorToHsl && currentColor,
+         color: currentColor,
          nextColor: colorToHsl,
       }).filter((hex) =>
          isHexOnScreen({
@@ -94,6 +93,6 @@ const canvas = css`
 
    z-index: 2;
 
-   background: ${Theme.COLORS.background};
+   background: black;
    filter: brightness(var(--filter-canvas));
 `;

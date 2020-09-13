@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { Icon } from '@components/Icon/Icon';
-import { Variants, motion } from 'framer-motion';
+import { Variants, motion, AnimatePresence } from 'framer-motion';
 import { Utils } from 'utils/utils';
 import { css } from 'linaria';
 import { Theme } from 'Theme/Theme';
@@ -114,14 +114,17 @@ function Pagination() {
          )}
 
          <span className={span}>
-            <motion.h2
-               variants={titleVariants}
-               animate="animate"
-               initial="initial"
-               exit="exit"
-            >
-               {customPathname}
-            </motion.h2>
+            <AnimatePresence exitBeforeEnter>
+               <motion.h2
+                  key={router.route}
+                  variants={titleVariants}
+                  animate="animate"
+                  initial="initial"
+                  exit="exit"
+               >
+                  {customPathname}
+               </motion.h2>
+            </AnimatePresence>
          </span>
       </nav>
    );
