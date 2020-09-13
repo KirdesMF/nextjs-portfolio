@@ -97,16 +97,20 @@ const customURL = (pathname: string) => {
    else return pathname.substr(1);
 };
 
-type Debounce = {
-   func: () => void;
-   delay: number;
-};
-const debounce = ({ func, delay }: Debounce) => {
-   let timer = 0;
+export type Procedure = (...args: any[]) => void;
 
-   clearTimeout(timer);
-   timer = setTimeout(func, delay);
-};
+function debounce<Params extends any[]>(
+   func: (...args: Params) => any,
+   timeout: number
+): (...args: Params) => void {
+   let timer: NodeJS.Timeout;
+   return (...args: Params) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+         func(...args);
+      }, timeout);
+   };
+}
 
 export const Utils = {
    degreeToRadian,

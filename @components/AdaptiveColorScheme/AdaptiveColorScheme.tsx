@@ -28,8 +28,7 @@ function AdaptiveColorScheme() {
       setCSSCustomProperties(Theme);
    }
 
-   const debounceInput = () =>
-      Utils.debounce({ func: handleInputs, delay: 100 });
+   const debounceInput = Utils.debounce(handleInputs, 100);
 
    useEffect(() => {
       handleInputs();
@@ -40,7 +39,7 @@ function AdaptiveColorScheme() {
          {/** Brightness slider */}
          <input
             // onChange={debounceInput}
-            onInput={debounceInput}
+            onChange={debounceInput}
             ref={brightnessRef}
             type="range"
             min="10"
@@ -52,7 +51,7 @@ function AdaptiveColorScheme() {
          <input
             ref={contrastRef}
             // onChange={debounceInput}
-            onInput={debounceInput}
+            onChange={debounceInput}
             type="range"
             min="1"
             max="5"
