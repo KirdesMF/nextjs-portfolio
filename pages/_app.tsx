@@ -5,36 +5,35 @@ import CanvasHexagons from '@components/CanvasTransition/CanvasTransition';
 import MainTitle from '@components/MainTitle/MainTitle';
 import { AnimatePresence } from 'framer-motion';
 import Pagination from '@components/Pagination/Pagination';
-import ColorScheme from '@components/ColorScheme/ColorScheme';
 
 import 'styles/reset.css';
 import 'styles/fonts.css';
 import Menu from '@components/Menu/Menu';
-import ColorMode from '@components/ColorMode/ColorMode';
+import AdaptiveColorScheme from '@components/AdaptiveColorScheme/AdaptiveColorScheme';
+
 function App({ Component, pageProps, router }: AppProps) {
    const pathname = router.pathname as URLType;
 
    return (
-      <>
-         <ColorScheme />
-         <AppContextProvider>
-            <CanvasHexagons />
-            <Menu />
-            <ColorMode />
-            <AnimatePresence exitBeforeEnter>
-               <Pagination
-                  key={router.route}
-                  router={router}
-                  pathname={pathname}
-               />
-            </AnimatePresence>
+      <AppContextProvider>
+         <Component {...pageProps} />
 
-            <AnimatePresence exitBeforeEnter>
-               <MainTitle pathname={pathname} key={router.route} />
-            </AnimatePresence>
-            <Component {...pageProps} />
-         </AppContextProvider>
-      </>
+         <CanvasHexagons />
+         <Menu />
+         <AdaptiveColorScheme />
+
+         <AnimatePresence exitBeforeEnter>
+            <Pagination
+               key={router.route}
+               router={router}
+               pathname={pathname}
+            />
+         </AnimatePresence>
+
+         <AnimatePresence exitBeforeEnter>
+            <MainTitle pathname={pathname} key={router.route} />
+         </AnimatePresence>
+      </AppContextProvider>
    );
 }
 

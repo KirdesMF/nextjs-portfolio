@@ -18,7 +18,7 @@ const Nav = styled(motion.nav)`
    place-items: center;
    padding: 3em;
 
-   background: ${CSSVAR['primary-lower-contrast']};
+   background: var(--background);
    border-radius: 2em;
    box-shadow: var(--box-shadow-thin);
 

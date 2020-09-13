@@ -48,7 +48,7 @@ function ButtonMenu({ isOpen, setIsOpen }: TButtonMenu) {
                      variants={hexesMenuVariants({
                         delay: i,
                         isOpen: isOpen,
-                        color: CSSVAR['primary-low-contrast'],
+                        color: 'var(--background)',
                      })}
                      originHex={ORIGIN}
                      sizeHex={HEX_SIZE}
