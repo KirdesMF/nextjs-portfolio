@@ -20,6 +20,14 @@ module.exports = {
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
    },
+   overrides: [
+      {
+         files: ['*.js'],
+         rules: {
+            '@typescript-eslint/no-var-requires': 'off',
+         },
+      },
+   ],
    env: {
       browser: true,
       amd: true,
