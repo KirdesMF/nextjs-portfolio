@@ -2,7 +2,7 @@ import { ReturnedTheme } from '@adobe/leonardo-contrast-colors';
 import { css } from 'linaria';
 import React, { useEffect, useRef } from 'react';
 import { setCSSCustomProperties } from './helpers-scheme';
-import { welcomeColorScheme } from './scheme';
+import { homeColorScheme, welcomeColorScheme } from './scheme';
 
 function AdaptiveColorScheme() {
    const contrastRef = useRef<HTMLInputElement>(null!);
@@ -19,26 +19,20 @@ function AdaptiveColorScheme() {
          brightnessValue,
          contrastValue
       ) as ReturnedTheme;
-      setCSSCustomProperties(welcomeColorTheme);
+
+      const homeColorTheme = homeColorScheme(
+         brightnessValue,
+         contrastValue
+      ) as ReturnedTheme;
+
+      const Theme = [...welcomeColorTheme, ...homeColorTheme];
+
+      setCSSCustomProperties(Theme);
    };
 
    useEffect(() => {
-      const brightnessInput = brightnessRef.current;
-      const contrastInput = contrastRef.current;
-
-      let brightness = parseInt(brightnessInput.value);
-      let contrast = parseInt(contrastInput.value);
-
-      brightness = 30;
-      contrast = 1;
-
-      const welcomeColorTheme = welcomeColorScheme(
-         brightness,
-         contrast
-      ) as ReturnedTheme;
-
       // TODO background for all theme
-      setCSSCustomProperties(welcomeColorTheme);
+      handleInputs();
    });
 
    return (

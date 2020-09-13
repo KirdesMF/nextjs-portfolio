@@ -68,7 +68,7 @@ const HOME_RATIOS = {
 const HOME_SCALE: NamedColorScale[] = [
    {
       name: 'primary',
-      colorKeys: ['hsl(50, 50%, 50%)', 'hsl(50, 30%, 50%)'],
+      colorKeys: ['hsl(350, 50%, 50%)', 'hsl(350, 30%, 50%)'],
       colorspace: 'LCH',
       ratios: HOME_RATIOS.primary,
    },
@@ -86,16 +86,19 @@ const HOME_SCALE: NamedColorScale[] = [
    },
 ];
 
+// THEME
 export const welcomeColorScheme = generateAdaptiveTheme({
    colorScales: [...WELCOME_SCALE],
    baseScale: 'primary',
+   output: 'HSL',
 });
 
 export const homeColorScheme = generateAdaptiveTheme({
-   colorScales: [...WELCOME_SCALE],
+   colorScales: [...HOME_SCALE],
    baseScale: 'primary',
 });
 
+// CSS Custom Properties
 const welcomeCSSVar = createCSSCustomProperties(WELCOME_RATIOS);
 const homeCSSVar = createCSSCustomProperties(HOME_RATIOS);
 
