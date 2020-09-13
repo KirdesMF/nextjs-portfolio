@@ -5,7 +5,7 @@ const title = 'Ced | Contact';
 
 function Contact() {
    return (
-      <Layout name="Contact" title={title}>
+      <Layout name="contact" title={title}>
          <h1>Contact</h1>
       </Layout>
    );

@@ -1,4 +1,3 @@
 {
-   "presets": ["next/babel", "linaria/babel"],
-   "plugins": [["styled-components", { "ssr": true, "displayName": false }]]
+   "presets": ["next/babel", "linaria/babel"]
 }

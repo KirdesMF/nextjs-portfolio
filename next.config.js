@@ -1,7 +1,7 @@
-const withCSS = require('@zeit/next-css');
+import withCSS from '@zeit/next-css';
 
 module.exports = withCSS({
-   webpack(config, options) {
+   webpack(config) {
       config.module.rules.push({
          test: /\.(tsx|ts|js|jsx)$/,
          use: [

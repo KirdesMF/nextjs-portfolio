@@ -12,8 +12,6 @@ import Menu from '@components/Menu/Menu';
 import AdaptiveColorScheme from '@components/AdaptiveColorScheme/AdaptiveColorScheme';
 
 function App({ Component, pageProps, router }: AppProps) {
-   const pathname = router.pathname as URLType;
-
    return (
       <AppContextProvider>
          <Component {...pageProps} />
@@ -23,15 +21,11 @@ function App({ Component, pageProps, router }: AppProps) {
          <AdaptiveColorScheme />
 
          <AnimatePresence exitBeforeEnter>
-            <Pagination
-               key={router.route}
-               router={router}
-               pathname={pathname}
-            />
+            <Pagination key={router.route} />
          </AnimatePresence>
 
          <AnimatePresence exitBeforeEnter>
-            <MainTitle pathname={pathname} key={router.route} />
+            <MainTitle key={router.route} />
          </AnimatePresence>
       </AppContextProvider>
    );

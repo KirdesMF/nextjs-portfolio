@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { SButtonMenu } from './ButtonMenu.styled';
-import { Hexagon } from '@components/Hexagon/Hexagon.styled';
-import { useAnimation } from 'framer-motion';
+import Hexagon from '@components/Hexagon/Hexagon';
+import { motion, useAnimation } from 'framer-motion';
 import { menuSettings } from './ButtonMenu.variants';
-import { CSSVAR } from '@components/ColorScheme/ColorScheme';
 import { useRouter } from 'next/router';
+import { css } from 'linaria';
+import { Theme } from 'Theme/Theme';
 
 type TButtonMenu = {
    isOpen: boolean;
@@ -30,8 +30,9 @@ function ButtonMenu({ isOpen, setIsOpen }: TButtonMenu) {
    }, [router.pathname]);
 
    return (
-      <SButtonMenu.Button onClick={() => setIsOpen((prev) => !prev)}>
-         <SButtonMenu.Svg
+      <button className={button} onClick={() => setIsOpen((prev) => !prev)}>
+         <motion.svg
+            className={svg}
             viewBox={VIEWBOX}
             xmlns="http://www.w3.org/2000/svg"
             version="1.1"
@@ -48,7 +49,7 @@ function ButtonMenu({ isOpen, setIsOpen }: TButtonMenu) {
                      variants={hexesMenuVariants({
                         delay: i,
                         isOpen: isOpen,
-                        color: 'var(--background)',
+                        color: Theme.COLORS.background,
                      })}
                      originHex={ORIGIN}
                      sizeHex={HEX_SIZE}
@@ -56,24 +57,50 @@ function ButtonMenu({ isOpen, setIsOpen }: TButtonMenu) {
                   />
                );
             })}
-            <SButtonMenu.Path
+            <motion.path
+               className={path}
                variants={topPathVariants}
                animate={isOpen ? 'open' : 'closed'}
                initial="initial"
             />
 
-            <SButtonMenu.Path
+            <motion.path
+               className={path}
                variants={midPathVariants}
                animate={isOpen ? 'open' : 'closed'}
                initial="initial"
             />
-            <SButtonMenu.Path
+            <motion.path
+               className={path}
                variants={botPathVariants}
                animate={isOpen ? 'open' : 'closed'}
                initial="initial"
             />
-         </SButtonMenu.Svg>
-      </SButtonMenu.Button>
+         </motion.svg>
+      </button>
    );
 }
 export default ButtonMenu;
+
+const button = css`
+   position: fixed;
+   top: 0;
+   z-index: 5;
+   width: 8em;
+   height: 6em;
+
+   display: grid;
+   place-items: center;
+`;
+
+const path = css`
+   fill: transparent;
+   stroke-width: 5;
+   stroke: ${Theme.COLORS['home-primary-200']};
+   stroke-linecap: round;
+   transform-box: fill-box;
+`;
+
+const svg = css`
+   filter: drop-shadow(0 0 5px ${Theme.COLORS['home-secondary-500']});
+`;

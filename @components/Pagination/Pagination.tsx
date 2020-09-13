@@ -1,11 +1,12 @@
 import React from 'react';
-import { SPagination } from './Pagination.styled';
-import usePathName from 'hooks/usePathName';
-import { useRouter, NextRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { Icon } from '@components/Icon/Icon';
 import { Variants, motion } from 'framer-motion';
+import { Utils } from 'utils/utils';
+import { css } from 'linaria';
+import { Theme } from 'Theme/Theme';
 
-const links: URLType[] = ['/', '/home', '/about', '/works', '/contact'];
+const links = ['/', '/home', '/about', '/works', '/contact'];
 const CHEVRON_SIZE = '1.5vw';
 const ROTATION_TITLE = '25deg';
 
@@ -41,43 +42,41 @@ const chevronVariants: Variants = {
    },
 };
 
-const setIsPreviousVisible = (pathname: URLType) => {
+function setIsPreviousVisible(pathname: string) {
    if (pathname === '/home' || pathname === '/') return false;
    else return true;
-};
+}
 
-const setIsNextVisible = (pathname: URLType) => {
+function setIsNextVisible(pathname: string) {
    if (pathname === '/contact' || pathname === '/') return false;
    else return true;
-};
+}
 
-type TPagination = {
-   router: NextRouter;
-   pathname: URLType;
-};
-function Pagination({ router, pathname }: TPagination) {
-   const { pathToTitle } = usePathName();
+function Pagination() {
+   const router = useRouter();
+   const pathname = router.pathname;
+   const customPathname = Utils.customURL(pathname);
 
-   const goToPreviousPage = () => {
+   function goToPreviousPage() {
       const previous = links[links.indexOf(pathname) - 1];
       router.push(previous);
-   };
+   }
 
-   const goToNextPage = () => {
+   function goToNextPage() {
       const next = links[links.indexOf(pathname) + 1];
       router.push(next);
-   };
+   }
 
    const isPreviousVisible = setIsPreviousVisible(pathname);
    const isNextVisible = setIsNextVisible(pathname);
 
    return (
-      <SPagination.Navigation>
+      <nav className={nav}>
          {/* Previous Button */}
          {isPreviousVisible && (
-            <SPagination.Button
-               as={motion.button}
-               prev
+            <motion.button
+               className={button}
+               data-area="prev"
                onClick={goToPreviousPage}
                variants={chevronVariants}
                animate="animate"
@@ -90,13 +89,14 @@ function Pagination({ router, pathname }: TPagination) {
                   hover="black"
                   size={CHEVRON_SIZE}
                />
-            </SPagination.Button>
+            </motion.button>
          )}
 
          {/* Next Button */}
          {isNextVisible && (
-            <SPagination.Button
-               as={motion.button}
+            <motion.button
+               className={button}
+               data-area="next"
                onClick={goToNextPage}
                variants={chevronVariants}
                animate="animate"
@@ -110,21 +110,68 @@ function Pagination({ router, pathname }: TPagination) {
                   size={CHEVRON_SIZE}
                   rotation={'180deg'}
                />
-            </SPagination.Button>
+            </motion.button>
          )}
 
-         <SPagination.Title>
+         <span className={span}>
             <motion.h2
                variants={titleVariants}
                animate="animate"
                initial="initial"
                exit="exit"
             >
-               {pathToTitle(pathname)}
+               {customPathname}
             </motion.h2>
-         </SPagination.Title>
-      </SPagination.Navigation>
+         </span>
+      </nav>
    );
 }
 
 export default Pagination;
+
+const nav = css`
+   position: fixed;
+   z-index: 4;
+   right: 3%;
+   top: 50%;
+   transform: translateY(-50%);
+
+   height: 20%;
+   width: 8%;
+
+   display: grid;
+   grid-template-areas:
+      'prev'
+      'title'
+      'next';
+   grid-template-rows: repeat(3, 1fr);
+`;
+
+const button = css`
+   &[data-area='prev'] {
+      grid-area: prev;
+   }
+
+   &[data-area='next'] {
+      grid-area: next;
+   }
+`;
+
+const span = css`
+   grid-area: title;
+   place-self: center;
+   overflow: hidden;
+   padding: 0.5rem;
+   width: 100%;
+   text-align: center;
+   border-top: 1px solid ${Theme.COLORS['home-primary-200']};
+   border-bottom: 1px solid ${Theme.COLORS['home-primary-200']};
+
+   > h2 {
+      color: ${Theme.COLORS['home-primary-200']};
+      text-transform: uppercase;
+      font-family: 'Amstelvar';
+      font-size: 1.3rem;
+      transform-origin: 200%;
+   }
+`;

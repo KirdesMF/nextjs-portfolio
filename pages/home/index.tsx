@@ -7,7 +7,7 @@ const title = 'Ced | Home';
  */
 function Home() {
    return (
-      <Layout name="Home" title={title}>
+      <Layout name="home" title={title}>
          <h1>Home</h1>
       </Layout>
    );

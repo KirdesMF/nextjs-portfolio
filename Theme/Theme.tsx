@@ -1,13 +1,23 @@
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import { breakpoints } from './breakpoints';
-import { fonts } from './fonts';
-import { COLORS_VAR } from './colors';
+import { COLORS } from '@components/AdaptiveColorScheme/scheme';
 
-export const theme = { COLORS_VAR, fonts, breakpoints } as const;
-
-const Theme = ({ children }: { children: React.ReactNode }) => {
-   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+const BREAKPOINTS = {
+   medium: `screen and (min-width: 70em)`,
+   large: `screen and (min-width: 90em)`,
 };
 
-export default Theme;
+const FONTS = {
+   amstelvar: 'Amstelvar',
+   decovar: 'Decovar',
+};
+
+const SHADOWS = {};
+
+const TRANSITION = {};
+
+const Theme = {
+   BREAKPOINTS,
+   FONTS,
+   COLORS,
+};
+
+export { Theme };

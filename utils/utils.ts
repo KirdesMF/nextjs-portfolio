@@ -68,10 +68,10 @@ const hexToHSL = (hex: string) => {
    g /= 255;
    b /= 255;
 
-   let cmin = Math.min(r, g, b),
-      cmax = Math.max(r, g, b),
-      delta = cmax - cmin,
-      h = 0,
+   const cmin = Math.min(r, g, b);
+   const cmax = Math.max(r, g, b);
+   const delta = cmax - cmin;
+   let h = 0,
       s = 0,
       l = 0;
 
@@ -97,6 +97,17 @@ const customURL = (pathname: string) => {
    else return pathname.substr(1);
 };
 
+type Debounce = {
+   func: () => void;
+   delay: number;
+};
+const debounce = ({ func, delay }: Debounce) => {
+   let timer = 0;
+
+   clearTimeout(timer);
+   timer = setTimeout(func, delay);
+};
+
 export const Utils = {
    degreeToRadian,
    secondsToFrame,
@@ -106,6 +117,7 @@ export const Utils = {
    randomHSL,
    hexToHSL,
    customURL,
+   debounce,
    ease: {
       easeLinear,
       easeInQuad,

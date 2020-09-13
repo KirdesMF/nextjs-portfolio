@@ -5,7 +5,7 @@ const title = 'Ced | Works';
 
 function Works() {
    return (
-      <Layout name="Works" title={title}>
+      <Layout name="works" title={title}>
          <h1>Works</h1>
       </Layout>
    );

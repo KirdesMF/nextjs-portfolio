@@ -5,7 +5,7 @@ import Head from 'next/head';
 const title = 'Ced | About';
 function About() {
    return (
-      <Layout name="About" title={title}>
+      <Layout name="about" title={title}>
          <h1>ABout</h1>
       </Layout>
    );

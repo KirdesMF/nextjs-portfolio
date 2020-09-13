@@ -1,39 +1,23 @@
 import React from 'react';
-import { SLayout } from './Layout.styled';
-import MaintTitle from '@components/MainTitle/MainTitle';
-import { GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
-import Menu from '@components/Menu/Menu';
+import { CSSLayout } from './Layout.styled';
 import Head from 'next/head';
-import ColorMode from '@components/ColorMode/ColorMode';
-import { AnimatePresence } from 'framer-motion';
 
 type LayoutProps = {
    children: React.ReactNode;
-   /**
-    * name of layout [Resticted to SLayout name]
-    */
-   name: keyof typeof SLayout;
+   name: keyof typeof CSSLayout;
    title: string;
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-   return {
-      props: {},
-   };
-};
-
 function Layout({ name, title, children }: LayoutProps) {
-   const router = useRouter();
-   const Layout = SLayout[name];
+   const classname = CSSLayout[name];
    return (
-      <Layout>
+      <section className={classname}>
          <Head>
             <title>{title}</title>
             <link rel="icon" href="/favicon.ico" />
          </Head>
          {children}
-      </Layout>
+      </section>
    );
 }
 

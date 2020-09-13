@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import usePathName from 'hooks/usePathName';
-import { SMaintTitle } from './MainTitle.styled';
 import { Variants } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { Utils } from 'utils/utils';
+import { css } from 'linaria';
+import { Theme } from 'Theme/Theme';
 
 const variants: Variants = {
    initial: {
@@ -32,12 +32,14 @@ type TMaintTitle = {
    pathname: string;
 };
 
-function MaintTitle({ pathname }: TMaintTitle) {
+function MaintTitle() {
+   const { pathname } = useRouter();
    const title = Utils.customURL(pathname);
    return (
-      <SMaintTitle.Title>
+      <article className={article}>
          {title.split('').map((letter, i) => (
-            <SMaintTitle.Span
+            <motion.span
+               className={span}
                key={i}
                custom={i}
                variants={variants}
@@ -46,10 +48,29 @@ function MaintTitle({ pathname }: TMaintTitle) {
                exit="out"
             >
                {letter}
-            </SMaintTitle.Span>
+            </motion.span>
          ))}
-      </SMaintTitle.Title>
+      </article>
    );
 }
 
 export default MaintTitle;
+
+const article = css`
+   z-index: 3;
+   position: fixed;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+   overflow: hidden;
+
+   display: flex;
+`;
+
+const span = css`
+   font-family: Helvetica, sans-serif;
+   text-transform: uppercase;
+   font-size: 4em;
+   color: ${Theme.COLORS['home-primary-100']};
+   will-change: transform;
+`;

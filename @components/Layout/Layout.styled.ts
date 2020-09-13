@@ -1,17 +1,18 @@
-import styled from 'styled-components';
+import { css } from 'linaria';
 
 /**
  * Home Layout
  */
-const Home = styled.div`
+const home = css`
    width: 100%;
    height: 100%;
+   display: grid;
 `;
 
 /**
  * About Layout
  */
-const About = styled.div`
+const about = css`
    width: 100%;
    height: 100%;
    display: grid;
@@ -21,7 +22,7 @@ const About = styled.div`
 /**
  * Works Layout
  */
-const Works = styled.div`
+const works = css`
    width: 100%;
    height: 100%;
    display: grid;
@@ -31,7 +32,7 @@ const Works = styled.div`
 /**
  * Contact Layout
  */
-const Contact = styled.div`
+const contact = css`
    width: 100%;
    height: 100%;
    display: grid;
@@ -42,9 +43,9 @@ const Contact = styled.div`
 /**
  * Object storing Layouts Pages
  */
-export const SLayout = {
-   Home,
-   About,
-   Works,
-   Contact,
+export const CSSLayout = {
+   home,
+   about,
+   works,
+   contact,
 };

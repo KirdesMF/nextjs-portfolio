@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useContext, useState } from 'react';
-import { SCanvasHexagons } from './CanvasTransition.styled';
+import React, { useEffect, useRef, useState } from 'react';
 import {
    setCanvasHexagons,
    renderCanvasHexagons,
@@ -8,13 +7,12 @@ import {
 } from '@components/CanvasTransition/hexagons-maker';
 
 import useWindowSize from 'hooks/useWindowSize';
-import { ThemeContext } from 'styled-components';
 import { Utils } from 'utils/utils';
-import { ColorName } from 'Theme/colors';
-import { CSSVAR } from '@components/ColorScheme/ColorScheme';
 import { useRouter } from 'next/router';
+import { css } from 'linaria';
+import { Theme } from 'Theme/Theme';
 
-let requestId = 0;
+const requestId = 0;
 const HEX_SIZE = 160;
 
 const CanvasHexagons = () => {
@@ -62,7 +60,7 @@ const CanvasHexagons = () => {
       }
 
       function animate(elapsedTime: number) {
-         let delta = elapsedTime - (requestId || 0);
+         const delta = elapsedTime - (requestId || 0);
          window.requestAnimationFrame(animate);
          if (requestId && delta < 33) return;
 
@@ -81,7 +79,21 @@ const CanvasHexagons = () => {
       return () => window.cancelAnimationFrame(requestId);
    }, [pathname]);
 
-   return <SCanvasHexagons.Canvas ref={canvasRef}></SCanvasHexagons.Canvas>;
+   return <canvas className={canvas} ref={canvasRef}></canvas>;
 };
 
 export default CanvasHexagons;
+
+const canvas = css`
+   width: 100%;
+   height: 100%;
+
+   position: fixed;
+   top: 0;
+   left: 0;
+
+   z-index: 2;
+
+   background: ${Theme.COLORS.background};
+   filter: brightness(var(--filter-canvas));
+`;
