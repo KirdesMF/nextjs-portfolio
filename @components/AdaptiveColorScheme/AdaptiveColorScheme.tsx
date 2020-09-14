@@ -36,7 +36,29 @@ function AdaptiveColorScheme() {
       setColor(background);
    }
 
-   function setMinMax(event: React.ChangeEvent<HTMLInputElement>) {
+   function setMinMaxLight() {
+      contrastRef.current.min = '0';
+      contrastRef.current.max = '3';
+
+      brightnessRef.current.min = '40';
+      brightnessRef.current.max = '90';
+
+      contrastRef.current.valueAsNumber = 1;
+      brightnessRef.current.valueAsNumber = 65;
+   }
+
+   function setMinMaxDark() {
+      contrastRef.current.min = '0';
+      contrastRef.current.max = '8';
+
+      brightnessRef.current.min = '0';
+      brightnessRef.current.max = '40';
+
+      contrastRef.current.valueAsNumber = 4;
+      brightnessRef.current.valueAsNumber = 17.5;
+   }
+
+   function handleOnChangeRadioBtn(event: React.ChangeEvent<HTMLInputElement>) {
       if (event.currentTarget.id === 'light') {
          contrastRef.current.min = '0';
          contrastRef.current.max = '3';
@@ -46,55 +68,61 @@ function AdaptiveColorScheme() {
 
          contrastRef.current.value = '1';
          brightnessRef.current.value = '65';
+
+         localStorage.setItem('theme', 'light');
       }
 
       if (event.currentTarget.id === 'dark') {
          contrastRef.current.min = '0';
-         contrastRef.current.max = '8';
+         contrastRef.current.max = '10';
 
          brightnessRef.current.min = '0';
          brightnessRef.current.max = '40';
 
          contrastRef.current.value = '4';
          brightnessRef.current.value = '17.5';
+
+         localStorage.setItem('theme', 'dark');
       }
 
       setAdaptiveColors();
+      console.log(localStorage.getItem('theme'));
    }
 
    const debounceInput = Utils.debounce(setAdaptiveColors, 200);
 
    useEffect(() => {
-      brightnessRef.current.valueAsNumber = 50;
-      contrastRef.current.valueAsNumber = 1;
+      setAdaptiveColors();
+   });
 
-      if (window.matchMedia(`(prefers-color-scheme: dark)`).matches) {
+   useEffect(() => {
+      const theme = localStorage.getItem('theme');
+
+      if (theme && theme === 'dark') {
          darkRef.current.checked = true;
-      }
-
-      if (window.matchMedia(`(prefers-color-scheme: light)`).matches) {
+         setMinMaxDark();
+      } else if (theme && theme === 'light') {
          lightRef.current.checked = true;
+         setMinMaxLight();
+      } else if (window.matchMedia(`(prefers-color-scheme: dark)`).matches) {
+         darkRef.current.checked = true;
+         setMinMaxDark();
+      } else if (window.matchMedia(`(prefers-color-scheme: light)`).matches) {
+         lightRef.current.checked = true;
+         setMinMaxLight();
       }
 
       setAdaptiveColors();
    }, []);
 
-   useEffect(() => {
-      setAdaptiveColors();
-   });
-
    return (
       <div className={wrapper}>
-         {/** Brightness slider */}
-         <input onChange={debounceInput} ref={brightnessRef} type="range" />
-
-         {/** Constrast slider */}
+         <input ref={brightnessRef} onChange={debounceInput} type="range" />
          <input ref={contrastRef} onChange={debounceInput} type="range" />
 
-         {/**Radio inputs */}
          <label htmlFor="light">Light</label>
          <input
-            onChange={setMinMax}
+            onChange={handleOnChangeRadioBtn}
             ref={lightRef}
             type="radio"
             name="mode"
@@ -103,7 +131,7 @@ function AdaptiveColorScheme() {
 
          <label htmlFor="dark">Dark</label>
          <input
-            onChange={setMinMax}
+            onChange={handleOnChangeRadioBtn}
             ref={darkRef}
             type="radio"
             name="mode"
