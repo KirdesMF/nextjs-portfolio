@@ -10,15 +10,16 @@ import AdaptiveColorScheme from '@components/AdaptiveColorScheme/AdaptiveColorSc
 import 'styles/reset.css';
 import 'styles/fonts.css';
 import { CanvasContextProvider } from 'context/CanvasContext';
+import Header from '@components/Header/Header';
 
 function App({ Component, pageProps }: AppProps) {
    return (
       <AppContextProvider>
          <CanvasContextProvider>
-            <AdaptiveColorScheme />
+            <Header />
             <CanvasHexagons />
          </CanvasContextProvider>
-         <Menu />
+
          <Pagination />
          <MainTitle />
 

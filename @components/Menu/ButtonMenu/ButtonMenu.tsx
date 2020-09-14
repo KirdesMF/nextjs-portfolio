@@ -9,9 +9,10 @@ import theme from 'Theme/theme';
 type TButtonMenu = {
    isOpen: boolean;
    setIsOpen: (value: React.SetStateAction<boolean>) => void;
+   area: string;
 };
 
-function ButtonMenu({ isOpen, setIsOpen }: TButtonMenu) {
+function ButtonMenu({ isOpen, setIsOpen, area }: TButtonMenu) {
    const { VIEWBOX, ORIGIN, burger, hexes } = menuSettings;
    const { HEXMAP, HEX_SIZE, hexesMenuVariants } = hexes;
    const { topPathVariants, midPathVariants, botPathVariants } = burger;
@@ -30,7 +31,11 @@ function ButtonMenu({ isOpen, setIsOpen }: TButtonMenu) {
    }, [router.pathname]);
 
    return (
-      <button className={button} onClick={() => setIsOpen((prev) => !prev)}>
+      <button
+         className={button}
+         data-area={area}
+         onClick={() => setIsOpen((prev) => !prev)}
+      >
          <motion.svg
             className={svg}
             viewBox={VIEWBOX}
@@ -83,12 +88,6 @@ function ButtonMenu({ isOpen, setIsOpen }: TButtonMenu) {
 export default ButtonMenu;
 
 const button = css`
-   position: fixed;
-   top: 0;
-   z-index: 5;
-   width: 8em;
-   height: 6em;
-
    display: grid;
    place-items: center;
 `;

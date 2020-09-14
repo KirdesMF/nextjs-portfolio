@@ -1,14 +1,17 @@
 import { ReturnedTheme } from '@adobe/leonardo-contrast-colors';
 import useCanvasContext from 'context/CanvasContext';
-import { css } from 'linaria';
 import { useRouter } from 'next/router';
 import React, { useEffect, useRef } from 'react';
 import theme from 'Theme/theme';
 import { Utils } from 'utils/utils';
+import { css } from 'linaria';
 import { setCSSCustomProperties, getBackground } from './helpers-scheme';
 import { Scheme } from './scheme';
 
-function AdaptiveColorScheme() {
+type AdaptiveProps = {
+   area: string;
+};
+function AdaptiveColorScheme({ area }: AdaptiveProps) {
    const { pathname } = useRouter();
    const { setColor } = useCanvasContext();
 
@@ -120,13 +123,14 @@ function AdaptiveColorScheme() {
    }, []);
 
    return (
-      <div className={wrapper}>
+      <div className={wrapper} data-area={area}>
          <label htmlFor="brightness">brightness</label>
          <input
             ref={brightnessRef}
             onChange={debounceInput}
             type="range"
             id="brightness"
+            step={1}
          />
 
          <label htmlFor="contrast">contrast</label>
@@ -135,6 +139,7 @@ function AdaptiveColorScheme() {
             onChange={debounceInput}
             type="range"
             id="contrast"
+            step={0.1}
          />
 
          <label htmlFor="light">Light</label>
@@ -161,18 +166,7 @@ export default AdaptiveColorScheme;
 
 // Style
 const wrapper = css`
-   position: fixed;
-   top: 0;
-   width: 20%;
-   height: 10%;
-   left: 20%;
-   z-index: 20;
-   background: ${theme.COLORS['primary-200']};
-   box-shadow: ${theme.SHADOWS['--box-big']} ${theme.COLORS['grey-200']};
-   border-radius: 5px;
-
-   transition: background 500ms ease;
-   & > button {
-      margin-right: 1em;
-   }
+   display: grid;
+   background: transparent;
+   /* box-shadow: ${theme.SHADOWS['--box-big']} ${theme.COLORS['grey-200']}; */
 `;

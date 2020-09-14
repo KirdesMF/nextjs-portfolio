@@ -64,6 +64,8 @@ const article = css`
    overflow: hidden;
 
    display: flex;
+
+   height: auto;
 `;
 
 const span = css`
