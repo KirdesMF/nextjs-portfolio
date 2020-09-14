@@ -70,6 +70,6 @@ const span = css`
    font-family: Helvetica, sans-serif;
    text-transform: uppercase;
    font-size: 4em;
-   color: ${theme.COLORS['home-primary-100']};
+   color: ${theme.COLORS['primary-100']};
    will-change: transform;
 `;

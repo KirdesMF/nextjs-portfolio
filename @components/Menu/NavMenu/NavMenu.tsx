@@ -75,6 +75,9 @@ function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
 
 export default NavMenu;
 
+const shadow = theme.SHADOWS['--box-big'];
+const black = theme.COLORS['grey-100'];
+
 const nav = css`
    position: fixed;
    z-index: 15;
@@ -93,13 +96,12 @@ const nav = css`
 
    background: ${theme.COLORS.background};
    border-radius: 2em;
-   box-shadow: var(--box-shadow-thin);
-
+   box-shadow: ${shadow} ${black};
    transition: background 100ms ease;
 `;
 
 const svg = css`
-   filter: drop-shadow(0 0 5px ${theme.COLORS['home-secondary-700']});
+   filter: drop-shadow(0 0 5px ${theme.COLORS['grey-200']});
    position: absolute;
    bottom: 0%;
    height: 30%;
@@ -114,21 +116,11 @@ const path = css`
    stroke-width: 2;
    stroke-linecap: round;
 
-   &[data-color='welcome'] {
-      fill: ${theme.COLORS['welcome-secondary-400']};
-   }
-
-   &[data-color='home'] {
-      fill: ${theme.COLORS['home-secondary-400']};
-   }
-
-   &[data-color='about'] {
-      fill: ${theme.COLORS['home-primary-100']};
-   }
+   fill: ${theme.COLORS['grey-200']};
 `;
 
 const anchor = css`
    font-family: 'Decovar';
    font-size: 1em;
-   color: ${theme.COLORS['home-secondary-700']};
+   color: ${theme.COLORS['grey-200']};
 `;

@@ -167,11 +167,11 @@ const span = css`
    padding: 0.5rem;
    width: 100%;
    text-align: center;
-   border-top: 1px solid ${theme.COLORS['home-primary-200']};
-   border-bottom: 1px solid ${theme.COLORS['home-primary-200']};
+   border-top: 1px solid ${theme.COLORS['primary-200']};
+   border-bottom: 1px solid ${theme.COLORS['primary-200']};
 
    > h2 {
-      color: ${theme.COLORS['home-primary-200']};
+      color: ${theme.COLORS['primary-200']};
       text-transform: uppercase;
       font-family: 'Amstelvar';
       font-size: 1.3rem;

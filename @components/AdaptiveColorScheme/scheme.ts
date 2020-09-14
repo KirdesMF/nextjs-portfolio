@@ -4,23 +4,36 @@ import {
 } from '@adobe/leonardo-contrast-colors';
 import { createCSSCustomProperties } from './helpers-scheme';
 
+const commonGrey = {
+   'grey-100': 1.1,
+   'grey-200': 1.5,
+};
+
+const commonGreyScale: NamedColorScale = {
+   name: 'grey',
+   colorKeys: ['hsl(0, 0%, 0%)', 'hsl(0, 5%, 5%)'],
+   colorspace: 'LCH',
+   ratios: commonGrey,
+};
+
 // WELCOME
 const WELCOME_RATIOS = {
    primary: {
-      'welcome-primary-100': 3,
-      'welcome-primary-200': 4.5,
+      'primary-100': 3,
+      'primary-200': 4.5,
    },
    secondary: {
-      'welcome-secondary-300': 1,
-      'welcome-secondary-400': 2,
-      'welcome-secondary-500': 3,
-      'welcome-secondary-600': 4.5,
-      'welcome-secondary-700': 5,
+      'secondary-300': 1,
+      'secondary-400': 2,
+      'secondary-500': 3,
+      'secondary-600': 4.5,
+      'secondary-700': 5,
    },
    tertiary: {
-      'welcome-tertiary-100': 3,
-      'welcome-tertiary-200': 4.5,
+      'tertiary-100': 3,
+      'tertiary-200': 4.5,
    },
+   grey: commonGrey,
 };
 
 const WELCOME_SCALE: NamedColorScale[] = [
@@ -42,25 +55,27 @@ const WELCOME_SCALE: NamedColorScale[] = [
       colorspace: 'LCH',
       ratios: WELCOME_RATIOS.tertiary,
    },
+   commonGreyScale,
 ];
 
 // HOME
 const HOME_RATIOS = {
    primary: {
-      'home-primary-100': 3,
-      'home-primary-200': 4.5,
+      'primary-100': 3,
+      'primary-200': 4.5,
    },
    secondary: {
-      'home-secondary-300': 1,
-      'home-secondary-400': 2,
-      'home-secondary-500': 3,
-      'home-secondary-600': 4.5,
-      'home-secondary-700': 5,
+      'secondary-300': 1,
+      'secondary-400': 2,
+      'secondary-500': 3,
+      'secondary-600': 4.5,
+      'secondary-700': 5,
    },
    tertiary: {
-      'home-tertiary-100': 3,
-      'home-tertiary-200': 4.5,
+      'tertiary-100': 3,
+      'tertiary-200': 4.5,
    },
+   grey: commonGrey,
 };
 
 const HOME_SCALE: NamedColorScale[] = [
@@ -82,28 +97,29 @@ const HOME_SCALE: NamedColorScale[] = [
       colorspace: 'LCH',
       ratios: HOME_RATIOS.tertiary,
    },
+   commonGreyScale,
 ];
 
 // ABOUT
 const ABOUT_RATIOS = {
    primary: {
-      'about-primary-100': 3,
-      'about-primary-200': 4.5,
+      'primary-100': 3,
+      'primary-200': 4.5,
    },
    secondary: {
-      'about-secondary-300': 1,
-      'about-secondary-400': 2,
-      'about-secondary-500': 3,
-      'about-secondary-600': 4.5,
-      'about-secondary-700': 5,
+      'secondary-300': 1,
+      'secondary-400': 2,
+      'secondary-500': 3,
+      'secondary-600': 4.5,
+      'secondary-700': 5,
    },
    tertiary: {
-      'about-tertiary-100': 3,
-      'about-tertiary-200': 4.5,
+      'tertiary-100': 3,
+      'tertiary-200': 4.5,
    },
-   black: {
-      'about-black-100': 3,
-      'about-black-200': 4.5,
+   grey: {
+      'grey-100': 3,
+      'grey-200': 4.5,
    },
 };
 
@@ -127,34 +143,31 @@ const ABOUT_SCALE: NamedColorScale[] = [
       ratios: ABOUT_RATIOS.tertiary,
    },
    {
-      name: 'black',
+      name: 'grey',
       colorKeys: ['hsl(0, 0%, 0%)'],
       colorspace: 'LCH',
-      ratios: ABOUT_RATIOS.black,
+      ratios: ABOUT_RATIOS.grey,
    },
 ];
 
 // WORKS
 const WORKS_RATIOS = {
    primary: {
-      'works-primary-100': 3,
-      'works-primary-200': 4.5,
+      'primary-100': 3,
+      'primary-200': 4.5,
    },
    secondary: {
-      'works-secondary-300': 1,
-      'works-secondary-400': 2,
-      'works-secondary-500': 3,
-      'works-secondary-600': 4.5,
-      'about-secondary-700': 5,
+      'secondary-300': 1,
+      'secondary-400': 2,
+      'secondary-500': 3,
+      'secondary-600': 4.5,
+      'secondary-700': 5,
    },
    tertiary: {
-      'works-tertiary-100': 3,
-      'works-tertiary-200': 4.5,
+      'tertiary-100': 3,
+      'tertiary-200': 4.5,
    },
-   black: {
-      'works-black-100': 3,
-      'works-black-200': 4.5,
-   },
+   grey: commonGrey,
 };
 
 const WORKS_SCALE: NamedColorScale[] = [
@@ -176,35 +189,27 @@ const WORKS_SCALE: NamedColorScale[] = [
       colorspace: 'LCH',
       ratios: WORKS_RATIOS.tertiary,
    },
-   {
-      name: 'black',
-      colorKeys: ['hsl(0, 0%, 0%)'],
-      colorspace: 'LCH',
-      ratios: WORKS_RATIOS.black,
-   },
+   commonGreyScale,
 ];
 
 // CONTACT
 const CONTACT_RATIOS = {
    primary: {
-      'contact-primary-100': 3,
-      'contact-primary-200': 4.5,
+      'primary-100': 3,
+      'primary-200': 4.5,
    },
    secondary: {
-      'contact-secondary-300': 1,
-      'contact-secondary-400': 2,
-      'contact-secondary-500': 3,
-      'contact-secondary-600': 4.5,
-      'contact-secondary-700': 5,
+      'secondary-300': 1,
+      'secondary-400': 2,
+      'secondary-500': 3,
+      'secondary-600': 4.5,
+      'secondary-700': 5,
    },
    tertiary: {
-      'contact-tertiary-100': 3,
-      'contact-tertiary-200': 4.5,
+      'tertiary-100': 3,
+      'tertiary-200': 4.5,
    },
-   black: {
-      'contact-black-100': 3,
-      'contact-black-200': 4.5,
-   },
+   grey: commonGrey,
 };
 
 const CONTACT_SCALE: NamedColorScale[] = [
@@ -226,12 +231,7 @@ const CONTACT_SCALE: NamedColorScale[] = [
       colorspace: 'LCH',
       ratios: CONTACT_RATIOS.tertiary,
    },
-   {
-      name: 'black',
-      colorKeys: ['hsl(0, 0%, 0%)'],
-      colorspace: 'LCH',
-      ratios: CONTACT_RATIOS.black,
-   },
+   commonGreyScale,
 ];
 // THEME
 const welcomeColorScheme = generateAdaptiveTheme({

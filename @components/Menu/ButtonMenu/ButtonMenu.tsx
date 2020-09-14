@@ -96,11 +96,11 @@ const button = css`
 const path = css`
    fill: transparent;
    stroke-width: 5;
-   stroke: ${theme.COLORS['home-primary-200']};
+   stroke: ${theme.COLORS['grey-200']};
    stroke-linecap: round;
    transform-box: fill-box;
 `;
 
 const svg = css`
-   filter: drop-shadow(0 0 5px ${theme.COLORS['home-secondary-500']});
+   filter: drop-shadow(0 0 5px ${theme.COLORS['grey-200']});
 `;

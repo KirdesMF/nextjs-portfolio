@@ -32,4 +32,16 @@ function setCSSCustomProperties(theme: ReturnedTheme) {
    }
 }
 
-export { createCSSCustomProperties, setCSSCustomProperties };
+function getBackground(theme: ReturnedTheme) {
+   let color = '';
+
+   for (const obj of Object.values(theme)) {
+      if ('background' in obj) {
+         color += obj.background;
+      }
+   }
+
+   return color;
+}
+
+export { createCSSCustomProperties, setCSSCustomProperties, getBackground };

@@ -8,8 +8,9 @@ import {
 
 import useWindowSize from 'hooks/useWindowSize';
 import { Utils } from 'utils/utils';
-import { useRouter } from 'next/router';
 import { css } from 'linaria';
+import useCanvasContext from 'context/CanvasContext';
+import { useRouter } from 'next/router';
 
 const HEX_SIZE = 160;
 let requestId: number;
@@ -18,15 +19,18 @@ const CanvasHexagons = () => {
    const { pathname } = useRouter();
    const canvasRef = useRef<HTMLCanvasElement>(null!);
    const windowSize = useWindowSize();
-   const [currentColor, setCurrentColor] = useState({ h: 10, s: 30, l: 50 });
+   const { color } = useCanvasContext();
+
+   const [currentColor, setCurrentColor] = useState<{
+      h: number;
+      s: number;
+      l: number;
+   }>({ h: 15, s: 50, l: 50 });
+
+   const nextColor = Utils.hexToHSL(color);
 
    useEffect(() => {
-      const COLOR = getComputedStyle(document.documentElement).getPropertyValue(
-         '--background'
-      );
-
-      const colorToHsl = Utils.hexToHSL(COLOR);
-      setCurrentColor(colorToHsl);
+      setCurrentColor(nextColor);
 
       const canvas = canvasRef.current;
       const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
@@ -43,7 +47,7 @@ const CanvasHexagons = () => {
       const hexmap = setCanvasHexagons({
          radius,
          color: currentColor,
-         nextColor: colorToHsl,
+         nextColor: nextColor,
       }).filter((hex) =>
          isHexOnScreen({
             hex: hex.cube,
@@ -74,7 +78,7 @@ const CanvasHexagons = () => {
       requestId = requestAnimationFrame(animate);
 
       return () => cancelAnimationFrame(requestId);
-   }, [pathname]);
+   }, [color, pathname]);
 
    return <canvas className={canvas} ref={canvasRef}></canvas>;
 };

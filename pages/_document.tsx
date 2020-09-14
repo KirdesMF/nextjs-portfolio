@@ -1,0 +1,30 @@
+import Document, {
+   Html,
+   Head,
+   Main,
+   NextScript,
+   DocumentContext,
+} from 'next/document';
+import React from 'react';
+import { html } from 'Theme/theme';
+
+class MyDocument extends Document {
+   static async getInitialProps(ctx: DocumentContext) {
+      const initialProps = await Document.getInitialProps(ctx);
+      return { ...initialProps };
+   }
+
+   render() {
+      return (
+         <Html className={html}>
+            <Head />
+            <body>
+               <Main />
+               <NextScript />
+            </body>
+         </Html>
+      );
+   }
+}
+
+export default MyDocument;
