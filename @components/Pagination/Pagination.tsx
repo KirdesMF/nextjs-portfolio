@@ -4,7 +4,7 @@ import { Icon } from '@components/Icon/Icon';
 import { Variants, motion, AnimatePresence } from 'framer-motion';
 import { Utils } from 'utils/utils';
 import { css } from 'linaria';
-import { Theme } from 'Theme/Theme';
+import theme from 'Theme/theme';
 
 const links = ['/', '/home', '/about', '/works', '/contact'];
 const CHEVRON_SIZE = '1.5vw';
@@ -167,11 +167,11 @@ const span = css`
    padding: 0.5rem;
    width: 100%;
    text-align: center;
-   border-top: 1px solid ${Theme.COLORS['home-primary-200']};
-   border-bottom: 1px solid ${Theme.COLORS['home-primary-200']};
+   border-top: 1px solid ${theme.COLORS['home-primary-200']};
+   border-bottom: 1px solid ${theme.COLORS['home-primary-200']};
 
    > h2 {
-      color: ${Theme.COLORS['home-primary-200']};
+      color: ${theme.COLORS['home-primary-200']};
       text-transform: uppercase;
       font-family: 'Amstelvar';
       font-size: 1.3rem;

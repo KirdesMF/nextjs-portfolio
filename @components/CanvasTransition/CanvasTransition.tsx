@@ -11,8 +11,8 @@ import { Utils } from 'utils/utils';
 import { useRouter } from 'next/router';
 import { css } from 'linaria';
 
-const requestId = 0;
 const HEX_SIZE = 160;
+let requestId: number;
 
 const CanvasHexagons = () => {
    const { pathname } = useRouter();
@@ -58,10 +58,8 @@ const CanvasHexagons = () => {
          ctx.clearRect(0, 0, width, height);
       }
 
-      function animate(elapsedTime: number) {
-         const delta = elapsedTime - (requestId || 0);
-         window.requestAnimationFrame(animate);
-         if (requestId && delta < 33) return;
+      function animate() {
+         requestId = requestAnimationFrame(animate);
 
          clear();
          updateCanvasHexagons(hexmap);
@@ -73,9 +71,9 @@ const CanvasHexagons = () => {
             size: HEX_SIZE,
          });
       }
-      window.requestAnimationFrame(animate);
+      requestId = requestAnimationFrame(animate);
 
-      return () => window.cancelAnimationFrame(requestId);
+      return () => cancelAnimationFrame(requestId);
    }, [pathname]);
 
    return <canvas className={canvas} ref={canvasRef}></canvas>;

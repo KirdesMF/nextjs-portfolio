@@ -4,7 +4,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { menuSettings } from './ButtonMenu.variants';
 import { useRouter } from 'next/router';
 import { css } from 'linaria';
-import { Theme } from 'Theme/Theme';
+import theme from 'Theme/theme';
 
 type TButtonMenu = {
    isOpen: boolean;
@@ -49,7 +49,7 @@ function ButtonMenu({ isOpen, setIsOpen }: TButtonMenu) {
                      variants={hexesMenuVariants({
                         delay: i,
                         isOpen: isOpen,
-                        color: Theme.COLORS.background,
+                        color: theme.COLORS.background,
                      })}
                      originHex={ORIGIN}
                      sizeHex={HEX_SIZE}
@@ -96,11 +96,11 @@ const button = css`
 const path = css`
    fill: transparent;
    stroke-width: 5;
-   stroke: ${Theme.COLORS['home-primary-200']};
+   stroke: ${theme.COLORS['home-primary-200']};
    stroke-linecap: round;
    transform-box: fill-box;
 `;
 
 const svg = css`
-   filter: drop-shadow(0 0 5px ${Theme.COLORS['home-secondary-500']});
+   filter: drop-shadow(0 0 5px ${theme.COLORS['home-secondary-500']});
 `;

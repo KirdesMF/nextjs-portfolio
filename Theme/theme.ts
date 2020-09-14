@@ -14,10 +14,10 @@ const SHADOWS = {};
 
 const TRANSITION = {};
 
-const Theme = {
+const theme = {
    BREAKPOINTS,
    FONTS,
    COLORS,
 };
 
-export { Theme };
+export default theme;

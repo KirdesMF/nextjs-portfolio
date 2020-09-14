@@ -2,7 +2,7 @@ import React from 'react';
 import { Variants, AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { css } from 'linaria';
-import { Theme } from 'Theme/Theme';
+import theme from 'Theme/theme';
 import { useRouter } from 'next/router';
 import { Utils } from 'utils/utils';
 
@@ -91,7 +91,7 @@ const nav = css`
    place-items: center;
    padding: 3em;
 
-   background: ${Theme.COLORS.background};
+   background: ${theme.COLORS.background};
    border-radius: 2em;
    box-shadow: var(--box-shadow-thin);
 
@@ -99,7 +99,7 @@ const nav = css`
 `;
 
 const svg = css`
-   filter: drop-shadow(0 0 5px ${Theme.COLORS['home-secondary-700']});
+   filter: drop-shadow(0 0 5px ${theme.COLORS['home-secondary-700']});
    position: absolute;
    bottom: 0%;
    height: 30%;
@@ -115,20 +115,20 @@ const path = css`
    stroke-linecap: round;
 
    &[data-color='welcome'] {
-      fill: ${Theme.COLORS['welcome-secondary-400']};
+      fill: ${theme.COLORS['welcome-secondary-400']};
    }
 
    &[data-color='home'] {
-      fill: ${Theme.COLORS['home-secondary-400']};
+      fill: ${theme.COLORS['home-secondary-400']};
    }
 
    &[data-color='about'] {
-      fill: ${Theme.COLORS['home-primary-100']};
+      fill: ${theme.COLORS['home-primary-100']};
    }
 `;
 
 const anchor = css`
    font-family: 'Decovar';
    font-size: 1em;
-   color: ${Theme.COLORS['home-secondary-700']};
+   color: ${theme.COLORS['home-secondary-700']};
 `;

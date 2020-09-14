@@ -4,7 +4,7 @@ import { Variants } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { Utils } from 'utils/utils';
 import { css } from 'linaria';
-import { Theme } from 'Theme/Theme';
+import theme from 'Theme/theme';
 
 const variants: Variants = {
    initial: {
@@ -28,13 +28,10 @@ const variants: Variants = {
    }),
 };
 
-type TMaintTitle = {
-   pathname: string;
-};
-
 function MaintTitle() {
    const router = useRouter();
    const title = Utils.customURL(router.pathname);
+
    return (
       <AnimatePresence exitBeforeEnter>
          <article className={article} key={router.route}>
@@ -73,6 +70,6 @@ const span = css`
    font-family: Helvetica, sans-serif;
    text-transform: uppercase;
    font-size: 4em;
-   color: ${Theme.COLORS['home-primary-100']};
+   color: ${theme.COLORS['home-primary-100']};
    will-change: transform;
 `;
