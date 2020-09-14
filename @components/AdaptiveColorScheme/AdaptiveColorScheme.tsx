@@ -3,6 +3,7 @@ import useCanvasContext from 'context/CanvasContext';
 import { css } from 'linaria';
 import { useRouter } from 'next/router';
 import React, { useEffect, useRef } from 'react';
+import theme from 'Theme/theme';
 import { Utils } from 'utils/utils';
 import { setCSSCustomProperties, getBackground } from './helpers-scheme';
 import { Scheme } from './scheme';
@@ -89,13 +90,7 @@ function AdaptiveColorScheme() {
       console.log(localStorage.getItem('theme'));
    }
 
-   const debounceInput = Utils.debounce(setAdaptiveColors, 200);
-
-   useEffect(() => {
-      setAdaptiveColors();
-   });
-
-   useEffect(() => {
+   function checkThemeAndMode() {
       const theme = localStorage.getItem('theme');
 
       if (theme && theme === 'dark') {
@@ -111,14 +106,36 @@ function AdaptiveColorScheme() {
          lightRef.current.checked = true;
          setMinMaxLight();
       }
+   }
 
+   const debounceInput = Utils.debounce(setAdaptiveColors, 200);
+
+   useEffect(() => {
+      setAdaptiveColors();
+   });
+
+   useEffect(() => {
+      checkThemeAndMode();
       setAdaptiveColors();
    }, []);
 
    return (
       <div className={wrapper}>
-         <input ref={brightnessRef} onChange={debounceInput} type="range" />
-         <input ref={contrastRef} onChange={debounceInput} type="range" />
+         <label htmlFor="brightness">brightness</label>
+         <input
+            ref={brightnessRef}
+            onChange={debounceInput}
+            type="range"
+            id="brightness"
+         />
+
+         <label htmlFor="contrast">contrast</label>
+         <input
+            ref={contrastRef}
+            onChange={debounceInput}
+            type="range"
+            id="contrast"
+         />
 
          <label htmlFor="light">Light</label>
          <input
@@ -146,11 +163,15 @@ export default AdaptiveColorScheme;
 const wrapper = css`
    position: fixed;
    top: 0;
-   width: 30%;
+   width: 20%;
+   height: 10%;
    left: 20%;
    z-index: 20;
-   background: red;
+   background: ${theme.COLORS['primary-200']};
+   box-shadow: ${theme.SHADOWS['--box-big']} ${theme.COLORS['grey-200']};
+   border-radius: 5px;
 
+   transition: background 500ms ease;
    & > button {
       margin-right: 1em;
    }
