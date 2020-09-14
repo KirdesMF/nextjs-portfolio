@@ -49,7 +49,7 @@ function ButtonMenu({ isOpen, setIsOpen }: TButtonMenu) {
                      variants={hexesMenuVariants({
                         delay: i,
                         isOpen: isOpen,
-                        color: theme.COLORS.background,
+                        color: theme.COLORS['primary-200'],
                      })}
                      originHex={ORIGIN}
                      sizeHex={HEX_SIZE}
@@ -96,7 +96,7 @@ const button = css`
 const path = css`
    fill: transparent;
    stroke-width: 5;
-   stroke: ${theme.COLORS['grey-200']};
+   stroke: ${theme.COLORS['primary-200']};
    stroke-linecap: round;
    transform-box: fill-box;
 `;

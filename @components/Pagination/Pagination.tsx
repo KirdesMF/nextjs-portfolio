@@ -85,8 +85,8 @@ function Pagination() {
             >
                <Icon
                   name="chevron"
-                  iconColor="white"
-                  hover="black"
+                  iconColor={`${theme.COLORS['grey-200']}`}
+                  hover={`${theme.COLORS['grey-100']}`}
                   size={CHEVRON_SIZE}
                />
             </motion.button>
@@ -105,8 +105,8 @@ function Pagination() {
             >
                <Icon
                   name="chevron"
-                  iconColor="white"
-                  hover="black"
+                  iconColor={`${theme.COLORS['grey-200']}`}
+                  hover={`${theme.COLORS['grey-100']}`}
                   size={CHEVRON_SIZE}
                   rotation={'180deg'}
                />

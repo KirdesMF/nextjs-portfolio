@@ -14,13 +14,13 @@ type SIconType = {
 const SIcon = styled.svg<SIconType>`
    transition: color 0.5s ease-in-out;
    width: ${(props) => props.size};
-   color: red;
+   color: ${(props) => props.iconColor};
    transform-origin: center;
    transform: ${(props) => `rotate(${props.rotation})`};
 
    @media (hover: hover) and (pointer: fine) {
       &:hover {
-         color: blue;
+         color: ${(props) => props.hover!};
       }
    }
 `;
@@ -52,16 +52,3 @@ const Icon = ({ size, iconColor, hover, name, rotation }: IconProps) => {
 /**=================== Export ============================== */
 
 export { Icon };
-
-const svg = css`
-   transition: color 0.5s ease-in-out;
-   transform-origin: center;
-
-   &[data-size='size'] {
-   }
-
-   @media (hover: hover) and (pointer: fine) {
-      &:hover {
-      }
-   }
-`;

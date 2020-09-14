@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import useMatchMedia from 'hooks/useMatchMedia';
 import { breakpoints } from 'Theme/breakpoints';
 
@@ -30,4 +30,7 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
    return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
-export { AppContextProvider, AppContext };
+const useAppContext = () => useContext(AppContext);
+
+export { AppContextProvider };
+export default useAppContext;
