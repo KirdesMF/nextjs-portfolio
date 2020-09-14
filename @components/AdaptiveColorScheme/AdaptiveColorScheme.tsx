@@ -42,12 +42,12 @@ function AdaptiveColorScheme({ area }: AdaptiveProps) {
 
    function setMinMaxLight() {
       contrastRef.current.min = '0';
-      contrastRef.current.max = '3';
+      contrastRef.current.max = '4';
 
       brightnessRef.current.min = '40';
       brightnessRef.current.max = '90';
 
-      contrastRef.current.valueAsNumber = 1;
+      contrastRef.current.valueAsNumber = 2;
       brightnessRef.current.valueAsNumber = 65;
    }
 
@@ -60,6 +60,24 @@ function AdaptiveColorScheme({ area }: AdaptiveProps) {
 
       contrastRef.current.valueAsNumber = 4;
       brightnessRef.current.valueAsNumber = 17.5;
+   }
+
+   function checkThemeAndMode() {
+      const theme = localStorage.getItem('theme');
+
+      if (theme && theme === 'dark') {
+         darkRef.current.checked = true;
+         setMinMaxDark();
+      } else if (theme && theme === 'light') {
+         lightRef.current.checked = true;
+         setMinMaxLight();
+      } else if (window.matchMedia(`(prefers-color-scheme: dark)`).matches) {
+         darkRef.current.checked = true;
+         setMinMaxDark();
+      } else if (window.matchMedia(`(prefers-color-scheme: light)`).matches) {
+         lightRef.current.checked = true;
+         setMinMaxLight();
+      }
    }
 
    function handleOnChangeRadioBtn(event: React.ChangeEvent<HTMLInputElement>) {
@@ -90,25 +108,6 @@ function AdaptiveColorScheme({ area }: AdaptiveProps) {
       }
 
       setAdaptiveColors();
-      console.log(localStorage.getItem('theme'));
-   }
-
-   function checkThemeAndMode() {
-      const theme = localStorage.getItem('theme');
-
-      if (theme && theme === 'dark') {
-         darkRef.current.checked = true;
-         setMinMaxDark();
-      } else if (theme && theme === 'light') {
-         lightRef.current.checked = true;
-         setMinMaxLight();
-      } else if (window.matchMedia(`(prefers-color-scheme: dark)`).matches) {
-         darkRef.current.checked = true;
-         setMinMaxDark();
-      } else if (window.matchMedia(`(prefers-color-scheme: light)`).matches) {
-         lightRef.current.checked = true;
-         setMinMaxLight();
-      }
    }
 
    const debounceInput = Utils.debounce(setAdaptiveColors, 200);
@@ -124,41 +123,50 @@ function AdaptiveColorScheme({ area }: AdaptiveProps) {
 
    return (
       <div className={wrapper} data-area={area}>
-         <label htmlFor="brightness">brightness</label>
-         <input
-            ref={brightnessRef}
-            onChange={debounceInput}
-            type="range"
-            id="brightness"
-            step={1}
-         />
+         <svg className={svg}></svg>
+         <label className={label} htmlFor="brightness">
+            <p>B</p>
+            <input
+               ref={brightnessRef}
+               onChange={debounceInput}
+               type="range"
+               id="brightness"
+               step={1}
+            />
+         </label>
 
-         <label htmlFor="contrast">contrast</label>
-         <input
-            ref={contrastRef}
-            onChange={debounceInput}
-            type="range"
-            id="contrast"
-            step={0.1}
-         />
+         <label className={label} htmlFor="contrast">
+            <p>C</p>
+            <input
+               ref={contrastRef}
+               onChange={debounceInput}
+               type="range"
+               id="contrast"
+               step={0.1}
+            />
+         </label>
 
-         <label htmlFor="light">Light</label>
-         <input
-            onChange={handleOnChangeRadioBtn}
-            ref={lightRef}
-            type="radio"
-            name="mode"
-            id="light"
-         />
+         <label className={label} htmlFor="light">
+            <p>Light</p>
+            <input
+               onChange={handleOnChangeRadioBtn}
+               ref={lightRef}
+               type="radio"
+               name="mode"
+               id="light"
+            />
+         </label>
 
-         <label htmlFor="dark">Dark</label>
-         <input
-            onChange={handleOnChangeRadioBtn}
-            ref={darkRef}
-            type="radio"
-            name="mode"
-            id="dark"
-         />
+         <label className={label} htmlFor="dark">
+            <p>Dark</p>
+            <input
+               onChange={handleOnChangeRadioBtn}
+               ref={darkRef}
+               type="radio"
+               name="mode"
+               id="dark"
+            />
+         </label>
       </div>
    );
 }
@@ -167,6 +175,55 @@ export default AdaptiveColorScheme;
 // Style
 const wrapper = css`
    display: grid;
+
+   width: 100%;
+   height: 100%;
+
+   padding: 1em 0.5em;
+
+   grid-template-columns: 1.2fr 1fr 1fr;
+   grid-template-rows: repeat(2, 1fr);
+
+   grid-gap: 0.5em;
+
    background: transparent;
    /* box-shadow: ${theme.SHADOWS['--box-big']} ${theme.COLORS['grey-200']}; */
+`;
+
+const label = css`
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+
+   & > p {
+      font-size: 0.5em;
+      font-family: 'Decovar';
+   }
+
+   &[for='brightness'] {
+      grid-column: 2/3;
+      grid-row: 1/2;
+   }
+
+   &[for='contrast'] {
+      grid-column: 2/3;
+      grid-row: 2/3;
+   }
+
+   &[for='dark'] {
+      grid-column: 3/4;
+      grid-row: 1/2;
+   }
+
+   &[for='light'] {
+      grid-column: 3/4;
+      grid-row: 2/3;
+   }
+`;
+
+const svg = css`
+   width: 100%;
+   height: 100%;
+   grid-column: 1/2;
+   grid-row: 1/3;
 `;

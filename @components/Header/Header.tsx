@@ -27,7 +27,7 @@ const header = css`
       display: grid;
       grid-template:
          'menu scheme .' 1fr
-         /10% 30% 1fr;
+         /10% 25% 1fr;
 
       & [data-area='menu'] {
          grid-area: menu;
