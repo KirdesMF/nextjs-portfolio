@@ -390,6 +390,7 @@ const label = css`
    & > p {
       font-size: 0.5em;
       font-family: 'Decovar';
+      color: ${theme.COLORS['grey-200']};
    }
 
    &[for='brightness'] {
