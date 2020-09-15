@@ -29,7 +29,7 @@ const iconVariants: Variants = {
       },
    },
    initial: {
-      rotate: 0,
+      rotate: -135,
    },
 };
 
@@ -84,7 +84,7 @@ function AdaptiveColorScheme({ area }: AdaptiveProps) {
    const darkRef = useRef<HTMLInputElement>(null!);
    const lightRef = useRef<HTMLInputElement>(null!);
 
-   const [theme, setTheme] = useState<string>(null!);
+   const [theme, setTheme] = useState<string>('light');
 
    function startAnimation() {
       if (theme === 'light') return 'light';
@@ -188,6 +188,7 @@ function AdaptiveColorScheme({ area }: AdaptiveProps) {
    });
 
    useEffect(() => {
+      setTheme(localStorage.getItem('theme')!);
       checkThemeAndMode();
       setAdaptiveColors();
    }, []);
