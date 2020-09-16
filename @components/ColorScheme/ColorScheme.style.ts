@@ -20,6 +20,7 @@ export const theme = css`
       display: grid;
       grid-template: 1fr / 0.5fr 1fr;
       column-gap: 1em;
+      place-items: center;
    }
 `;
 

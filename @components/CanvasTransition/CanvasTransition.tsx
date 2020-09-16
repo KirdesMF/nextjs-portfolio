@@ -25,7 +25,7 @@ const CanvasHexagons = () => {
       h: number;
       s: number;
       l: number;
-   }>({ h: 15, s: 50, l: 50 });
+   }>({ h: 0, s: 0, l: 0 });
 
    const nextColor = Utils.hexToHSL(color);
 
@@ -95,6 +95,5 @@ const canvas = css`
 
    z-index: 2;
 
-   background: black;
-   filter: brightness(var(--filter-canvas));
+   background: transparent;
 `;

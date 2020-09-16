@@ -22,14 +22,16 @@ type THex = {
    sizeHex: number;
    custom?: number;
    variants?: Variants;
+   filter?: string;
 };
 
-function Hexagon({ originHex, sizeHex, cube, custom, variants }: THex) {
+function Hexagon({ originHex, sizeHex, cube, custom, variants, filter }: THex) {
    const points = createAttribPoints({ originHex, sizeHex, cube });
    const centers = cubeToPoint({ origin: originHex, size: sizeHex, cube });
 
    return (
       <motion.polygon
+         filter={filter}
          className={hex}
          points={points}
          custom={custom}

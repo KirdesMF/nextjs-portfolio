@@ -9,14 +9,18 @@ import 'styles/reset.css';
 import 'styles/fonts.css';
 import { CanvasContextProvider } from 'context/CanvasContext';
 import Header from '@components/Header/Header';
+import BigHexagon from '@components/BigHexagon/BigHexagon';
 
 function App({ Component, pageProps }: AppProps) {
    return (
       <AppContextProvider>
          <CanvasContextProvider>
-            <Header />
             <CanvasHexagons />
+            <Header />
          </CanvasContextProvider>
+
+         <BigHexagon top />
+         <BigHexagon />
 
          <Pagination />
          <MainTitle />
