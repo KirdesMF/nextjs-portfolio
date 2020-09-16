@@ -22,12 +22,27 @@ const LINKS = [
 const variants: Variants = {
    initial: {
       opacity: 0,
+      transition: {
+         ease: 'easeInOut',
+         delay: 1,
+         duration: 1,
+      },
    },
    in: {
       opacity: 1,
+      transition: {
+         ease: 'easeInOut',
+         delay: 1,
+         duration: 1,
+      },
    },
    out: {
       opacity: 0,
+      transition: {
+         ease: 'easeInOut',
+         delay: 1,
+         duration: 1,
+      },
    },
 };
 
@@ -97,7 +112,6 @@ const nav = css`
    background: ${theme.COLORS.background};
    border-radius: 2em;
    box-shadow: ${shadow} ${black};
-   transition: background 100ms ease;
 `;
 
 const svg = css`
@@ -111,8 +125,6 @@ const svg = css`
 `;
 
 const path = css`
-   transition: all 100ms ease;
-
    stroke-width: 2;
    stroke-linecap: round;
 

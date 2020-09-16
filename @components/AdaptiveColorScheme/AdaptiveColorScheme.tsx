@@ -8,70 +8,13 @@ import { css } from 'linaria';
 import { setCSSCustomProperties, getBackground } from './helpers-scheme';
 import { Scheme } from './scheme';
 import { motion, Variants } from 'framer-motion';
+import SvgDarkTheme from './SvgDarkTheme';
 
 type AdaptiveProps = {
    area: string;
 };
 
-const iconVariants: Variants = {
-   dark: {
-      rotate: 45,
-      transition: {
-         ease: 'backInOut',
-         duration: 1,
-      },
-   },
-   light: {
-      rotate: -135,
-      transition: {
-         ease: 'backInOut',
-         duration: 1,
-      },
-   },
-   initial: {
-      rotate: -135,
-   },
-};
-
-const lightVariants: Variants = {
-   dark: {
-      opacity: 0.1,
-      transition: {
-         ease: 'backInOut',
-         duration: 1,
-      },
-   },
-   light: {
-      opacity: 1,
-      transition: {
-         ease: 'backInOut',
-         duration: 1,
-      },
-   },
-   initial: {
-      opacity: 1,
-   },
-};
-
-const darkVariants: Variants = {
-   dark: {
-      opacity: 1,
-      transition: {
-         ease: 'backInOut',
-         duration: 1,
-      },
-   },
-   light: {
-      opacity: 0.1,
-      transition: {
-         ease: 'backInOut',
-         duration: 1,
-      },
-   },
-   initial: {
-      opacity: 1,
-   },
-};
+type Theme = 'light' | 'dark' | string;
 
 function AdaptiveColorScheme({ area }: AdaptiveProps) {
    const { pathname } = useRouter();
@@ -84,12 +27,7 @@ function AdaptiveColorScheme({ area }: AdaptiveProps) {
    const darkRef = useRef<HTMLInputElement>(null!);
    const lightRef = useRef<HTMLInputElement>(null!);
 
-   const [theme, setTheme] = useState<string>('light');
-
-   function startAnimation() {
-      if (theme === 'light') return 'light';
-      else return 'dark';
-   }
+   const [theme, setTheme] = useState<Theme>('light');
 
    function setAdaptiveColors() {
       const brightnessInput = brightnessRef.current;
@@ -194,230 +132,218 @@ function AdaptiveColorScheme({ area }: AdaptiveProps) {
    }, []);
 
    return (
-      <div className={wrapper} data-area={area}>
-         <svg
-            className={svg}
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 29 29.6"
-         >
-            <motion.g
-               id="icon"
-               variants={iconVariants}
-               initial="initial"
-               animate={startAnimation()}
-            >
-               <motion.g
-                  id="light"
-                  variants={lightVariants}
-                  initial="initial"
-                  animate={startAnimation()}
-               >
-                  <g id="day">
-                     <path
-                        fill="#74C0EB"
-                        d="M21.6,14.6c0,3.6-2.9,6.6-6.5,6.7c-3.6,0-6.6-2.9-6.7-6.5"
-                     />
-                     <path
-                        fill="#ACD591"
-                        d="M12.4,18.9c-1.4,0-1.8,0.7-1.8,0.7s0,0,0,0c0.5,0.5,1.1,0.9,1.8,1.1C12.4,20.8,13.8,18.9,12.4,18.9z"
-                     />
-                     <path
-                        fill="#ACD591"
-                        d="M17.2,16.5c0.1,0.3,0.3,0.5,0.5,0.6c0.6,0.2,1.6-0.7,2.4-2.4l-3,0c0,0.3-0.1,0.7,0,1.1"
-                     />
-                  </g>
-                  <g id="clouds">
-                     <path
-                        fill="#F4E5B1"
-                        d="M8.7,22.5L8.7,22.5c0.1,0,0.1,0,0.1,0.1c0.4,0.3,0.9,0.3,1.2-0.1c0.2-0.3,0.3-0.7,0.1-1
-            c0.1,0,0.2-0.1,0.3-0.2c0.2-0.2,0.2-0.6,0-0.9l0.1-0.1c0.2-0.2,0.2-0.6,0-0.8l-0.1-0.1c-0.2-0.2-0.6-0.2-0.8,0l-1.9,2.1
-            c-0.2,0.2-0.2,0.6,0,0.8l0.1,0.1C8.2,22.8,8.5,22.8,8.7,22.5z"
-                     />
-                     <path
-                        fill="#F4E5B1"
-                        d="M20.8,23.3L20.8,23.3C20.8,23.3,20.8,23.3,20.8,23.3c0.4,0.3,0.8,0.3,1,0c0.2-0.2,0.2-0.5,0.1-0.7
-            c0.1,0,0.2-0.1,0.2-0.1c0.2-0.2,0.2-0.5,0-0.6l0-0.1c0.1-0.2,0.1-0.4,0-0.6l-0.1,0c-0.2-0.1-0.4-0.1-0.6,0l-1.4,1.6
-            c-0.1,0.2-0.1,0.4,0,0.6l0.1,0C20.4,23.5,20.6,23.5,20.8,23.3z"
-                     />
-                     <path
-                        fill="#F4E5B1"
-                        d="M18.3,18.1L18.3,18.1c0.1,0,0.1,0,0.1,0.1c0.4,0.3,0.9,0.3,1.2-0.1c0.2-0.3,0.3-0.6,0.1-0.9
-            c0.1,0,0.2-0.1,0.3-0.2c0.2-0.2,0.2-0.6,0-0.8l0.1-0.1c0.2-0.2,0.2-0.6,0-0.8l-0.1-0.1c-0.2-0.2-0.6-0.2-0.8,0l-1.8,2.1
-            c-0.2,0.2-0.2,0.6,0,0.8l0.1,0.1C17.8,18.4,18.1,18.3,18.3,18.1z"
-                     />
-                  </g>
-                  <g id="sun">
-                     <path
-                        fill="#F7931E"
-                        d="M19.8,21.1c0-0.1,0-0.1,0-0.2c-0.2-0.2-0.3-0.4-0.4-0.7s-0.1-0.5-0.1-0.8c0-0.1,0-0.1-0.1-0.1
-            c-0.3-0.1-0.5-0.2-0.7-0.4c-0.2-0.2-0.4-0.4-0.4-0.7c0-0.1-0.1-0.1-0.2-0.1c-0.2,0.1-0.5,0.1-0.8,0s-0.5-0.2-0.7-0.4
-            c-0.1,0-0.1,0-0.2,0c-0.2,0.2-0.4,0.3-0.7,0.4c-0.3,0.1-0.5,0.1-0.8,0.1c-0.1,0-0.1,0-0.1,0.1c-0.1,0.3-0.2,0.5-0.4,0.7
-            c-0.2,0.2-0.4,0.4-0.7,0.4c-0.1,0-0.1,0.1-0.1,0.2c0.1,0.2,0.1,0.5,0,0.8c-0.1,0.3-0.2,0.5-0.4,0.7c0,0.1,0,0.1,0,0.2
-            c0.2,0.2,0.3,0.4,0.4,0.7c0.1,0.3,0.1,0.5,0.1,0.8c0,0.1,0,0.1,0.1,0.1c0.3,0.1,0.5,0.2,0.7,0.4c0.2,0.2,0.4,0.4,0.4,0.7
-            c0,0.1,0.1,0.1,0.2,0.1c0.2-0.1,0.5-0.1,0.8,0s0.5,0.2,0.7,0.4c0.1,0,0.1,0,0.2,0c0.2-0.2,0.4-0.3,0.7-0.4
-            c0.3-0.1,0.5-0.1,0.8-0.1c0.1,0,0.1,0,0.1-0.1c0.1-0.3,0.2-0.5,0.4-0.7c0.2-0.2,0.4-0.4,0.7-0.4c0.1,0,0.1-0.1,0.1-0.2
-            c-0.1-0.2-0.1-0.5,0-0.8C19.5,21.5,19.7,21.3,19.8,21.1z"
-                     />
-                     <circle fill="#FCEE21" cx="16.5" cy="21.2" r="1.9" />
-                  </g>
-               </motion.g>
-               <motion.g
-                  id="dark"
-                  variants={darkVariants}
-                  initial="initial"
-                  animate={startAnimation()}
-               >
-                  <g id="night">
-                     <path
-                        fill="#676AB1"
-                        d="M8.4,14.8c0-3.6,2.9-6.6,6.5-6.7c3.6,0,6.6,2.9,6.7,6.5"
-                     />
-                     <path
-                        fill="#9896CA"
-                        d="M9.7,14.7c0.4-1.4,0.8-3,1.3-2.7c0.8,0.5,2,0.7,1.7,2.6L9.7,14.7z"
-                     />
-                     <path
-                        fill="#9896CA"
-                        d="M16.3,9.6c0.8-0.3,1.7-0.6,1.5-0.9c-0.3-0.1-1-0.4-1.3-0.4C16.5,8.3,15.5,10,16.3,9.6z"
-                     />
-                  </g>
-                  <g id="stars">
-                     <circle fill="#FCEE21" cx="7.2" cy="12.9" r="0.5" />
-                     <circle fill="#FCEE21" cx="18.8" cy="12.5" r="0.3" />
-                     <circle fill="#FCEE21" cx="7.7" cy="7.2" r="0.3" />
-                     <circle fill="#FCEE21" cx="14.2" cy="13.6" r="0.4" />
-                     <circle fill="#FCEE21" cx="17.7" cy="10" r="0.3" />
-                     <circle fill="#FCEE21" cx="17.7" cy="7.3" r="0.1" />
-                     <circle fill="#FCEE21" cx="10.9" cy="10.9" r="0.3" />
-                  </g>
-                  <g id="moon">
-                     <path
-                        fill="#F4E5B1"
-                        d="M12.5,8.2c-1.6-0.2-2.9-1.3-3.2-2.8C9.2,5.7,9.1,6,9.1,6.4c-0.2,2,1.3,3.7,3.2,3.9c2,0.2,3.7-1.3,3.9-3.2
-         c0-0.4,0-0.7-0.1-1C15.5,7.5,14.1,8.4,12.5,8.2z"
-                     />
-                  </g>
-               </motion.g>
-               <g id="line">
-                  <line
-                     fill="none"
-                     stroke="#000000"
-                     strokeWidth="0.4845"
-                     strokeLinecap="round"
-                     strokeMiterlimit="10"
-                     x1="26.5"
-                     y1="14.6"
-                     x2="3.4"
-                     y2="14.9"
-                  />
-               </g>
-            </motion.g>
-         </svg>
+      <section className={adaptive} data-area={area}>
+         <SvgDarkTheme theme={theme} />
 
-         <label className={label} htmlFor="brightness">
-            <p>B</p>
+         <article className={mode}>
+            <label htmlFor="light" className={labelRadioBtn} data-area="light">
+               Light
+            </label>
             <input
-               ref={brightnessRef}
-               onChange={debounceInput}
+               tabIndex={0}
+               id="light"
+               className={inputRadioBtn}
+               data-area="light"
+               onChange={handleOnChangeRadioBtn}
+               ref={lightRef}
+               type="radio"
+               name="mode"
+            />
+
+            <label htmlFor="dark" className={labelRadioBtn} data-area="dark">
+               Dark
+            </label>
+            <input
+               tabIndex={0}
+               id="dark"
+               className={inputRadioBtn}
+               data-area="dark"
+               type="radio"
+               name="mode"
+               onChange={handleOnChangeRadioBtn}
+               ref={darkRef}
+            />
+
+            <svg
+               className={svgCircle}
+               data-area="dark"
+               version="1.1"
+               xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 24 24"
+               aria-hidden="true"
+               focusable="false"
+            >
+               <circle
+                  className={circle}
+                  data-circle="fill"
+                  cy="12"
+                  cx="12"
+                  r="3"
+               ></circle>
+               <circle
+                  className={circle}
+                  data-circle="stroke"
+                  cy="12"
+                  cx="12"
+                  r="7"
+               ></circle>
+            </svg>
+
+            <svg
+               className={svgCircle}
+               data-area="light"
+               version="1.1"
+               xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 24 24"
+               aria-hidden="true"
+               focusable="false"
+            >
+               <circle
+                  className={circle}
+                  data-circle="fill"
+                  cy="12"
+                  cx="12"
+                  r="3"
+               ></circle>
+               <circle
+                  className={circle}
+                  data-circle="stroke"
+                  cy="12"
+                  cx="12"
+                  r="7"
+               ></circle>
+            </svg>
+         </article>
+
+         <article className={rangeSlider}>
+            <label htmlFor="brightness">B</label>
+            <input
                type="range"
                id="brightness"
                step={1}
+               tabIndex={0}
+               name="brightness"
+               ref={brightnessRef}
+               onChange={debounceInput}
             />
-         </label>
-
-         <label className={label} htmlFor="contrast">
-            <p>C</p>
+            <label htmlFor="contrast">C</label>
             <input
+               tabIndex={0}
+               name="contrast"
                ref={contrastRef}
                onChange={debounceInput}
                type="range"
                id="contrast"
                step={0.1}
             />
-         </label>
-
-         <label className={label} htmlFor="light">
-            <p>Light</p>
-            <input
-               onChange={handleOnChangeRadioBtn}
-               ref={lightRef}
-               type="radio"
-               name="mode"
-               id="light"
-            />
-         </label>
-
-         <label className={label} htmlFor="dark">
-            <p>Dark</p>
-            <input
-               onChange={handleOnChangeRadioBtn}
-               ref={darkRef}
-               type="radio"
-               name="mode"
-               id="dark"
-            />
-         </label>
-      </div>
+         </article>
+      </section>
    );
 }
 export default AdaptiveColorScheme;
 
 // Style
-const wrapper = css`
+const adaptive = css`
    display: grid;
-
-   width: 100%;
-   height: 100%;
-
-   padding: 1em 0.5em;
-
-   grid-template-columns: 1.2fr 1fr 1fr;
-   grid-template-rows: repeat(2, 1fr);
-
-   grid-gap: 0.5em;
+   grid-template:
+      'svg radios sliders' 1fr
+      /0.5fr 1fr 1fr;
 
    background: transparent;
-   /* box-shadow: ${theme.SHADOWS['--box-big']} ${theme.COLORS['grey-200']}; */
 `;
 
-const label = css`
-   display: flex;
-   align-items: center;
-   justify-content: space-around;
+const mode = css`
+   grid-area: radios;
 
-   padding: 0.5em;
+   display: grid;
+   grid-template:
+      'radio-light label-light' 1fr
+      'radio-dark label-dark' 1fr
+      / 0.7fr 1fr;
+   place-items: center;
 
-   & > p {
+   padding: 1.5em 2em 1.5em 0;
+`;
+
+const labelRadioBtn = css`
+   cursor: pointer;
+   font-size: 0.6em;
+   font-family: 'Decovar';
+   color: ${theme.COLORS['grey-200']};
+
+   &[data-area='dark'] {
+      grid-area: label-dark;
+   }
+
+   &[data-area='light'] {
+      grid-area: label-light;
+   }
+`;
+
+const inputRadioBtn = css`
+   cursor: pointer;
+
+   opacity: 0;
+   width: 1em;
+   height: 1em;
+
+   &[data-area='dark'] {
+      grid-area: radio-dark;
+   }
+
+   &[data-area='light'] {
+      grid-area: radio-light;
+   }
+`;
+
+const svgCircle = css`
+   width: 1em;
+   height: 1em;
+
+   transform-origin: center;
+   transform-box: fill-box;
+   grid-column: 1/2;
+
+   transition: all 1s ease;
+
+   &[data-area='dark'] {
+      grid-row: radio-dark;
+   }
+
+   &[data-area='light'] {
+      grid-row: radio-light;
+   }
+`;
+
+const circle = css`
+   filter: drop-shadow(0 0 2px ${theme.COLORS['grey-100']});
+
+   &[data-circle='fill'] {
+      fill: black;
+      stroke: none;
+   }
+
+   &[data-circle='stroke'] {
+      fill: none;
+      stroke: black;
+   }
+`;
+
+const rangeSlider = css`
+   grid-area: sliders;
+
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-template-rows: 1fr 1fr;
+
+   place-items: center;
+
+   padding: 1.5em 0;
+
+   > label {
       font-size: 0.5em;
       font-family: 'Decovar';
-      color: ${theme.COLORS['grey-200']};
-   }
 
-   &[for='brightness'] {
-      grid-column: 2/3;
-      grid-row: 1/2;
+      grid-column: 1/2;
    }
-
-   &[for='contrast'] {
-      grid-column: 2/3;
-      grid-row: 2/3;
-   }
-
-   &[for='dark'] {
-      grid-column: 3/4;
-      grid-row: 1/2;
-   }
-
-   &[for='light'] {
-      grid-column: 3/4;
-      grid-row: 2/3;
-   }
-`;
-
-const svg = css`
-   width: 100%;
-   height: 100%;
-   grid-column: 1/2;
-   grid-row: 1/3;
 `;

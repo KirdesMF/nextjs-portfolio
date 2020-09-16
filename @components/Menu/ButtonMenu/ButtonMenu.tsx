@@ -32,6 +32,8 @@ function ButtonMenu({ isOpen, setIsOpen, area }: TButtonMenu) {
 
    return (
       <button
+         aria-label="Menu Button"
+         tabIndex={0}
          className={button}
          data-area={area}
          onClick={() => setIsOpen((prev) => !prev)}
@@ -42,10 +44,15 @@ function ButtonMenu({ isOpen, setIsOpen, area }: TButtonMenu) {
             xmlns="http://www.w3.org/2000/svg"
             version="1.1"
             preserveAspectRatio="xMidYMid"
+            aria-hidden="true"
+            focusable="false"
             initial="initial"
             animate={controls}
             {...hexesAnimation}
          >
+            <title>Menu button</title>
+            <desc>Hamburger menu with a hexes background animated</desc>
+
             {HEXMAP.map((hex, i) => {
                return (
                   <Hexagon

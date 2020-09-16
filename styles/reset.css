@@ -6,6 +6,9 @@ html {
 *:before,
 *:after {
    box-sizing: inherit;
+   transition: color 2s ease-in-out, fill 2s ease-in-out, stroke 2s ease-in-out,
+      background 2s ease-in-out, border-color 1s ease-in-out,
+      box-shadow 1s ease-in-out;
 }
 
 html,
@@ -51,5 +54,4 @@ button {
    font: inherit;
    color: inherit;
    background-color: transparent;
-   outline: none;
 }
