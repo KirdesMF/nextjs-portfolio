@@ -16,7 +16,6 @@ const about = css`
    width: 100%;
    height: 100%;
    display: grid;
-   background: blue;
 `;
 
 /**
@@ -26,7 +25,6 @@ const works = css`
    width: 100%;
    height: 100%;
    display: grid;
-   background: green;
 `;
 
 /**
@@ -36,7 +34,6 @@ const contact = css`
    width: 100%;
    height: 100%;
    display: grid;
-   background: red;
 `;
 
 /**================= Export ================ */

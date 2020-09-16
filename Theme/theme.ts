@@ -1,4 +1,4 @@
-import { COLORS } from '@components/AdaptiveColorScheme/scheme';
+import { COLORS } from '@components/ColorScheme/utils/scheme';
 import { css } from 'linaria';
 
 function setCSSVar(properties: Record<string, string>) {

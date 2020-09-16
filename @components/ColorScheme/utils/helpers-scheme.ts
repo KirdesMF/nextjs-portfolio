@@ -44,4 +44,9 @@ function getBackground(theme: ReturnedTheme) {
    return color;
 }
 
+type SetMinMaxDark = {
+   contrastRef: React.MutableRefObject<HTMLInputElement>;
+   brightnessRef: React.MutableRefObject<HTMLInputElement>;
+};
+
 export { createCSSCustomProperties, setCSSCustomProperties, getBackground };

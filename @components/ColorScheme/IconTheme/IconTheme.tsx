@@ -1,79 +1,14 @@
-import { AnimationProps, motion, Variants } from 'framer-motion';
-import { css } from 'linaria';
 import React from 'react';
-import theme from 'Theme/theme';
+import { motion } from 'framer-motion';
 
-const svg = css`
-   width: 2.5em;
-   grid-area: svg;
-   place-self: center;
-   filter: drop-shadow(0 0 5px ${theme.COLORS['grey-100']});
-`;
+import * as variants from './IconTheme.variants';
+import * as style from './IconTheme.style';
 
-const iconVariants: Variants = {
-   dark: {
-      rotate: 45,
-      transition: {
-         ease: 'backInOut',
-         duration: 1,
-      },
-   },
-   light: {
-      rotate: -135,
-      transition: {
-         ease: 'backInOut',
-         duration: 1,
-      },
-   },
-   initial: {
-      rotate: -135,
-   },
-};
-
-const lightVariants: Variants = {
-   dark: {
-      opacity: 0.05,
-      transition: {
-         ease: 'backInOut',
-         duration: 1,
-      },
-   },
-   light: {
-      opacity: 1,
-      transition: {
-         ease: 'backInOut',
-         duration: 1,
-      },
-   },
-   initial: {
-      opacity: 0,
-   },
-};
-
-const darkVariants: Variants = {
-   dark: {
-      opacity: 1,
-      transition: {
-         ease: 'backInOut',
-         duration: 1,
-      },
-   },
-   light: {
-      opacity: 0.05,
-      transition: {
-         ease: 'backInOut',
-         duration: 1,
-      },
-   },
-   initial: {
-      opacity: 0,
-   },
-};
-
-type SvgDarkThemeProps = {
+type IconThemeProps = {
    theme: 'light' | 'dark' | string;
 };
-function SvgDarkTheme({ theme }: SvgDarkThemeProps) {
+
+function IconTheme({ theme }: IconThemeProps) {
    const animate = (function startAnimation() {
       if (theme === 'light') return 'light';
       else return 'dark';
@@ -81,20 +16,20 @@ function SvgDarkTheme({ theme }: SvgDarkThemeProps) {
 
    return (
       <svg
-         className={svg}
+         className={style.svg}
          version="1.1"
          xmlns="http://www.w3.org/2000/svg"
          viewBox="0 0 29 29.6"
       >
          <motion.g
             className="icon"
-            variants={iconVariants}
+            variants={variants.iconVariants}
             initial="initial"
             animate={animate}
          >
             <motion.g
                className="light"
-               variants={lightVariants}
+               variants={variants.lightVariants}
                initial="initial"
                animate={animate}
             >
@@ -149,7 +84,7 @@ function SvgDarkTheme({ theme }: SvgDarkThemeProps) {
             </motion.g>
             <motion.g
                className="dark"
-               variants={darkVariants}
+               variants={variants.darkVariants}
                initial="initial"
                animate={animate}
             >
@@ -202,4 +137,4 @@ c0-0.4,0-0.7-0.1-1C15.5,7.5,14.1,8.4,12.5,8.2z"
    );
 }
 
-export default SvgDarkTheme;
+export default IconTheme;

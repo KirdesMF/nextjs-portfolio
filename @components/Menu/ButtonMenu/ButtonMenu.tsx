@@ -3,8 +3,8 @@ import Hexagon from '@components/Hexagon/Hexagon';
 import { motion, useAnimation } from 'framer-motion';
 import { menuSettings } from './ButtonMenu.variants';
 import { useRouter } from 'next/router';
-import { css } from 'linaria';
 import theme from 'Theme/theme';
+import * as style from './ButtonMenu.style';
 
 type TButtonMenu = {
    isOpen: boolean;
@@ -34,12 +34,12 @@ function ButtonMenu({ isOpen, setIsOpen, area }: TButtonMenu) {
       <button
          aria-label="Menu Button"
          tabIndex={0}
-         className={button}
+         className={style.button}
          data-area={area}
          onClick={() => setIsOpen((prev) => !prev)}
       >
          <motion.svg
-            className={svg}
+            className={style.svg}
             viewBox={VIEWBOX}
             xmlns="http://www.w3.org/2000/svg"
             version="1.1"
@@ -70,20 +70,20 @@ function ButtonMenu({ isOpen, setIsOpen, area }: TButtonMenu) {
                );
             })}
             <motion.path
-               className={path}
+               className={style.path}
                variants={topPathVariants}
                animate={isOpen ? 'open' : 'closed'}
                initial="initial"
             />
 
             <motion.path
-               className={path}
+               className={style.path}
                variants={midPathVariants}
                animate={isOpen ? 'open' : 'closed'}
                initial="initial"
             />
             <motion.path
-               className={path}
+               className={style.path}
                variants={botPathVariants}
                animate={isOpen ? 'open' : 'closed'}
                initial="initial"
@@ -93,20 +93,3 @@ function ButtonMenu({ isOpen, setIsOpen, area }: TButtonMenu) {
    );
 }
 export default ButtonMenu;
-
-const button = css`
-   display: grid;
-   place-items: center;
-`;
-
-const path = css`
-   fill: transparent;
-   stroke-width: 5;
-   stroke: ${theme.COLORS['primary-200']};
-   stroke-linecap: round;
-   transform-box: fill-box;
-`;
-
-const svg = css`
-   filter: drop-shadow(0 0 5px ${theme.COLORS['grey-200']});
-`;
