@@ -1,7 +1,7 @@
-import { ReturnedTheme } from '@adobe/leonardo-contrast-colors';
-import useCanvasContext from 'context/CanvasContext';
-import { useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
+import useCanvasContext from 'context/CanvasContext';
+import { ReturnedTheme } from '@adobe/leonardo-contrast-colors';
 import { Utils } from 'utils/utils';
 import { setCSSCustomProperties, getBackground } from './utils/helpers-scheme';
 import { Scheme } from './utils/scheme';
@@ -122,7 +122,7 @@ function ColorScheme({ area }: AdaptiveProps) {
 
    useEffect(() => {
       setAdaptiveColors();
-   });
+   }, [pathname]);
 
    useEffect(() => {
       setTheme(localStorage.getItem('theme')!);
