@@ -11,13 +11,13 @@ type LayoutProps = {
 function Layout({ name, title, children }: LayoutProps) {
    const classname = CSSLayout[name];
    return (
-      <section className={classname}>
+      <main className={classname}>
          <Head>
             <title>{title}</title>
             <link rel="icon" href="/favicon.ico" />
          </Head>
          {children}
-      </section>
+      </main>
    );
 }
 

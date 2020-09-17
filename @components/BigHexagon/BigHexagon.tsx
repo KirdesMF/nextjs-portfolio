@@ -26,9 +26,38 @@ const Svg = styled.svg<SvgType>`
    top: ${({ top }) => (top ? '-25rem' : 'calc(100% - 25rem)')};
    right: ${({ top }) => (top ? '-25rem' : 'calc(100% - 25rem)')};
 
-   > polygon {
+   /* > polygon {
       fill: ${theme.COLORS.background};
-      stroke: ${theme.COLORS.background};
+      stroke: ${theme
+      .COLORS.background};
+      stroke-width: 5;
+   } */
+
+   & polygon:nth-child(3) {
+      fill: ${theme.COLORS['primary-300']};
+      fill: ${theme.COLORS['primary-300']};
+      stroke-width: 5;
+   }
+
+   & polygon:nth-child(4) {
+      fill: ${theme.COLORS['primary-400']};
+      fill: ${theme.COLORS['primary-400']};
+      stroke-width: 5;
+   }
+   & polygon:nth-child(5) {
+      fill: ${theme.COLORS['primary-500']};
+      fill: ${theme.COLORS['primary-500']};
+      stroke-width: 5;
+   }
+   & polygon:nth-child(6) {
+      fill: ${theme.COLORS['primary-600']};
+      fill: ${theme.COLORS['primary-600']};
+      stroke-width: 5;
+   }
+
+   & polygon:nth-child(7) {
+      fill: ${theme.COLORS['primary-700']};
+      fill: ${theme.COLORS['primary-700']};
       stroke-width: 5;
    }
 `;

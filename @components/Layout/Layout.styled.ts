@@ -4,10 +4,13 @@ import { css } from 'linaria';
  * Home Layout
  */
 const home = css`
-   z-index: 15;
    width: 100%;
    height: 100%;
+   position: relative;
+
    display: grid;
+   grid-template: 1fr / 1fr;
+   place-items: center;
 `;
 
 /**

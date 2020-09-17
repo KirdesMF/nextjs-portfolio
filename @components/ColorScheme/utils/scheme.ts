@@ -21,6 +21,11 @@ const WELCOME_RATIOS = {
    primary: {
       'primary-100': 3,
       'primary-200': 4.5,
+      'primary-300': 1.08,
+      'primary-400': 1.1,
+      'primary-500': 1.2,
+      'primary-600': 1.3,
+      'primary-700': 1.4,
    },
    secondary: {
       'secondary-300': 1,
@@ -63,6 +68,11 @@ const HOME_RATIOS = {
    primary: {
       'primary-100': 3,
       'primary-200': 4.5,
+      'primary-300': 1.08,
+      'primary-400': 1.1,
+      'primary-500': 1.2,
+      'primary-600': 1.3,
+      'primary-700': 1.4,
    },
    secondary: {
       'secondary-300': 1,
@@ -105,6 +115,11 @@ const ABOUT_RATIOS = {
    primary: {
       'primary-100': 3,
       'primary-200': 4.5,
+      'primary-300': 1.08,
+      'primary-400': 1.1,
+      'primary-500': 1.2,
+      'primary-600': 1.3,
+      'primary-700': 1.4,
    },
    secondary: {
       'secondary-300': 1,
@@ -155,6 +170,11 @@ const WORKS_RATIOS = {
    primary: {
       'primary-100': 3,
       'primary-200': 4.5,
+      'primary-300': 1.08,
+      'primary-400': 1.1,
+      'primary-500': 1.2,
+      'primary-600': 1.3,
+      'primary-700': 1.4,
    },
    secondary: {
       'secondary-300': 1,
@@ -197,6 +217,11 @@ const CONTACT_RATIOS = {
    primary: {
       'primary-100': 3,
       'primary-200': 4.5,
+      'primary-300': 1.08,
+      'primary-400': 1.1,
+      'primary-500': 1.2,
+      'primary-600': 1.3,
+      'primary-700': 1.4,
    },
    secondary: {
       'secondary-300': 1,

@@ -69,7 +69,7 @@ const article = css`
 `;
 
 const span = css`
-   font-family: Helvetica, sans-serif;
+   font-family: 'Amstelvar', sans-serif;
    text-transform: uppercase;
    font-size: 4em;
    color: ${theme.COLORS['primary-100']};
