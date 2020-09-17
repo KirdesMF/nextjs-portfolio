@@ -23,10 +23,8 @@ function ColorScheme({ area }: AdaptiveProps) {
 
    const contrastRef = useRef<HTMLInputElement>(null!);
    const brightnessRef = useRef<HTMLInputElement>(null!);
-   const darkRef = useRef<HTMLInputElement>(null!);
-   const lightRef = useRef<HTMLInputElement>(null!);
 
-   const [theme, setTheme] = useState<Theme>('light');
+   const [theme, setTheme] = useState<Theme>(null!);
 
    function setAdaptiveColors() {
       const brightnessInput = brightnessRef.current;
@@ -72,16 +70,12 @@ function ColorScheme({ area }: AdaptiveProps) {
       const theme = localStorage.getItem('theme');
 
       if (theme && theme === 'dark') {
-         darkRef.current.checked = true;
          setMinMaxDark();
       } else if (theme && theme === 'light') {
-         lightRef.current.checked = true;
          setMinMaxLight();
       } else if (window.matchMedia(`(prefers-color-scheme: dark)`).matches) {
-         darkRef.current.checked = true;
          setMinMaxDark();
       } else if (window.matchMedia(`(prefers-color-scheme: light)`).matches) {
-         lightRef.current.checked = true;
          setMinMaxLight();
       }
    }
@@ -140,7 +134,7 @@ function ColorScheme({ area }: AdaptiveProps) {
                   id="light"
                   type="radio"
                   name="mode"
-                  ref={lightRef}
+                  checked={theme === 'light'}
                   onChange={handleOnChangeRadioBtn}
                />
                <p>Light</p>
@@ -151,7 +145,7 @@ function ColorScheme({ area }: AdaptiveProps) {
                   id="dark"
                   type="radio"
                   name="mode"
-                  ref={darkRef}
+                  checked={theme === 'dark'}
                   onChange={handleOnChangeRadioBtn}
                />
                <p>Dark</p>

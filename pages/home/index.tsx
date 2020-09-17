@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layout } from '@components/Layout/Layout';
+import HomeNav from '@components/HomeNav/HomeNav';
 
 const title = 'Ced | Home';
 /**
@@ -8,7 +9,7 @@ const title = 'Ced | Home';
 function Home() {
    return (
       <Layout name="home" title={title}>
-         <h1>Home</h1>
+         <HomeNav />
       </Layout>
    );
 }

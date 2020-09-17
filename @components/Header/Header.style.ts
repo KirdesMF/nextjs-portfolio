@@ -4,11 +4,17 @@ import theme from 'Theme/theme';
 export const header = css`
    position: fixed;
    z-index: 5;
+   transition: box-shadow 500ms ease-in-out, background-color 1s ease-in-out;
+
+   @media (hover: hover) and (pointer: fine) {
+      &:hover {
+         box-shadow: ${theme.SHADOWS['--box-thin']} black;
+      }
+   }
 
    @media ${theme.BREAKPOINTS.large} {
       top: 0;
       width: 100%;
-      height: 6em;
 
       display: grid;
       grid-template:

@@ -19,6 +19,14 @@ module.exports = {
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
+      'jsx-a11y/anchor-is-valid': [
+         'error',
+         {
+            components: ['Link'],
+            specialLink: ['hrefLeft', 'hrefRight'],
+            aspects: ['invalidHref', 'preferButton'],
+         },
+      ],
    },
    overrides: [
       {

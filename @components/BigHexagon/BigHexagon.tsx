@@ -19,15 +19,17 @@ type SvgType = {
 const Svg = styled.svg<SvgType>`
    position: fixed;
    z-index: 999;
-   width: 25em;
+   width: 50rem;
    transform: rotate(15deg);
+   /* filter: drop-shadow(0 0 5px black); */
 
-   top: ${({ top }) => (top ? '-12.5em' : 'calc(100% - 12.5em)')};
-   right: ${({ top }) => (top ? '-12.5em' : 'calc(100% - 12.5em)')};
+   top: ${({ top }) => (top ? '-25rem' : 'calc(100% - 25rem)')};
+   right: ${({ top }) => (top ? '-25rem' : 'calc(100% - 25rem)')};
 
    > polygon {
       fill: ${theme.COLORS.background};
-      stroke: none;
+      stroke: ${theme.COLORS.background};
+      stroke-width: 5;
    }
 `;
 
@@ -42,24 +44,31 @@ function BigHexagon({ top }: BigHexagonProps) {
          xmlns="http://www.w3.org/2000/svg"
          viewBox={VIEWBOX}
       >
-         <filter filterUnits="objectBoundingBox" id="dropShadow">
-            <feGaussianBlur
-               in="SourceAlpha"
-               result="blur"
-               stdDeviation="4"
-            ></feGaussianBlur>
-            <feOffset
-               dx="0"
-               dy="0"
-               in="blur"
-               result="offsetBlurredAlpha"
-            ></feOffset>
-            <feMerge>
-               <feMergeNode in="offsetBlurredAlpha"></feMergeNode>
-               <feMergeNode in="SourceGraphic"></feMergeNode>
-            </feMerge>
-         </filter>
+         <defs>
+            <filter id="shadow">
+               <feDropShadow dx="0" dy="0" stdDeviation="4" />
+            </filter>
+         </defs>
 
+         <defs>
+            <filter filterUnits="objectBoundingBox" id="dropShadow">
+               <feGaussianBlur
+                  in="SourceAlpha"
+                  result="blur"
+                  stdDeviation="4"
+               ></feGaussianBlur>
+               <feOffset
+                  dx="0"
+                  dy="0"
+                  in="blur"
+                  result="offsetBlurredAlpha"
+               ></feOffset>
+               <feMerge>
+                  <feMergeNode in="offsetBlurredAlpha"></feMergeNode>
+                  <feMergeNode in="SourceGraphic"></feMergeNode>
+               </feMerge>
+            </filter>
+         </defs>
          {SIZE.map((sizeHex, i) => (
             <Hexagon
                key={i}

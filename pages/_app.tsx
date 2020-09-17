@@ -10,8 +10,10 @@ import 'styles/fonts.css';
 import { CanvasContextProvider } from 'context/CanvasContext';
 import Header from '@components/Header/Header';
 import BigHexagon from '@components/BigHexagon/BigHexagon';
+import { useRouter } from 'next/router';
 
 function App({ Component, pageProps }: AppProps) {
+   const { pathname } = useRouter();
    return (
       <AppContextProvider>
          <CanvasContextProvider>
@@ -23,7 +25,7 @@ function App({ Component, pageProps }: AppProps) {
          <BigHexagon />
 
          <Pagination />
-         <MainTitle />
+         {pathname !== '/' && pathname !== '/home' && <MainTitle />}
 
          <Component {...pageProps} />
       </AppContextProvider>

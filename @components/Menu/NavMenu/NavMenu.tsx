@@ -25,7 +25,7 @@ const variants: Variants = {
       transition: {
          ease: 'easeInOut',
          delay: 1,
-         duration: 1,
+         duration: 0.5,
       },
    },
    in: {
@@ -33,7 +33,7 @@ const variants: Variants = {
       transition: {
          ease: 'easeInOut',
          delay: 1,
-         duration: 1,
+         duration: 0.5,
       },
    },
    out: {
@@ -41,7 +41,7 @@ const variants: Variants = {
       transition: {
          ease: 'easeInOut',
          delay: 1,
-         duration: 1,
+         duration: 0.5,
       },
    },
 };

@@ -4,6 +4,7 @@ import { css } from 'linaria';
  * Home Layout
  */
 const home = css`
+   z-index: 15;
    width: 100%;
    height: 100%;
    display: grid;

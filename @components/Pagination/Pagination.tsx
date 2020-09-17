@@ -7,7 +7,7 @@ import { css } from 'linaria';
 import theme from 'Theme/theme';
 
 const links = ['/', '/home', '/about', '/works', '/contact'];
-const CHEVRON_SIZE = '1.5vw';
+const CHEVRON_SIZE = '1.5em';
 const ROTATION_TITLE = '25deg';
 
 const titleVariants: Variants = {
