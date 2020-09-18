@@ -13,7 +13,7 @@ const variants: Variants = {
    out: (i) => ({
       y: 150,
       transition: {
-         duration: 1,
+         duration: 0.8,
          delay: i * 0.1,
          ease: 'circIn',
       },
@@ -21,7 +21,7 @@ const variants: Variants = {
    in: (i) => ({
       y: 0,
       transition: {
-         duration: 1,
+         duration: 0.8,
          delay: i * 0.1,
          ease: 'circOut',
       },
@@ -34,10 +34,15 @@ function MaintTitle() {
 
    return (
       <AnimatePresence exitBeforeEnter>
-         <article className={article} key={router.route}>
+         <article
+            className={article}
+            key={router.route}
+            data-path={router.route.substr(1)}
+         >
             {title.split('').map((letter, i) => (
                <motion.span
                   className={span}
+                  data-path={router.route.substr(1)}
                   key={i}
                   custom={i}
                   variants={variants}
@@ -56,16 +61,24 @@ function MaintTitle() {
 export default MaintTitle;
 
 const article = css`
+   --left: 50%;
+   --top: 50%;
    z-index: 3;
    position: fixed;
-   left: 50%;
-   top: 50%;
+   left: var(--left);
+   top: var(--top);
    transform: translate(-50%, -50%);
    overflow: hidden;
 
    display: flex;
 
    height: auto;
+
+   &[data-path='home'] {
+      left: 10%;
+      top: 20%;
+      transform: translate(-20%, -20%);
+   }
 `;
 
 const span = css`
@@ -74,4 +87,8 @@ const span = css`
    font-size: 4em;
    color: ${theme.COLORS['primary-100']};
    will-change: transform;
+
+   &[data-path='home'] {
+      font-size: 1em;
+   }
 `;

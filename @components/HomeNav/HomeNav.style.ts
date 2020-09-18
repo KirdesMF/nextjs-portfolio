@@ -16,15 +16,9 @@ export const nav = css`
 `;
 
 export const anchor = css`
+   overflow: hidden;
    font: 3.5em/1 'Amstelvar';
    font-variation-settings: 'wght' 600, 'opsz' 60, 'ytuc' 800, 'GRAD' -1;
    color: ${theme.COLORS['secondary-500']};
    border-bottom: 2px solid ${theme.COLORS['grey-200']};
-`;
-export const svg = css`
-   width: 100%;
-   height: 100%;
-   font: 8em /1 Arial;
-   stroke-width: 3;
-   fill: none;
 `;

@@ -122,7 +122,7 @@ function ColorScheme({ area }: AdaptiveProps) {
       setTheme(localStorage.getItem('theme')!);
       checkThemeAndMode();
       setAdaptiveColors();
-   }, []);
+   });
 
    return (
       <article className={style.container} data-area={area}>

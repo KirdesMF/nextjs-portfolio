@@ -11,6 +11,7 @@ import { Utils } from 'utils/utils';
 import { css } from 'linaria';
 import useCanvasContext from 'context/CanvasContext';
 import { useRouter } from 'next/router';
+import theme from 'Theme/theme';
 
 const HEX_SIZE = 160;
 let requestId: number;
@@ -94,5 +95,5 @@ const canvas = css`
    left: 0;
    pointer-events: none;
 
-   background: transparent;
+   background: hsl(240, 50%, 10%);
 `;

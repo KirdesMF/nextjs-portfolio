@@ -1,6 +1,6 @@
 import React from 'react';
-import { Layout } from '@components/Layout/Layout';
 import HomeNav from '@components/HomeNav/HomeNav';
+import Head from 'next/head';
 
 const title = 'Ced | Home';
 /**
@@ -8,9 +8,12 @@ const title = 'Ced | Home';
  */
 function Home() {
    return (
-      <Layout name="home" title={title}>
+      <React.Fragment>
+         <Head>
+            <title>{title}</title>
+         </Head>
          <HomeNav />
-      </Layout>
+      </React.Fragment>
    );
 }
 

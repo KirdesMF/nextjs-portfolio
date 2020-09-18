@@ -11,9 +11,14 @@ import { CanvasContextProvider } from 'context/CanvasContext';
 import Header from '@components/Header/Header';
 import BigHexagon from '@components/BigHexagon/BigHexagon';
 import { useRouter } from 'next/router';
+import { AnimatePresence } from 'framer-motion';
+import { Layout } from '@components/Layout/Layout';
+import { CSSLayout } from '@components/Layout/Layout.styled';
 
 function App({ Component, pageProps }: AppProps) {
-   const { pathname } = useRouter();
+   const router = useRouter();
+   const pathname = router.pathname.substr(1) as keyof typeof CSSLayout;
+
    return (
       <AppContextProvider>
          <CanvasContextProvider>
@@ -25,9 +30,13 @@ function App({ Component, pageProps }: AppProps) {
          <BigHexagon />
 
          <Pagination />
-         {pathname !== '/' && pathname !== '/home' && <MainTitle />}
+         <MainTitle />
 
-         <Component {...pageProps} />
+         <AnimatePresence exitBeforeEnter>
+            <Layout name={pathname} key={router.route}>
+               <Component {...pageProps} />
+            </Layout>
+         </AnimatePresence>
       </AppContextProvider>
    );
 }

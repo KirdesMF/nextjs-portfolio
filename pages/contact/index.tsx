@@ -1,13 +1,13 @@
 import React from 'react';
-import { Layout } from '@components/Layout/Layout';
+import Head from 'next/head';
 
 const title = 'Ced | Contact';
 
 function Contact() {
    return (
-      <Layout name="contact" title={title}>
-         <h1>Contact</h1>
-      </Layout>
+      <Head>
+         <title>{title}</title>
+      </Head>
    );
 }
 

@@ -24,7 +24,6 @@ const variants: Variants = {
       opacity: 0,
       transition: {
          ease: 'easeInOut',
-         delay: 1,
          duration: 0.5,
       },
    },
@@ -32,7 +31,6 @@ const variants: Variants = {
       opacity: 1,
       transition: {
          ease: 'easeInOut',
-         delay: 1,
          duration: 0.5,
       },
    },
@@ -40,7 +38,6 @@ const variants: Variants = {
       opacity: 0,
       transition: {
          ease: 'easeInOut',
-         delay: 1,
          duration: 0.5,
       },
    },

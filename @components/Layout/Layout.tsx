@@ -1,23 +1,45 @@
 import React from 'react';
 import { CSSLayout } from './Layout.styled';
-import Head from 'next/head';
+import { motion, Variants } from 'framer-motion';
 
 type LayoutProps = {
    children: React.ReactNode;
    name: keyof typeof CSSLayout;
-   title: string;
 };
 
-function Layout({ name, title, children }: LayoutProps) {
+const variants: Variants = {
+   initial: {
+      transition: {
+         when: 'afterChildren',
+      },
+   },
+   animate: {
+      transition: {
+         when: 'afterChildren',
+      },
+   },
+   exit: {
+      transition: {
+         when: 'afterChildren',
+      },
+   },
+};
+
+function Layout({ name, children }: LayoutProps) {
    const classname = CSSLayout[name];
+
    return (
-      <main className={classname}>
-         <Head>
-            <title>{title}</title>
-            <link rel="icon" href="/favicon.ico" />
-         </Head>
-         {children}
-      </main>
+      <React.Fragment>
+         <motion.main
+            className={classname}
+            variants={variants}
+            animate="animate"
+            exit="exit"
+            initial="initial"
+         >
+            {children}
+         </motion.main>
+      </React.Fragment>
    );
 }
 
