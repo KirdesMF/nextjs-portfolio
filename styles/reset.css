@@ -6,8 +6,9 @@ html {
 *:before,
 *:after {
    box-sizing: inherit;
-   transition: color 1s linear 2s, fill 1s linear 2s, stroke 0.5s linear,
-      background 1s linear 2s, border-color 1s linear, box-shadow 1s linear;
+   transition: color 1s linear 3s, fill 1s linear 3s, stroke 0.5s linear 3s,
+      background 1s linear 3s, border-color 1s linear 3s,
+      box-shadow 1s linear 3s;
 }
 
 html,
