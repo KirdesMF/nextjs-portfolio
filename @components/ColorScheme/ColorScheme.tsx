@@ -24,7 +24,7 @@ function ColorScheme({ area }: AdaptiveProps) {
    const contrastRef = useRef<HTMLInputElement>(null!);
    const brightnessRef = useRef<HTMLInputElement>(null!);
 
-   const [theme, setTheme] = useState<Theme>(null!);
+   const [theme, setTheme] = useState<Theme>('');
 
    function setAdaptiveColors() {
       const brightnessInput = brightnessRef.current;
@@ -115,14 +115,10 @@ function ColorScheme({ area }: AdaptiveProps) {
    const debounceInput = Utils.debounce(setAdaptiveColors, 200);
 
    useEffect(() => {
-      setAdaptiveColors();
-   }, [pathname]);
-
-   useEffect(() => {
       setTheme(localStorage.getItem('theme')!);
       checkThemeAndMode();
       setAdaptiveColors();
-   });
+   }, [pathname]);
 
    return (
       <article className={style.container} data-area={area}>

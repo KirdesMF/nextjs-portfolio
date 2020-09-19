@@ -3,7 +3,7 @@ import theme from 'Theme/theme';
 
 export const header = css`
    position: fixed;
-   z-index: 5;
+   z-index: 25;
    transition: box-shadow 500ms ease-in-out, background-color 1s ease-in-out;
 
    @media (hover: hover) and (pointer: fine) {

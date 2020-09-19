@@ -11,7 +11,6 @@ import { Utils } from 'utils/utils';
 import { css } from 'linaria';
 import useCanvasContext from 'context/CanvasContext';
 import { useRouter } from 'next/router';
-import theme from 'Theme/theme';
 
 const HEX_SIZE = 160;
 let requestId: number;

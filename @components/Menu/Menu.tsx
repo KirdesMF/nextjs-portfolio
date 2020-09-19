@@ -10,8 +10,8 @@ function Menu({ area }: MenuProps) {
 
    return (
       <React.Fragment>
-         <ButtonMenu isOpen={isOpen} setIsOpen={setIsOpen} area={area} />
          <NavMenu isOpen={isOpen} setIsOpen={setIsOpen} />
+         <ButtonMenu isOpen={isOpen} setIsOpen={setIsOpen} area={area} />
       </React.Fragment>
    );
 }
