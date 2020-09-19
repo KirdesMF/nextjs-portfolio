@@ -242,13 +242,13 @@ const CONTACT_RATIOS = {
 const CONTACT_SCALE: NamedColorScale[] = [
    {
       name: 'primary',
-      colorKeys: ['hsl(350, 50%, 50%)', 'hsl(350, 30%, 50%)'],
+      colorKeys: ['hsl(320, 50%, 50%)', 'hsl(320, 30%, 50%)'],
       colorspace: 'LCH',
       ratios: CONTACT_RATIOS.primary,
    },
    {
       name: 'secondary',
-      colorKeys: ['hsl(15, 50%, 50%)', 'hsl(15, 30%, 50%)'],
+      colorKeys: ['hsl(150, 50%, 50%)', 'hsl(150, 30%, 50%)'],
       colorspace: 'LCH',
       ratios: CONTACT_RATIOS.secondary,
    },

@@ -6,9 +6,9 @@ html {
 *:before,
 *:after {
    box-sizing: inherit;
-   transition: color 500ms ease-in-out 3s, fill 500ms ease-in-out 3s,
-      stroke 500ms ease-in-out 3s, background 500ms ease-in-out 3s,
-      border-color 500ms ease-in-out 3s, box-shadow 500ms ease-in-out 3s;
+   transition: color 500ms ease-in-out -0.5s, fill 500ms ease-in-out -0.5s,
+      stroke 500ms ease-in-out -0.5s, background 500ms ease-in-out -0.5s,
+      border-color 500ms ease-in-out -0.5s, box-shadow 500ms ease-in-out -0.5s;
 }
 
 html,
@@ -54,4 +54,8 @@ button {
    font: inherit;
    color: inherit;
    background-color: transparent;
+}
+
+button:focus {
+   outline: 1px solid grey;
 }
