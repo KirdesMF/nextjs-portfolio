@@ -14,6 +14,7 @@ import { useRouter } from 'next/router';
 import { AnimatePresence } from 'framer-motion';
 import { Layout } from '@components/Layout/Layout';
 import { CSSLayout } from '@components/Layout/Layout.styled';
+import ButtonBackHome from '@components/ButtonBackHome/ButtonBackHome';
 
 function App({ Component, pageProps }: AppProps) {
    const router = useRouter();
@@ -31,6 +32,8 @@ function App({ Component, pageProps }: AppProps) {
 
          <Pagination />
          <MainTitle />
+
+         {router.pathname !== '/home' && <ButtonBackHome />}
 
          <AnimatePresence exitBeforeEnter>
             <Layout name={pathname} key={router.route}>

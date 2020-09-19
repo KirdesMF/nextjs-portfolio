@@ -4,7 +4,7 @@ import { Variants } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { Utils } from 'utils/utils';
 import { css } from 'linaria';
-import theme from 'Theme/theme';
+import THEME from 'Theme/theme';
 
 const variants: Variants = {
    initial: {
@@ -85,7 +85,7 @@ const span = css`
    font-family: 'Amstelvar', sans-serif;
    text-transform: uppercase;
    font-size: 4em;
-   color: ${theme.COLORS['primary-100']};
+   color: ${THEME.COLORS['primary-100']};
    will-change: transform;
 
    &[data-path='home'] {

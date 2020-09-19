@@ -1,7 +1,6 @@
 import React from 'react';
 import { styled } from 'linaria/react';
 import { icons, NameIconType } from './icons';
-import { css } from 'linaria';
 
 type SIconType = {
    size: string;
@@ -33,7 +32,13 @@ type IconProps = {
    rotation?: string;
 };
 
-const Icon = ({ size, iconColor, hover, name, rotation }: IconProps) => {
+const Icon = ({
+   size,
+   iconColor,
+   hover = 'black',
+   name,
+   rotation = '0',
+}: IconProps) => {
    return (
       <SIcon
          size={size}

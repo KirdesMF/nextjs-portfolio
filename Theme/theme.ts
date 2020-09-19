@@ -28,14 +28,14 @@ const shadows = {
 
 const SHADOWS = setCSSVar(shadows) as Record<keyof typeof shadows, string>;
 
-const theme = {
+const THEME = {
    BREAKPOINTS,
    FONTS,
    COLORS,
    SHADOWS,
 };
 
-export default theme;
+export default THEME;
 
 export const html = css`
    :global() {

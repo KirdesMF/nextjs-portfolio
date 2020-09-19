@@ -1,73 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 
-import * as styles from './HomeNav.style';
-import { motion, Variants } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Icon } from '@components/Icon/Icon';
 
-const navVariants: Variants = {
-   initial: {
-      opacity: 0,
-   },
-   out: {
-      opacity: 0,
-      transition: {
-         staggerChildren: 0.2,
-         when: 'afterChildren',
-      },
-   },
-   in: {
-      opacity: 1,
-      transition: {
-         delayChildren: 0.8,
-         staggerChildren: 0.2,
-      },
-   },
-};
+import styles from './HomeNav.style';
+import variants from './HomeNav.variants';
+import { NameIconType } from '@components/Icon/icons';
 
-const anchorVariants: Variants = {
-   initial: {
-      opacity: 0,
-      y: 30,
-   },
+const sizeIcon = '1.5rem';
 
-   in: {
-      opacity: 1,
-      y: 0,
+const links = [
+   {
+      href: '/about',
+      data: 'about',
+      icon: 'info',
    },
-
-   out: {
-      opacity: 0,
-      y: 30,
+   {
+      href: '/works',
+      data: 'works',
+      icon: 'briefcase',
    },
-};
+   {
+      href: '/contact',
+      data: 'contact',
+      icon: 'phone',
+   },
+];
 
 function HomeNav() {
+   const [isOpen, setIsOpen] = useState(false);
+
+   function handleClick() {
+      setIsOpen((prev) => !prev);
+   }
+
    return (
-      <motion.nav
-         variants={navVariants}
-         initial="initial"
-         animate="in"
-         exit="out"
-         className={styles.nav}
-      >
-         <Link href="/about">
-            <motion.a className={styles.anchor} variants={anchorVariants}>
-               ABOUT
-            </motion.a>
-         </Link>
-
-         <Link href="/works">
-            <motion.a className={styles.anchor} variants={anchorVariants}>
-               WORKS
-            </motion.a>
-         </Link>
-
-         <Link href="/contact">
-            <motion.a className={styles.anchor} variants={anchorVariants}>
-               CONTACT
-            </motion.a>
-         </Link>
-      </motion.nav>
+      <nav className={styles.nav}>
+         <button onClick={handleClick} className={styles.button}>
+            <Icon name="dots" size={sizeIcon} iconColor="white" />
+         </button>
+         <AnimatePresence exitBeforeEnter>
+            {isOpen && (
+               <>
+                  {links.map((link, i) => (
+                     <Link key={link.data} href={link.href}>
+                        <motion.a
+                           className={styles.anchor}
+                           data-anchor={link.data}
+                           variants={variants.anchor}
+                           animate="in"
+                           initial="out"
+                           exit="out"
+                           custom={i}
+                        >
+                           <Icon
+                              name={link.icon as NameIconType}
+                              iconColor="white"
+                              size={sizeIcon}
+                           />
+                        </motion.a>
+                     </Link>
+                  ))}
+               </>
+            )}
+         </AnimatePresence>
+      </nav>
    );
 }
 

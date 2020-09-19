@@ -5,8 +5,10 @@ import {
 import { createCSSCustomProperties } from './helpers-scheme';
 
 const commonGrey = {
+   'grey-50': -1.1,
    'grey-100': 1.1,
    'grey-200': 1.5,
+   'grey-400': 4,
 };
 
 const commonGreyScale: NamedColorScale = {
@@ -91,13 +93,13 @@ const HOME_RATIOS = {
 const HOME_SCALE: NamedColorScale[] = [
    {
       name: 'primary',
-      colorKeys: ['hsl(350, 50%, 50%)', 'hsl(350, 30%, 50%)'],
+      colorKeys: ['hsl(340, 50%, 50%)', 'hsl(340, 30%, 50%)'],
       colorspace: 'LCH',
       ratios: HOME_RATIOS.primary,
    },
    {
       name: 'secondary',
-      colorKeys: ['hsl(15, 50%, 50%)', 'hsl(15, 30%, 50%)'],
+      colorKeys: ['hsl(360, 50%, 50%)', 'hsl(360, 30%, 50%)'],
       colorspace: 'LCH',
       ratios: HOME_RATIOS.secondary,
    },
@@ -147,7 +149,7 @@ const ABOUT_SCALE: NamedColorScale[] = [
    },
    {
       name: 'secondary',
-      colorKeys: ['hsl(15, 50%, 50%)', 'hsl(15, 30%, 50%)'],
+      colorKeys: ['hsl(60, 50%, 50%)', 'hsl(60, 30%, 50%)'],
       colorspace: 'LCH',
       ratios: ABOUT_RATIOS.secondary,
    },

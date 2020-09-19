@@ -1,8 +1,8 @@
 import { css } from 'linaria';
-import theme from 'Theme/theme';
+import THEME from 'Theme/theme';
 
-const shadow = theme.SHADOWS['--box-big'];
-const black = theme.COLORS['grey-100'];
+const shadow = THEME.SHADOWS['--box-big'];
+const black = THEME.COLORS['grey-100'];
 
 const nav = css`
    position: fixed;
@@ -17,7 +17,7 @@ const anchor = css`
    display: grid;
    place-items: center;
 
-   background: ${theme.COLORS['secondary-300']};
+   background: ${THEME.COLORS['secondary-300']};
    box-shadow: ${shadow} black;
 
    &:hover > span::after {
@@ -29,7 +29,7 @@ const span = css`
    display: inline-block;
    font-family: 'Amstelvar';
    font-size: 2em;
-   color: ${theme.COLORS['secondary-700']};
+   color: ${THEME.COLORS['secondary-700']};
 
    &[data-active='active'] {
       filter: blur(5px);
@@ -40,13 +40,13 @@ const span = css`
       display: block;
       width: 20%;
       height: 2px;
-      background: ${theme.COLORS['secondary-700']};
+      background: ${THEME.COLORS['secondary-700']};
       transition: width 500ms ease-in-out;
    }
 `;
 
 const svg = css`
-   filter: drop-shadow(0 0 5px ${theme.COLORS['grey-200']});
+   filter: drop-shadow(0 0 5px ${THEME.COLORS['grey-200']});
    position: absolute;
    bottom: 0%;
    height: 30%;
@@ -56,7 +56,7 @@ const svg = css`
 const path = css`
    stroke-width: 2;
    stroke-linecap: round;
-   fill: ${theme.COLORS['grey-200']};
+   fill: ${THEME.COLORS['grey-200']};
 `;
 
 export default {

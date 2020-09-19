@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { Utils } from 'utils/utils';
 
 import style from './NavMenu.style';
-import variants from './NavMenu.variant';
+import variants from './NavMenu.variants';
 
 type TNavMenu = {
    isOpen: boolean;
@@ -34,6 +34,7 @@ function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
                   {LINKS.map((link, i) => (
                      <Link key={link.name} href={link.href}>
                         <motion.a
+                           tabIndex={0}
                            variants={variants.nav}
                            className={style.anchor}
                            onClick={handleClick}

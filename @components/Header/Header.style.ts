@@ -1,25 +1,25 @@
 import { css } from 'linaria';
-import theme from 'Theme/theme';
+import THEME from 'Theme/theme';
 
-export const header = css`
+const header = css`
    position: fixed;
    z-index: 25;
    transition: box-shadow 500ms ease-in-out, background-color 1s ease-in-out;
 
    @media (hover: hover) and (pointer: fine) {
       &:hover {
-         box-shadow: ${theme.SHADOWS['--box-thin']} black;
+         box-shadow: ${THEME.SHADOWS['--box-thin']} black;
       }
    }
 
-   @media ${theme.BREAKPOINTS.large} {
+   @media ${THEME.BREAKPOINTS.large} {
       top: 0;
       width: 100%;
 
       display: grid;
       grid-template:
-         'menu scheme .' 1fr
-         /10% 25% 1fr;
+         'menu . scheme .' 1fr
+         /10% 1fr 20% 25%;
 
       & [data-area='menu'] {
          grid-area: menu;
@@ -30,3 +30,7 @@ export const header = css`
       }
    }
 `;
+
+export default {
+   header,
+};

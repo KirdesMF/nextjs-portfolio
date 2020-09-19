@@ -5,12 +5,12 @@ import * as variants from './IconTheme.variants';
 import * as style from './IconTheme.style';
 
 type IconThemeProps = {
-   theme: 'light' | 'dark' | string;
+   mode: 'light' | 'dark' | string;
 };
 
-function IconTheme({ theme }: IconThemeProps) {
+function IconTheme({ mode }: IconThemeProps) {
    const animate = (function startAnimation() {
-      if (theme === 'light') return 'light';
+      if (mode === 'light') return 'light';
       else return 'dark';
    })();
 
@@ -20,7 +20,14 @@ function IconTheme({ theme }: IconThemeProps) {
          version="1.1"
          xmlns="http://www.w3.org/2000/svg"
          viewBox="0 0 29 29.6"
+         focusable="false"
+         aria-hidden="true"
       >
+         <title>Dark mode icon</title>
+         <desc>
+            Icon representing earth with a side enlighted by the sun and the
+            other one by the moon
+         </desc>
          <motion.g
             className="icon"
             variants={variants.iconVariants}

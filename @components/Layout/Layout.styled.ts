@@ -9,7 +9,7 @@ const home = css`
    position: relative;
 
    display: grid;
-   grid-template: 1fr / 1fr;
+   grid-template: 1fr 20%/ 1fr;
    place-items: center;
 `;
 

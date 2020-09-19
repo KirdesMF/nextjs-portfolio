@@ -4,7 +4,7 @@ import { Icon } from '@components/Icon/Icon';
 import { Variants, motion, AnimatePresence } from 'framer-motion';
 import { Utils } from 'utils/utils';
 import { css } from 'linaria';
-import theme from 'Theme/theme';
+import THEME from 'Theme/theme';
 
 const links = ['/', '/home', '/about', '/works', '/contact'];
 const CHEVRON_SIZE = '1.5em';
@@ -85,8 +85,8 @@ function Pagination() {
             >
                <Icon
                   name="chevron"
-                  iconColor={`${theme.COLORS['grey-200']}`}
-                  hover={`${theme.COLORS['grey-100']}`}
+                  iconColor={`${THEME.COLORS['grey-200']}`}
+                  hover={`${THEME.COLORS['grey-100']}`}
                   size={CHEVRON_SIZE}
                />
             </motion.button>
@@ -105,8 +105,8 @@ function Pagination() {
             >
                <Icon
                   name="chevron"
-                  iconColor={`${theme.COLORS['grey-200']}`}
-                  hover={`${theme.COLORS['grey-100']}`}
+                  iconColor={`${THEME.COLORS['grey-400']}`}
+                  hover={`${THEME.COLORS['grey-100']}`}
                   size={CHEVRON_SIZE}
                   rotation={'180deg'}
                />
@@ -167,11 +167,11 @@ const span = css`
    padding: 0.5rem;
    width: 100%;
    text-align: center;
-   border-top: 1px solid ${theme.COLORS['primary-200']};
-   border-bottom: 1px solid ${theme.COLORS['primary-200']};
+   border-top: 1px solid ${THEME.COLORS['primary-200']};
+   border-bottom: 1px solid ${THEME.COLORS['primary-200']};
 
    > h2 {
-      color: ${theme.COLORS['primary-200']};
+      color: ${THEME.COLORS['primary-200']};
       text-transform: uppercase;
       font-family: 'Amstelvar';
       font-size: 1.3rem;

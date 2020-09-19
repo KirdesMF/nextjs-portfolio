@@ -1,7 +1,7 @@
 import Hexagon from '@components/Hexagon/Hexagon';
 import { styled } from 'linaria/react';
 import React from 'react';
-import theme from 'Theme/theme';
+import THEME from 'Theme/theme';
 import { TCube, TPoint } from 'utils/hexagons/convert';
 
 const VIEWBOX = `0 0 550 550`;
@@ -27,37 +27,37 @@ const Svg = styled.svg<SvgType>`
    right: ${({ top }) => (top ? '-25rem' : 'calc(100% - 25rem)')};
 
    /* > polygon {
-      fill: ${theme.COLORS.background};
-      stroke: ${theme
+      fill: ${THEME.COLORS.background};
+      stroke: ${THEME
       .COLORS.background};
       stroke-width: 5;
    } */
 
    & polygon:nth-child(3) {
-      fill: ${theme.COLORS['primary-300']};
-      fill: ${theme.COLORS['primary-300']};
+      fill: ${THEME.COLORS['primary-300']};
+      fill: ${THEME.COLORS['primary-300']};
       stroke-width: 5;
    }
 
    & polygon:nth-child(4) {
-      fill: ${theme.COLORS['primary-400']};
-      fill: ${theme.COLORS['primary-400']};
+      fill: ${THEME.COLORS['primary-400']};
+      fill: ${THEME.COLORS['primary-400']};
       stroke-width: 5;
    }
    & polygon:nth-child(5) {
-      fill: ${theme.COLORS['primary-500']};
-      fill: ${theme.COLORS['primary-500']};
+      fill: ${THEME.COLORS['primary-500']};
+      fill: ${THEME.COLORS['primary-500']};
       stroke-width: 5;
    }
    & polygon:nth-child(6) {
-      fill: ${theme.COLORS['primary-600']};
-      fill: ${theme.COLORS['primary-600']};
+      fill: ${THEME.COLORS['primary-600']};
+      fill: ${THEME.COLORS['primary-600']};
       stroke-width: 5;
    }
 
    & polygon:nth-child(7) {
-      fill: ${theme.COLORS['primary-700']};
-      fill: ${theme.COLORS['primary-700']};
+      fill: ${THEME.COLORS['primary-700']};
+      fill: ${THEME.COLORS['primary-700']};
       stroke-width: 5;
    }
 `;

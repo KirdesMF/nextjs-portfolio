@@ -1,7 +1,7 @@
 import ColorScheme from '@components/ColorScheme/ColorScheme';
 import Menu from '@components/Menu/Menu';
 import React from 'react';
-import * as style from './Header.style';
+import style from './Header.style';
 
 function Header() {
    return (

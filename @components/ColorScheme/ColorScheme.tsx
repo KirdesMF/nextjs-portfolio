@@ -7,13 +7,16 @@ import { setCSSCustomProperties, getBackground } from './utils/helpers-scheme';
 import { Scheme } from './utils/scheme';
 import IconTheme from './IconTheme/IconTheme';
 
-import * as style from './ColorScheme.style';
+import style from './ColorScheme.style';
+import { Icon } from '@components/Icon/Icon';
+import { motion, Variants } from 'framer-motion';
+import THEME from 'Theme/theme';
 
 type AdaptiveProps = {
    area: string;
 };
 
-type Theme = 'light' | 'dark' | string;
+type Mode = 'light' | 'dark' | string;
 
 function ColorScheme({ area }: AdaptiveProps) {
    const { pathname } = useRouter();
@@ -24,7 +27,7 @@ function ColorScheme({ area }: AdaptiveProps) {
    const contrastRef = useRef<HTMLInputElement>(null!);
    const brightnessRef = useRef<HTMLInputElement>(null!);
 
-   const [theme, setTheme] = useState<Theme>('');
+   const [mode, setMode] = useState<Mode>('');
 
    function setAdaptiveColors() {
       const brightnessInput = brightnessRef.current;
@@ -45,7 +48,7 @@ function ColorScheme({ area }: AdaptiveProps) {
    }
 
    function setMinMaxLight() {
-      contrastRef.current.min = '0';
+      contrastRef.current.min = '0.5';
       contrastRef.current.max = '4';
 
       brightnessRef.current.min = '40';
@@ -56,7 +59,7 @@ function ColorScheme({ area }: AdaptiveProps) {
    }
 
    function setMinMaxDark() {
-      contrastRef.current.min = '0';
+      contrastRef.current.min = '0.5';
       contrastRef.current.max = '8';
 
       brightnessRef.current.min = '0';
@@ -67,11 +70,11 @@ function ColorScheme({ area }: AdaptiveProps) {
    }
 
    function checkThemeAndMode() {
-      const theme = localStorage.getItem('theme');
+      const mode = localStorage.getItem('mode');
 
-      if (theme && theme === 'dark') {
+      if (mode && mode === 'dark') {
          setMinMaxDark();
-      } else if (theme && theme === 'light') {
+      } else if (mode && mode === 'light') {
          setMinMaxLight();
       } else if (window.matchMedia(`(prefers-color-scheme: dark)`).matches) {
          setMinMaxDark();
@@ -81,7 +84,7 @@ function ColorScheme({ area }: AdaptiveProps) {
    }
 
    function handleOnChangeRadioBtn(event: React.ChangeEvent<HTMLInputElement>) {
-      if (event.currentTarget.id === 'light') {
+      if (event.currentTarget.checked) {
          contrastRef.current.min = '0';
          contrastRef.current.max = '3';
 
@@ -91,11 +94,9 @@ function ColorScheme({ area }: AdaptiveProps) {
          contrastRef.current.value = '1';
          brightnessRef.current.value = '65';
 
-         localStorage.setItem('theme', 'light');
-         setTheme('light');
-      }
-
-      if (event.currentTarget.id === 'dark') {
+         localStorage.setItem('mode', 'light');
+         setMode('light');
+      } else {
          contrastRef.current.min = '0';
          contrastRef.current.max = '10';
 
@@ -105,8 +106,8 @@ function ColorScheme({ area }: AdaptiveProps) {
          contrastRef.current.value = '4';
          brightnessRef.current.value = '17.5';
 
-         localStorage.setItem('theme', 'dark');
-         setTheme('dark');
+         localStorage.setItem('mode', 'dark');
+         setMode('dark');
       }
 
       setAdaptiveColors();
@@ -115,40 +116,39 @@ function ColorScheme({ area }: AdaptiveProps) {
    const debounceInput = Utils.debounce(setAdaptiveColors, 200);
 
    useEffect(() => {
-      setTheme(localStorage.getItem('theme')!);
+      setMode(localStorage.getItem('mode')!);
       checkThemeAndMode();
       setAdaptiveColors();
    }, [pathname]);
 
+   const [isOpen, setIsOpen] = useState(false);
+
+   function handleClick() {
+      setIsOpen((prev) => !prev);
+   }
+
    return (
       <article className={style.container} data-area={area}>
-         <IconTheme theme={theme} />
+         <label className={style.mode}>
+            <input type="checkbox" onChange={handleOnChangeRadioBtn} />
+            <IconTheme mode={mode} />
+            <p>Mode</p>
+         </label>
 
-         <section className={style.theme}>
-            <label>
-               <input
-                  id="light"
-                  type="radio"
-                  name="mode"
-                  checked={theme === 'light'}
-                  onChange={handleOnChangeRadioBtn}
-               />
-               <p>Light</p>
-            </label>
+         <button className={style.button} onClick={handleClick}>
+            <Icon
+               name="sliders"
+               size="2rem"
+               iconColor={THEME.COLORS['secondary-500']}
+            />
+         </button>
 
-            <label>
-               <input
-                  id="dark"
-                  type="radio"
-                  name="mode"
-                  checked={theme === 'dark'}
-                  onChange={handleOnChangeRadioBtn}
-               />
-               <p>Dark</p>
-            </label>
-         </section>
-
-         <section className={style.settings}>
+         <motion.section
+            className={style.settings}
+            variants={variants}
+            animate={isOpen ? 'in' : 'out'}
+            initial="out"
+         >
             <label>
                <input
                   type="range"
@@ -172,8 +172,17 @@ function ColorScheme({ area }: AdaptiveProps) {
                />
                <p>contrast</p>
             </label>
-         </section>
+         </motion.section>
       </article>
    );
 }
 export default ColorScheme;
+
+const variants: Variants = {
+   in: {
+      opacity: 1,
+   },
+   out: {
+      opacity: 0,
+   },
+};
