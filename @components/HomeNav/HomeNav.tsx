@@ -37,9 +37,16 @@ function HomeNav() {
 
    return (
       <nav className={styles.nav}>
-         <button onClick={handleClick} className={styles.button}>
+         <motion.button
+            onClick={handleClick}
+            className={styles.button}
+            variants={variants.button}
+            animate="in"
+            exit="out"
+         >
             <Icon name="dots" size={sizeIcon} iconColor="white" />
-         </button>
+         </motion.button>
+
          <AnimatePresence exitBeforeEnter>
             {isOpen && (
                <>

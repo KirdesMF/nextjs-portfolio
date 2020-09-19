@@ -75,8 +75,8 @@ const article = css`
    height: auto;
 
    &[data-path='home'] {
-      left: 10%;
-      top: 20%;
+      left: 15%;
+      top: 7.5%;
       transform: translate(-20%, -20%);
    }
 `;

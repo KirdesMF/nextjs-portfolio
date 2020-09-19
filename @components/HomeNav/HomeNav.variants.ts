@@ -42,7 +42,23 @@ const anchor: Variants = {
    }),
 };
 
+const button: Variants = {
+   initial: {
+      opacity: 0,
+   },
+   out: {
+      opacity: 0,
+   },
+   in: {
+      opacity: 1,
+      transition: {
+         delay: 1,
+      },
+   },
+};
+
 export default {
    nav,
    anchor,
+   button,
 };

@@ -33,7 +33,7 @@ function App({ Component, pageProps }: AppProps) {
          <Pagination />
          <MainTitle />
 
-         {router.pathname !== '/home' && <ButtonBackHome />}
+         <ButtonBackHome />
 
          <AnimatePresence exitBeforeEnter>
             <Layout name={pathname} key={router.route}>

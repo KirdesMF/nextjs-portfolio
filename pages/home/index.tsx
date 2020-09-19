@@ -3,6 +3,7 @@ import HomeNav from '@components/HomeNav/HomeNav';
 import Head from 'next/head';
 import { css } from 'linaria';
 import theme from 'Theme/theme';
+import { motion, Variants } from 'framer-motion';
 
 const title = 'Ced | Home';
 /**
@@ -15,14 +16,20 @@ function Home() {
          <Head>
             <title>{title}</title>
          </Head>
-         <article className={article}>
+         <motion.article
+            className={article}
+            variants={variants}
+            animate="in"
+            initial="out"
+            exit="out"
+         >
             <p>
                Lorem ipsum dolor sit amet consectetur adipisicing elit.
                Repudiandae perferendis ea, dolorum vero explicabo repellendus
                quisquam aliquam, quibusdam sed tempore obcaecati, magni eum?
                Beatae fugiat adipisci non facere! Praesentium, iure....
             </p>
-         </article>
+         </motion.article>
          <HomeNav />
       </React.Fragment>
    );
@@ -30,6 +37,19 @@ function Home() {
 
 /**=============== Export ============ */
 export default Home;
+
+const variants: Variants = {
+   in: {
+      opacity: 1,
+      transition: {
+         delay: 1,
+      },
+   },
+
+   out: {
+      opacity: 0,
+   },
+};
 
 const article = css`
    grid-area: 1 / 1 / 3 / 2;

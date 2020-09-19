@@ -2,6 +2,7 @@ import { Icon } from '@components/Icon/Icon';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { css } from 'linaria';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import THEME from 'Theme/theme';
 
@@ -32,15 +33,15 @@ const variants: Variants = {
 };
 
 function ButtonBackHome() {
+   const { pathname } = useRouter();
    return (
       <AnimatePresence exitBeforeEnter>
          <Link href="/home">
             <motion.a
-               key="btnHome"
                className={anchor}
                variants={variants}
                initial="initial"
-               animate="in"
+               animate={pathname === '/home' ? 'out' : 'in'}
                exit="out"
             >
                <Icon
