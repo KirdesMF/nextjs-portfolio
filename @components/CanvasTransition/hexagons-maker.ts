@@ -83,9 +83,9 @@ const setCanvasHexagons = (props: TSetCanvasHexagons) => {
          nextColor: nextColor,
          scale: 1,
          scaleIteration: 0,
-         scaleTotalIteration: Utils.secondsToFrame(0.5),
+         scaleTotalIteration: Utils.secondsToFrame(0.3),
          colorIteration: 0,
-         colorTotalIteration: Utils.secondsToFrame(0.5),
+         colorTotalIteration: Utils.secondsToFrame(0.3),
          reverse: false,
          loop: 0,
       }))

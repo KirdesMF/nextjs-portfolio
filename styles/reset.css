@@ -6,9 +6,9 @@ html {
 *:before,
 *:after {
    box-sizing: inherit;
-   transition: color 1s linear 3s, fill 1s linear 3s, stroke 0.5s linear 3s,
-      background 1s linear 3s, border-color 1s linear 3s,
-      box-shadow 1s linear 3s;
+   transition: color 500ms ease-in-out 3s, fill 500ms ease-in-out 3s,
+      stroke 500ms ease-in-out 3s, background 500ms ease-in-out 3s,
+      border-color 500ms ease-in-out 3s, box-shadow 500ms ease-in-out 3s;
 }
 
 html,
