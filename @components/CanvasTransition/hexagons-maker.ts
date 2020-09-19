@@ -155,13 +155,13 @@ const updateCanvasHexagons = (hexmap: THexagons[]) => {
             : (hex.scaleIteration = 0);
 
          hex.scale = !hex.reverse
-            ? Utils.ease.easeInCirc({
+            ? Utils.ease.easeLinear({
                  i: hex.scaleIteration,
                  s: 1,
                  c: -1,
                  t: hex.scaleTotalIteration,
               })
-            : Utils.ease.easeOutCirc({
+            : Utils.ease.easeLinear({
                  i: hex.scaleIteration,
                  s: 0,
                  c: 1,
@@ -172,7 +172,7 @@ const updateCanvasHexagons = (hexmap: THexagons[]) => {
             ? {
                  ...hex.color,
 
-                 h: Utils.ease.easeOutCirc({
+                 h: Utils.ease.easeLinear({
                     i: hex.colorIteration,
                     s: hex.color.h,
                     c: (Math.random() * -hex.color.h) / 10,
@@ -184,21 +184,21 @@ const updateCanvasHexagons = (hexmap: THexagons[]) => {
               }
             : {
                  ...hex.color,
-                 h: Utils.ease.easeOutExpo({
+                 h: Utils.ease.easeLinear({
                     i: hex.colorIteration,
                     s: 0,
                     c: hex.nextColor.h,
                     t: hex.colorTotalIteration,
                  }),
 
-                 s: Utils.ease.easeOutExpo({
+                 s: Utils.ease.easeLinear({
                     i: hex.colorIteration,
                     s: 0,
                     c: hex.nextColor.s,
                     t: hex.colorTotalIteration,
                  }),
 
-                 l: Utils.ease.easeOutExpo({
+                 l: Utils.ease.easeLinear({
                     i: hex.colorIteration,
                     s: 0,
                     c: hex.nextColor.l,
