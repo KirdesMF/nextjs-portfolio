@@ -13,7 +13,6 @@ import useCanvasContext from 'context/CanvasContext';
 import { useRouter } from 'next/router';
 
 const HEX_SIZE = 160;
-let requestId: number;
 
 const CanvasHexagons = () => {
    const { pathname } = useRouter();
@@ -61,6 +60,8 @@ const CanvasHexagons = () => {
       function clear() {
          ctx.clearRect(0, 0, width, height);
       }
+
+      let requestId: number;
 
       function animate() {
          requestId = requestAnimationFrame(animate);

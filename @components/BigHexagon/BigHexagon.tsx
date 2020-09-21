@@ -17,6 +17,7 @@ type SvgType = {
 };
 
 const Svg = styled.svg<SvgType>`
+   pointer-events: none;
    position: fixed;
    z-index: 999;
    width: 50rem;
@@ -26,37 +27,25 @@ const Svg = styled.svg<SvgType>`
    top: ${({ top }) => (top ? '-25rem' : 'calc(100% - 25rem)')};
    right: ${({ top }) => (top ? '-25rem' : 'calc(100% - 25rem)')};
 
-   /* > polygon {
-      fill: ${THEME.COLORS.background};
-      stroke: ${THEME
-      .COLORS.background};
-      stroke-width: 5;
-   } */
-
    & polygon:nth-child(3) {
-      fill: ${THEME.COLORS['primary-300']};
       fill: ${THEME.COLORS['primary-300']};
       stroke-width: 5;
    }
 
    & polygon:nth-child(4) {
       fill: ${THEME.COLORS['primary-400']};
-      fill: ${THEME.COLORS['primary-400']};
       stroke-width: 5;
    }
    & polygon:nth-child(5) {
-      fill: ${THEME.COLORS['primary-500']};
       fill: ${THEME.COLORS['primary-500']};
       stroke-width: 5;
    }
    & polygon:nth-child(6) {
       fill: ${THEME.COLORS['primary-600']};
-      fill: ${THEME.COLORS['primary-600']};
       stroke-width: 5;
    }
 
    & polygon:nth-child(7) {
-      fill: ${THEME.COLORS['primary-700']};
       fill: ${THEME.COLORS['primary-700']};
       stroke-width: 5;
    }
@@ -71,6 +60,7 @@ function BigHexagon({ top }: BigHexagonProps) {
          top={top}
          version="1.1"
          xmlns="http://www.w3.org/2000/svg"
+         focusable="false"
          viewBox={VIEWBOX}
       >
          <defs>

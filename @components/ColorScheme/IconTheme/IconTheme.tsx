@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import * as variants from './IconTheme.variants';
-import * as style from './IconTheme.style';
+import variants from './IconTheme.variants';
+import style from './IconTheme.style';
 
 type IconThemeProps = {
    mode: 'light' | 'dark' | string;
@@ -30,13 +30,13 @@ function IconTheme({ mode }: IconThemeProps) {
          </desc>
          <motion.g
             className="icon"
-            variants={variants.iconVariants}
+            variants={variants.icon}
             initial="initial"
             animate={animate}
          >
             <motion.g
                className="light"
-               variants={variants.lightVariants}
+               variants={variants.light}
                initial="initial"
                animate={animate}
             >
@@ -91,7 +91,7 @@ function IconTheme({ mode }: IconThemeProps) {
             </motion.g>
             <motion.g
                className="dark"
-               variants={variants.darkVariants}
+               variants={variants.dark}
                initial="initial"
                animate={animate}
             >

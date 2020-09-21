@@ -113,7 +113,7 @@ function ColorScheme({ area }: AdaptiveProps) {
       setAdaptiveColors();
    }
 
-   const debounceInput = Utils.debounce(setAdaptiveColors, 200);
+   const debounceInput = Utils.debounce(setAdaptiveColors, 300);
 
    useEffect(() => {
       setMode(localStorage.getItem('mode')!);
@@ -130,7 +130,11 @@ function ColorScheme({ area }: AdaptiveProps) {
    return (
       <article className={style.container} data-area={area}>
          <label className={style.mode}>
-            <input type="checkbox" onChange={handleOnChangeRadioBtn} />
+            <input
+               type="checkbox"
+               onChange={handleOnChangeRadioBtn}
+               checked={mode === 'light' ? true : false}
+            />
             <IconTheme mode={mode} />
             <p>Mode</p>
          </label>

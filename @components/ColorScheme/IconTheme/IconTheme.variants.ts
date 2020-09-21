@@ -1,6 +1,6 @@
 import { Variants } from 'framer-motion';
 
-export const iconVariants: Variants = {
+const icon: Variants = {
    dark: {
       rotate: 45,
       transition: {
@@ -20,7 +20,7 @@ export const iconVariants: Variants = {
    },
 };
 
-export const lightVariants: Variants = {
+const light: Variants = {
    dark: {
       opacity: 0.05,
       transition: {
@@ -40,7 +40,7 @@ export const lightVariants: Variants = {
    },
 };
 
-export const darkVariants: Variants = {
+const dark: Variants = {
    dark: {
       opacity: 1,
       transition: {
@@ -58,4 +58,10 @@ export const darkVariants: Variants = {
    initial: {
       opacity: 0,
    },
+};
+
+export default {
+   icon,
+   light,
+   dark,
 };

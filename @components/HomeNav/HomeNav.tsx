@@ -1,39 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-
 import { AnimatePresence, motion } from 'framer-motion';
-import { Icon } from '@components/Icon/Icon';
 
+import THEME from 'Theme/theme';
 import styles from './HomeNav.style';
 import variants from './HomeNav.variants';
-import { NameIconType } from '@components/Icon/icons';
 
-const sizeIcon = '1.5rem';
+import { NameIconType } from '@components/Icon/icons';
+import { Icon } from '@components/Icon/Icon';
+import { useRouter } from 'next/router';
+
+const sizeIcon = '3rem';
 
 const links = [
    {
       href: '/about',
       data: 'about',
       icon: 'info',
+      custom: 2,
    },
    {
       href: '/works',
       data: 'works',
       icon: 'briefcase',
+      custom: 1,
    },
    {
       href: '/contact',
       data: 'contact',
       icon: 'phone',
+      custom: -2,
    },
 ];
 
 function HomeNav() {
    const [isOpen, setIsOpen] = useState(false);
+   const router = useRouter();
 
    function handleClick() {
       setIsOpen((prev) => !prev);
    }
+
+   useEffect(() => {
+      setIsOpen(false);
+   }, [router.pathname]);
 
    return (
       <nav className={styles.nav}>
@@ -41,10 +51,12 @@ function HomeNav() {
             onClick={handleClick}
             className={styles.button}
             variants={variants.button}
-            animate="in"
-            exit="out"
          >
-            <Icon name="dots" size={sizeIcon} iconColor="white" />
+            <Icon
+               name="dots"
+               size={sizeIcon}
+               iconColor={THEME.COLORS['secondary-300']}
+            />
          </motion.button>
 
          <AnimatePresence exitBeforeEnter>
@@ -59,7 +71,8 @@ function HomeNav() {
                            animate="in"
                            initial="out"
                            exit="out"
-                           custom={i}
+                           custom={link.custom}
+                           onClick={handleClick}
                         >
                            <Icon
                               name={link.icon as NameIconType}

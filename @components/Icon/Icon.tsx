@@ -11,7 +11,6 @@ type SIconType = {
 
 /**=================== Styled ============================== */
 const SIcon = styled.svg<SIconType>`
-   transition: color 0.5s ease-in-out;
    width: ${(props) => props.size};
    color: ${(props) => props.iconColor};
    transform-origin: center;

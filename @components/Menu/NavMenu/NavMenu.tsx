@@ -12,7 +12,6 @@ type TNavMenu = {
    setIsOpen: (value: React.SetStateAction<boolean>) => void;
 };
 
-const VIEWBOX = `0 0 1440 320`;
 const LINKS = [
    { name: 'home', href: '/home' },
    { name: 'about', href: '/about' },

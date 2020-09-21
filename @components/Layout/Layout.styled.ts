@@ -4,40 +4,81 @@ import { css } from 'linaria';
  * Home Layout
  */
 const home = css`
-   width: 100%;
-   height: 100%;
    position: relative;
 
-   display: grid;
-   grid-template: 1fr 20%/ 1fr;
-   place-items: center;
+   height: 100%;
+   display: flex;
+   flex-wrap: nowrap;
+
+   overflow-x: auto;
+   scrollbar-width: none;
+
+   &::-webkit-scrollbar {
+      display: none;
+   }
 `;
 
 /**
  * About Layout
  */
 const about = css`
-   width: 100%;
+   position: relative;
+
    height: 100%;
-   display: grid;
+
+   display: flex;
+   flex-wrap: nowrap;
+
+   overflow-x: auto;
+   scrollbar-width: none;
+
+   &::-webkit-scrollbar {
+      display: none;
+   }
 `;
 
 /**
  * Works Layout
  */
 const works = css`
+   z-index: 15;
+   position: relative;
+
    width: 100%;
    height: 100%;
    display: grid;
+
+   display: grid;
+   grid-template:
+      '. . .' 15%
+      '. resume .' 1fr
+      '. . .' 1fr
+      '. button .' 20%
+      /20% 1fr 20%;
+
+   place-items: center;
 `;
 
 /**
  * Contact Layout
  */
 const contact = css`
+   z-index: 15;
+   position: relative;
+
    width: 100%;
    height: 100%;
    display: grid;
+
+   display: grid;
+   grid-template:
+      '. . .' 15%
+      '. resume .' 1fr
+      '. . .' 1fr
+      '. button .' 20%
+      /20% 1fr 20%;
+
+   place-items: center;
 `;
 
 /**================= Export ================ */

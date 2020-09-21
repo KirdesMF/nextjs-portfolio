@@ -3,8 +3,9 @@ import Hexagon from '@components/Hexagon/Hexagon';
 import { motion, useAnimation } from 'framer-motion';
 import { menuSettings } from './ButtonMenu.variants';
 import { useRouter } from 'next/router';
-import theme from 'Theme/theme';
-import * as style from './ButtonMenu.style';
+
+import style from './ButtonMenu.style';
+import THEME from 'Theme/theme';
 
 type TButtonMenu = {
    isOpen: boolean;
@@ -61,7 +62,7 @@ function ButtonMenu({ isOpen, setIsOpen, area }: TButtonMenu) {
                      variants={hexesMenuVariants({
                         delay: i,
                         isOpen: isOpen,
-                        color: theme.COLORS['primary-200'],
+                        color: THEME.COLORS['primary-200'],
                      })}
                      originHex={ORIGIN}
                      sizeHex={HEX_SIZE}

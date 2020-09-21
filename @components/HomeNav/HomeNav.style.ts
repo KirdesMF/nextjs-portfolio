@@ -2,12 +2,15 @@ import { css } from 'linaria';
 import THEME from 'Theme/theme';
 
 const nav = css`
-   --width: 3rem;
-   --height: 3rem;
+   --width: 6rem;
+   --height: 6rem;
 
    position: relative;
 
-   grid-area: 2 / 1 / 3 / 3;
+   grid-area: nav;
+   justify-self: center;
+   align-self: start;
+
    display: grid;
    place-items: center;
 
@@ -32,18 +35,18 @@ const anchor = css`
 
    font: 0.5em/1 'Amstelvar';
    font-variation-settings: 'wght' 600, 'opsz' 60, 'ytuc' 800, 'GRAD' -1;
-
+   /* 
    &[data-anchor='about'] {
-      left: 4rem;
+      transform: translateX(-50px);
    }
 
    &[data-anchor='works'] {
-      left: 8rem;
+      transform: translateX(-50px);
    }
 
    &[data-anchor='contact'] {
-      left: 12rem;
-   }
+      transform: translateX(-50px);
+   } */
 `;
 
 const button = css`
@@ -66,7 +69,7 @@ const button = css`
    }
 
    &:hover {
-      transform: rotate(180deg);
+      transform: rotate(180deg) !important;
    }
 `;
 

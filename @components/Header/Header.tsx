@@ -1,7 +1,9 @@
+import React from 'react';
+
+import style from './Header.style';
+
 import ColorScheme from '@components/ColorScheme/ColorScheme';
 import Menu from '@components/Menu/Menu';
-import React from 'react';
-import style from './Header.style';
 
 function Header() {
    return (

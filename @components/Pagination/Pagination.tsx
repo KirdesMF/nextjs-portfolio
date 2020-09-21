@@ -1,10 +1,10 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Icon } from '@components/Icon/Icon';
 import { Variants, motion, AnimatePresence } from 'framer-motion';
 import { Utils } from 'utils/utils';
 import { css } from 'linaria';
 import THEME from 'Theme/theme';
+import { Icon } from '@components/Icon/Icon';
 
 const links = ['/', '/home', '/about', '/works', '/contact'];
 const CHEVRON_SIZE = '1.5em';
@@ -18,14 +18,12 @@ const titleVariants: Variants = {
       transform: 'rotate(0deg)',
       transition: {
          duration: 0.5,
-         delay: 1,
       },
    },
    exit: {
       transform: `rotate(-${ROTATION_TITLE})`,
       transition: {
          duration: 0.5,
-         delay: 1,
       },
    },
 };
@@ -116,7 +114,7 @@ function Pagination() {
          <span className={span}>
             <AnimatePresence exitBeforeEnter>
                <motion.h2
-                  key={router.route}
+                  key={pathname}
                   variants={titleVariants}
                   animate="animate"
                   initial="initial"
@@ -134,7 +132,7 @@ export default Pagination;
 
 const nav = css`
    position: fixed;
-   z-index: 4;
+   z-index: 20;
    right: 3%;
    top: 50%;
    transform: translateY(-50%);

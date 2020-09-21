@@ -134,10 +134,7 @@ const ABOUT_RATIOS = {
       'tertiary-100': 3,
       'tertiary-200': 4.5,
    },
-   grey: {
-      'grey-100': 3,
-      'grey-200': 4.5,
-   },
+   grey: commonGrey,
 };
 
 const ABOUT_SCALE: NamedColorScale[] = [
