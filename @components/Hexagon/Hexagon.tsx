@@ -10,9 +10,13 @@ type TCreateAtt = {
    sizeHex: number;
 };
 
+function roundToTwo(num: number) {
+   return Number(num.toFixed(2));
+}
+
 function createAttribPoints({ originHex, cube, sizeHex }: TCreateAtt) {
    return hexCornersPoints({ origin: originHex, cube, size: sizeHex })
-      .map((corner) => `${~~corner.x} ${~~corner.y}`)
+      .map((corner) => `${roundToTwo(corner.x)} ${roundToTwo(corner.y)}`)
       .join(',');
 }
 
@@ -32,7 +36,6 @@ function Hexagon({ originHex, sizeHex, cube, custom, variants, filter }: THex) {
    return (
       <motion.polygon
          filter={filter}
-         className={hex}
          points={points}
          custom={custom}
          variants={variants}
@@ -40,10 +43,5 @@ function Hexagon({ originHex, sizeHex, cube, custom, variants, filter }: THex) {
       />
    );
 }
-
-const hex = css`
-   stroke-width: 3;
-   stroke-linejoin: round;
-`;
 
 export default Hexagon;

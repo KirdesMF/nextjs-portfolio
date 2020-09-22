@@ -9,6 +9,17 @@ type NameIconType = keyof typeof icons;
  * Should be use inside {@link components/Icon/Icon.tsx}
  */
 const icons = {
+   plane: {
+      title: 'Plane icon',
+      svg: (
+         <path
+            fill="currentColor"
+            strokeWidth="1"
+            strokeMiterlimit="10"
+            d="M3.8,23c-1.2,0.4-2.2-1.3-1.6-2.6l4.1-8.6L11,1.6c0.4-0.8,1.5-0.8,1.9,0l4.8,10.1l4.1,8.6c0.6,1.4-0.4,3-1.6,2.6l-7.8-3.4c-0.3-0.1-0.6-0.1-0.9,0L3.8,23z"
+         />
+      ),
+   },
    twitter: {
       title: 'Twitter icon / css.gg',
       svg: (

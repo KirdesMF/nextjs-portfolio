@@ -30,7 +30,7 @@ const variants: Variants = {
    }),
 };
 
-const wrapper = css`
+const article = css`
    --left: 50%;
    --top: 50%;
    z-index: 20;
@@ -44,6 +44,11 @@ const wrapper = css`
 
    > svg {
       grid-area: 1 / 1 / 2 / 2;
+   }
+
+   &[data-pathname='/home'] {
+      --left: 12%;
+      --top: 8.5%;
    }
 `;
 
@@ -62,6 +67,10 @@ const span = css`
    font-variation-settings: 'XOPQ' 240, 'YTUC' 930;
    color: ${THEME.COLORS['primary-100']};
    will-change: transform;
+
+   &[data-pathname='/home'] {
+      font-size: 1rem;
+   }
 `;
 
 function MaintTitle() {
@@ -70,16 +79,21 @@ function MaintTitle() {
 
    return (
       <AnimatePresence exitBeforeEnter>
-         <article className={wrapper} key={router.route}>
+         <article
+            className={article}
+            key={router.route}
+            data-pathname={router.pathname}
+         >
             <h1 className={heading}>
                {title.split('').map((letter, i) => (
                   <motion.span
                      className={span}
+                     data-pathname={router.pathname}
                      key={i}
                      custom={i}
                      variants={variants}
                      initial="initial"
-                     animate={router.route.substr(1) === 'home' ? 'out' : 'in'}
+                     animate="in"
                      exit="out"
                   >
                      {letter}

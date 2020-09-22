@@ -2,79 +2,65 @@ import { css } from 'linaria';
 import THEME from 'Theme/theme';
 
 const nav = css`
-   --width: 6rem;
-   --height: 6rem;
-
-   position: relative;
-
    grid-area: nav;
-   justify-self: center;
-   align-self: start;
+   overflow: hidden;
 
    display: grid;
-   place-items: center;
-
-   transition: all 1s ease;
+   grid-template: 1fr / repeat(3, 1fr);
+   column-gap: 2em;
 `;
 
 const anchor = css`
-   position: absolute;
-   top: 0;
-
    display: grid;
+   grid-template: 1fr / 1fr;
    place-items: center;
 
-   width: var(--width);
-   height: var(--height);
+   > svg {
+      width: 100%;
+      height: 100%;
+      grid-area: 1 / -1;
 
-   color: ${THEME.COLORS['secondary-500']};
-   background: ${THEME.COLORS['primary-300']};
-   color: ${THEME.COLORS['grey-200']};
-   box-shadow: ${THEME.SHADOWS['--box-thin']} ${THEME.COLORS['grey-400']};
-   border-radius: 50%;
+      opacity: 0.5;
+      fill: ${THEME.COLORS['primary-400']};
+      filter: drop-shadow(0 0 15px ${THEME.COLORS['grey-50']});
+      stroke-width: 0.5;
+      stroke: ${THEME.COLORS['primary-700']};
 
-   font: 0.5em/1 'Amstelvar';
-   font-variation-settings: 'wght' 600, 'opsz' 60, 'ytuc' 800, 'GRAD' -1;
-   /* 
-   &[data-anchor='about'] {
-      transform: translateX(-50px);
+      > polygon {
+         /* animation: rotate infinite 2s cubic-bezier(0.785, 0.135, 0.15, 0.86); */
+      }
    }
 
-   &[data-anchor='works'] {
-      transform: translateX(-50px);
+   @keyframes rotate {
+      from {
+         transform: scale(1) rotate(-360deg);
+      }
+      50% {
+         transform: scale(0.6);
+      }
+      to {
+         transform: scale(1) rotate(360deg);
+      }
    }
-
-   &[data-anchor='contact'] {
-      transform: translateX(-50px);
-   } */
 `;
 
-const button = css`
-   width: var(--width);
-   height: var(--height);
-
+const span = css`
+   pointer-events: none;
    display: grid;
    place-items: center;
+   z-index: 1;
+   grid-area: 1 / -1;
+   text-transform: uppercase;
+   font-family: ${THEME.FONTS.amstelvar};
+   font-size: 3rem;
+   font-variation-settings: 'XOPQ' 210, 'YTUC' 800;
+   color: ${THEME.COLORS['primary-700']};
 
-   outline: none; /** need style */
-
-   background: ${THEME.COLORS['primary-300']};
-   color: ${THEME.COLORS['grey-200']};
-   box-shadow: ${THEME.SHADOWS['--box-big']} ${THEME.COLORS['grey-400']};
-   border-radius: 50%;
-   transition: box-shadow 500ms ease, transform 500ms ease;
-
-   &:active {
-      box-shadow: unset;
-   }
-
-   &:hover {
-      transform: rotate(180deg) !important;
-   }
+   filter: drop-shadow(0 0 15px ${THEME.COLORS['grey-50']});
 `;
 
 export default {
    nav,
    anchor,
-   button,
+   span,
 };

@@ -26,6 +26,7 @@ const anchor = css`
 `;
 
 const span = css`
+   pointer-events: none;
    display: inline-block;
    font-family: 'Amstelvar';
    font-size: 2em;

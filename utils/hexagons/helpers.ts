@@ -1,21 +1,6 @@
 import { Cube, TCube, TPoint, Point, cubeToPoint } from './convert';
 import { MathCubeCoord } from './math-cube';
 
-type TNeighbor = {
-   cube: TCube;
-   direction: number;
-};
-
-type TRing = {
-   center: TCube;
-   radius: number;
-};
-
-type TSpiral = {
-   center: TCube;
-   radius: number;
-};
-
 const directions = [
    Cube({ q: 1, r: 0, s: -1 }),
    Cube({ q: 1, r: -1, s: 0 }),
@@ -27,18 +12,29 @@ const directions = [
 
 const cubeDirection = (direction: number) => directions[direction];
 
+type TNeighbor = {
+   cube: TCube;
+   direction: number;
+};
+
 const cubeNeighbor = ({ cube, direction }: TNeighbor) => {
    return MathCubeCoord.add({ cubeA: cube, cubeB: cubeDirection(direction) });
 };
 
 // Ring
+
+type TRing = {
+   center: TCube;
+   radius: number;
+};
+
 export const cubeRing = ({ center, radius }: TRing) => {
    let cube = MathCubeCoord.add({
       cubeA: center,
       cubeB: MathCubeCoord.multiply({ cubeA: cubeDirection(4), k: radius }),
    });
 
-   let results: TCube[] = [];
+   const results: TCube[] = [];
 
    for (let i = 0; i < 6; i++) {
       for (let j = 0; j < radius; j++) {
@@ -50,8 +46,14 @@ export const cubeRing = ({ center, radius }: TRing) => {
 };
 
 // Spiral
+
+type TSpiral = {
+   center: TCube;
+   radius: number;
+};
+
 export const cubeSpiral = ({ center, radius }: TSpiral) => {
-   let results: TCube[] = [center];
+   let results: TCube[] = [];
 
    for (let i = 1; i <= radius; i++) {
       results = cubeRing({ center, radius });
@@ -72,7 +74,7 @@ type THexPoints = {
 };
 
 const getOffset = ({ size, corner }: TGetOffset) => {
-   let angle = (2 * Math.PI * (0.5 + corner)) / 6;
+   const angle = (2 * Math.PI * (0.5 + corner)) / 6;
    return Point({
       x: size * Math.cos(angle),
       y: size * Math.sin(angle),
@@ -80,9 +82,9 @@ const getOffset = ({ size, corner }: TGetOffset) => {
 };
 
 export const hexCornersPoints = ({ cube, size, origin }: THexPoints) => {
-   let center = cubeToPoint({ cube, size, origin });
-   let corners = Array.from({ length: 6 }, (_, corner) => {
-      let offset = getOffset({ size, corner });
+   const center = cubeToPoint({ cube, size, origin });
+   const corners = Array.from({ length: 6 }, (_, corner) => {
+      const offset = getOffset({ size, corner });
 
       return Point({
          x: center.x + offset.x,

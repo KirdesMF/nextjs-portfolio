@@ -43,9 +43,8 @@ li {
 }
 
 a {
-   cursor: default;
    text-decoration: none;
-   color: unset;
+   cursor: pointer;
 }
 
 button {
@@ -54,6 +53,7 @@ button {
    font: inherit;
    color: inherit;
    background-color: transparent;
+   cursor: default;
 }
 
 button:focus {

@@ -13,7 +13,7 @@ const anchor = css`
    right: 6%;
 
    > svg {
-      filter: drop-shadow(0 0 5px ${THEME.COLORS['grey-100']});
+      filter: drop-shadow(0 0 5px ${THEME.COLORS['grey-50']});
    }
 `;
 
@@ -25,10 +25,18 @@ const variants: Variants = {
    in: {
       opacity: 1,
       y: 0,
+      transition: {
+         duration: 1,
+         ease: 'easeIn',
+      },
    },
    out: {
       opacity: 0,
       y: 50,
+      transition: {
+         duration: 1,
+         ease: 'easeOut',
+      },
    },
 };
 
@@ -44,9 +52,10 @@ function ButtonBackHome() {
             exit="out"
          >
             <Icon
-               name="chevrons"
+               name="plane"
                size="4rem"
-               iconColor={THEME.COLORS['secondary-500']}
+               iconColor={THEME.COLORS['primary-500']}
+               hover={THEME.COLORS['secondary-400']}
             />
          </motion.a>
       </Link>

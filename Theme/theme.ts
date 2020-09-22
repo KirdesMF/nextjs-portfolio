@@ -24,6 +24,7 @@ const FONTS = {
 const shadows = {
    '--box-thin': '0px 0px 5px',
    '--box-big': '0px 0px 15px',
+   '--box-hr': '0 20px 20px -20px',
 };
 
 const SHADOWS = setCSSVar(shadows) as Record<keyof typeof shadows, string>;

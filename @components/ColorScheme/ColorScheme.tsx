@@ -116,8 +116,11 @@ function ColorScheme({ area }: AdaptiveProps) {
    const debounceInput = Utils.debounce(setAdaptiveColors, 300);
 
    useEffect(() => {
-      setMode(localStorage.getItem('mode')!);
       checkThemeAndMode();
+   }, []);
+
+   useEffect(() => {
+      setMode(localStorage.getItem('mode')!);
       setAdaptiveColors();
    }, [pathname]);
 
