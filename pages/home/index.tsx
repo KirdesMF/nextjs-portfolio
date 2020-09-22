@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import HomeNav from '@components/HomeNav/HomeNav';
 import Head from 'next/head';
 import { css } from 'linaria';
 import { motion, Variants } from 'framer-motion';
 import THEME from 'Theme/theme';
 import { Icon } from '@components/Icon/Icon';
+import { useRouter } from 'next/router';
 
 const title = 'Ced | Home';
 
@@ -117,6 +118,17 @@ const hr = css`
 `;
 
 function Home() {
+   const router = useRouter();
+   const [isOpen, setIsOpen] = useState(false);
+
+   function handleClick() {
+      setIsOpen((prev) => !prev);
+   }
+
+   useEffect(() => {
+      setIsOpen(false);
+   }, [router.pathname]);
+
    return (
       <>
          <Head>
@@ -133,7 +145,7 @@ function Home() {
 
             <motion.hr variants={hrVariants} className={hr} />
 
-            <button className={button}>
+            <button onClick={handleClick} className={button}>
                <motion.span variants={buttonVariants}>
                   <Icon
                      name="chevron"
@@ -144,7 +156,7 @@ function Home() {
                </motion.span>
             </button>
 
-            <HomeNav />
+            <HomeNav isOpen={isOpen} />
          </section>
       </>
    );
