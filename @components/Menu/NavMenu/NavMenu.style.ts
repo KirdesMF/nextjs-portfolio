@@ -2,7 +2,7 @@ import { css } from 'linaria';
 import THEME from 'Theme/theme';
 
 const shadow = THEME.SHADOWS['--box-big'];
-const black = THEME.COLORS['grey-100'];
+const black = THEME.COLORS['grey-50'];
 
 const nav = css`
    position: fixed;
@@ -18,10 +18,11 @@ const anchor = css`
    place-items: center;
 
    background: ${THEME.COLORS['secondary-300']};
-   box-shadow: ${shadow} black;
+   box-shadow: ${shadow} ${black};
 
-   &:hover > span::after {
-      width: 100%;
+   &:hover > span::after,
+   &:focus > span::after {
+      transform: scaleX(5);
    }
 `;
 
@@ -42,7 +43,7 @@ const span = css`
       width: 20%;
       height: 2px;
       background: ${THEME.COLORS['secondary-700']};
-      transition: width 500ms ease-in-out;
+      transition: transform 500ms ease-in-out;
    }
 `;
 

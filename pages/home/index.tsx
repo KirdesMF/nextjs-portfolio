@@ -1,123 +1,47 @@
 import React, { useEffect, useState } from 'react';
-import HomeNav from '@components/HomeNav/HomeNav';
 import Head from 'next/head';
-import { css } from 'linaria';
-import { motion, Variants } from 'framer-motion';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { AnimatePresence, motion } from 'framer-motion';
+
+import { NameIconType } from '@components/Icon/icons';
+import { TCube, TPoint } from 'utils/hexagons/convert';
+import { cubeSpiral } from 'utils/hexagons/helpers';
+
+import styles from './home.style';
+import variants from './home.variants';
+
 import THEME from 'Theme/theme';
 import { Icon } from '@components/Icon/Icon';
-import { useRouter } from 'next/router';
+import Hexagon from '@components/Hexagon/Hexagon';
+
+const VIEWBOX = `0 0 100 100`;
+const ORIGIN: TPoint = { x: 50, y: 50 };
+const ORIGIN_CUBE: TCube = { q: 0, r: 0, s: 0 };
+const SIZE_HEX = 5;
+const HEXMAP = cubeSpiral({ center: ORIGIN_CUBE, radius: 1 });
+const HEXMAP3 = cubeSpiral({ center: ORIGIN_CUBE, radius: 3 });
 
 const title = 'Ced | Home';
-
-const textVariants: Variants = {
-   in: {
-      y: 0,
-      transition: {
-         duration: 0.5,
-         ease: 'linear',
-         delay: 0.5,
-      },
+const links = [
+   {
+      href: '/about',
+      data: 'about',
+      icon: 'info',
    },
-
-   out: {
-      y: 300,
-      transition: {
-         duration: 0.5,
-      },
+   {
+      href: '/works',
+      data: 'works',
+      icon: 'briefcase',
    },
-};
-
-const hrVariants: Variants = {
-   in: {
-      scaleX: '100%',
-      transition: {
-         duration: 1,
-         ease: 'linear',
-      },
+   {
+      href: '/contact',
+      data: 'contact',
+      icon: 'phone',
    },
+];
 
-   out: {
-      scaleX: '0%',
-      transition: {
-         duration: 1,
-         ease: 'linear',
-         delay: 0.5,
-      },
-   },
-};
-
-const buttonVariants: Variants = {
-   in: {
-      y: 0,
-      transition: {
-         duration: 1,
-         ease: 'linear',
-         delay: 0.2,
-      },
-   },
-
-   out: {
-      y: '-100%',
-      transition: {
-         duration: 1,
-         ease: 'circOut',
-      },
-   },
-};
-
-const section = css`
-   width: 100%;
-   height: 100%;
-
-   display: grid;
-   grid-template:
-      '. . .' 20%
-      '. art .' 1fr
-      '. hr .' 2%
-      '. arrow .' 5%
-      '. nav .' 1fr
-      /20% 1fr 20%;
-   place-items: center;
-`;
-
-const article = css`
-   grid-area: art;
-   display: grid;
-   place-items: center;
-   width: 100%;
-   height: 100%;
-
-   overflow: hidden;
-
-   > p {
-      text-align: center;
-      font-family: ${THEME.FONTS.amstelvar};
-      font-size: 1.5em;
-      color: ${THEME.COLORS['primary-500']};
-   }
-`;
-
-const button = css`
-   overflow: hidden;
-   grid-area: arrow;
-   width: 100%;
-   display: grid;
-   place-items: center;
-
-   position: relative;
-`;
-
-const hr = css`
-   z-index: 1;
-   grid-area: hr;
-   width: 100%;
-   height: 3px;
-   color: ${THEME.COLORS['grey-400']};
-   background: ${THEME.COLORS['grey-400']};
-   box-shadow: ${THEME.SHADOWS['--box-big']} ${THEME.COLORS['grey-50']};
-`;
-
-function Home() {
+export default function Home() {
    const router = useRouter();
    const [isOpen, setIsOpen] = useState(false);
 
@@ -135,18 +59,18 @@ function Home() {
             <title>{title}</title>
          </Head>
 
-         <section className={section}>
-            <article className={article}>
-               <motion.p variants={textVariants}>
+         <section className={styles.section}>
+            <article className={styles.article}>
+               <motion.p variants={variants.text}>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Harum, ipsam quasi aspernatur ad dolores maiores.
                </motion.p>
             </article>
 
-            <motion.hr variants={hrVariants} className={hr} />
+            <motion.hr variants={variants.hr} className={styles.hr} />
 
-            <button onClick={handleClick} className={button}>
-               <motion.span variants={buttonVariants}>
+            <button onClick={handleClick} className={styles.button}>
+               <motion.span variants={variants.button}>
                   <Icon
                      name="chevron"
                      size="2em"
@@ -156,11 +80,67 @@ function Home() {
                </motion.span>
             </button>
 
-            <HomeNav isOpen={isOpen} />
+            <AnimatePresence exitBeforeEnter>
+               {isOpen && (
+                  <motion.nav
+                     initial="out"
+                     animate="in"
+                     exit="out"
+                     className={styles.nav}
+                  >
+                     {links.map((link) => (
+                        <Link key={link.data} href={link.href}>
+                           <motion.a className={styles.anchor}>
+                              <span className={styles.span}>
+                                 <Icon
+                                    name={link.icon as NameIconType}
+                                    size="1.5em"
+                                    iconColor={THEME.COLORS['primary-700']}
+                                    hover={THEME.COLORS['grey-400']}
+                                 />
+                              </span>
+
+                              <svg
+                                 xmlns="http://www.w3.org/2000/svg"
+                                 version="1.1"
+                                 preserveAspectRatio="xMidYMid"
+                                 aria-hidden="true"
+                                 focusable="false"
+                                 viewBox={VIEWBOX}
+                              >
+                                 {HEXMAP.map((hexes, i) => {
+                                    return (
+                                       <Hexagon
+                                          key={i}
+                                          custom={i}
+                                          variants={variants.hex}
+                                          originHex={ORIGIN}
+                                          cube={hexes}
+                                          sizeHex={SIZE_HEX}
+                                       />
+                                    );
+                                 })}
+
+                                 {HEXMAP3.map((hexes, i) => {
+                                    return (
+                                       <Hexagon
+                                          key={i}
+                                          custom={i}
+                                          variants={variants.hex}
+                                          originHex={ORIGIN}
+                                          cube={hexes}
+                                          sizeHex={SIZE_HEX}
+                                       />
+                                    );
+                                 })}
+                              </svg>
+                           </motion.a>
+                        </Link>
+                     ))}
+                  </motion.nav>
+               )}
+            </AnimatePresence>
          </section>
       </>
    );
 }
-
-/**=============== Export ============ */
-export default Home;

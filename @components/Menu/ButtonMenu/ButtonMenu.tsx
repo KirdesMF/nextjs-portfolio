@@ -13,7 +13,7 @@ type TButtonMenu = {
    area: string;
 };
 
-function ButtonMenu({ isOpen, setIsOpen, area }: TButtonMenu) {
+export default function ButtonMenu({ isOpen, setIsOpen, area }: TButtonMenu) {
    const { VIEWBOX, ORIGIN, burger, hexes } = menuSettings;
    const { HEXMAP, HEX_SIZE, hexesMenuVariants } = hexes;
    const { topPathVariants, midPathVariants, botPathVariants } = burger;
@@ -93,4 +93,3 @@ function ButtonMenu({ isOpen, setIsOpen, area }: TButtonMenu) {
       </button>
    );
 }
-export default ButtonMenu;
