@@ -1,28 +1,62 @@
 import { css } from 'linaria';
 import THEME from 'Theme/theme';
 
-const shadow = THEME.SHADOWS['--box-big'];
-const black = THEME.COLORS['grey-50'];
-
-const nav = css`
+const section = css`
    position: fixed;
    width: 100%;
    height: 100%;
 
    display: grid;
-   grid-template: 1fr / repeat(4, 1fr);
+   grid-template: 1fr / 35% 1fr;
+`;
+
+const overlay = css`
+   @supports (backdrop-filter: blur(5px) grayscale(30%)) {
+      backdrop-filter: blur(5px) grayscale(30%);
+      background: unset;
+   }
+
+   background: hsla(0, 0%, 0%, 0.6);
+`;
+
+const nav = css`
+   z-index: 2;
+   display: grid;
+   grid-template: repeat(4, 1fr) / 1fr;
+   row-gap: 3rem;
+   background: ${THEME.COLORS.background};
+   box-shadow: ${THEME.SHADOWS['--box-thin']} black;
+
+   overflow: hidden;
+
+   padding: 10rem 0;
 `;
 
 const anchor = css`
    display: grid;
    place-items: center;
+   width: 105%;
+   overflow: hidden;
 
-   background: ${THEME.COLORS['secondary-300']};
-   box-shadow: ${shadow} ${black};
+   transform: rotate(2deg);
+   background: ${THEME.COLORS.background};
+   box-shadow: ${THEME.SHADOWS['--box-big']} black;
 
-   &:hover > span::after,
-   &:focus > span::after {
-      transform: scaleX(5);
+   font-variation-settings: 'wght' 800, 'YTUC' 700, 'XOPQ' 100;
+   text-transform: uppercase;
+   transition: font-variation-settings 500ms
+      cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+   &:hover {
+      font-variation-settings: 'wght' 900, 'YTUC' 800, 'XOPQ' 230;
+   }
+
+   &:nth-child(odd) {
+      transform-origin: left;
+   }
+
+   &:nth-child(even) {
+      transform-origin: right;
    }
 `;
 
@@ -31,19 +65,12 @@ const span = css`
    display: inline-block;
    font-family: 'Amstelvar';
    font-size: 2em;
-   color: ${THEME.COLORS['secondary-700']};
+   color: ${THEME.COLORS['secondary-400']};
+   text-shadow: 0px 0px 2px black;
 
    &[data-active='active'] {
-      filter: blur(5px);
-   }
-
-   &::after {
-      content: '';
-      display: block;
-      width: 20%;
-      height: 2px;
-      background: ${THEME.COLORS['secondary-700']};
-      transition: transform 500ms ease-in-out;
+      filter: blur(5px) grayscale(90%);
+      text-decoration: line-through;
    }
 `;
 
@@ -62,6 +89,8 @@ const path = css`
 `;
 
 export default {
+   section,
+   overlay,
    nav,
    svg,
    path,

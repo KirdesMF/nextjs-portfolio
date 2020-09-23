@@ -7,9 +7,6 @@ const header = css`
    transition: box-shadow 500ms ease-in-out, background-color 1s ease-in-out;
 
    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-         box-shadow: ${THEME.SHADOWS['--box-thin']} black;
-      }
    }
 
    @media ${THEME.BREAKPOINTS.large} {
@@ -18,8 +15,8 @@ const header = css`
 
       display: grid;
       grid-template:
-         'menu . scheme .' 1fr
-         /10% 1fr 25% 20%;
+         'menu title . scheme .' 1fr
+         /10% 25% 1fr 25% 20%;
 
       & [data-area='menu'] {
          grid-area: menu;
@@ -31,6 +28,17 @@ const header = css`
    }
 `;
 
+const title = css`
+   grid-area: title;
+   place-self: center;
+   font-family: ${THEME.FONTS.amstelvar};
+   font-size: 1.2rem;
+   color: ${THEME.COLORS['secondary-400']};
+   font-variation-settings: 'wght' 500;
+   text-shadow: 0px 0px 1.2px black;
+`;
+
 export default {
    header,
+   title,
 };

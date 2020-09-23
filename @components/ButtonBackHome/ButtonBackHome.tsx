@@ -13,7 +13,7 @@ const anchor = css`
    right: 6%;
 
    > svg {
-      filter: drop-shadow(0 0 5px ${THEME.COLORS['grey-50']});
+      filter: drop-shadow(0 0 5px black);
    }
 `;
 

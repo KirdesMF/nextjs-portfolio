@@ -9,6 +9,9 @@ function Header() {
    return (
       <header className={style.header}>
          <Menu area="menu" />
+         <h1 className={style.title}>
+            &bull; Cédric Gourville &bull; Front developer &bull;
+         </h1>
          <ColorScheme area="scheme" />
       </header>
    );

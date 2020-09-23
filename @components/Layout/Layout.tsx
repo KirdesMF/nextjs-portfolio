@@ -11,14 +11,14 @@ function Layout({ children, name }: LayoutProps) {
 
    if (name === 'home') {
       return (
-         <motion.nav
+         <motion.main
             animate="in"
             exit="out"
             initial="out"
             className={classname}
          >
             {children}
-         </motion.nav>
+         </motion.main>
       );
    } else {
       return (

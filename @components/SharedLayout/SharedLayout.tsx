@@ -6,12 +6,10 @@ import MaintTitle from '@components/MainTitle/MainTitle';
 import { CanvasContextProvider } from 'context/CanvasContext';
 import CanvasHexagons from '@components/CanvasTransition/CanvasTransition';
 import Header from '@components/Header/Header';
-
-type SharedLayoutProps = {
-   children: React.ReactNode;
-};
+import { useRouter } from 'next/router';
 
 function SharedLayout() {
+   const { pathname } = useRouter();
    return (
       <React.Fragment>
          <CanvasContextProvider>
@@ -23,7 +21,7 @@ function SharedLayout() {
          <BigHexagon />
 
          <ButtonBackHome />
-         <Pagination />
+         {pathname !== '/home' && <Pagination />}
          <MaintTitle />
       </React.Fragment>
    );

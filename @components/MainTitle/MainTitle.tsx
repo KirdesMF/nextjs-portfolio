@@ -47,7 +47,7 @@ const article = css`
    }
 
    &[data-pathname='/home'] {
-      --left: 12%;
+      --left: 35%;
       --top: 8.5%;
    }
 `;
@@ -66,6 +66,7 @@ const span = css`
    font-size: 6rem;
    font-variation-settings: 'XOPQ' 240, 'YTUC' 930;
    color: ${THEME.COLORS['primary-100']};
+   text-shadow: 0px 0px 5px black;
    will-change: transform;
 
    &[data-pathname='/home'] {

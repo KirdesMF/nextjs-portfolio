@@ -5,16 +5,20 @@ import { css } from 'linaria';
  */
 const home = css`
    position: relative;
+   overflow: hidden;
 
    height: 100%;
    display: grid;
    grid-template:
-      '.' 15%
+      'article' 25%
       'about' 1fr
       'works' 1fr
       'contact' 1fr
       '.' 15%
       / 1fr;
+   row-gap: 1.5em;
+   justify-items: center;
+   align-items: center;
 `;
 
 /**
@@ -48,13 +52,6 @@ const works = css`
    display: grid;
 
    display: grid;
-   grid-template:
-      '. . .' 15%
-      '. resume .' 1fr
-      '. . .' 1fr
-      '. button .' 20%
-      /20% 1fr 20%;
-
    place-items: center;
 `;
 
