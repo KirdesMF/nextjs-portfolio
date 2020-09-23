@@ -9,11 +9,29 @@ type LayoutProps = {
 function Layout({ children, name }: LayoutProps) {
    const classname = CSSLayout[name];
 
-   return (
-      <motion.main animate="in" exit="out" initial="out" className={classname}>
-         {children}
-      </motion.main>
-   );
+   if (name === 'home') {
+      return (
+         <motion.nav
+            animate="in"
+            exit="out"
+            initial="out"
+            className={classname}
+         >
+            {children}
+         </motion.nav>
+      );
+   } else {
+      return (
+         <motion.main
+            animate="in"
+            exit="out"
+            initial="out"
+            className={classname}
+         >
+            {children}
+         </motion.main>
+      );
+   }
 }
 
 /**============= Export ================ */

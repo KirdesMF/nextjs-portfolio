@@ -7,15 +7,14 @@ const home = css`
    position: relative;
 
    height: 100%;
-   display: flex;
-   flex-wrap: nowrap;
-
-   overflow-x: auto;
-   scrollbar-width: none;
-
-   &::-webkit-scrollbar {
-      display: none;
-   }
+   display: grid;
+   grid-template:
+      '.' 15%
+      'about' 1fr
+      'works' 1fr
+      'contact' 1fr
+      '.' 15%
+      / 1fr;
 `;
 
 /**
