@@ -50,7 +50,7 @@ function About() {
             <ButtonPages content={contentBtn} />
          </section>
 
-         <section ref={sectionRef} className={right}></section>
+         <section className={right}></section>
       </>
    );
 }
