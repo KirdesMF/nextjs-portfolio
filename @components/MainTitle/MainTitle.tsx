@@ -33,18 +33,16 @@ const variants: Variants = {
 const article = css`
    --left: 50%;
    --top: 50%;
-   z-index: 20;
+
    position: fixed;
+   z-index: 2;
    left: var(--left);
    top: var(--top);
+
    transform: translate(-50%, -50%);
 
    display: grid;
-   grid-template: 1fr/ 1fr;
-
-   > svg {
-      grid-area: 1 / 1 / 2 / 2;
-   }
+   place-items: center;
 
    &[data-pathname='/home'] {
       --left: 35%;
@@ -55,22 +53,25 @@ const article = css`
 const heading = css`
    overflow: hidden;
    height: auto;
+   padding: 0.5em 0.5em;
    display: grid;
    grid-auto-flow: column;
    place-items: center;
 `;
 
 const span = css`
+   --shadow: 6px;
    font-family: 'Amstelvar', sans-serif;
    text-transform: uppercase;
    font-size: 6rem;
    font-variation-settings: 'XOPQ' 240, 'YTUC' 930;
-   color: ${THEME.COLORS['primary-100']};
-   text-shadow: 0px 0px 5px black;
+   color: ${THEME.COLORS.background};
+   text-shadow: 0px 0px var(--shadow) black;
    will-change: transform;
 
    &[data-pathname='/home'] {
       font-size: 1rem;
+      --shadow: 1px;
    }
 `;
 

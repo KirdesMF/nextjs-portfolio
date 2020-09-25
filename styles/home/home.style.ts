@@ -3,16 +3,31 @@ import THEME from 'Theme/theme';
 
 // Global section home
 
-const article = css`
+const nav = css`
+   overflow: hidden;
+
+   height: 100%;
+
+   display: grid;
+   grid-template:
+      '.' 25%
+      'about' 1fr
+      'works' 1fr
+      'contact' 1fr
+      '.' 15%
+      / 1fr;
+   row-gap: 1.5em;
+   place-items: center;
+`;
+
+const logo = css`
    grid-area: 1 / 1 / 6 / 2;
 
    display: grid;
    place-items: center;
-   color: ${THEME.COLORS.background};
 
    > svg {
       filter: drop-shadow(0 0 5px black);
-      width: 30vw;
    }
 `;
 
@@ -24,37 +39,47 @@ const social = css`
 `;
 
 const anchor = css`
+   --rotate: rotate(2deg);
+
    width: 105%;
    height: 100%;
    overflow: hidden;
-   transition: transform 500ms ease-in-out;
+
    background: ${THEME.COLORS.background};
-   transform: rotate(2deg);
-   transform-origin: 0 0;
+   box-shadow: ${THEME.SHADOWS['--box-thin']} black;
+
+   transform: var(--rotate) scaleY(1);
+   transform-origin: left;
+   transition: transform 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55),
+      box-shadow 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
    display: grid;
    place-items: center;
-   box-shadow: ${THEME.SHADOWS['--box-thin']} black;
+
+   @media (hover: hover) and (pointer: fine) {
+      &:hover,
+      &:focus {
+         transform: var(--rotate) scaleY(1.1);
+         box-shadow: ${THEME.SHADOWS['--box-big']} black;
+      }
+   }
 
    &[data-area='about'] {
       grid-area: about;
-      /* transform: rotate(5deg); */
    }
 
    &[data-area='works'] {
+      --rotate: rotate(-2deg);
       grid-area: works;
-      transform: rotate(-1.8deg);
       transform-origin: right;
    }
 
    &[data-area='contact'] {
       grid-area: contact;
-      /* transform: rotate(5deg); */
    }
 
    &[data-area='skills'] {
       grid-area: skills;
-      /* transform: rotate(5deg); */
    }
 `;
 
@@ -89,20 +114,25 @@ const div = css`
 
 const span = css`
    overflow: hidden;
+
    font-family: ${THEME.FONTS.amstelvar};
    font-variation-settings: 'wght' 800, 'GRAD' 0.5, 'XOPQ' 100;
    text-shadow: 0px 0px 3px black;
    font-size: 4vw;
+
    color: ${THEME.COLORS['secondary-400']};
    transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-   &:hover {
-      font-variation-settings: 'wght' 900, 'GRAD' 0.9, 'XOPQ' 230;
+   @media (hover: hover) and (pointer: fine) {
+      &:hover {
+         font-variation-settings: 'wght' 900, 'GRAD' 0.9, 'XOPQ' 230;
+      }
    }
 `;
 
 export default {
-   article,
+   nav,
+   logo,
    social,
    anchor,
    span,

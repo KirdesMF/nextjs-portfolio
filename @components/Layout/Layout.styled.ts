@@ -4,21 +4,9 @@ import { css } from 'linaria';
  * Home Layout
  */
 const home = css`
-   position: relative;
    overflow: hidden;
-
+   width: 100%;
    height: 100%;
-   display: grid;
-   grid-template:
-      'article' 25%
-      'about' 1fr
-      'works' 1fr
-      'contact' 1fr
-      '.' 15%
-      / 1fr;
-   row-gap: 1.5em;
-   justify-items: center;
-   align-items: center;
 `;
 
 /**
@@ -26,18 +14,10 @@ const home = css`
  */
 const about = css`
    position: relative;
-
+   z-index: 3;
+   overflow: hidden;
+   width: 100%;
    height: 100%;
-
-   display: flex;
-   flex-wrap: nowrap;
-
-   overflow-x: auto;
-   scrollbar-width: none;
-
-   &::-webkit-scrollbar {
-      display: none;
-   }
 `;
 
 /**

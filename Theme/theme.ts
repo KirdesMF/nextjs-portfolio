@@ -24,7 +24,10 @@ const FONTS = {
 const shadows = {
    '--box-thin': '0px 0px 5px',
    '--box-big': '0px 0px 15px',
-   '--box-hr': '0 20px 20px -20px',
+   '--paper-shadow-top': '0px 15px 10px -10px ',
+   '--paper-shadow-bot': '0px -20px 10px -10px',
+   '--paper-shadow-left': '20px 0px 10px -10px ',
+   '--paper-shadow-right': '-20px 0px 10px -10px',
 };
 
 const SHADOWS = setCSSVar(shadows) as Record<keyof typeof shadows, string>;

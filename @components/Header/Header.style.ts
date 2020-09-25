@@ -6,9 +6,6 @@ const header = css`
    z-index: 25;
    transition: box-shadow 500ms ease-in-out, background-color 1s ease-in-out;
 
-   @media (hover: hover) and (pointer: fine) {
-   }
-
    @media ${THEME.BREAKPOINTS.large} {
       top: 0;
       width: 100%;

@@ -44,7 +44,7 @@ const Icon = ({
          iconColor={iconColor}
          hover={hover}
          rotation={rotation}
-         viewBox="0 0 24 24"
+         viewBox={name === 'CED' ? '0 0 530 530' : '0 0 24 24'}
          xmlns="http://www.w3.org/2000/svg"
       >
          <title>{icons[name].title}</title>
