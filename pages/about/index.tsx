@@ -1,101 +1,62 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Head from 'next/head';
+import { css } from 'linaria';
 
-import style from 'styles/about/about.style';
-import { motion, Variants } from 'framer-motion';
+import ButtonPages from '@components/ButtonPages/ButtonPages';
+import ResumePages from '@components/ResumePages/ResumePages';
 
 const title = 'Ced | About';
 
-const articleVariants: Variants = {
-   in: {
-      transition: {
-         staggerChildren: 0.1,
-         delayChildren: 0.8,
-      },
-   },
-   out: {
-      transition: {
-         staggerChildren: 0.1,
-      },
-   },
-};
+const spanArray = [
+   { content: 'Hi, I’m Cédric,' },
+   { content: 'a Freelance web developer,' },
+   { content: 'living in France, near Paris.' },
+   { content: 'I love to create websites, apps' },
+   { content: 'and everything related to the web.' },
+];
 
-const spanVariants: Variants = {
-   in: {
-      rotate: 0,
-      opacity: 1,
-      transition: {
-         duration: 1,
-         ease: 'circOut',
-      },
-   },
-   out: {
-      rotate: 5,
-      opacity: 0,
-      transition: {
-         duration: 1,
-         ease: 'circIn',
-      },
-   },
-};
+const contentBtn = 'Skills set';
 
-const buttonVariants: Variants = {
-   in: {
-      x: 0,
-      opacity: 1,
-      transition: {
-         duration: 1,
-         ease: 'circOut',
-      },
-   },
-   out: {
-      x: 50,
-      opacity: 0,
-      transition: {
-         duration: 1,
-         ease: 'circIn',
-      },
-   },
-};
+const left = css`
+   width: 100%;
+   height: 100%;
 
+   display: grid;
+   grid-template:
+      '. .' 15%
+      'art .' 1fr
+      'btn btn' 15%
+      '. .' 5%
+      /2fr 1fr;
+
+   row-gap: 2%;
+
+   place-items: center;
+`;
+
+const right = css`
+   width: 100%;
+   height: 100%;
+`;
 function About() {
+   const sectionRef = useRef<HTMLElement>(null!);
+
+   function handleClick() {
+      sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+   }
+
    return (
       <>
          <Head>
             <title>{title}</title>
          </Head>
 
-         <section className={style.left}>
-            <motion.article
-               variants={articleVariants}
-               className={style.presentation}
-            >
-               <motion.span variants={spanVariants}>
-                  Hi, I’m Cédric,
-               </motion.span>
-               <motion.span variants={spanVariants}>
-                  a Freelance web developer,
-               </motion.span>
-               <motion.span variants={spanVariants}>
-                  living in France, near Paris.
-               </motion.span>
-               <motion.span variants={spanVariants}>
-                  Keeping Accessibilty right,
-               </motion.span>
-               <motion.span variants={spanVariants}>
-                  I love to create websites, apps
-               </motion.span>
-               <motion.span variants={spanVariants}>
-                  and everything related to the web.
-               </motion.span>
-            </motion.article>
-
-            <motion.button variants={buttonVariants} className={style.button}>
-               SKILLS SET
-            </motion.button>
+         <section className={left}>
+            <ResumePages spans={spanArray} />
+            <ButtonPages onClick={handleClick} content={contentBtn} />
          </section>
 
-         <section></section>
+         <section ref={sectionRef} className={right}></section>
       </>
    );
 }
