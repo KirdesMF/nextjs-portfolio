@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, from 'react';
 import Head from 'next/head';
 import { css } from 'linaria';
 
@@ -39,12 +39,6 @@ const right = css`
    height: 100%;
 `;
 function About() {
-   const sectionRef = useRef<HTMLElement>(null!);
-
-   function handleClick() {
-      sectionRef.current.scrollIntoView({ behavior: 'smooth' });
-   }
-
    return (
       <>
          <Head>
@@ -53,7 +47,7 @@ function About() {
 
          <section className={left}>
             <ResumePages spans={spanArray} />
-            <ButtonPages onClick={handleClick} content={contentBtn} />
+            <ButtonPages content={contentBtn} />
          </section>
 
          <section ref={sectionRef} className={right}></section>

@@ -18,13 +18,8 @@ const about = css`
    position: relative;
    z-index: 3;
    overflow-x: auto;
-   width: 200%;
+   width: 100%;
    height: 100%;
-
-   display: flex;
-   flex-wrap: nowrap;
-
-   scroll-behavior: smooth;
 `;
 
 /**
