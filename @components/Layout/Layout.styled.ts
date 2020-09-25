@@ -17,7 +17,7 @@ const home = css`
 const about = css`
    position: relative;
    z-index: 3;
-   overflow-x: auto;
+   overflow: hidden;
    width: 100%;
    height: 100%;
 `;
