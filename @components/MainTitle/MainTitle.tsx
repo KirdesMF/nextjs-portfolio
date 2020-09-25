@@ -45,8 +45,8 @@ const article = css`
    place-items: center;
 
    &[data-pathname='/home'] {
-      --left: 35%;
-      --top: 8.5%;
+      --left: 85%;
+      --top: 30%;
    }
 `;
 
@@ -70,8 +70,8 @@ const span = css`
    will-change: transform;
 
    &[data-pathname='/home'] {
-      font-size: 1rem;
-      --shadow: 1px;
+      font-size: 4rem;
+      --shadow: 4px;
    }
 `;
 

@@ -15,7 +15,7 @@ const SIcon = styled.svg<SIconType>`
    color: ${(props) => props.iconColor};
    transform-origin: center;
    transform: ${(props) => `rotate(${props.rotation})`};
-
+   transition: color 500ms linear;
    @media (hover: hover) and (pointer: fine) {
       &:hover {
          color: ${(props) => props.hover!};

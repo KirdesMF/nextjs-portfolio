@@ -60,6 +60,7 @@ const button = css`
          box-shadow: ${THEME.SHADOWS['--box-big']} black;
          font-variation-settings: 'wght' 800, 'GRAD' 0.9, 'YTLC' 500;
          letter-spacing: 0.2em;
+         transform: scaleY(1.1);
       }
    }
 `;

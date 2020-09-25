@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from 'styles/home/home.style';
 import THEME from 'Theme/theme';
 import { Icon } from '@components/Icon/Icon';
+import { motion, Variants } from 'framer-motion';
 
 const title = 'Ced | Home';
 
@@ -32,6 +33,44 @@ const dataSocial = [
    },
 ];
 
+const anchorVariants: Variants = {
+   in: {
+      opacity: 1,
+      transition: {
+         duration: 0.5,
+         ease: 'circIn',
+      },
+   },
+   out: {
+      opacity: 0,
+      transition: {
+         duration: 0.5,
+         ease: 'circIn',
+      },
+   },
+};
+
+const logoVariants: Variants = {
+   in: {
+      opacity: 1,
+      y: 0,
+      transition: {
+         delay: 0.5,
+         duration: 1,
+         ease: 'linear',
+      },
+   },
+   out: {
+      opacity: 0,
+      y: -50,
+
+      transition: {
+         duration: 1,
+         ease: 'linear',
+      },
+   },
+};
+
 export default function Home() {
    return (
       <>
@@ -40,16 +79,20 @@ export default function Home() {
          </Head>
 
          <nav className={styles.nav}>
-            <span className={styles.logo}>
+            <motion.span variants={logoVariants} className={styles.logo}>
                <Icon
                   name="CED"
                   size="30vw"
                   iconColor={THEME.COLORS.background}
                />
-            </span>
+            </motion.span>
 
             <Link href="/about">
-               <a className={styles.anchor} data-area="about">
+               <motion.a
+                  variants={anchorVariants}
+                  className={styles.anchor}
+                  data-area="about"
+               >
                   <div className={styles.div}>
                      <span className={styles.span}>ABOUT</span>
                      <span className={styles.span}>ABOUT</span>
@@ -57,11 +100,15 @@ export default function Home() {
                      <span className={styles.span}>ABOUT</span>
                      <span className={styles.span}>ABOUT</span>
                   </div>
-               </a>
+               </motion.a>
             </Link>
 
             <Link href="/works">
-               <a className={styles.anchor} data-area="works">
+               <motion.a
+                  variants={anchorVariants}
+                  className={styles.anchor}
+                  data-area="works"
+               >
                   <div className={styles.div} data-name="works">
                      <span className={styles.span}>WORKS</span>
                      <span className={styles.span}>WORKS</span>
@@ -69,11 +116,15 @@ export default function Home() {
                      <span className={styles.span}>WORKS</span>
                      <span className={styles.span}>WORKS</span>
                   </div>
-               </a>
+               </motion.a>
             </Link>
 
             <Link href="/contact">
-               <a className={styles.anchor} data-area="contact">
+               <motion.a
+                  variants={anchorVariants}
+                  className={styles.anchor}
+                  data-area="contact"
+               >
                   <div className={styles.div} data-name="contact">
                      <span className={styles.span}>CONTACT</span>
                      <span className={styles.span}>CONTACT</span>
@@ -81,7 +132,7 @@ export default function Home() {
                      <span className={styles.span}>CONTACT</span>
                      <span className={styles.span}>CONTACT</span>
                   </div>
-               </a>
+               </motion.a>
             </Link>
          </nav>
       </>

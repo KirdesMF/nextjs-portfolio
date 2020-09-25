@@ -17,15 +17,18 @@ type SvgType = {
 };
 
 const Svg = styled.svg<SvgType>`
+   --hex-width: 45rem;
+   --half: calc(var(--hex-width) / 2);
+   --neg: calc(var(--half) * -1);
+
    pointer-events: none;
    position: fixed;
    z-index: 999;
-   width: 50rem;
+   width: var(--hex-width);
    transform: rotate(15deg);
-   /* filter: drop-shadow(0 0 5px black); */
 
-   top: ${({ top }) => (top ? '-25rem' : 'calc(100% - 25rem)')};
-   right: ${({ top }) => (top ? '-25rem' : 'calc(100% - 25rem)')};
+   top: ${({ top }) => (top ? 'var(--neg)' : 'calc(100% - var(--half))')};
+   right: ${({ top }) => (top ? 'var(--neg)' : 'calc(100% - var(--half))')};
 
    & polygon:nth-child(3) {
       fill: ${THEME.COLORS['primary-300']};

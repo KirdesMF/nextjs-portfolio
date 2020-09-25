@@ -10,7 +10,7 @@ const articleVariants: Variants = {
    in: {
       transition: {
          staggerChildren: 0.1,
-         delayChildren: 1.7,
+         delayChildren: 0.8,
       },
    },
    out: {
@@ -39,6 +39,25 @@ const spanVariants: Variants = {
    },
 };
 
+const buttonVariants: Variants = {
+   in: {
+      x: 0,
+      opacity: 1,
+      transition: {
+         duration: 1,
+         ease: 'circOut',
+      },
+   },
+   out: {
+      x: 50,
+      opacity: 0,
+      transition: {
+         duration: 1,
+         ease: 'circIn',
+      },
+   },
+};
+
 function About() {
    return (
       <>
@@ -52,7 +71,7 @@ function About() {
                className={style.presentation}
             >
                <motion.span variants={spanVariants}>
-                  Hi, I'm Cédric,
+                  Hi, I’m Cédric,
                </motion.span>
                <motion.span variants={spanVariants}>
                   a Freelance web developer,
@@ -70,7 +89,10 @@ function About() {
                   and everything related to the web.
                </motion.span>
             </motion.article>
-            <button className={style.button}>SKILLS SET</button>
+
+            <motion.button variants={buttonVariants} className={style.button}>
+               SKILLS SET
+            </motion.button>
          </section>
 
          <section></section>
