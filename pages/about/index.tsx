@@ -34,10 +34,6 @@ const left = css`
    place-items: center;
 `;
 
-const right = css`
-   width: 100%;
-   height: 100%;
-`;
 function About() {
    return (
       <>
@@ -49,8 +45,6 @@ function About() {
             <ResumePages spans={spanArray} />
             <ButtonPages content={contentBtn} />
          </section>
-
-         <section className={right}></section>
       </>
    );
 }
