@@ -53,7 +53,7 @@ const buttonVariants: Variants = {
 
 type ButtonPagesProps = {
    content: string;
-   onClick: () => void;
+   onClick?: () => void;
 };
 
 export default function ButtonPages({ content, onClick }: ButtonPagesProps) {
