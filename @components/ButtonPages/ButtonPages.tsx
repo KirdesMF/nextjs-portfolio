@@ -57,7 +57,7 @@ const buttonVariants: Variants = {
 
 type ButtonPagesProps = {
    content: string;
-   href?: string;
+   href: string;
 };
 
 export default function ButtonPages({ content, href }: ButtonPagesProps) {
