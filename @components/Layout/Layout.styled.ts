@@ -4,8 +4,6 @@ import { css } from 'linaria';
  * Home Layout
  */
 const home = css`
-   position: relative;
-   z-index: 3;
    overflow: hidden;
    width: 100%;
    height: 100%;
@@ -16,7 +14,6 @@ const home = css`
  */
 const about = css`
    position: relative;
-   z-index: 3;
    overflow: hidden;
    width: 100%;
    height: 100%;
@@ -27,7 +24,6 @@ const about = css`
  */
 const works = css`
    position: relative;
-   z-index: 3;
    overflow: hidden;
    width: 100%;
    height: 100%;
@@ -38,7 +34,6 @@ const works = css`
  */
 const contact = css`
    position: relative;
-   z-index: 3;
    overflow: hidden;
    width: 100%;
    height: 100%;

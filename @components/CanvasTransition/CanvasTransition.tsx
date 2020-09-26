@@ -79,7 +79,7 @@ const CanvasHexagons = () => {
       requestId = requestAnimationFrame(animate);
 
       return () => cancelAnimationFrame(requestId);
-   }, [color, pathname]);
+   }, [color]);
 
    return <canvas className={canvas} ref={canvasRef}></canvas>;
 };

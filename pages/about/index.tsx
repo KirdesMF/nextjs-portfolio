@@ -3,9 +3,8 @@ import Head from 'next/head';
 import { css } from 'linaria';
 
 import ButtonPages from '@components/ButtonPages/ButtonPages';
+import MaintTitle from '@components/MainTitle/MainTitle';
 import ResumePages from '@components/ResumePages/ResumePages';
-
-const title = 'Ced | About';
 
 const spanArray = [
    { content: 'Hi, I’m Cédric,' },
@@ -15,7 +14,10 @@ const spanArray = [
    { content: 'and everything related to the web.' },
 ];
 
+const title = 'Ced | About';
 const contentBtn = 'Skills set';
+const mainTitle = 'about';
+const href = '/about/skills';
 
 const left = css`
    width: 100%;
@@ -43,7 +45,8 @@ function About() {
 
          <section className={left}>
             <ResumePages spans={spanArray} />
-            <ButtonPages content={contentBtn} />
+            <MaintTitle title={mainTitle} />
+            <ButtonPages href={href} content={contentBtn} />
          </section>
       </>
    );

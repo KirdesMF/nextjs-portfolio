@@ -54,14 +54,15 @@ function Pagination() {
    const router = useRouter();
    const pathname = router.pathname;
    const customPathname = Utils.customURL(pathname);
+   const urlPagination = Utils.customURLPagination(pathname);
 
    function goToPreviousPage() {
-      const previous = links[links.indexOf(pathname) - 1];
+      const previous = links[links.indexOf(urlPagination) - 1];
       router.push(previous);
    }
 
    function goToNextPage() {
-      const next = links[links.indexOf(pathname) + 1];
+      const next = links[links.indexOf(urlPagination) + 1];
       router.push(next);
    }
 

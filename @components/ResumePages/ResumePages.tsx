@@ -5,6 +5,7 @@ import THEME from 'Theme/theme';
 
 const article = css`
    grid-area: art;
+   z-index: 2;
 
    place-self: center;
 

@@ -6,6 +6,7 @@ import styles from 'styles/home/home.style';
 import THEME from 'Theme/theme';
 import { Icon } from '@components/Icon/Icon';
 import { motion, Variants } from 'framer-motion';
+import MaintTitle from '@components/MainTitle/MainTitle';
 
 const title = 'Ced | Home';
 
@@ -72,33 +73,37 @@ export default function Home() {
             <title>{title}</title>
          </Head>
 
-         <nav className={styles.nav}>
-            <motion.span variants={logoVariants} className={styles.logo}>
-               <Icon
-                  name="CED"
-                  size="30vw"
-                  iconColor={THEME.COLORS.background}
-               />
-            </motion.span>
+         <section className={styles.section}>
+            <MaintTitle title="home" />
 
-            {linksArray.map((link) => (
-               <Link key={link.area} href={link.href}>
-                  <motion.a
-                     variants={anchorVariants}
-                     className={styles.anchor}
-                     data-area={link.area}
-                  >
-                     <div className={styles.div} data-name={link.area}>
-                        {Array.from({ length: 5 }).map((_, i) => (
-                           <span key={i} className={styles.span}>
-                              {link.content}
-                           </span>
-                        ))}
-                     </div>
-                  </motion.a>
-               </Link>
-            ))}
-         </nav>
+            <nav className={styles.nav}>
+               <motion.span variants={logoVariants} className={styles.logo}>
+                  <Icon
+                     name="CED"
+                     size="30vw"
+                     iconColor={THEME.COLORS.background}
+                  />
+               </motion.span>
+
+               {linksArray.map((link) => (
+                  <Link key={link.area} href={link.href}>
+                     <motion.a
+                        variants={anchorVariants}
+                        className={styles.anchor}
+                        data-area={link.area}
+                     >
+                        <div className={styles.div} data-name={link.area}>
+                           {Array.from({ length: 5 }).map((_, i) => (
+                              <span key={i} className={styles.span}>
+                                 {link.content}
+                              </span>
+                           ))}
+                        </div>
+                     </motion.a>
+                  </Link>
+               ))}
+            </nav>
+         </section>
       </>
    );
 }

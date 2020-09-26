@@ -94,7 +94,18 @@ const hexToHSL = (hex: string) => {
 
 const customURL = (pathname: string) => {
    if (pathname === '/') return 'welcome';
-   else return pathname.substr(1);
+   else if (pathname.startsWith('/home')) return 'home';
+   else if (pathname.startsWith('/about')) return 'about';
+   else if (pathname.startsWith('/works')) return 'works';
+   else return 'contact';
+};
+
+const customURLPagination = (pathname: string) => {
+   if (pathname === '/') return 'welcome';
+   else if (pathname.startsWith('/home')) return '/home';
+   else if (pathname.startsWith('/about')) return '/about';
+   else if (pathname.startsWith('/works')) return '/works';
+   else return '/contact';
 };
 
 export type Procedure = (...args: any[]) => void;
@@ -121,6 +132,7 @@ export const Utils = {
    randomHSL,
    hexToHSL,
    customURL,
+   customURLPagination,
    debounce,
    ease: {
       easeLinear,

@@ -1,8 +1,10 @@
-import ButtonPages from '@components/ButtonPages/ButtonPages';
-import ResumePages from '@components/ResumePages/ResumePages';
+import React from 'react';
 import { css } from 'linaria';
 import Head from 'next/head';
-import React from 'react';
+
+import ButtonPages from '@components/ButtonPages/ButtonPages';
+import MaintTitle from '@components/MainTitle/MainTitle';
+import ResumePages from '@components/ResumePages/ResumePages';
 
 const title = 'Ced | Works';
 
@@ -28,7 +30,7 @@ const spanArray = [
    { content: 'my personal & professional projects' },
 ];
 
-const contentBtn = 'Gallery';
+const contentBtn = 'Projects';
 
 function Works() {
    return (
@@ -37,8 +39,9 @@ function Works() {
             <title>{title}</title>
          </Head>
          <section className={left}>
+            <MaintTitle title="works" />
             <ResumePages spans={spanArray} />
-            <ButtonPages content={contentBtn} />
+            <ButtonPages content={contentBtn} href="/works/projects" />
          </section>
       </React.Fragment>
    );

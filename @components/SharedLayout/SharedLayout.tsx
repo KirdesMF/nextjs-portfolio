@@ -2,7 +2,6 @@ import React from 'react';
 import BigHexagon from '@components/BigHexagon/BigHexagon';
 import ButtonBackHome from '@components/ButtonBackHome/ButtonBackHome';
 import Pagination from '@components/Pagination/Pagination';
-import MaintTitle from '@components/MainTitle/MainTitle';
 import { CanvasContextProvider } from 'context/CanvasContext';
 import CanvasHexagons from '@components/CanvasTransition/CanvasTransition';
 import Header from '@components/Header/Header';
@@ -22,7 +21,6 @@ function SharedLayout() {
 
          <ButtonBackHome />
          {pathname !== '/home' && <Pagination />}
-         <MaintTitle />
       </React.Fragment>
    );
 }

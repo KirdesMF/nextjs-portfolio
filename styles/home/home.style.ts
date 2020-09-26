@@ -3,18 +3,28 @@ import THEME from 'Theme/theme';
 
 // Global section home
 
-const nav = css`
-   overflow: hidden;
+const section = css`
+   width: 100%;
+   height: 100%;
 
+   overflow: hidden;
+   display: grid;
+   grid-template:
+      '.' 25%
+      'nav' 1fr
+      '.' 15%
+      /1fr;
+`;
+
+const nav = css`
+   grid-area: nav;
    height: 100%;
 
    display: grid;
    grid-template:
-      '.' 25%
       'about' 1fr
       'works' 1fr
       'contact' 1fr
-      '.' 15%
       / 1fr;
    row-gap: 1.5em;
    place-items: center;
@@ -29,13 +39,6 @@ const logo = css`
    > svg {
       filter: drop-shadow(0 0 5px black);
    }
-`;
-
-const social = css`
-   display: grid;
-   grid-auto-flow: column;
-
-   place-items: center;
 `;
 
 const anchor = css`
@@ -131,9 +134,9 @@ const span = css`
 `;
 
 export default {
+   section,
    nav,
    logo,
-   social,
    anchor,
    span,
    div,

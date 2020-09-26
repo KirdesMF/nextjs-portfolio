@@ -1,10 +1,7 @@
 import React from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Variants } from 'framer-motion';
-import { useRouter } from 'next/router';
 import { css } from 'linaria';
-
-import { Utils } from 'utils/utils';
 
 import THEME from 'Theme/theme';
 
@@ -31,23 +28,10 @@ const variants: Variants = {
 };
 
 const article = css`
-   --left: 50%;
-   --top: 50%;
-
-   position: fixed;
-   z-index: 2;
-   left: var(--left);
-   top: var(--top);
-
-   transform: translate(-50%, -50%);
+   grid-area: 1 / 1 / -1 / -1;
 
    display: grid;
    place-items: center;
-
-   &[data-pathname='/home'] {
-      --left: 85%;
-      --top: 30%;
-   }
 `;
 
 const heading = css`
@@ -60,50 +44,38 @@ const heading = css`
 `;
 
 const span = css`
-   --shadow: 6px;
    font-family: 'Amstelvar', sans-serif;
    text-transform: uppercase;
    font-size: 6rem;
    font-variation-settings: 'XOPQ' 240, 'YTUC' 930;
    color: ${THEME.COLORS.background};
-   text-shadow: 0px 0px var(--shadow) black;
+   text-shadow: 0px 0px 6px black;
    will-change: transform;
-
-   &[data-pathname='/home'] {
-      font-size: 4rem;
-      --shadow: 4px;
-   }
 `;
 
-function MaintTitle() {
-   const router = useRouter();
-   const title = Utils.customURL(router.pathname);
+type MainTitleProps = {
+   title: string;
+};
 
+function MaintTitle({ title }: MainTitleProps) {
    return (
-      <AnimatePresence exitBeforeEnter>
-         <article
-            className={article}
-            key={router.route}
-            data-pathname={router.pathname}
-         >
-            <h1 className={heading}>
-               {title.split('').map((letter, i) => (
-                  <motion.span
-                     className={span}
-                     data-pathname={router.pathname}
-                     key={i}
-                     custom={i}
-                     variants={variants}
-                     initial="initial"
-                     animate="in"
-                     exit="out"
-                  >
-                     {letter}
-                  </motion.span>
-               ))}
-            </h1>
-         </article>
-      </AnimatePresence>
+      <article className={article}>
+         <h1 className={heading}>
+            {title.split('').map((letter, i) => (
+               <motion.span
+                  className={span}
+                  key={i}
+                  custom={i}
+                  variants={variants}
+                  initial="initial"
+                  animate="in"
+                  exit="out"
+               >
+                  {letter}
+               </motion.span>
+            ))}
+         </h1>
+      </article>
    );
 }
 

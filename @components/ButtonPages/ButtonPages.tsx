@@ -1,13 +1,17 @@
 import { motion, Variants } from 'framer-motion';
 import { css } from 'linaria';
+import Link from 'next/link';
 import React from 'react';
 import THEME from 'Theme/theme';
 
-const button = css`
+const anchor = css`
    grid-area: btn;
 
    width: 100%;
    height: 100%;
+
+   display: grid;
+   place-items: center;
 
    background: ${THEME.COLORS.background};
    color: ${THEME.COLORS['secondary-400']};
@@ -53,17 +57,15 @@ const buttonVariants: Variants = {
 
 type ButtonPagesProps = {
    content: string;
-   onClick?: () => void;
+   href?: string;
 };
 
-export default function ButtonPages({ content, onClick }: ButtonPagesProps) {
+export default function ButtonPages({ content, href }: ButtonPagesProps) {
    return (
-      <motion.button
-         onClick={onClick}
-         variants={buttonVariants}
-         className={button}
-      >
-         {content}
-      </motion.button>
+      <Link href={href}>
+         <motion.a variants={buttonVariants} className={anchor}>
+            {content}
+         </motion.a>
+      </Link>
    );
 }
