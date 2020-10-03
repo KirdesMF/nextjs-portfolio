@@ -1,4 +1,3 @@
-import React from 'react';
 import { css } from 'linaria';
 import Head from 'next/head';
 
@@ -35,7 +34,7 @@ const contentBtn = 'Projects';
 
 function Works() {
    return (
-      <React.Fragment>
+      <>
          <Head>
             <title>{title}</title>
          </Head>
@@ -44,7 +43,7 @@ function Works() {
             <ResumePages spans={spanArray} />
             <LinkPages content={contentBtn} href="/works/projects" />
          </motion.section>
-      </React.Fragment>
+      </>
    );
 }
 

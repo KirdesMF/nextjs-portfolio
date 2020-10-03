@@ -10,27 +10,32 @@ type Data = {
    name: string;
    icon: NameIconType;
    description: string;
+   id: number;
 };
 const datas: Data[] = [
    {
       name: 'Project One',
       icon: 'tools',
       description: 'Coming soon Wesh',
+      id: 1,
    },
    {
       name: 'Project Two',
       icon: 'eye',
       description: 'Coming soon',
+      id: 2,
    },
    {
       name: 'Project Three',
       icon: 'moon',
       description: 'Coming soon',
+      id: 3,
    },
    {
       name: 'Project Four',
       icon: 'google',
       description: 'Coming soon',
+      id: 4,
    },
 ];
 
