@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import useCanvasContext from 'context/CanvasContext';
 import { ReturnedTheme } from '@adobe/leonardo-contrast-colors';
@@ -22,7 +22,9 @@ function ColorScheme({ area }: AdaptiveProps) {
    const { pathname } = useRouter();
    const { setColor } = useCanvasContext();
 
-   const customPathname = Utils.customURL(pathname) as keyof typeof Scheme;
+   const customPathname = Utils.customURLCanvas(
+      pathname
+   ) as keyof typeof Scheme;
 
    const contrastRef = useRef<HTMLInputElement>(null!);
    const brightnessRef = useRef<HTMLInputElement>(null!);
@@ -113,7 +115,9 @@ function ColorScheme({ area }: AdaptiveProps) {
       setAdaptiveColors();
    }
 
-   const debounceInput = Utils.debounce(setAdaptiveColors, 150);
+   const debounceInput = useMemo(() => Utils.debounce(setAdaptiveColors, 150), [
+      setAdaptiveColors,
+   ]);
 
    useEffect(() => {
       checkThemeAndMode();

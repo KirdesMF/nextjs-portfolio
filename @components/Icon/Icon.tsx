@@ -3,43 +3,46 @@ import { styled } from 'linaria/react';
 import { icons, NameIconType } from './icons';
 
 type SIconType = {
-   size: string;
-   iconColor: string;
+   size?: string;
+   iconColor?: string;
    hover?: string;
    rotation?: string;
 };
 
 /**=================== Styled ============================== */
 const SIcon = styled.svg<SIconType>`
-   width: ${(props) => props.size};
-   color: ${(props) => props.iconColor};
+   width: ${(props) => props.size || '1em'};
+   color: ${(props) => props.iconColor || 'black'};
    transform-origin: center;
-   transform: ${(props) => `rotate(${props.rotation})`};
+   transform: ${(props) => `rotate(${props.rotation || 0})`};
    transition: color 500ms linear;
    @media (hover: hover) and (pointer: fine) {
       &:hover {
-         color: ${(props) => props.hover!};
+         color: ${(props) => props.hover || 'black'};
       }
    }
 `;
 
 type IconProps = {
    name: NameIconType;
-   size: string;
-   iconColor: string;
+   size?: string;
+   iconColor?: string;
    hover?: string;
    rotation?: string;
+   classname?: string;
 };
 
 const Icon = ({
    size,
    iconColor,
-   hover = 'black',
+   hover,
    name,
-   rotation = '0',
+   rotation,
+   classname,
 }: IconProps) => {
    return (
       <SIcon
+         className={classname}
          size={size}
          iconColor={iconColor}
          hover={hover}

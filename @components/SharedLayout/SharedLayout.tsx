@@ -1,27 +1,30 @@
-import React from 'react';
 import BigHexagon from '@components/BigHexagon/BigHexagon';
-import ButtonBackHome from '@components/ButtonBackHome/ButtonBackHome';
+import LinkHome from '@components/LinkHome/LinkHome';
 import Pagination from '@components/Pagination/Pagination';
 import { CanvasContextProvider } from 'context/CanvasContext';
 import CanvasHexagons from '@components/CanvasTransition/CanvasTransition';
 import Header from '@components/Header/Header';
 import { useRouter } from 'next/router';
+import Filters from '@components/Filters/Filters';
+import Footer from '@components/Footer/Footer';
 
 function SharedLayout() {
-   const { pathname } = useRouter();
    return (
-      <React.Fragment>
+      <>
+         <Filters />
+         <BigHexagon mirror />
+         <BigHexagon />
+
          <CanvasContextProvider>
             <CanvasHexagons />
             <Header />
          </CanvasContextProvider>
 
-         <BigHexagon top />
-         <BigHexagon />
+         <LinkHome />
+         <Pagination />
 
-         <ButtonBackHome />
-         {pathname !== '/home' && <Pagination />}
-      </React.Fragment>
+         <Footer />
+      </>
    );
 }
 

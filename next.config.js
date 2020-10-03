@@ -3,7 +3,7 @@ const withCSS = require('@zeit/next-css');
 module.exports = withCSS({
    webpack(config) {
       config.module.rules.push({
-         test: /\.(tsx|ts|js|jsx)$/,
+         test: /\.(js|ts|tsx)$/,
          use: [
             {
                loader: 'linaria/loader',

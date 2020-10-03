@@ -1,10 +1,10 @@
 import { motion, Variants } from 'framer-motion';
 import { css } from 'linaria';
 import Link from 'next/link';
-import React from 'react';
 import THEME from 'Theme/theme';
 
 const anchor = css`
+   z-index: 2;
    grid-area: btn;
 
    width: 100%;
@@ -60,7 +60,7 @@ type ButtonPagesProps = {
    href: string;
 };
 
-export default function ButtonPages({ content, href }: ButtonPagesProps) {
+export default function LinkPages({ content, href }: ButtonPagesProps) {
    return (
       <Link href={href}>
          <motion.a variants={buttonVariants} className={anchor}>

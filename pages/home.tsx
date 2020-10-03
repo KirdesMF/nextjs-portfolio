@@ -1,7 +1,69 @@
-import { css } from 'linaria';
+import React from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
 import THEME from 'Theme/theme';
+import { Icon } from '@components/Icon/Icon';
+import { motion, Variants } from 'framer-motion';
+import MaintTitle from '@components/MainTitle/MainTitle';
+import { css } from 'linaria';
 
-// Global section home
+const title = 'Ced | Home';
+
+const anchorVariants: Variants = {
+   in: {
+      opacity: 1,
+      transition: {
+         duration: 0.5,
+         ease: 'circIn',
+      },
+   },
+   out: {
+      opacity: 0,
+      transition: {
+         duration: 0.5,
+         ease: 'circIn',
+      },
+   },
+};
+
+const logoVariants: Variants = {
+   in: {
+      opacity: 1,
+      y: 0,
+      transition: {
+         delay: 0.5,
+         duration: 1,
+         ease: 'linear',
+      },
+   },
+   out: {
+      opacity: 0,
+      y: -50,
+
+      transition: {
+         duration: 1,
+         ease: 'linear',
+      },
+   },
+};
+
+const linksArray = [
+   {
+      area: 'about',
+      href: '/about',
+      content: 'ABOUT',
+   },
+   {
+      area: 'works',
+      href: '/works',
+      content: 'WORKS',
+   },
+   {
+      area: 'contact',
+      href: '/contact',
+      content: 'CONTACT',
+   },
+];
 
 const section = css`
    width: 100%;
@@ -133,11 +195,44 @@ const span = css`
    }
 `;
 
-export default {
-   section,
-   nav,
-   logo,
-   anchor,
-   span,
-   div,
-};
+export default function Home() {
+   return (
+      <>
+         <Head>
+            <title>{title}</title>
+         </Head>
+
+         <motion.section className={section}>
+            <MaintTitle title="home" />
+
+            <nav className={nav}>
+               <motion.span variants={logoVariants} className={logo}>
+                  <Icon
+                     name="CED"
+                     size="30vw"
+                     iconColor={THEME.COLORS.background}
+                  />
+               </motion.span>
+
+               {linksArray.map((link) => (
+                  <Link key={link.area} href={link.href}>
+                     <motion.a
+                        variants={anchorVariants}
+                        className={anchor}
+                        data-area={link.area}
+                     >
+                        <div className={div} data-name={link.area}>
+                           {Array.from({ length: 5 }).map((_, i) => (
+                              <span key={i} className={span}>
+                                 {link.content}
+                              </span>
+                           ))}
+                        </div>
+                     </motion.a>
+                  </Link>
+               ))}
+            </nav>
+         </motion.section>
+      </>
+   );
+}

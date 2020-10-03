@@ -1,4 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import useCanvasContext from 'context/CanvasContext';
+import useWindowSize from 'hooks/useWindowSize';
+
 import {
    setCanvasHexagons,
    renderCanvasHexagons,
@@ -6,16 +9,24 @@ import {
    isHexOnScreen,
 } from '@components/CanvasTransition/hexagons-maker';
 
-import useWindowSize from 'hooks/useWindowSize';
 import { Utils } from 'utils/utils';
 import { css } from 'linaria';
-import useCanvasContext from 'context/CanvasContext';
-import { useRouter } from 'next/router';
 
 const HEX_SIZE = 160;
 
-const CanvasHexagons = () => {
-   const { pathname } = useRouter();
+const canvas = css`
+   width: 100%;
+   height: 100%;
+
+   position: fixed;
+   top: 0;
+   left: 0;
+   pointer-events: none;
+
+   background: hsl(240, 50%, 10%);
+`;
+
+export default function CanvasHexagons() {
    const canvasRef = useRef<HTMLCanvasElement>(null!);
    const windowSize = useWindowSize();
    const { color } = useCanvasContext();
@@ -82,18 +93,4 @@ const CanvasHexagons = () => {
    }, [color]);
 
    return <canvas className={canvas} ref={canvasRef}></canvas>;
-};
-
-export default CanvasHexagons;
-
-const canvas = css`
-   width: 100%;
-   height: 100%;
-
-   position: fixed;
-   top: 0;
-   left: 0;
-   pointer-events: none;
-
-   background: hsl(240, 50%, 10%);
-`;
+}

@@ -92,7 +92,21 @@ const hexToHSL = (hex: string) => {
    return { h, s, l };
 };
 
-const customURL = (pathname: string) => {
+const pathnames = {
+   '/': 'welcome',
+   '/home': 'home',
+   '/about': 'about',
+   '/works': 'works',
+   '/contact': 'contact',
+   '/works/projects': 'projects',
+   '/about/skills': 'skills',
+};
+
+export type Pathnames = keyof typeof pathnames;
+
+const customURL = (pathname: Pathnames) => pathnames[pathname];
+
+const customURLCanvas = (pathname: string) => {
    if (pathname === '/') return 'welcome';
    else if (pathname.startsWith('/home')) return 'home';
    else if (pathname.startsWith('/about')) return 'about';
@@ -133,6 +147,7 @@ export const Utils = {
    hexToHSL,
    customURL,
    customURLPagination,
+   customURLCanvas,
    debounce,
    ease: {
       easeLinear,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { Variants, motion, AnimatePresence } from 'framer-motion';
-import { Utils } from 'utils/utils';
+import { Pathnames, Utils } from 'utils/utils';
 import { css } from 'linaria';
 import THEME from 'Theme/theme';
 import { Icon } from '@components/Icon/Icon';
@@ -53,7 +53,7 @@ function setIsNextVisible(pathname: string) {
 function Pagination() {
    const router = useRouter();
    const pathname = router.pathname;
-   const customPathname = Utils.customURL(pathname);
+   const customPathname = Utils.customURL(pathname as Pathnames);
    const urlPagination = Utils.customURLPagination(pathname);
 
    function goToPreviousPage() {

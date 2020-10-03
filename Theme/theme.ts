@@ -41,10 +41,8 @@ const THEME = {
 
 export default THEME;
 
-export const html = css`
-   :global() {
-      :root {
-         ${shadows}
-      }
+export const globals = css`
+   :global(html) {
+      ${shadows}
    }
 `;

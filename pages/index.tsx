@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-const Welcome = () => {
+export default function Welcome() {
    const router = useRouter();
    const goHome = () => router.push('/home');
    let timeOut: NodeJS.Timeout;
@@ -21,7 +21,6 @@ const Welcome = () => {
          </Head>
       </React.Fragment>
    );
-};
+}
 
 /**=============== Export ============ */
-export default Welcome;

@@ -19,6 +19,13 @@ const about = css`
    height: 100%;
 `;
 
+const skills = css`
+   position: relative;
+   overflow: hidden;
+   width: 100%;
+   height: 100%;
+`;
+
 /**
  * Works Layout
  */
@@ -27,6 +34,21 @@ const works = css`
    overflow: hidden;
    width: 100%;
    height: 100%;
+`;
+
+const projects = css`
+   position: relative;
+   overflow: hidden;
+   width: 100%;
+   height: 100%;
+
+   display: grid;
+   grid-template:
+      '.' 15%
+      'carousel' 1fr
+      'footer' 15%
+      '.' 5%;
+   row-gap: 2%;
 `;
 
 /**
@@ -46,6 +68,8 @@ const contact = css`
 export const CSSLayout = {
    home,
    about,
+   skills,
    works,
+   projects,
    contact,
 };

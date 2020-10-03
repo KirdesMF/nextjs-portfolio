@@ -1,8 +1,7 @@
-import { AnimatePresence, motion, Variants } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { css } from 'linaria';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
 import THEME from 'Theme/theme';
 import { Icon } from '@components/Icon/Icon';
 
@@ -11,29 +10,11 @@ const anchor = css`
    z-index: 20;
    bottom: 10%;
    right: 6%;
+`;
 
-   > svg {
-      filter: drop-shadow(0 0 5px black);
-   }
-
-   /* animation: plane 1s infinite alternate cubic-bezier(0.785, 0.135, 0.15, 0.86);
-   animation-play-state: paused;
-
-   @media (hover: hover) and (pointer: fine) {
-      &:hover {
-         animation-play-state: running;
-      }
-   }
-
-   @keyframes plane {
-      from {
-         transform: translate3d(0, -10px, 0);
-      }
-
-      to {
-         transform: translate3d(0, 10px, 0);
-      }
-   } */
+const icon = css`
+   filter: drop-shadow(0 0 5px black);
+   color: ${THEME.COLORS['primary-500']};
 `;
 
 const variants: Variants = {
@@ -63,7 +44,7 @@ const variants: Variants = {
    },
 };
 
-function ButtonBackHome() {
+export default function LinkHome() {
    const { pathname } = useRouter();
    return (
       <Link href="/home">
@@ -77,13 +58,11 @@ function ButtonBackHome() {
          >
             <Icon
                name="plane"
-               size="4rem"
-               iconColor={THEME.COLORS['primary-500']}
-               hover={THEME.COLORS['secondary-400']}
+               classname={icon}
+               size="4vw"
+               hover={THEME.COLORS['primary-300']}
             />
          </motion.a>
       </Link>
    );
 }
-
-export default ButtonBackHome;

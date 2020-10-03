@@ -2,13 +2,14 @@ import React from 'react';
 import { css } from 'linaria';
 import Head from 'next/head';
 
-import ButtonPages from '@components/ButtonPages/ButtonPages';
+import LinkPages from '@components/LinkPages/LinkPages';
 import MaintTitle from '@components/MainTitle/MainTitle';
 import ResumePages from '@components/ResumePages/ResumePages';
+import { motion } from 'framer-motion';
 
 const title = 'Ced | Works';
 
-const left = css`
+const section = css`
    width: 100%;
    height: 100%;
 
@@ -26,27 +27,25 @@ const left = css`
 `;
 
 const spanArray = [
-   { content: 'We can connect by socal media,' },
-   { content: 'mail or even discord' },
+   { content: 'Here, you can find' },
+   { content: 'my personal & professional projects' },
 ];
 
-const contentBtn = 'get in touch';
-const href = '/contact/social';
-const mainTitle = 'contact';
+const contentBtn = 'Projects';
 
-function Contact() {
+function Works() {
    return (
       <React.Fragment>
          <Head>
             <title>{title}</title>
          </Head>
-         <section className={left}>
-            <MaintTitle title={mainTitle} />
+         <motion.section className={section}>
+            <MaintTitle title="works" />
             <ResumePages spans={spanArray} />
-            <ButtonPages content={contentBtn} href={href} />
-         </section>
+            <LinkPages content={contentBtn} href="/works/projects" />
+         </motion.section>
       </React.Fragment>
    );
 }
 
-export default Contact;
+export default Works;

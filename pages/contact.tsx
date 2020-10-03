@@ -2,13 +2,14 @@ import React from 'react';
 import { css } from 'linaria';
 import Head from 'next/head';
 
-import ButtonPages from '@components/ButtonPages/ButtonPages';
+import LinkPages from '@components/LinkPages/LinkPages';
 import MaintTitle from '@components/MainTitle/MainTitle';
 import ResumePages from '@components/ResumePages/ResumePages';
+import { motion } from 'framer-motion';
 
-const title = 'Ced | Works';
+const title = 'Ced | Contact';
 
-const left = css`
+const section = css`
    width: 100%;
    height: 100%;
 
@@ -21,30 +22,31 @@ const left = css`
       /2fr 1fr;
 
    row-gap: 2%;
-
    place-items: center;
 `;
 
 const spanArray = [
-   { content: 'Here, you can find' },
-   { content: 'my personal & professional projects' },
+   { content: 'We can connect by socal medias,' },
+   { content: 'mail or even discord' },
 ];
 
-const contentBtn = 'Projects';
+const contentBtn = 'get in touch';
+const href = '/contact/social';
+const mainTitle = 'contact';
 
-function Works() {
+function Contact() {
    return (
       <React.Fragment>
          <Head>
             <title>{title}</title>
          </Head>
-         <section className={left}>
-            <MaintTitle title="works" />
+         <section className={section}>
+            <MaintTitle title={mainTitle} />
             <ResumePages spans={spanArray} />
-            <ButtonPages content={contentBtn} href="/works/projects" />
+            <LinkPages content={contentBtn} href={href} />
          </section>
       </React.Fragment>
    );
 }
 
-export default Works;
+export default Contact;

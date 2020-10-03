@@ -1,7 +1,3 @@
-import 'styles/reset.css';
-import 'styles/fonts.css';
-
-import React from 'react';
 import { AppProps } from 'next/app';
 import { AppContextProvider } from 'context/AppContext';
 
@@ -10,16 +6,19 @@ import { AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
 import Layout from '@components/Layout/Layout';
 import { CSSLayout } from '@components/Layout/Layout.styled';
+import { Pathnames, Utils } from 'utils/utils';
 
 function App({ Component, pageProps }: AppProps) {
    const router = useRouter();
-   const nameLayout = router.pathname.substr(1) as keyof typeof CSSLayout;
+   const pathname = router.pathname as Pathnames;
+   const nameLayout = Utils.customURL(pathname) as keyof typeof CSSLayout;
+
    return (
       <AppContextProvider>
          <SharedLayout />
          <AnimatePresence exitBeforeEnter>
             <Layout name={nameLayout} key={router.route}>
-               <Component {...pageProps} />
+               <Component {...pageProps} key={router.route} />
             </Layout>
          </AnimatePresence>
       </AppContextProvider>

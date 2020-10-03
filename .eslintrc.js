@@ -12,6 +12,7 @@ module.exports = {
       'plugin:jsx-a11y/recommended', // accessibility plugin
    ],
    rules: {
+      'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
       'no-use-before-define': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',

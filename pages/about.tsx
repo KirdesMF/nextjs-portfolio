@@ -2,9 +2,10 @@ import React from 'react';
 import Head from 'next/head';
 import { css } from 'linaria';
 
-import ButtonPages from '@components/ButtonPages/ButtonPages';
+import LinkPages from '@components/LinkPages/LinkPages';
 import MaintTitle from '@components/MainTitle/MainTitle';
 import ResumePages from '@components/ResumePages/ResumePages';
+import { motion } from 'framer-motion';
 
 const spanArray = [
    { content: 'Hi, I’m Cédric,' },
@@ -19,7 +20,7 @@ const contentBtn = 'Skills set';
 const mainTitle = 'about';
 const href = '/about/skills';
 
-const left = css`
+const section = css`
    width: 100%;
    height: 100%;
 
@@ -36,20 +37,18 @@ const left = css`
    place-items: center;
 `;
 
-function About() {
+export default function About() {
    return (
       <>
          <Head>
             <title>{title}</title>
          </Head>
 
-         <section className={left}>
+         <section className={section}>
             <ResumePages spans={spanArray} />
             <MaintTitle title={mainTitle} />
-            <ButtonPages href={href} content={contentBtn} />
+            <LinkPages href={href} content={contentBtn} />
          </section>
       </>
    );
 }
-
-export default About;

@@ -27,9 +27,20 @@ type THex = {
    custom?: number;
    variants?: Variants;
    filter?: string;
+   className?: string;
 };
 
-function Hexagon({ originHex, sizeHex, cube, custom, variants, filter }: THex) {
+function Hexagon(props: THex) {
+   const {
+      originHex,
+      sizeHex,
+      cube,
+      custom,
+      variants,
+      filter,
+      className,
+   } = props;
+
    const points = createAttribPoints({ originHex, sizeHex, cube });
    const centers = cubeToPoint({ origin: originHex, size: sizeHex, cube });
 
@@ -40,6 +51,7 @@ function Hexagon({ originHex, sizeHex, cube, custom, variants, filter }: THex) {
          custom={custom}
          variants={variants}
          style={{ transformOrigin: `${~~centers.x}px ${~~centers.y}px` }}
+         className={className}
       />
    );
 }
