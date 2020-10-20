@@ -1,5 +1,6 @@
-import { css } from 'linaria';
 import React from 'react';
+import Head from 'next/head';
+import { css } from 'linaria';
 
 import Layout from '@components/Layout/Layout';
 import LinkPages from '@components/LinkPages/LinkPages';
@@ -44,9 +45,14 @@ const footer = css`
    z-index: 2;
 `;
 
+const title = 'Ced | Projects';
+
 export default function Projects() {
    return (
       <>
+         <Head>
+            <title>{title}</title>
+         </Head>
          <Layout name="projects">
             <Carousel datas={datas} />
 
