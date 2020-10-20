@@ -1,3 +1,4 @@
+import '@adobe/leonardo-contrast-colors';
 declare module '@adobe/leonardo-contrast-colors' {
    export type Background = { background: string };
 
