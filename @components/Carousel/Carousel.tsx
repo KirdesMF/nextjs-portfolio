@@ -118,6 +118,9 @@ export default function Carousel({ datas }: CarouselProps) {
             <section>
                <svg
                   className={styles.svgCard}
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  focusable="false"
                   viewBox="0 0 200 200"
                   preserveAspectRatio="none"
                >
@@ -136,6 +139,9 @@ export default function Carousel({ datas }: CarouselProps) {
             <section>
                <svg
                   className={styles.svgCard}
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  focusable="false"
                   viewBox="0 0 200 200"
                   preserveAspectRatio="none"
                >

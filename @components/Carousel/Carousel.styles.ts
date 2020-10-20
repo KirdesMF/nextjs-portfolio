@@ -111,14 +111,10 @@ export const card = css`
    height: 100%;
 
    display: grid;
-   grid-template: repeat(3, 1fr) / 1fr;
-   grid-auto-flow: row;
+   grid-template: repeat(3, calc(100% / 3)) / 1fr;
    row-gap: 2rem;
 
    > section {
-      width: 100%;
-      height: 100%;
-
       display: grid;
    }
 `;
