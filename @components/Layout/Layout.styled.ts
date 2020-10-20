@@ -7,6 +7,14 @@ const home = css`
    overflow: hidden;
    width: 100%;
    height: 100%;
+
+   overflow: hidden;
+   display: grid;
+   grid-template:
+      '.' 25%
+      'nav' 1fr
+      '.' 15%
+      /1fr;
 `;
 
 /**
@@ -17,6 +25,17 @@ const about = css`
    overflow: hidden;
    width: 100%;
    height: 100%;
+
+   display: grid;
+   grid-template:
+      '. .' 15%
+      'art .' 1fr
+      'btn btn' 15%
+      '. .' 5%
+      /2fr 1fr;
+
+   row-gap: 2%;
+   place-items: center;
 `;
 
 const skills = css`
@@ -24,6 +43,8 @@ const skills = css`
    overflow: hidden;
    width: 100%;
    height: 100%;
+
+   display: grid;
 `;
 
 /**
@@ -34,6 +55,18 @@ const works = css`
    overflow: hidden;
    width: 100%;
    height: 100%;
+
+   display: grid;
+   grid-template:
+      '. .' 15%
+      'art .' 1fr
+      'btn btn' 15%
+      '. .' 5%
+      /2fr 1fr;
+
+   row-gap: 2%;
+
+   place-items: center;
 `;
 
 const projects = css`
@@ -44,8 +77,7 @@ const projects = css`
 
    display: grid;
    grid-template:
-      '.' 15%
-      'carousel' 1fr
+      '.' 1fr
       'footer' 15%
       '.' 5%;
    row-gap: 2%;
@@ -59,6 +91,17 @@ const contact = css`
    overflow: hidden;
    width: 100%;
    height: 100%;
+
+   display: grid;
+   grid-template:
+      '. .' 15%
+      'art .' 1fr
+      'btn btn' 15%
+      '. .' 5%
+      /2fr 1fr;
+
+   row-gap: 2%;
+   place-items: center;
 `;
 
 /**================= Export ================ */

@@ -1,10 +1,10 @@
+import { css } from 'linaria';
+import React from 'react';
+
+import Layout from '@components/Layout/Layout';
 import LinkPages from '@components/LinkPages/LinkPages';
 import Carousel from '@components/Carousel/Carousel';
 import { NameIconType } from '@components/Icon/icons';
-import { motion } from 'framer-motion';
-import { css } from 'linaria';
-import React from 'react';
-import THEME from 'Theme/theme';
 
 type Data = {
    name: string;
@@ -47,11 +47,13 @@ const footer = css`
 export default function Projects() {
    return (
       <>
-         <Carousel datas={datas} />
+         <Layout name="projects">
+            <Carousel datas={datas} />
 
-         <footer className={footer}>
-            <LinkPages href="/works" content="back" />
-         </footer>
+            <footer className={footer}>
+               <LinkPages href="/works" content="back" />
+            </footer>
+         </Layout>
       </>
    );
 }

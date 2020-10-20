@@ -1,4 +1,11 @@
-import { motion, Variants } from 'framer-motion';
+import {
+   motion,
+   Orchestration,
+   Repeat,
+   TargetAndTransition,
+   Tween,
+   Variants,
+} from 'framer-motion';
 import React from 'react';
 import { fonts } from 'Theme/fonts';
 import { reset } from 'Theme/reset';
@@ -10,28 +17,23 @@ type LayoutProps = {
    name: keyof typeof CSSLayout;
 };
 
-const variants: Variants = {
-   in: {
-      opacity: 1,
-      transition: {
-         when: 'beforeChildren',
-      },
-   },
-   out: {
-      opacity: 0,
-      transition: {
-         when: 'afterChildren',
-      },
-   },
+const transition: Orchestration | Repeat | Tween = {
+   when: 'beforeChildren',
+   duration: 2,
 };
+
+const endTransition: Orchestration | Repeat | Tween = {
+   when: 'afterChildren',
+   duration: 2,
+};
+
 function Layout({ children, name }: LayoutProps) {
    const className = CSSLayout[name];
    return (
       <motion.main
-         animate="in"
-         exit="out"
-         initial="out"
-         variants={variants}
+         initial={{ opacity: 0 }}
+         animate={{ opacity: 1, transition: transition }}
+         exit={{ opacity: 0, transition: endTransition }}
          className={`${className} ${reset} ${globals} ${fonts}`}
       >
          {children}

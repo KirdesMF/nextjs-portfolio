@@ -21,10 +21,10 @@ const LINKS = [
 export default function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
    const { pathname } = useRouter();
 
-   const handleClick = () => setIsOpen((prev) => !prev);
+   const handleClick = () => setIsOpen(false);
 
    return (
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence>
          {isOpen && (
             <motion.section
                animate="in"
@@ -33,36 +33,37 @@ export default function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
                variants={variants.section}
                className={style.section}
             >
-               <motion.nav
-                  animate="in"
-                  exit="out"
-                  initial="out"
-                  className={style.nav}
-               >
-                  {LINKS.map((link, i) => (
-                     <Link key={link.name} href={link.href}>
-                        <motion.a
-                           className={style.anchor}
-                           onClick={handleClick}
-                           custom={i}
-                           variants={variants.anchor}
-                        >
-                           <motion.span
-                              variants={variants.span}
+               <nav className={style.nav}>
+                  <AnimatePresence exitBeforeEnter>
+                     {LINKS.map((link, i) => (
+                        <Link key={link.name} href={link.href}>
+                           <motion.a
+                              className={style.anchor}
+                              onClick={handleClick}
                               custom={i}
-                              className={style.span}
-                              data-active={
-                                 pathname.substr(1) === link.name
-                                    ? 'active'
-                                    : ''
-                              }
+                              variants={variants.anchor}
+                              animate="in"
+                              exit="out"
+                              initial="out"
                            >
-                              {link.name}
-                           </motion.span>
-                        </motion.a>
-                     </Link>
-                  ))}
-               </motion.nav>
+                              <motion.span
+                                 variants={variants.span}
+                                 custom={i}
+                                 animate="in"
+                                 exit="out"
+                                 initial="out"
+                                 className={style.span}
+                                 data-active={
+                                    pathname === link.href ? 'active' : ''
+                                 }
+                              >
+                                 {link.name}
+                              </motion.span>
+                           </motion.a>
+                        </Link>
+                     ))}
+                  </AnimatePresence>
+               </nav>
 
                <motion.div
                   variants={variants.overlay}

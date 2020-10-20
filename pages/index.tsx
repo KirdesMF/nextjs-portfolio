@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Layout from '@components/Layout/Layout';
 
 export default function Welcome() {
    const router = useRouter();
@@ -19,6 +20,9 @@ export default function Welcome() {
             <title>Ced | Welcome ...</title>
             <link rel="icon" href="/favicon.ico" />
          </Head>
+         <Layout name="skills">
+            <div></div>
+         </Layout>
       </React.Fragment>
    );
 }

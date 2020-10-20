@@ -1,11 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
-import { css } from 'linaria';
 
+import Layout from '@components/Layout/Layout';
 import LinkPages from '@components/LinkPages/LinkPages';
 import MaintTitle from '@components/MainTitle/MainTitle';
 import ResumePages from '@components/ResumePages/ResumePages';
-import { motion } from 'framer-motion';
 
 const spanArray = [
    { content: 'Hi, I’m Cédric,' },
@@ -20,23 +19,6 @@ const contentBtn = 'Skills set';
 const mainTitle = 'about';
 const href = '/about/skills';
 
-const section = css`
-   width: 100%;
-   height: 100%;
-
-   display: grid;
-   grid-template:
-      '. .' 15%
-      'art .' 1fr
-      'btn btn' 15%
-      '. .' 5%
-      /2fr 1fr;
-
-   row-gap: 2%;
-
-   place-items: center;
-`;
-
 export default function About() {
    return (
       <>
@@ -44,11 +26,11 @@ export default function About() {
             <title>{title}</title>
          </Head>
 
-         <section className={section}>
+         <Layout name="about">
             <ResumePages spans={spanArray} />
             <MaintTitle title={mainTitle} />
             <LinkPages href={href} content={contentBtn} />
-         </section>
+         </Layout>
       </>
    );
 }

@@ -11,7 +11,6 @@ const section: Variants = {
    out: {
       opacity: 0,
       transition: {
-         staggerChildren: 0.1,
          staggerDirection: -1,
          when: 'afterchildren',
       },

@@ -16,8 +16,8 @@ export default function Filters() {
          className={svg}
       >
          <defs>
-            <filter id="shadow">
-               <feDropShadow dx="0" dy="0" stdDeviation="4" />
+            <filter id="shadow" filterUnits="objectBoundingBox">
+               <feDropShadow dx="0" dy="0" stdDeviation="2" />
             </filter>
          </defs>
 
@@ -26,7 +26,7 @@ export default function Filters() {
                <feGaussianBlur
                   in="SourceAlpha"
                   result="blur"
-                  stdDeviation="4"
+                  stdDeviation="8"
                ></feGaussianBlur>
                <feOffset
                   dx="0"

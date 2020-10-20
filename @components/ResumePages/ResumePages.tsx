@@ -62,7 +62,13 @@ type ResumePagesProps = {
 
 export default function ResumePages({ spans }: ResumePagesProps) {
    return (
-      <motion.article variants={articleVariants} className={article}>
+      <motion.article
+         variants={articleVariants}
+         animate="in"
+         exit="out"
+         initial="out"
+         className={article}
+      >
          {spans.map((s) => (
             <motion.span
                key={s.content}

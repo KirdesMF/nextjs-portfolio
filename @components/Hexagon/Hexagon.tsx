@@ -1,8 +1,12 @@
 import React from 'react';
 import { hexCornersPoints } from 'utils/hexagons/helpers';
 import { TPoint, TCube, cubeToPoint } from 'utils/hexagons/convert';
-import { motion, Variants } from 'framer-motion';
-import { css } from 'linaria';
+import {
+   AnimationControls,
+   AnimationProps,
+   motion,
+   Variants,
+} from 'framer-motion';
 
 type TCreateAtt = {
    originHex: TPoint;
@@ -14,7 +18,7 @@ function roundToTwo(num: number) {
    return Number(num.toFixed(2));
 }
 
-function createAttribPoints({ originHex, cube, sizeHex }: TCreateAtt) {
+export function createAttribPoints({ originHex, cube, sizeHex }: TCreateAtt) {
    return hexCornersPoints({ origin: originHex, cube, size: sizeHex })
       .map((corner) => `${roundToTwo(corner.x)} ${roundToTwo(corner.y)}`)
       .join(',');
@@ -24,9 +28,13 @@ type THex = {
    originHex: TPoint;
    cube: TCube;
    sizeHex: number;
-   custom?: number;
+   custom?: unknown;
    variants?: Variants;
    filter?: string;
+   clipPath?: string;
+   animate?: string | AnimationControls;
+   initial?: string;
+   exit?: string;
    className?: string;
 };
 
@@ -38,7 +46,11 @@ function Hexagon(props: THex) {
       custom,
       variants,
       filter,
+      clipPath,
       className,
+      animate,
+      initial,
+      exit,
    } = props;
 
    const points = createAttribPoints({ originHex, sizeHex, cube });
@@ -47,9 +59,13 @@ function Hexagon(props: THex) {
    return (
       <motion.polygon
          filter={filter}
+         clipPath={clipPath}
          points={points}
          custom={custom}
          variants={variants}
+         animate={animate}
+         initial={initial}
+         exit={exit}
          style={{ transformOrigin: `${~~centers.x}px ${~~centers.y}px` }}
          className={className}
       />

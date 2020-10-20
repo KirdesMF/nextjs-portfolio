@@ -4,11 +4,14 @@ import Pagination from '@components/Pagination/Pagination';
 import { CanvasContextProvider } from 'context/CanvasContext';
 import CanvasHexagons from '@components/CanvasTransition/CanvasTransition';
 import Header from '@components/Header/Header';
-import { useRouter } from 'next/router';
 import Filters from '@components/Filters/Filters';
 import Footer from '@components/Footer/Footer';
+import { ReactNode } from 'react';
 
-function SharedLayout() {
+type SharedLayoutProps = {
+   children: ReactNode;
+};
+function SharedLayout({ children }: SharedLayoutProps) {
    return (
       <>
          <Filters />
@@ -23,6 +26,7 @@ function SharedLayout() {
          <LinkHome />
          <Pagination />
 
+         {children}
          <Footer />
       </>
    );
