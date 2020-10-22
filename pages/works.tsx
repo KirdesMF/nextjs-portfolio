@@ -14,7 +14,7 @@ const contentBtn = 'Projects';
 
 export default function Works() {
    return (
-      <Layout name="works">
+      <Layout name="works" title={title}>
          <MaintTitle title="works" />
          <ResumePages spans={spanArray} />
          <LinkPages content={contentBtn} href="/works/projects" />

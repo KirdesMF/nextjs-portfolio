@@ -19,13 +19,13 @@ const datas: Data[] = [
    },
    {
       name: 'Project Two',
-      icon: 'eye',
+      icon: 'phone',
       description: 'Coming soon',
       id: 2,
    },
    {
       name: 'Project Three',
-      icon: 'moon',
+      icon: 'svg',
       description: 'Coming soon',
       id: 3,
    },
@@ -46,7 +46,7 @@ const title = 'Ced | Projects';
 
 export default function Projects() {
    return (
-      <Layout name="projects">
+      <Layout name="projects" title={title}>
          <Carousel datas={datas} />
 
          <footer className={footer}>

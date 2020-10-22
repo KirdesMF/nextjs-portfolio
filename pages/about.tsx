@@ -18,7 +18,7 @@ const href = '/about/skills';
 
 export default function About() {
    return (
-      <Layout name="about">
+      <Layout name="about" title={title}>
          <ResumePages spans={spanArray} />
          <MaintTitle title={mainTitle} />
          <LinkPages href={href} content={contentBtn} />

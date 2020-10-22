@@ -14,7 +14,7 @@ export default function Welcome() {
    });
 
    return (
-      <Layout name="skills">
+      <Layout name="skills" title="Ced | Welcome">
          <div></div>
       </Layout>
    );
