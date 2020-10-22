@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import Head from 'next/head';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '@components/Layout/Layout';
 
@@ -15,16 +14,8 @@ export default function Welcome() {
    });
 
    return (
-      <React.Fragment>
-         <Head>
-            <title>Ced | Welcome ...</title>
-            <link rel="icon" href="/favicon.ico" />
-         </Head>
-         <Layout name="skills">
-            <div></div>
-         </Layout>
-      </React.Fragment>
+      <Layout name="skills">
+         <div></div>
+      </Layout>
    );
 }
-
-/**=============== Export ============ */

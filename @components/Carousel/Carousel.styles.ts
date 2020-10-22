@@ -107,8 +107,8 @@ export const card = css`
    grid-column: 3 / 4;
    grid-row: 2 / 4;
 
-   width: 100%;
-   height: 100%;
+   width: 80%;
+   height: 80%;
 
    display: grid;
    grid-template: repeat(3, calc(100% / 3)) / 1fr;

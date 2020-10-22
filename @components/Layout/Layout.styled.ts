@@ -11,9 +11,9 @@ const home = css`
    overflow: hidden;
    display: grid;
    grid-template:
-      '.' 25%
+      '.' 20%
       'nav' 1fr
-      '.' 15%
+      '.' 20%
       /1fr;
 `;
 
@@ -45,6 +45,13 @@ const skills = css`
    height: 100%;
 
    display: grid;
+   grid-template:
+      '. . .  ' 20%
+      '. code .' 1fr
+      '. libs .' 1fr
+      '. tools .' 1fr
+      '. . . ' 10%
+      /15% 1fr 15%;
 `;
 
 /**
@@ -94,14 +101,12 @@ const contact = css`
 
    display: grid;
    grid-template:
-      '. .' 15%
-      'art .' 1fr
-      'btn btn' 15%
-      '. .' 5%
-      /2fr 1fr;
-
-   row-gap: 2%;
+      '. . .' 15%
+      '. card .' 1fr
+      '. . . ' 15%
+      /10% 1fr 15%;
    place-items: center;
+   column-gap: 2rem;
 `;
 
 /**================= Export ================ */

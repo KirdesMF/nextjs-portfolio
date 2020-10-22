@@ -1,12 +1,7 @@
 import React from 'react';
 import { hexCornersPoints } from 'utils/hexagons/helpers';
 import { TPoint, TCube, cubeToPoint } from 'utils/hexagons/convert';
-import {
-   AnimationControls,
-   AnimationProps,
-   motion,
-   Variants,
-} from 'framer-motion';
+import { AnimationControls, motion, Variants } from 'framer-motion';
 
 type TCreateAtt = {
    originHex: TPoint;

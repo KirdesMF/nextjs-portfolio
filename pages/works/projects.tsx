@@ -1,7 +1,4 @@
-import React from 'react';
-import Head from 'next/head';
 import { css } from 'linaria';
-
 import Layout from '@components/Layout/Layout';
 import LinkPages from '@components/LinkPages/LinkPages';
 import Carousel from '@components/Carousel/Carousel';
@@ -49,17 +46,12 @@ const title = 'Ced | Projects';
 
 export default function Projects() {
    return (
-      <>
-         <Head>
-            <title>{title}</title>
-         </Head>
-         <Layout name="projects">
-            <Carousel datas={datas} />
+      <Layout name="projects">
+         <Carousel datas={datas} />
 
-            <footer className={footer}>
-               <LinkPages href="/works" content="back" />
-            </footer>
-         </Layout>
-      </>
+         <footer className={footer}>
+            <LinkPages href="/works" content="back" />
+         </footer>
+      </Layout>
    );
 }

@@ -1,6 +1,3 @@
-import React from 'react';
-import Head from 'next/head';
-
 import Layout from '@components/Layout/Layout';
 import LinkPages from '@components/LinkPages/LinkPages';
 import MaintTitle from '@components/MainTitle/MainTitle';
@@ -21,16 +18,10 @@ const href = '/about/skills';
 
 export default function About() {
    return (
-      <>
-         <Head>
-            <title>{title}</title>
-         </Head>
-
-         <Layout name="about">
-            <ResumePages spans={spanArray} />
-            <MaintTitle title={mainTitle} />
-            <LinkPages href={href} content={contentBtn} />
-         </Layout>
-      </>
+      <Layout name="about">
+         <ResumePages spans={spanArray} />
+         <MaintTitle title={mainTitle} />
+         <LinkPages href={href} content={contentBtn} />
+      </Layout>
    );
 }

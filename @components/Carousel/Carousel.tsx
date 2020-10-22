@@ -115,66 +115,29 @@ export default function Carousel({ datas }: CarouselProps) {
          </section>
 
          <article className={styles.card}>
-            <section>
-               <svg
-                  className={styles.svgCard}
-                  version="1.1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  focusable="false"
-                  viewBox="0 0 200 200"
-                  preserveAspectRatio="none"
-               >
-                  <motion.line
-                     variants={variants.lineDescription}
-                     animate={controls}
-                     initial="initial"
-                     x1={0}
-                     y1={100}
-                     x2={200}
-                     y2={100}
-                  />
-               </svg>
-            </section>
-
-            <section>
-               <svg
-                  className={styles.svgCard}
-                  version="1.1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  focusable="false"
-                  viewBox="0 0 200 200"
-                  preserveAspectRatio="none"
-               >
-                  <motion.line
-                     variants={variants.lineDescription}
-                     animate={controls}
-                     custom={true}
-                     initial="initial"
-                     x1={0}
-                     y1={100}
-                     x2={200}
-                     y2={100}
-                  />
-               </svg>
-            </section>
-
-            <section>
-               <svg
-                  className={styles.svgCard}
-                  viewBox="0 0 200 200"
-                  preserveAspectRatio="none"
-               >
-                  <motion.line
-                     variants={variants.lineDescription}
-                     animate={controls}
-                     initial="initial"
-                     x1={0}
-                     y1={100}
-                     x2={200}
-                     y2={100}
-                  />
-               </svg>
-            </section>
+            {Array.from({ length: 3 }).map((_, i) => (
+               <section key={i}>
+                  <svg
+                     className={styles.svgCard}
+                     version="1.1"
+                     xmlns="http://www.w3.org/2000/svg"
+                     focusable="false"
+                     viewBox="0 0 200 200"
+                     preserveAspectRatio="none"
+                  >
+                     <motion.line
+                        variants={variants.lineDescription}
+                        animate={controls}
+                        initial="initial"
+                        custom={i === 1}
+                        x1={0}
+                        y1={100}
+                        x2={200}
+                        y2={100}
+                     />
+                  </svg>
+               </section>
+            ))}
          </article>
       </div>
    );

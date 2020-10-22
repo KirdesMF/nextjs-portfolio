@@ -24,10 +24,7 @@ function IconTheme({ mode }: IconThemeProps) {
          aria-hidden="true"
       >
          <title>Dark mode icon</title>
-         <desc>
-            Icon representing earth with a side enlighted by the sun and the
-            other one by the moon
-         </desc>
+
          <motion.g
             className="icon"
             variants={variants.icon}
