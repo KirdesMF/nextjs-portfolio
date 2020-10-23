@@ -12,12 +12,12 @@ const libsIcons: NameIconType[] = [
    'styled-components',
    'sass',
    'framer',
+   'git',
 ];
 
 const toolsIcons: NameIconType[] = [
-   'vscode',
-   'git',
    'illustrator',
+   'xd',
    'after effect',
    'blender',
 ];

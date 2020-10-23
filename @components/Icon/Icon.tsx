@@ -35,6 +35,7 @@ type IconProps = {
    hover?: string;
    rotation?: string;
    classname?: string;
+   filter?: 'url(#shadow)' | 'url(#dropShadow)';
 };
 
 function Icon(props: IconProps) {
