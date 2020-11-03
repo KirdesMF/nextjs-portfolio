@@ -11,6 +11,7 @@ export function Introduction() {
          width="50%"
          height="50%"
          title="Welcome Cedric Gourville Developer"
+         speed={1.5}
       />
    );
 }
