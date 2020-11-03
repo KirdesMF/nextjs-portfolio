@@ -7,24 +7,31 @@ import Header from '@components/Header/Header';
 import Filters from '@components/Filters/Filters';
 import Footer from '@components/Footer/Footer';
 import { ReactNode } from 'react';
+import { useRouter } from 'next/router';
 
 type SharedLayoutProps = {
    children: ReactNode;
 };
 function SharedLayout({ children }: SharedLayoutProps) {
+   const { pathname } = useRouter();
+
    return (
       <>
-         <Filters />
-         <BigHexagon mirror />
-         <BigHexagon />
+         {pathname !== '/' && (
+            <>
+               <Filters />
+               <BigHexagon mirror />
+               <BigHexagon />
 
-         <CanvasContextProvider>
-            <CanvasHexagons />
-            <Header />
-         </CanvasContextProvider>
+               <CanvasContextProvider>
+                  <CanvasHexagons />
+                  <Header />
+               </CanvasContextProvider>
 
-         <LinkHome />
-         <Pagination />
+               <LinkHome />
+               <Pagination />
+            </>
+         )}
 
          {children}
          <Footer />

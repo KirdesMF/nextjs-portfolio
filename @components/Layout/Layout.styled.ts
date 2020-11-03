@@ -1,5 +1,10 @@
 import { css } from 'linaria';
 
+const intro = css`
+   width: 100%;
+   height: 100%;
+`;
+
 /**
  * Home Layout
  */
@@ -114,6 +119,7 @@ const contact = css`
  * Object storing Layouts Pages
  */
 export const CSSLayout = {
+   intro,
    home,
    about,
    skills,

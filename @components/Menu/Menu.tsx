@@ -7,7 +7,6 @@ type MenuProps = {
 };
 function Menu({ area }: MenuProps) {
    const [isOpen, setIsOpen] = useState(false);
-
    return (
       <>
          <NavMenu isOpen={isOpen} setIsOpen={setIsOpen} />
