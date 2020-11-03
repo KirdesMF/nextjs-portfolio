@@ -3,6 +3,9 @@ import { css } from 'linaria';
 const intro = css`
    width: 100%;
    height: 100%;
+
+   display: grid;
+   place-items: center;
 `;
 
 /**
