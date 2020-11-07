@@ -9,7 +9,7 @@ export default function Welcome() {
    let timeOut: NodeJS.Timeout;
 
    useEffect(() => {
-      timeOut = setTimeout(goHome, 5300);
+      timeOut = setTimeout(goHome, 7000);
 
       return () => clearTimeout(timeOut);
    });
