@@ -12,7 +12,7 @@ import {
 import { Utils } from 'utils/utils';
 import { css } from 'linaria';
 
-const HEX_SIZE = 160;
+const HEX_SIZE = 150;
 
 const canvas = css`
    width: 100%;

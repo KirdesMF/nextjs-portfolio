@@ -5,7 +5,6 @@ const intro = css`
    height: 100%;
 
    display: grid;
-   place-items: center;
 `;
 
 /**

@@ -10,10 +10,9 @@ export const reset = css`
       *:before,
       *:after {
          box-sizing: inherit;
-         transition: color 500ms ease-in-out -0.5s, fill 500ms ease-in-out -0.5s,
-            stroke 500ms ease-in-out -0.5s, background 500ms ease-in-out -0.5s,
-            border-color 500ms ease-in-out -0.5s,
-            box-shadow 500ms ease-in-out -0.5s;
+         transition: color 1s ease-in-out -0.5s, fill 1s ease-in-out -0.5s,
+            stroke 1s ease-in-out -0.5s, background 1s ease-in-out -0.5s,
+            border-color 1s ease-in-out -0.5s, box-shadow 1s ease-in-out -0.5s;
       }
 
       html,
