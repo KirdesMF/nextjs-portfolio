@@ -46,13 +46,13 @@ const WELCOME_RATIOS = {
 const WELCOME_SCALE: NamedColorScale[] = [
    {
       name: 'primary',
-      colorKeys: ['hsl(50, 50%, 50%)', 'hsl(50, 30%, 50%)'],
+      colorKeys: ['hsl(0, 10%, 10%)', 'hsl(0, 15%, 10%)'],
       colorspace: 'LCH',
       ratios: WELCOME_RATIOS.primary,
    },
    {
       name: 'secondary',
-      colorKeys: ['hsl(150, 50%, 50%)', 'hsl(150, 30%, 50%)'],
+      colorKeys: ['hsl(0, 10%, 10%)', 'hsl(0, 15%, 10%)'],
       colorspace: 'LCH',
       ratios: WELCOME_RATIOS.secondary,
    },

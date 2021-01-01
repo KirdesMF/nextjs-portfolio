@@ -17,21 +17,21 @@ function SharedLayout({ children }: SharedLayoutProps) {
 
    return (
       <>
-         {pathname !== '/' && (
+         <Filters />
+         {/* {pathname !== '/' && (
             <>
-               <Filters />
                <BigHexagon mirror />
                <BigHexagon />
-
-               <CanvasContextProvider>
-                  <CanvasHexagons />
-                  <Header />
-               </CanvasContextProvider>
-
-               <LinkHome />
-               <Pagination />
             </>
-         )}
+         )} */}
+
+         <CanvasContextProvider>
+            <CanvasHexagons />
+            <Header />
+         </CanvasContextProvider>
+
+         <LinkHome />
+         <Pagination />
 
          {children}
          <Footer />
