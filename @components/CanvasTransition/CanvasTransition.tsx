@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import useCanvasContext from 'context/CanvasContext';
-import useWindowSize from 'hooks/useWindowSize';
+import { useCanvasContext } from 'context/CanvasContext';
+import { useWindowSize } from 'hooks/useWindowSize';
 
 import {
    setCanvasHexagons,
@@ -10,23 +10,11 @@ import {
 } from '@components/CanvasTransition/hexagons-maker';
 
 import { Utils } from 'utils/utils';
-import { css } from 'linaria';
+import * as styles from './CanvasTransition.styles';
 
 const HEX_SIZE = 150;
 
-const canvas = css`
-   width: 100%;
-   height: 100%;
-
-   position: fixed;
-   top: 0;
-   left: 0;
-   pointer-events: none;
-
-   background: hsl(240, 50%, 10%);
-`;
-
-export default function CanvasHexagons() {
+export function CanvasTransition() {
    const canvasRef = useRef<HTMLCanvasElement>(null!);
    const windowSize = useWindowSize();
    const { color } = useCanvasContext();
@@ -92,5 +80,5 @@ export default function CanvasHexagons() {
       return () => cancelAnimationFrame(requestId);
    }, [color]);
 
-   return <canvas className={canvas} ref={canvasRef}></canvas>;
+   return <canvas className={styles.canvas} ref={canvasRef}></canvas>;
 }

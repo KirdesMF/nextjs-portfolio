@@ -1,5 +1,5 @@
 import { NameIconType } from '@components/Icon/icons';
-import Layout from '@components/Layout/Layout';
+import { Layout } from '@components/Layout/Layout';
 import { SkillPanel } from '@components/SkillPanel/SkillPanel';
 
 const title = 'Ced | Skills';

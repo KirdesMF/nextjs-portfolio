@@ -1,7 +1,6 @@
-import { css } from 'linaria';
-import Layout from '@components/Layout/Layout';
-import LinkPages from '@components/LinkPages/LinkPages';
-import Carousel from '@components/Carousel/Carousel';
+import { css } from '@linaria/core';
+import { Layout } from '@components/Layout/Layout';
+import { LinkPages } from '@components/LinkPages/LinkPages';
 import { NameIconType } from '@components/Icon/icons';
 
 type Data = {
@@ -47,8 +46,6 @@ const title = 'Ced | Projects';
 export default function Projects() {
    return (
       <Layout name="projects" title={title}>
-         <Carousel datas={datas} />
-
          <footer className={footer}>
             <LinkPages href="/works" content="back" />
          </footer>

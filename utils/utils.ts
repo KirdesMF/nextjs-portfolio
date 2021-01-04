@@ -107,7 +107,7 @@ export type Pathnames = keyof typeof pathnames;
 const customURL = (pathname: Pathnames) => pathnames[pathname];
 
 const customURLCanvas = (pathname: string) => {
-   if (pathname === '/') return 'welcome';
+   if (pathname === '/') return 'intro';
    else if (pathname.startsWith('/home')) return 'home';
    else if (pathname.startsWith('/about')) return 'about';
    else if (pathname.startsWith('/works')) return 'works';
@@ -115,7 +115,7 @@ const customURLCanvas = (pathname: string) => {
 };
 
 const customURLPagination = (pathname: string) => {
-   if (pathname === '/') return 'welcome';
+   if (pathname === '/') return 'intro';
    else if (pathname.startsWith('/home')) return '/home';
    else if (pathname.startsWith('/about')) return '/about';
    else if (pathname.startsWith('/works')) return '/works';

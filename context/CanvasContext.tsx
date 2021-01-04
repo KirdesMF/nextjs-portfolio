@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState, createContext } from 'react';
 
 type CanvasCtx = {
    setColor: (value: string) => void;
    color: string;
 };
 
-const CanvasContext = React.createContext<CanvasCtx>(undefined!);
+const CanvasContext = createContext<CanvasCtx>({} as CanvasCtx);
 
 function CanvasContextProvider({ children }: { children: React.ReactNode }) {
    const [color, setColor] = useState<string>('');
@@ -22,5 +22,4 @@ function CanvasContextProvider({ children }: { children: React.ReactNode }) {
 
 const useCanvasContext = () => useContext(CanvasContext);
 
-export { CanvasContextProvider };
-export default useCanvasContext;
+export { CanvasContextProvider, useCanvasContext };

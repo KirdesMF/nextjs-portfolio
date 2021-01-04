@@ -1,5 +1,6 @@
-import { Icon, IconWithHexes } from '@components/Icon/Icon';
-import * as styles from './LinkContact.style';
+import { Icon } from '@components/Icon/Icon';
+
+import * as styles from './LinkContact.styles';
 
 export function LinkContact() {
    return (

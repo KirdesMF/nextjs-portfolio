@@ -1,4 +1,4 @@
-import Layout from '@components/Layout/Layout';
+import { Layout } from '@components/Layout/Layout';
 import { LinkContact } from '@components/LinkContact/LinkContact';
 
 const title = 'Ced | Contact';

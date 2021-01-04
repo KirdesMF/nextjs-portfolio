@@ -1,44 +1,15 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Variants, motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Pathnames, Utils } from 'utils/utils';
-import { css } from 'linaria';
-import THEME from 'Theme/theme';
 import { Icon } from '@components/Icon/Icon';
+import { COLORS } from 'Theme/colors';
+
+import * as styles from './Pagination.styles';
+import * as variants from './Pagination.variants';
 
 const links = ['/', '/home', '/about', '/works', '/contact'];
 const CHEVRON_SIZE = '1.5em';
-const ROTATION_TITLE = '25deg';
-
-const titleVariants: Variants = {
-   initial: {
-      transform: `rotate(${ROTATION_TITLE})`,
-   },
-   animate: {
-      transform: 'rotate(0deg)',
-      transition: {
-         duration: 0.5,
-      },
-   },
-   exit: {
-      transform: `rotate(-${ROTATION_TITLE})`,
-      transition: {
-         duration: 0.5,
-      },
-   },
-};
-
-const chevronVariants: Variants = {
-   initial: {
-      opacity: 0,
-   },
-   animate: {
-      opacity: 1,
-   },
-   exit: {
-      opacity: 0,
-   },
-};
 
 function setIsPreviousVisible(pathname: string) {
    if (pathname === '/home' || pathname === '/') return false;
@@ -50,7 +21,7 @@ function setIsNextVisible(pathname: string) {
    else return true;
 }
 
-function Pagination() {
+export function Pagination() {
    const router = useRouter();
    const pathname = router.pathname;
    const customPathname = Utils.customURL(pathname as Pathnames);
@@ -70,22 +41,22 @@ function Pagination() {
    const isNextVisible = setIsNextVisible(pathname);
 
    return (
-      <nav className={nav}>
+      <nav className={styles.nav}>
          {/* Previous Button */}
          {isPreviousVisible && (
             <motion.button
-               className={button}
+               className={styles.button}
                data-area="prev"
                onClick={goToPreviousPage}
-               variants={chevronVariants}
+               variants={variants.chevron}
                animate="animate"
                initial="initial"
                exit="exit"
             >
                <Icon
                   name="chevron"
-                  iconColor={`${THEME.COLORS['grey-200']}`}
-                  hover={`${THEME.COLORS['grey-100']}`}
+                  iconColor={`${COLORS['black-100']}`}
+                  hover={`${COLORS['black-100']}`}
                   size={CHEVRON_SIZE}
                />
             </motion.button>
@@ -94,29 +65,29 @@ function Pagination() {
          {/* Next Button */}
          {isNextVisible && (
             <motion.button
-               className={button}
+               className={styles.button}
                data-area="next"
                onClick={goToNextPage}
-               variants={chevronVariants}
+               variants={variants.chevron}
                animate="animate"
                initial="initial"
                exit="exit"
             >
                <Icon
                   name="chevron"
-                  iconColor={`${THEME.COLORS['grey-400']}`}
-                  hover={`${THEME.COLORS['grey-100']}`}
+                  iconColor={`${COLORS['black-100']}`}
+                  hover={`${COLORS['black-100']}`}
                   size={CHEVRON_SIZE}
                   rotation={'180deg'}
                />
             </motion.button>
          )}
 
-         <span className={span}>
+         <span className={styles.span}>
             <AnimatePresence exitBeforeEnter>
                <motion.h2
                   key={pathname}
-                  variants={titleVariants}
+                  variants={variants.title}
                   animate="animate"
                   initial="initial"
                   exit="exit"
@@ -128,52 +99,3 @@ function Pagination() {
       </nav>
    );
 }
-
-export default Pagination;
-
-const nav = css`
-   position: fixed;
-   z-index: 20;
-   right: 3%;
-   top: 50%;
-   transform: translateY(-50%);
-
-   height: 20%;
-   width: 8%;
-
-   display: grid;
-   grid-template-areas:
-      'prev'
-      'title'
-      'next';
-   grid-template-rows: repeat(3, 1fr);
-`;
-
-const button = css`
-   &[data-area='prev'] {
-      grid-area: prev;
-   }
-
-   &[data-area='next'] {
-      grid-area: next;
-   }
-`;
-
-const span = css`
-   grid-area: title;
-   place-self: center;
-   overflow: hidden;
-   padding: 0.5rem;
-   width: 100%;
-   text-align: center;
-   border-top: 1px solid ${THEME.COLORS['primary-200']};
-   border-bottom: 1px solid ${THEME.COLORS['primary-200']};
-
-   > h2 {
-      color: ${THEME.COLORS['primary-200']};
-      text-transform: uppercase;
-      font-family: 'Amstelvar';
-      font-size: 1.3rem;
-      transform-origin: 200%;
-   }
-`;

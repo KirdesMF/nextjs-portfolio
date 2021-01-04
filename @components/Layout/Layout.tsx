@@ -1,10 +1,7 @@
 import { motion, Orchestration, Repeat, Tween } from 'framer-motion';
 import Head from 'next/head';
 import React from 'react';
-import { fonts } from 'Theme/fonts';
-import { reset } from 'Theme/reset';
-import { globals } from 'Theme/theme';
-import { CSSLayout } from './Layout.styled';
+import { CSSLayout } from './Layout.styles';
 
 const transition: Orchestration | Repeat | Tween = {
    when: 'beforeChildren',
@@ -24,7 +21,7 @@ type LayoutProps = {
    url?: string;
 };
 
-export default function Layout(props: LayoutProps) {
+export function Layout(props: LayoutProps) {
    const { children, name, title, description, url } = props;
    const className = CSSLayout[name];
 
@@ -55,7 +52,7 @@ export default function Layout(props: LayoutProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: transition }}
             exit={{ opacity: 0, transition: endTransition }}
-            className={`${className} ${reset} ${globals} ${fonts}`}
+            className={`${className}`}
          >
             {children}
          </motion.main>

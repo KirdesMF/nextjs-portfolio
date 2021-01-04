@@ -1,4 +1,4 @@
-import { css } from 'linaria';
+import { css } from '@linaria/core';
 
 const footer = css`
    position: fixed;
@@ -8,6 +8,6 @@ const footer = css`
    width: 100%;
 `;
 
-export default function Footer() {
+export function Footer() {
    return <footer className={footer}></footer>;
 }

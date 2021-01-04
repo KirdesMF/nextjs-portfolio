@@ -1,6 +1,5 @@
 import { Icon } from '@components/Icon/Icon';
 import { NameIconType } from '@components/Icon/icons';
-import { ReactNode } from 'react';
 import * as styles from './SkillPanel.style';
 
 type SkillPanelProps = {

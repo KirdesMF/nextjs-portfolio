@@ -1,5 +1,6 @@
-import { css } from 'linaria';
-import THEME from 'Theme/theme';
+import { css } from '@linaria/core';
+import { COLORS } from 'Theme/colors';
+import { FONTS } from 'Theme/fonts';
 
 export const container = css`
    grid-area: card;
@@ -21,19 +22,21 @@ export const anchor = css`
    place-items: center;
 
    border-radius: 10px;
-   box-shadow: ${THEME.SHADOWS['--box-thin']} black;
+   box-shadow: 0px 0px 5px black;
    overflow: hidden;
 
    position: relative;
+
+   background: ${COLORS.background};
 `;
 
 export const span = css`
    grid-area: 1 / 1 / -1 / -1;
    z-index: 1;
-   font-family: ${THEME.FONTS.amstelvar};
+   font-family: ${FONTS.amstelvar};
    font-size: 2rem;
    font-variation-settings: 'wght' 800, 'XOPQ' 200;
-   color: ${THEME.COLORS['secondary-600']};
+   color: ${COLORS['white-100']};
    text-shadow: 0px 5px 10px black;
    text-transform: uppercase;
 `;
@@ -43,16 +46,16 @@ export const icon = css`
    right: 5%;
    width: 10rem;
    transform: rotate(15deg);
-   color: ${THEME.COLORS.background};
+   color: ${COLORS['contact-300']};
    filter: drop-shadow(0 5px 5px black);
 
    > polygon {
       fill: none;
-      stroke: ${THEME.COLORS['secondary-300']};
+      stroke: ${COLORS['white-100']};
       stroke-width: 5;
    }
 
    > g {
-      color: ${THEME.COLORS['secondary-300']};
+      color: ${COLORS['black-100']};
    }
 `;

@@ -1,7 +1,7 @@
-import Layout from '@components/Layout/Layout';
-import LinkPages from '@components/LinkPages/LinkPages';
-import MaintTitle from '@components/MainTitle/MainTitle';
-import ResumePages from '@components/ResumePages/ResumePages';
+import { Layout } from '@components/Layout/Layout';
+import { LinkPages } from '@components/LinkPages/LinkPages';
+import { MaintTitle } from '@components/MainTitle/MainTitle';
+import { ResumePages } from '@components/ResumePages/ResumePages';
 
 const spanArray = [
    { content: 'Hi, I’m Cédric,' },

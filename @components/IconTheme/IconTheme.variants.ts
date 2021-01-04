@@ -60,7 +60,7 @@ const dark: Variants = {
    },
 };
 
-export default {
+export const variants = {
    icon,
    light,
    dark,

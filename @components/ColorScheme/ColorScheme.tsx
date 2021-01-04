@@ -1,16 +1,17 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
-import useCanvasContext from 'context/CanvasContext';
+import { useCanvasContext } from 'context/CanvasContext';
 import { ReturnedTheme } from '@adobe/leonardo-contrast-colors';
-import { Utils } from 'utils/utils';
-import { setCSSCustomProperties, getBackground } from './utils/helpers-scheme';
-import { Scheme } from './utils/scheme';
-import IconTheme from './IconTheme/IconTheme';
-
-import style from './ColorScheme.style';
-import { Icon } from '@components/Icon/Icon';
 import { motion, Variants } from 'framer-motion';
-import THEME from 'Theme/theme';
+
+import { Utils } from 'utils/utils';
+import { setCSSCustomProperties, getBackground } from 'utils/color-scheme';
+import { IconTheme } from '@components/IconTheme/IconTheme';
+import { Icon } from '@components/Icon/Icon';
+import { COLORS, generateTheme } from 'Theme/colors';
+
+import * as styles from './ColorScheme.styles';
+import * as variants from './ColorScheme.variants';
 
 type AdaptiveProps = {
    area: string;
@@ -22,14 +23,13 @@ function ColorScheme({ area }: AdaptiveProps) {
    const { pathname } = useRouter();
    const { setColor } = useCanvasContext();
 
-   const customPathname = Utils.customURLCanvas(
-      pathname
-   ) as keyof typeof Scheme;
+   const customPathname = Utils.customURLCanvas(pathname);
 
    const contrastRef = useRef<HTMLInputElement>(null!);
    const brightnessRef = useRef<HTMLInputElement>(null!);
 
    const [mode, setMode] = useState<Mode>('');
+   const [isOpen, setIsOpen] = useState(false);
 
    function setAdaptiveColors() {
       const brightnessInput = brightnessRef.current;
@@ -38,7 +38,7 @@ function ColorScheme({ area }: AdaptiveProps) {
       const brightnessValue = brightnessInput.valueAsNumber;
       const contrastValue = contrastInput.valueAsNumber;
 
-      const Theme = Scheme[customPathname](
+      const Theme = generateTheme(customPathname)(
          brightnessValue,
          contrastValue
       ) as ReturnedTheme;
@@ -54,10 +54,10 @@ function ColorScheme({ area }: AdaptiveProps) {
       contrastRef.current.max = '4';
 
       brightnessRef.current.min = '40';
-      brightnessRef.current.max = '90';
+      brightnessRef.current.max = '100';
 
-      contrastRef.current.valueAsNumber = 2;
-      brightnessRef.current.valueAsNumber = 65;
+      contrastRef.current.valueAsNumber = 1;
+      brightnessRef.current.valueAsNumber = 50;
    }
 
    function setMinMaxDark() {
@@ -68,7 +68,7 @@ function ColorScheme({ area }: AdaptiveProps) {
       brightnessRef.current.max = '40';
 
       contrastRef.current.valueAsNumber = 4;
-      brightnessRef.current.valueAsNumber = 17.5;
+      brightnessRef.current.valueAsNumber = 15;
    }
 
    function checkThemeAndMode() {
@@ -128,35 +128,29 @@ function ColorScheme({ area }: AdaptiveProps) {
       setMode(localStorage.getItem('mode')!);
    }, [pathname]);
 
-   const [isOpen, setIsOpen] = useState(false);
-
    function handleClick() {
       setIsOpen((prev) => !prev);
    }
 
    return (
-      <article className={style.container} data-area={area}>
-         <label className={style.mode}>
+      <article className={styles.container} data-area={area}>
+         <label className={styles.theme}>
             <input
                type="checkbox"
                onChange={handleOnChangeRadioBtn}
-               checked={mode === 'light' ? true : false}
+               checked={mode === 'light'}
             />
             <IconTheme mode={mode} />
             <p>Mode</p>
          </label>
 
-         <button className={style.button} onClick={handleClick}>
-            <Icon
-               name="sliders"
-               size="2rem"
-               iconColor={THEME.COLORS['secondary-500']}
-            />
+         <button className={styles.button} onClick={handleClick}>
+            <Icon name="sliders" size="2rem" iconColor={COLORS['about-100']} />
          </button>
 
          <motion.section
-            className={style.settings}
-            variants={variants}
+            className={styles.settings}
+            variants={variants.section}
             animate={isOpen ? 'in' : 'out'}
             initial="out"
          >
@@ -187,13 +181,4 @@ function ColorScheme({ area }: AdaptiveProps) {
       </article>
    );
 }
-export default ColorScheme;
-
-const variants: Variants = {
-   in: {
-      opacity: 1,
-   },
-   out: {
-      opacity: 0,
-   },
-};
+export { ColorScheme };

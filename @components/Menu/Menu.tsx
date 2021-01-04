@@ -5,7 +5,7 @@ import NavMenu from './NavMenu/NavMenu';
 type MenuProps = {
    area: string;
 };
-function Menu({ area }: MenuProps) {
+export function Menu({ area }: MenuProps) {
    const [isOpen, setIsOpen] = useState(false);
    return (
       <>
@@ -14,5 +14,3 @@ function Menu({ area }: MenuProps) {
       </>
    );
 }
-
-export default Menu;

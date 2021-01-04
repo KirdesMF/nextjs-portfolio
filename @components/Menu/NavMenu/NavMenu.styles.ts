@@ -1,7 +1,7 @@
-import { css } from 'linaria';
-import THEME from 'Theme/theme';
+import { css } from '@linaria/core';
+import { COLORS } from 'Theme/colors';
 
-const section = css`
+export const section = css`
    position: fixed;
    width: 100%;
    height: 100%;
@@ -10,7 +10,7 @@ const section = css`
    grid-template: 1fr / 35% 1fr;
 `;
 
-const overlay = css`
+export const overlay = css`
    @supports (backdrop-filter: blur(5px) grayscale(30%)) {
       backdrop-filter: blur(5px) grayscale(30%);
       background: unset;
@@ -19,7 +19,7 @@ const overlay = css`
    background: hsla(0, 0%, 0%, 0.6);
 `;
 
-const nav = css`
+export const nav = css`
    z-index: 2;
    overflow: hidden;
 
@@ -28,13 +28,13 @@ const nav = css`
    place-items: center;
    row-gap: 3rem;
 
-   background: ${THEME.COLORS.background};
-   box-shadow: ${THEME.SHADOWS['--box-thin']} black;
+   background: ${COLORS.background};
+   box-shadow: 0px 0px 2px black;
 
    padding: 10rem 0;
 `;
 
-const anchor = css`
+export const anchor = css`
    width: 105%;
    overflow: hidden;
 
@@ -42,8 +42,8 @@ const anchor = css`
    place-items: center;
 
    transform: rotate(2deg);
-   background: ${THEME.COLORS.background};
-   box-shadow: ${THEME.SHADOWS['--box-big']} black;
+   background: ${COLORS.background};
+   box-shadow: 0px 0px 6px black;
 
    font-variation-settings: 'wght' 800, 'YTUC' 700, 'XOPQ' 100;
    text-transform: uppercase;
@@ -52,7 +52,7 @@ const anchor = css`
    @media (hover: hover) and (pointer: fine) {
       &:hover {
          font-variation-settings: 'wght' 900, 'YTUC' 800, 'XOPQ' 230;
-         box-shadow: ${THEME.SHADOWS['--box-thin']} black;
+         box-shadow: 0px 0px 2px black;
       }
    }
 
@@ -65,13 +65,13 @@ const anchor = css`
    }
 `;
 
-const span = css`
+export const span = css`
    pointer-events: none;
    display: grid;
    place-items: center;
    font-family: 'Amstelvar';
    font-size: 2em;
-   color: ${THEME.COLORS['secondary-400']};
+   color: ${COLORS['about-100']};
    text-shadow: 0px 0px 2px black;
    padding: 0.5em 0.5em;
 
@@ -80,11 +80,3 @@ const span = css`
       text-decoration: line-through;
    }
 `;
-
-export default {
-   section,
-   overlay,
-   nav,
-   anchor,
-   span,
-};

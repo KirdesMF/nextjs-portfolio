@@ -1,7 +1,6 @@
-import Layout from '@components/Layout/Layout';
-
-import MaintTitle from '@components/MainTitle/MainTitle';
-import NavHome from '@components/NavHome/NavHome';
+import { Layout } from '@components/Layout/Layout';
+import { MaintTitle } from '@components/MainTitle/MainTitle';
+import { NavHome } from '@components/NavHome/NavHome';
 
 const title = 'Ced | Home';
 

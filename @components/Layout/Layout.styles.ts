@@ -1,4 +1,4 @@
-import { css } from 'linaria';
+import { css } from '@linaria/core';
 
 const intro = css`
    width: 100%;
@@ -61,9 +61,6 @@ const skills = css`
       /15% 1fr 15%;
 `;
 
-/**
- * Works Layout
- */
 const works = css`
    position: relative;
    overflow: hidden;
@@ -116,10 +113,6 @@ const contact = css`
    column-gap: 2rem;
 `;
 
-/**================= Export ================ */
-/**
- * Object storing Layouts Pages
- */
 export const CSSLayout = {
    intro,
    home,

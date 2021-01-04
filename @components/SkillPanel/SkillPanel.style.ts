@@ -1,5 +1,6 @@
-import { css } from 'linaria';
-import THEME from 'Theme/theme';
+import { css } from '@linaria/core';
+import { COLORS } from 'Theme/colors';
+import { FONTS } from 'Theme/fonts';
 
 export const container = css`
    position: relative;
@@ -13,9 +14,10 @@ export const container = css`
       'icons' 1fr
       /1fr;
 
-   box-shadow: ${THEME.SHADOWS['--box-big']} black;
+   box-shadow: 0px 0px 2px black;
    overflow: hidden;
    border-radius: 10px;
+   background: ${COLORS.background};
 `;
 
 export const title = css`
@@ -25,9 +27,9 @@ export const title = css`
    left: 0;
 
    text-transform: uppercase;
-   font-family: ${THEME.FONTS.amstelvar};
+   font-family: ${FONTS.amstelvar};
    font-size: 2rem;
-   color: ${THEME.COLORS['primary-500']};
+   color: ${COLORS['about-100']};
 `;
 
 export const iconTitle = css`
@@ -36,7 +38,7 @@ export const iconTitle = css`
    bottom: -40%;
    width: 10rem;
    transform: rotate(15deg);
-   color: ${THEME.COLORS.background};
+   color: ${COLORS.background};
    opacity: 0.85;
    filter: drop-shadow(0 5px 5px black);
 `;
@@ -56,6 +58,6 @@ export const list = css`
 
 export const icon = css`
    width: 3rem;
-   color: ${THEME.COLORS['secondary-400']};
+   color: ${COLORS['about-300']};
    filter: drop-shadow(0 0 5px black);
 `;

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import useMatchMedia from 'hooks/useMatchMedia';
-import { breakpoints } from 'Theme/breakpoints';
+import { BREAKPOINTS } from 'Theme/breakpoints';
 
 type ThemeStateType = 'light' | 'dark' | 'contrast';
 
@@ -16,8 +16,8 @@ const AppContext = React.createContext<MainContextType>(undefined!);
 
 /**Context Provider */
 const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
-   const medium = useMatchMedia(breakpoints.large);
-   const large = useMatchMedia(breakpoints.medium);
+   const medium = useMatchMedia(BREAKPOINTS.large);
+   const large = useMatchMedia(BREAKPOINTS.medium);
    const [theme, setTheme] = useState<ThemeStateType>('dark');
 
    const value: MainContextType = {

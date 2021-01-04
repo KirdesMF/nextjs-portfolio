@@ -1,7 +1,6 @@
-import { css } from 'linaria';
-import theme from 'Theme/theme';
+import { css } from '@linaria/core';
 
-const container = css`
+export const container = css`
    position: relative;
 
    display: grid;
@@ -12,7 +11,7 @@ const container = css`
    background: transparent;
 `;
 
-const mode = css`
+export const theme = css`
    position: relative;
    grid-area: theme;
 
@@ -33,13 +32,13 @@ const mode = css`
    }
 `;
 
-const button = css`
+export const button = css`
    > svg {
-      filter: drop-shadow(0 0 5px ${theme.COLORS['grey-400']});
+      filter: drop-shadow(0 0 5px red);
    }
 `;
 
-const settings = css`
+export const settings = css`
    grid-area: settings;
 
    display: grid;
@@ -56,10 +55,3 @@ const settings = css`
       column-gap: 1em;
    }
 `;
-
-export default {
-   container,
-   mode,
-   button,
-   settings,
-};

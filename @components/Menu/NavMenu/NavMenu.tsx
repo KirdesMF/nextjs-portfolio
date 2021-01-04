@@ -1,9 +1,8 @@
-import React from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { AnimatePresence, motion } from 'framer-motion';
 
-import style from './NavMenu.style';
+import * as styles from './NavMenu.styles';
 import variants from './NavMenu.variants';
 
 type TNavMenu = {
@@ -31,14 +30,14 @@ export default function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
                exit="out"
                initial="out"
                variants={variants.section}
-               className={style.section}
+               className={styles.section}
             >
-               <nav className={style.nav}>
+               <nav className={styles.nav}>
                   <AnimatePresence exitBeforeEnter>
                      {LINKS.map((link, i) => (
                         <Link key={link.name} href={link.href}>
                            <motion.a
-                              className={style.anchor}
+                              className={styles.anchor}
                               onClick={handleClick}
                               custom={i}
                               variants={variants.anchor}
@@ -52,7 +51,7 @@ export default function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
                                  animate="in"
                                  exit="out"
                                  initial="out"
-                                 className={style.span}
+                                 className={styles.span}
                                  data-active={
                                     pathname === link.href ? 'active' : ''
                                  }
@@ -67,7 +66,7 @@ export default function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
 
                <motion.div
                   variants={variants.overlay}
-                  className={style.overlay}
+                  className={styles.overlay}
                ></motion.div>
             </motion.section>
          )}

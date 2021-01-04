@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
-import Hexagon from '@components/Hexagon/Hexagon';
+import { useEffect } from 'react';
+import { Hexagon } from '@components/Hexagon/Hexagon';
 import { motion, useAnimation } from 'framer-motion';
 import { menuSettings } from './ButtonMenu.variants';
 import { useRouter } from 'next/router';
 
-import style from './ButtonMenu.style';
-import THEME from 'Theme/theme';
+import * as styles from './ButtonMenu.styles';
 
 type TButtonMenu = {
    isOpen: boolean;
@@ -35,12 +34,12 @@ export default function ButtonMenu({ isOpen, setIsOpen, area }: TButtonMenu) {
       <button
          aria-label="Menu Button"
          tabIndex={0}
-         className={style.button}
+         className={styles.button}
          data-area={area}
          onClick={() => setIsOpen((prev) => !prev)}
       >
          <motion.svg
-            className={style.svg}
+            className={styles.svg}
             viewBox={VIEWBOX}
             xmlns="http://www.w3.org/2000/svg"
             version="1.1"
@@ -62,7 +61,7 @@ export default function ButtonMenu({ isOpen, setIsOpen, area }: TButtonMenu) {
                      variants={hexesMenuVariants({
                         delay: i,
                         isOpen: isOpen,
-                        color: THEME.COLORS['primary-200'],
+                        color: 'red',
                      })}
                      originHex={ORIGIN}
                      sizeHex={HEX_SIZE}
@@ -71,20 +70,20 @@ export default function ButtonMenu({ isOpen, setIsOpen, area }: TButtonMenu) {
                );
             })}
             <motion.path
-               className={style.path}
+               className={styles.path}
                variants={topPathVariants}
                animate={isOpen ? 'open' : 'closed'}
                initial="initial"
             />
 
             <motion.path
-               className={style.path}
+               className={styles.path}
                variants={midPathVariants}
                animate={isOpen ? 'open' : 'closed'}
                initial="initial"
             />
             <motion.path
-               className={style.path}
+               className={styles.path}
                variants={botPathVariants}
                animate={isOpen ? 'open' : 'closed'}
                initial="initial"

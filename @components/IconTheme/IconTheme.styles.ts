@@ -1,5 +1,5 @@
-import { css } from 'linaria';
-import THEME from 'Theme/theme';
+import { css } from '@linaria/core';
+import { COLORS } from 'Theme/colors';
 
 export const svg = css`
    width: 5em;
@@ -7,51 +7,52 @@ export const svg = css`
    transition: transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
       fill 0.5s ease-in-out;
 
-   &:hover,
-   &:focus {
-      transform: scale(1.05) rotate(10deg);
+   @media (hover: hover) and (pointer: fine) {
+      &:hover {
+         transform: scale(1.05) rotate(10deg);
+      }
    }
 `;
 
 export const earth = css`
    & > path:nth-of-type(1) {
-      fill: ${THEME.COLORS.background};
+      fill: ${COLORS['contact-100']};
    }
 
    & > path:nth-of-type(2),
    & > path:nth-of-type(3) {
-      fill: ${THEME.COLORS['primary-200']};
+      fill: red;
    }
 `;
 
 export const cloud = css`
    & path {
-      fill: ${THEME.COLORS['primary-600']};
+      fill: red;
    }
 `;
 
 export const sun = css`
    & > path {
-      fill: ${THEME.COLORS['secondary-600']};
+      fill: red;
    }
 
    & > circle {
-      fill: ${THEME.COLORS['secondary-300']};
+      fill: red;
    }
 `;
 
 export const moon = css`
-   fill: ${THEME.COLORS['secondary-600']};
+   fill: red;
 `;
 
 export const stars = css`
    & circle {
-      fill: ${THEME.COLORS['primary-600']};
+      fill: red;
    }
 `;
 
 export const line = css`
    fill: none;
-   stroke: ${THEME.COLORS['secondary-300']};
+   stroke: red;
    stroke-width: 1;
 `;

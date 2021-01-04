@@ -1,4 +1,4 @@
-import { css } from 'linaria';
+import { css } from '@linaria/core';
 
 const svg = css`
    position: absolute;
@@ -7,7 +7,7 @@ const svg = css`
    height: 0;
 `;
 
-export default function Filters() {
+export function Filters() {
    return (
       <svg
          version="1.1"

@@ -1,20 +1,13 @@
-import React from 'react';
+import { ColorScheme } from '@components/ColorScheme/ColorScheme';
+import { Menu } from '@components/Menu/Menu';
 
-import style from './Header.style';
+import * as styles from './Header.styles';
 
-import ColorScheme from '@components/ColorScheme/ColorScheme';
-import Menu from '@components/Menu/Menu';
-
-function Header() {
+export function Header() {
    return (
-      <header className={style.header}>
+      <header className={styles.header}>
          <Menu area="menu" />
-         <h1 className={style.title}>
-            &bull; Cédric Gourville &bull; Front developer &bull;
-         </h1>
          <ColorScheme area="scheme" />
       </header>
    );
 }
-
-export default Header;

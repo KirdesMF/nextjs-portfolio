@@ -67,4 +67,4 @@ function Hexagon(props: THex) {
    );
 }
 
-export default Hexagon;
+export { Hexagon };

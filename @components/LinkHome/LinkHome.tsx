@@ -1,66 +1,30 @@
-import { motion, Variants } from 'framer-motion';
-import { css } from 'linaria';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import THEME from 'Theme/theme';
 import { Icon } from '@components/Icon/Icon';
+import { COLORS } from 'Theme/colors';
 
-const anchor = css`
-   position: fixed;
-   z-index: 20;
-   bottom: 10%;
-   right: 6%;
-`;
+import * as styles from './LinkHome.styles';
+import * as variants from './LinkHome.variants';
 
-const icon = css`
-   filter: drop-shadow(0 0 5px black);
-   color: ${THEME.COLORS['primary-500']};
-`;
-
-const variants: Variants = {
-   in: {
-      opacity: 1,
-      y: 0,
-      transition: {
-         duration: 1,
-         ease: 'linear',
-      },
-   },
-   out: {
-      opacity: 0,
-      y: 50,
-      transition: {
-         duration: 1,
-         ease: 'linear',
-      },
-   },
-   hover: {
-      y: [0, -10],
-      transition: {
-         duration: 1,
-         ease: 'linear',
-         yoyo: Infinity,
-      },
-   },
-};
-
-export default function LinkHome() {
+export function LinkHome() {
    const { pathname } = useRouter();
+   const isPresent = pathname === '/' || pathname === '/home';
    return (
       <Link href="/home">
          <motion.a
-            className={anchor}
-            variants={variants}
+            className={styles.anchor}
+            variants={variants.variants}
             initial="out"
             whileHover="hover"
-            animate={pathname === '/home' ? 'out' : 'in'}
+            animate={isPresent ? 'out' : 'in'}
             exit="out"
          >
             <Icon
                name="plane"
-               classname={icon}
+               classname={styles.icon}
                size="4vw"
-               hover={THEME.COLORS['primary-300']}
+               hover={COLORS['black-100']}
             />
          </motion.a>
       </Link>
