@@ -26,7 +26,7 @@ function ColorScheme({ area }: AdaptiveProps) {
    const contrastRef = useRef<HTMLInputElement>(null!);
    const brightnessRef = useRef<HTMLInputElement>(null!);
 
-   const [mode, setMode] = useState<Mode>('light');
+   const [mode, setMode] = useState<Mode>('');
    const [isOpen, setIsOpen] = useState(false);
 
    const customPathname = Utils.customURLCanvas(pathname);
@@ -50,25 +50,25 @@ function ColorScheme({ area }: AdaptiveProps) {
    }
 
    function setMinMaxLight() {
-      contrastRef.current.min = '0.5';
+      contrastRef.current.min = '0';
       contrastRef.current.max = '4';
 
-      brightnessRef.current.min = '40';
+      brightnessRef.current.min = '0';
       brightnessRef.current.max = '100';
 
-      contrastRef.current.valueAsNumber = 1;
-      brightnessRef.current.valueAsNumber = 50;
+      contrastRef.current.value = '1';
+      brightnessRef.current.value = '50';
    }
 
    function setMinMaxDark() {
-      contrastRef.current.min = '0.5';
-      contrastRef.current.max = '8';
+      contrastRef.current.min = '-3';
+      contrastRef.current.max = '4';
 
       brightnessRef.current.min = '0';
-      brightnessRef.current.max = '40';
+      brightnessRef.current.max = '25';
 
-      contrastRef.current.valueAsNumber = 4;
-      brightnessRef.current.valueAsNumber = 20;
+      contrastRef.current.value = '2';
+      brightnessRef.current.value = '12';
    }
 
    function checkThemeAndMode() {
@@ -87,27 +87,11 @@ function ColorScheme({ area }: AdaptiveProps) {
 
    function handleOnChangeRadioBtn(event: React.ChangeEvent<HTMLInputElement>) {
       if (event.currentTarget.checked) {
-         contrastRef.current.min = '0';
-         contrastRef.current.max = '3';
-
-         brightnessRef.current.min = '40';
-         brightnessRef.current.max = '90';
-
-         contrastRef.current.value = '1';
-         brightnessRef.current.value = '65';
-
+         setMinMaxLight();
          localStorage.setItem('mode', 'light');
          setMode('light');
       } else {
-         contrastRef.current.min = '0';
-         contrastRef.current.max = '10';
-
-         brightnessRef.current.min = '0';
-         brightnessRef.current.max = '40';
-
-         contrastRef.current.value = '4';
-         brightnessRef.current.value = '17.5';
-
+         setMinMaxDark();
          localStorage.setItem('mode', 'dark');
          setMode('dark');
       }
@@ -141,7 +125,7 @@ function ColorScheme({ area }: AdaptiveProps) {
                checked={mode === 'light'}
             />
             <IconTheme mode={mode} />
-            <p>Mode</p>
+            <span>Mode</span>
          </label>
 
          <button className={styles.button} onClick={handleClick}>

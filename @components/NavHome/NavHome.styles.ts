@@ -15,7 +15,7 @@ export const nav = css`
    row-gap: 1em;
    place-items: center;
 
-   box-shadow: 0px 0px 5px ${COLORS['black-300']};
+   box-shadow: 0px 0px 5px ${COLORS['home-25']};
    transform: translate3d(0, 0, 0);
    border-radius: 10px;
    padding: 2rem 0;
@@ -72,7 +72,7 @@ export const anchor = css`
    overflow: hidden;
 
    background: ${COLORS.background};
-   box-shadow: 0px 0px 5px ${COLORS['home-450']};
+   box-shadow: 0px 0px 5px ${COLORS['home-25']};
 
    transform: var(--rotate) scaleY(1);
    transform-origin: left;
@@ -95,6 +95,7 @@ export const anchor = css`
 
          .${div} {
             column-gap: 5rem;
+            animation-play-state: paused;
          }
       }
    }

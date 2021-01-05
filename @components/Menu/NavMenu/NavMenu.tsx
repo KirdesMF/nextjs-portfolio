@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import * as styles from './NavMenu.styles';
 import variants from './NavMenu.variants';
+import { COLORS } from 'Theme/colors';
 
 type TNavMenu = {
    isOpen: boolean;
@@ -17,7 +18,15 @@ const LINKS = [
    { name: 'contact', href: '/contact' },
 ];
 
-export default function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
+const colors = {
+   '/': COLORS['intro-200'],
+   '/home': COLORS['home-200'],
+   '/about': COLORS['about-200'],
+   '/works': COLORS['works-200'],
+   '/contact': COLORS['contact-200'],
+};
+
+export function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
    const { pathname } = useRouter();
 
    const handleClick = () => setIsOpen(false);
@@ -51,6 +60,9 @@ export default function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
                               exit="out"
                               initial="initial"
                               className={styles.span}
+                              style={{
+                                 color: colors[pathname as keyof typeof colors],
+                              }}
                               data-active={
                                  pathname === link.href ? 'active' : ''
                               }

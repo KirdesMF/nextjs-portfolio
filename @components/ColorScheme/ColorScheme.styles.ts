@@ -1,4 +1,5 @@
 import { css } from '@linaria/core';
+import { COLORS } from 'Theme/colors';
 
 export const container = css`
    position: relative;
@@ -27,14 +28,14 @@ export const theme = css`
       height: 100%;
    }
 
-   > p {
+   > span {
       display: none;
    }
 `;
 
 export const button = css`
    > svg {
-      filter: drop-shadow(0 0 5px red);
+      filter: drop-shadow(0 0 5px ${COLORS['black-300']});
    }
 `;
 

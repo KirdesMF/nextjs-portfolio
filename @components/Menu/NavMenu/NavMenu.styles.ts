@@ -71,7 +71,6 @@ export const span = css`
    place-items: center;
    font-family: 'Amstelvar';
    font-size: 2em;
-   color: ${COLORS['about-100']};
    text-shadow: 0px 0px 2px black;
    padding: 0.5em 0.5em;
 
