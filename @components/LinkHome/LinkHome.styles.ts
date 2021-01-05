@@ -1,4 +1,5 @@
 import { css } from '@linaria/core';
+import { COLORS } from 'Theme/colors';
 
 export const anchor = css`
    position: fixed;
@@ -8,6 +9,6 @@ export const anchor = css`
 `;
 
 export const icon = css`
-   filter: drop-shadow(0 0 5px black);
-   color: red;
+   filter: drop-shadow(0 0 2px black);
+   color: ${COLORS.background};
 `;

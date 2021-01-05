@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useCanvasContext } from 'context/CanvasContext';
 import { ReturnedTheme } from '@adobe/leonardo-contrast-colors';
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import { Utils } from 'utils/utils';
 import { setCSSCustomProperties, getBackground } from 'utils/color-scheme';
@@ -23,13 +23,13 @@ function ColorScheme({ area }: AdaptiveProps) {
    const { pathname } = useRouter();
    const { setColor } = useCanvasContext();
 
-   const customPathname = Utils.customURLCanvas(pathname);
-
    const contrastRef = useRef<HTMLInputElement>(null!);
    const brightnessRef = useRef<HTMLInputElement>(null!);
 
-   const [mode, setMode] = useState<Mode>('');
+   const [mode, setMode] = useState<Mode>('light');
    const [isOpen, setIsOpen] = useState(false);
+
+   const customPathname = Utils.customURLCanvas(pathname);
 
    function setAdaptiveColors() {
       const brightnessInput = brightnessRef.current;
@@ -68,7 +68,7 @@ function ColorScheme({ area }: AdaptiveProps) {
       brightnessRef.current.max = '40';
 
       contrastRef.current.valueAsNumber = 4;
-      brightnessRef.current.valueAsNumber = 15;
+      brightnessRef.current.valueAsNumber = 20;
    }
 
    function checkThemeAndMode() {
@@ -163,7 +163,7 @@ function ColorScheme({ area }: AdaptiveProps) {
                   ref={brightnessRef}
                   onChange={debounceInput}
                />
-               <p>brightness</p>
+               <span>brightness</span>
             </label>
 
             <label>
@@ -171,11 +171,11 @@ function ColorScheme({ area }: AdaptiveProps) {
                   type="range"
                   name="contrast"
                   id="contrast"
-                  step={0.1}
+                  step={1}
                   ref={contrastRef}
                   onChange={debounceInput}
                />
-               <p>contrast</p>
+               <span>contrast</span>
             </label>
          </motion.section>
       </article>

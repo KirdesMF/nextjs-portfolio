@@ -33,35 +33,33 @@ export default function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
                className={styles.section}
             >
                <nav className={styles.nav}>
-                  <AnimatePresence exitBeforeEnter>
-                     {LINKS.map((link, i) => (
-                        <Link key={link.name} href={link.href}>
-                           <motion.a
-                              className={styles.anchor}
-                              onClick={handleClick}
+                  {LINKS.map((link, i) => (
+                     <Link key={link.name} href={link.href}>
+                        <motion.a
+                           className={styles.anchor}
+                           onClick={handleClick}
+                           custom={i}
+                           variants={variants.anchor}
+                           animate="in"
+                           exit="out"
+                           initial="out"
+                        >
+                           <motion.span
+                              variants={variants.span}
                               custom={i}
-                              variants={variants.anchor}
                               animate="in"
                               exit="out"
-                              initial="out"
+                              initial="initial"
+                              className={styles.span}
+                              data-active={
+                                 pathname === link.href ? 'active' : ''
+                              }
                            >
-                              <motion.span
-                                 variants={variants.span}
-                                 custom={i}
-                                 animate="in"
-                                 exit="out"
-                                 initial="out"
-                                 className={styles.span}
-                                 data-active={
-                                    pathname === link.href ? 'active' : ''
-                                 }
-                              >
-                                 {link.name}
-                              </motion.span>
-                           </motion.a>
-                        </Link>
-                     ))}
-                  </AnimatePresence>
+                              {link.name}
+                           </motion.span>
+                        </motion.a>
+                     </Link>
+                  ))}
                </nav>
 
                <motion.div

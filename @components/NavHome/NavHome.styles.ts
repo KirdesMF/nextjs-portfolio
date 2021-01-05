@@ -3,28 +3,76 @@ import { COLORS } from 'Theme/colors';
 import { FONTS } from 'Theme/fonts';
 
 export const nav = css`
-   grid-area: nav;
-   height: 100%;
-
+   height: 60%;
+   width: 60%;
+   overflow: hidden;
    display: grid;
    grid-template:
       'about' 1fr
       'works' 1fr
       'contact' 1fr
       / 1fr;
-   row-gap: 1.5em;
+   row-gap: 1em;
    place-items: center;
+
+   box-shadow: 0px 0px 5px ${COLORS['black-300']};
+   transform: translate3d(0, 0, 0);
+   border-radius: 10px;
+   padding: 2rem 0;
+   background: ${COLORS.background};
+`;
+
+export const span = css`
+   overflow: hidden;
+
+   font-family: ${FONTS.amstelvar};
+   font-variation-settings: 'wght' 800, 'GRAD' 0.5, 'XOPQ' 100;
+   text-shadow: 0px 0px 3px black;
+   font-size: 3vw;
+
+   color: ${COLORS['about-450']};
+   transition: font-variation-settings 500ms ease;
+   transition-delay: 500ms;
+`;
+
+export const div = css`
+   --size: calc(110% / 4);
+   --offset: calc(-1 * var(--size));
+
+   transform: translate3d(var(--offset), 0, 0);
+
+   display: grid;
+   grid-template: 1fr / repeat(5, var(--size));
+   place-items: center;
+   column-gap: 0;
+
+   animation: marquee 40s linear infinite;
+   transition: column-gap 800ms ease;
+
+   &[data-name='works'] {
+      animation: marquee 35s linear infinite reverse;
+      animation-delay: 500ms;
+   }
+
+   @keyframes marquee {
+      from {
+         transform: translate3d(var(--offset), 0, 0);
+      }
+      to {
+         transform: translate3d(0, 0, 0);
+      }
+   }
 `;
 
 export const anchor = css`
    --rotate: rotate(2deg);
 
-   width: 105%;
+   width: 110%;
    height: 100%;
    overflow: hidden;
 
-   background: ${COLORS['white-100']};
-   box-shadow: 0px 0px 5px black;
+   background: ${COLORS.background};
+   box-shadow: 0px 0px 5px ${COLORS['home-450']};
 
    transform: var(--rotate) scaleY(1);
    transform-origin: left;
@@ -39,6 +87,15 @@ export const anchor = css`
       &:focus {
          transform: var(--rotate) scaleY(1.1);
          box-shadow: 0px 0px 5px black;
+         column-gap: 3rem;
+
+         .${span} {
+            font-variation-settings: 'wght' 900, 'GRAD' 0.9, 'XOPQ' 230;
+         }
+
+         .${div} {
+            column-gap: 5rem;
+         }
       }
    }
 
@@ -58,52 +115,5 @@ export const anchor = css`
 
    &[data-area='skills'] {
       grid-area: skills;
-   }
-`;
-
-export const div = css`
-   --size: calc(100% / 4);
-   --offset: calc(-1 * var(--size));
-
-   width: 100%;
-   transform: translate3d(var(--offset), 0, 0);
-
-   display: grid;
-   grid-template: 1fr / repeat(5, var(--size));
-   place-items: center;
-
-   animation: marquee 40s linear infinite;
-   will-change: tranform;
-
-   &[data-name='works'] {
-      animation: marquee 35s linear infinite reverse;
-      animation-delay: 500ms;
-   }
-
-   @keyframes marquee {
-      from {
-         transform: translate3d(var(--offset), 0, 0);
-      }
-      to {
-         transform: translate3d(0, 0, 0);
-      }
-   }
-`;
-
-export const span = css`
-   overflow: hidden;
-
-   font-family: ${FONTS.amstelvar};
-   font-variation-settings: 'wght' 800, 'GRAD' 0.5, 'XOPQ' 100;
-   text-shadow: 0px 0px 3px black;
-   font-size: 4vw;
-
-   color: ${COLORS['about-100']};
-   transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-   @media (hover: hover) and (pointer: fine) {
-      &:hover {
-         font-variation-settings: 'wght' 900, 'GRAD' 0.9, 'XOPQ' 230;
-      }
    }
 `;

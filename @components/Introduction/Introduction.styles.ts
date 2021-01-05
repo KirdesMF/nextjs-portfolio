@@ -13,37 +13,47 @@ export const lottie = css`
 export const svg = css`
    width: 100%;
    height: 100%;
-   filter: drop-shadow(0 0 0.75rem black);
+   filter: drop-shadow(0 0 2px ${COLORS['intro-450']});
 
    :global() {
-      .home-stroke,
+      .home-stroke {
+         stroke: ${COLORS['home-200']};
+      }
+
       .home-fill {
-         stroke: ${COLORS['home-100']};
-         fill: ${COLORS['home-100']};
+         fill: ${COLORS['home-200']};
       }
 
-      .about-stroke,
+      .about-stroke {
+         stroke: ${COLORS['about-200']};
+      }
+
       .about-fill {
-         stroke: ${COLORS['about-100']};
-         fill: ${COLORS['about-100']};
+         fill: ${COLORS['about-200']};
       }
 
-      .works-stroke,
+      .works-stroke {
+         stroke: ${COLORS['works-200']};
+      }
+
       .works-fill {
-         stroke: ${COLORS['works-100']};
-         fill: ${COLORS['works-100']};
+         fill: ${COLORS['works-200']};
       }
 
-      .contact-stroke,
+      .contact-stroke {
+         stroke: ${COLORS['contact-200']};
+      }
+
       .contact-fill {
-         stroke: ${COLORS['contact-100']};
-         fill: ${COLORS['contact-100']};
+         fill: ${COLORS['contact-200']};
       }
 
-      .neutral-stroke,
+      .neutral-stroke {
+         stroke: ${COLORS['white-200']};
+      }
+
       .neutral-fill {
-         stroke: ${COLORS['white-100']};
-         fill: ${COLORS['black-100']};
+         fill: ${COLORS['black-200']};
       }
    }
 `;

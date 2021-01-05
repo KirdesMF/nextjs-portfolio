@@ -11,17 +11,10 @@ const intro = css`
  * Home Layout
  */
 const home = css`
-   overflow: hidden;
-   width: 100%;
    height: 100%;
 
-   overflow: hidden;
    display: grid;
-   grid-template:
-      '.' 20%
-      'nav' 1fr
-      '.' 20%
-      /1fr;
+   place-items: center;
 `;
 
 /**

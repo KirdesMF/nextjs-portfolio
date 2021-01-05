@@ -7,7 +7,7 @@ const title = 'Ced | Home';
 export default function Home() {
    return (
       <Layout name="home" title={title}>
-         <MaintTitle title="home" />
+         {/* <MaintTitle title="home" /> */}
          <NavHome />
       </Layout>
    );

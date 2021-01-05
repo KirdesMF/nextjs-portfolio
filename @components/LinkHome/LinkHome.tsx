@@ -23,7 +23,7 @@ export function LinkHome() {
             <Icon
                name="plane"
                classname={styles.icon}
-               size="4vw"
+               size="3vw"
                hover={COLORS['black-100']}
             />
          </motion.a>

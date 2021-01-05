@@ -7,13 +7,14 @@ const BASE_COLORS = {
    intro: '#080705',
    home: 'hsl(208, 50%, 46%)',
    about: '#D72638',
-   works: '#F4D35E',
+   works: 'hsl(314, 17%, 39%)',
    contact: '#80D39B',
    black: '#080705',
    white: '#E0DFD5',
 };
 
 const RATIOS = {
+   25: -3,
    50: -1.5,
    100: 1,
    200: 2,
@@ -61,7 +62,7 @@ const SCALES: NamedColorScale[] = [
    {
       name: 'home',
       colorKeys: [BASE_COLORS.home],
-      colorspace: 'HSL',
+      colorspace: 'LCH',
       ratios: createRatio('home', RATIOS),
    },
    {

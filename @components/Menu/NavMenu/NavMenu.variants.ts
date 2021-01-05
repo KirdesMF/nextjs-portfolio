@@ -5,14 +5,14 @@ const section: Variants = {
       opacity: 1,
       transition: {
          when: 'beforeChildren',
-         staggerChildren: 0,
+         staggerChildren: 0.5,
       },
    },
    out: {
       opacity: 0,
       transition: {
-         staggerDirection: -1,
          when: 'afterchildren',
+         staggerChildren: 0.5,
       },
    },
 };
@@ -42,6 +42,34 @@ const anchor: Variants = {
    }),
 };
 
+const span: Variants = {
+   initial: {
+      y: '-100%',
+      transition: {
+         duration: 0.5,
+         ease: 'circOut',
+      },
+   },
+   in: (i: number) => ({
+      y: '0%',
+      transition: {
+         delay: i * 0.5,
+         duration: 0.3,
+         ease: 'circOut',
+      },
+   }),
+
+   out: (i: number) => ({
+      y: '100%',
+
+      transition: {
+         delay: i * 0.2,
+         duration: 0.3,
+         ease: 'circIn',
+      },
+   }),
+};
+
 const overlay: Variants = {
    in: {
       opacity: 1,
@@ -59,24 +87,4 @@ const overlay: Variants = {
    },
 };
 
-const span: Variants = {
-   in: (i: number) => ({
-      y: '0%',
-      transition: {
-         delay: i * 0.2,
-         duration: 0.5,
-         ease: 'circOut',
-      },
-   }),
-
-   out: (i: number) => ({
-      y: '100%',
-
-      transition: {
-         delay: i * 0.2,
-         duration: 0.5,
-         ease: 'circIn',
-      },
-   }),
-};
 export default { anchor, overlay, section, span };
