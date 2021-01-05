@@ -17,6 +17,14 @@ type AdaptiveProps = {
    area: string;
 };
 
+const colors = {
+   '/': COLORS['intro-200'],
+   '/home': COLORS['home-200'],
+   '/about': COLORS['about-200'],
+   '/works': COLORS['works-200'],
+   '/contact': COLORS['contact-200'],
+};
+
 type Mode = 'light' | 'dark' | string;
 
 function ColorScheme({ area }: AdaptiveProps) {
@@ -129,7 +137,11 @@ function ColorScheme({ area }: AdaptiveProps) {
          </label>
 
          <button className={styles.button} onClick={handleClick}>
-            <Icon name="sliders" size="2rem" iconColor={COLORS['about-100']} />
+            <Icon
+               name="sliders"
+               size="2rem"
+               iconColor={colors[pathname as keyof typeof colors]}
+            />
          </button>
 
          <motion.section

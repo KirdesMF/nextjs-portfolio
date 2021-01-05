@@ -35,7 +35,7 @@ export const theme = css`
 
 export const button = css`
    > svg {
-      filter: drop-shadow(0 0 5px ${COLORS['black-300']});
+      filter: drop-shadow(0 0 2px ${COLORS['black-50']});
    }
 `;
 

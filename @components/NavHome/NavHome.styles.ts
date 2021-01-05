@@ -30,7 +30,6 @@ export const span = css`
    text-shadow: 0px 0px 3px black;
    font-size: 3vw;
 
-   color: ${COLORS['about-450']};
    transition: font-variation-settings 500ms ease;
    transition-delay: 500ms;
 `;
@@ -102,19 +101,18 @@ export const anchor = css`
 
    &[data-area='about'] {
       grid-area: about;
+      color: ${COLORS['about-300']};
    }
 
    &[data-area='works'] {
       --rotate: rotate(-2deg);
       grid-area: works;
       transform-origin: right;
+      color: ${COLORS['works-300']};
    }
 
    &[data-area='contact'] {
       grid-area: contact;
-   }
-
-   &[data-area='skills'] {
-      grid-area: skills;
+      color: ${COLORS['contact-300']};
    }
 `;

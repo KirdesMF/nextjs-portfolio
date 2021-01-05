@@ -3,7 +3,7 @@ import { COLORS } from 'Theme/colors';
 
 export const svg = css`
    width: 5em;
-   filter: drop-shadow(0 0 5px black);
+   filter: drop-shadow(0 0 2px ${COLORS['black-50']});
    transition: transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
       fill 0.5s ease-in-out;
 
@@ -21,38 +21,38 @@ export const earth = css`
 
    & > path:nth-of-type(2),
    & > path:nth-of-type(3) {
-      fill: red;
+      fill: ${COLORS['contact-200']};
    }
 `;
 
 export const cloud = css`
    & path {
-      fill: red;
+      fill: ${COLORS['contact-300']};
    }
 `;
 
 export const sun = css`
    & > path {
-      fill: red;
+      fill: ${COLORS['contact-100']};
    }
 
    & > circle {
-      fill: red;
+      fill: ${COLORS['contact-200']};
    }
 `;
 
 export const moon = css`
-   fill: red;
+   fill: ${COLORS['contact-300']};
 `;
 
 export const stars = css`
    & circle {
-      fill: red;
+      fill: ${COLORS['contact-100']};
    }
 `;
 
 export const line = css`
    fill: none;
-   stroke: red;
+   stroke: ${COLORS['white-300']};
    stroke-width: 1;
 `;

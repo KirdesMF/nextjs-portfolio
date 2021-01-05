@@ -63,9 +63,7 @@ export function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
                               style={{
                                  color: colors[pathname as keyof typeof colors],
                               }}
-                              data-active={
-                                 pathname === link.href ? 'active' : ''
-                              }
+                              data-active={pathname === link.href && 'active'}
                            >
                               {link.name}
                            </motion.span>
