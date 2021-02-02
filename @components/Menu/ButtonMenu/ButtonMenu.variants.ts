@@ -24,13 +24,13 @@ const ORIGIN = {
 
 const VIEWBOX = `0 0 ${SIZE.width} ${SIZE.height}`;
 
-const HEX_SIZE = 25;
+const HEX_SIZE = 30;
 const RADIUS = 1;
 const HEXMAP = createHexMapShapeHexagons(RADIUS);
 
-const LENGTH_PATH = 20;
-const LENGTH_MID_PATH = 28;
-const PADDING_PATH = 15;
+const LENGTH_PATH = 30;
+const LENGTH_MID_PATH = 38;
+const PADDING_PATH = 23;
 
 const TOP_PATH_COORD: TPathCoordinates = {
    MX: ORIGIN.x - LENGTH_PATH,
@@ -144,9 +144,9 @@ type THexesManu = {
 
 const hexesTransition = (i: number): Variant => ({
    transition: {
-      delay: i * 0.02,
+      delay: i * 0.05,
       ease: 'anticipate',
-      duration: 0.8,
+      duration: 1,
    },
 });
 

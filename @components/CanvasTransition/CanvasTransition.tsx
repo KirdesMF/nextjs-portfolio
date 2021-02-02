@@ -11,21 +11,24 @@ import {
 
 import { Utils } from 'utils/utils';
 import * as styles from './CanvasTransition.styles';
-
-const HEX_SIZE = 150;
+import useAppContext from 'context/AppContext';
+import { COLORS } from 'Theme/colors';
 
 export function CanvasTransition() {
    const canvasRef = useRef<HTMLCanvasElement>(null!);
    const windowSize = useWindowSize();
    const { color } = useCanvasContext();
+   const { medium } = useAppContext();
+
+   const START_COLOR = Utils.getHSLNumberfromHSLString(COLORS['black-25']);
+   const nextColor = Utils.hexToHSL(color);
+   const HEX_SIZE = medium ? 150 : 75;
 
    const [currentColor, setCurrentColor] = useState<{
       h: number;
       s: number;
       l: number;
-   }>({ h: 0, s: 0, l: 0 });
-
-   const nextColor = Utils.hexToHSL(color);
+   }>(START_COLOR);
 
    useEffect(() => {
       setCurrentColor(nextColor);

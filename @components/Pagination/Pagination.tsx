@@ -1,101 +1,50 @@
-import React from 'react';
+import { AnimateSharedLayout, motion } from 'framer-motion';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Pathnames, Utils } from 'utils/utils';
-import { Icon } from '@components/Icon/Icon';
 import { COLORS } from 'Theme/colors';
 
 import * as styles from './Pagination.styles';
-import * as variants from './Pagination.variants';
 
-const links = ['/', '/home', '/about', '/works', '/contact'];
-const CHEVRON_SIZE = '1.5em';
-
-function setIsPreviousVisible(pathname: string) {
-   if (pathname === '/home' || pathname === '/') return false;
-   else return true;
-}
-
-function setIsNextVisible(pathname: string) {
-   if (pathname === '/contact' || pathname === '/') return false;
-   else return true;
-}
+const LINKS = [
+   { href: '/home', color: COLORS['home-300'] },
+   { href: '/about', color: COLORS['about-300'] },
+   { href: '/works', color: COLORS['works-300'] },
+   { href: '/contact', color: COLORS['contact-300'] },
+];
 
 export function Pagination() {
-   const router = useRouter();
-   const pathname = router.pathname;
-   const customPathname = Utils.customURL(pathname as Pathnames);
-   const urlPagination = Utils.customURLPagination(pathname);
-
-   function goToPreviousPage() {
-      const previous = links[links.indexOf(urlPagination) - 1];
-      router.push(previous);
-   }
-
-   function goToNextPage() {
-      const next = links[links.indexOf(urlPagination) + 1];
-      router.push(next);
-   }
-
-   const isPreviousVisible = setIsPreviousVisible(pathname);
-   const isNextVisible = setIsNextVisible(pathname);
+   const { pathname } = useRouter();
 
    return (
       <nav className={styles.nav}>
-         {/* Previous Button */}
-         {isPreviousVisible && (
-            <motion.button
-               className={styles.button}
-               data-area="prev"
-               onClick={goToPreviousPage}
-               variants={variants.chevron}
-               animate="animate"
-               initial="initial"
-               exit="exit"
-            >
-               <Icon
-                  name="chevron"
-                  iconColor={`${COLORS['black-100']}`}
-                  hover={`${COLORS['black-100']}`}
-                  size={CHEVRON_SIZE}
-               />
-            </motion.button>
-         )}
-
-         {/* Next Button */}
-         {isNextVisible && (
-            <motion.button
-               className={styles.button}
-               data-area="next"
-               onClick={goToNextPage}
-               variants={variants.chevron}
-               animate="animate"
-               initial="initial"
-               exit="exit"
-            >
-               <Icon
-                  name="chevron"
-                  iconColor={`${COLORS['black-100']}`}
-                  hover={`${COLORS['black-100']}`}
-                  size={CHEVRON_SIZE}
-                  rotation={'180deg'}
-               />
-            </motion.button>
-         )}
-
-         <span className={styles.span}>
-            <AnimatePresence exitBeforeEnter>
-               <motion.h2
-                  key={pathname}
-                  variants={variants.title}
-                  animate="animate"
-                  initial="initial"
-                  exit="exit"
-               >
-                  {customPathname}
-               </motion.h2>
-            </AnimatePresence>
-         </span>
+         <AnimateSharedLayout>
+            {LINKS.map(({ href, color }) => (
+               <Link key={href} href={href} passHref>
+                  <a
+                     className={styles.anchor}
+                     aria-label={`Link to ${href}`}
+                     title={`Link to ${href}`}
+                  >
+                     {pathname === href && (
+                        <motion.span
+                           layoutId="outline"
+                           aria-hidden
+                           className={styles.span}
+                           style={{
+                              borderColor: color,
+                           }}
+                           transition={{
+                              type: 'spring',
+                              bounce: 0.5,
+                              duration: 1,
+                              delay: 1,
+                           }}
+                        />
+                     )}
+                  </a>
+               </Link>
+            ))}
+         </AnimateSharedLayout>
       </nav>
    );
 }

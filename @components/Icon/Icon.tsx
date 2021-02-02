@@ -10,7 +10,7 @@ type SIconType = {
 
 /**=================== Styled ============================== */
 const SIcon = styled.svg<SIconType>`
-   width: ${(props) => props.size || '1rem'};
+   width: ${(props) => props.size || ''};
    color: ${(props) => props.iconColor || 'black'};
    transform-origin: center;
    transform: ${(props) => `rotate(${props.rotation || 0})`};

@@ -9,6 +9,5 @@ export const anchor = css`
 `;
 
 export const icon = css`
-   filter: drop-shadow(0 0 2px black);
-   color: ${COLORS.background};
+   filter: url(#shadow);
 `;

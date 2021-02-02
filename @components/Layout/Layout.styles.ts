@@ -1,9 +1,7 @@
 import { css } from '@linaria/core';
 
 const intro = css`
-   width: 100%;
    height: 100%;
-
    display: grid;
 `;
 
@@ -12,7 +10,6 @@ const intro = css`
  */
 const home = css`
    height: 100%;
-
    display: grid;
    place-items: center;
 `;
@@ -21,26 +18,14 @@ const home = css`
  * About Layout
  */
 const about = css`
-   position: relative;
-   overflow: hidden;
-   width: 100%;
    height: 100%;
 
    display: grid;
-   grid-template:
-      '. .' 15%
-      'art .' 1fr
-      'btn btn' 15%
-      '. .' 5%
-      /2fr 1fr;
-
-   row-gap: 2%;
    place-items: center;
+   row-gap: 2%;
 `;
 
 const skills = css`
-   position: relative;
-   overflow: hidden;
    width: 100%;
    height: 100%;
 
@@ -55,9 +40,6 @@ const skills = css`
 `;
 
 const works = css`
-   position: relative;
-   overflow: hidden;
-   width: 100%;
    height: 100%;
 
    display: grid;
@@ -69,14 +51,10 @@ const works = css`
       /2fr 1fr;
 
    row-gap: 2%;
-
    place-items: center;
 `;
 
 const projects = css`
-   position: relative;
-   overflow: hidden;
-   width: 100%;
    height: 100%;
 
    display: grid;
@@ -91,8 +69,6 @@ const projects = css`
  * Contact Layout
  */
 const contact = css`
-   position: relative;
-   overflow: hidden;
    width: 100%;
    height: 100%;
 

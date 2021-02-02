@@ -2,7 +2,8 @@ import { css } from '@linaria/core';
 import { COLORS } from 'Theme/colors';
 
 export const svg = css`
-   width: 5em;
+   height: 3rem;
+
    filter: drop-shadow(0 0 2px ${COLORS['black-50']});
    transition: transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
       fill 0.5s ease-in-out;

@@ -1,5 +1,5 @@
+import { HeadTag } from '@components/HeadTag/HeadTag';
 import { Layout } from '@components/Layout/Layout';
-import { LinkPages } from '@components/LinkPages/LinkPages';
 import { MaintTitle } from '@components/MainTitle/MainTitle';
 import { ResumePages } from '@components/ResumePages/ResumePages';
 
@@ -10,14 +10,17 @@ const spanArray = [
    { content: 'my personal & professional projects' },
 ];
 
-const contentBtn = 'Projects';
-
 export default function Works() {
    return (
-      <Layout name="works" title={title}>
-         <MaintTitle title="works" />
-         <ResumePages spans={spanArray} />
-         <LinkPages content={contentBtn} href="/works/projects" />
-      </Layout>
+      <>
+         <HeadTag title={title} />
+         <Layout name="works">
+            <MaintTitle title="works" />
+            <ResumePages spans={spanArray} />
+         </Layout>
+         <Layout name="projects">
+            <div />
+         </Layout>
+      </>
    );
 }

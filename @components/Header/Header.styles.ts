@@ -3,25 +3,27 @@ import { BREAKPOINTS } from 'Theme/breakpoints';
 import { css } from '@linaria/core';
 
 export const header = css`
+   /** Mobile */
    position: fixed;
-   z-index: 25;
+   bottom: 0;
+
+   width: 100%;
+   height: 6rem;
+
+   display: grid;
+   grid-template:
+      'scheme  menu' 1fr
+      / 2fr 0.5fr;
+
    transition: box-shadow 500ms ease-in-out, background-color 1s ease-in-out;
 
+   /** Desktop */
    @media ${BREAKPOINTS.large} {
       top: 0;
-      width: 100%;
+      bottom: unset;
 
-      display: grid;
       grid-template:
-         'menu title . scheme .' 1fr
-         /10% 25% 1fr 25% 20%;
-
-      & [data-area='menu'] {
-         grid-area: menu;
-      }
-
-      & [data-area='scheme'] {
-         grid-area: scheme;
-      }
+         'menu . scheme' 1fr
+         / 0.3fr 1.5fr 1fr;
    }
 `;

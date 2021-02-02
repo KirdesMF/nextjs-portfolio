@@ -13,7 +13,7 @@ export const lottie = css`
 export const svg = css`
    width: 100%;
    height: 100%;
-   filter: drop-shadow(0 0 2px ${COLORS['intro-450']});
+   filter: drop-shadow(0 0 2px ${COLORS['black-200']});
 
    :global() {
       .home-stroke {

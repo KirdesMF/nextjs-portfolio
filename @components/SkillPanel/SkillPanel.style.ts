@@ -14,10 +14,10 @@ export const container = css`
       'icons' 1fr
       /1fr;
 
-   box-shadow: 0px 0px 2px black;
+   box-shadow: 0px 0px 8px 3px ${COLORS['black-50']};
    overflow: hidden;
    border-radius: 10px;
-   background: ${COLORS.background};
+   background: ${COLORS['about-200']};
 `;
 
 export const title = css`
@@ -40,7 +40,7 @@ export const iconTitle = css`
    transform: rotate(15deg);
    color: ${COLORS.background};
    opacity: 0.85;
-   filter: drop-shadow(0 5px 5px black);
+   filter: url(#shadow-color);
 `;
 
 export const list = css`
@@ -59,5 +59,5 @@ export const list = css`
 export const icon = css`
    width: 3rem;
    color: ${COLORS['about-300']};
-   filter: drop-shadow(0 0 5px black);
+   filter: url(#shadow-color);
 `;

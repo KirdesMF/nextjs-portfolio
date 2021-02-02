@@ -1,4 +1,5 @@
 import { css } from '@linaria/core';
+import { COLORS } from 'Theme/colors';
 
 export const canvas = css`
    width: 100%;
@@ -8,6 +9,5 @@ export const canvas = css`
    top: 0;
    left: 0;
    pointer-events: none;
-
-   background: hsl(240, 50%, 10%);
+   background-color: ${COLORS['black-0']};
 `;

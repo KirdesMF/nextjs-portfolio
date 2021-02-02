@@ -1,48 +1,56 @@
 import { css } from '@linaria/core';
+import { COLORS } from 'Theme/colors';
 
 export const nav = css`
    position: fixed;
    z-index: 20;
-   right: 3%;
+   left: 0;
    top: 50%;
    transform: translateY(-50%);
 
-   height: 20%;
-   width: 8%;
+   height: 200px;
+   width: 100px;
 
    display: grid;
-   grid-template-areas:
-      'prev'
-      'title'
-      'next';
-   grid-template-rows: repeat(3, 1fr);
+   row-gap: 1rem;
+   place-items: center;
 `;
 
-export const button = css`
-   &[data-area='prev'] {
-      grid-area: prev;
+export const anchor = css`
+   --size: 20px;
+
+   position: relative;
+   height: var(--size);
+   width: var(--size);
+
+   border-radius: 50%;
+   box-shadow: 0px 0px 5px ${COLORS['black-25']};
+
+   &[href='/home'] {
+      background-color: ${COLORS['home-200']};
    }
 
-   &[data-area='next'] {
-      grid-area: next;
+   &[href='/about'] {
+      background-color: ${COLORS['about-200']};
+   }
+
+   &[href='/works'] {
+      background-color: ${COLORS['works-200']};
+   }
+
+   &[href='/contact'] {
+      background-color: ${COLORS['contact-200']};
    }
 `;
 
 export const span = css`
-   grid-area: title;
-   place-self: center;
-   overflow: hidden;
-   padding: 0.5rem;
-   width: 100%;
-   text-align: center;
-   border-top: 1px solid red;
-   border-bottom: 1px solid red;
+   --position: -8px;
+   position: absolute;
+   top: var(--position);
+   bottom: var(--position);
+   left: var(--position);
+   right: var(--position);
 
-   > h2 {
-      color: red;
-      text-transform: uppercase;
-      font-family: 'Amstelvar';
-      font-size: 1.3rem;
-      transform-origin: 200%;
-   }
+   border: 3px solid ${COLORS.background};
+   border-radius: 50%;
 `;

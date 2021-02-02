@@ -6,8 +6,8 @@ import * as styles from './Header.styles';
 export function Header() {
    return (
       <header className={styles.header}>
-         <Menu area="menu" />
-         <ColorScheme area="scheme" />
+         <Menu />
+         <ColorScheme />
       </header>
    );
 }

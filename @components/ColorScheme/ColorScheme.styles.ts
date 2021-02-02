@@ -1,47 +1,21 @@
 import { css } from '@linaria/core';
+import { BREAKPOINTS } from 'Theme/breakpoints';
 import { COLORS } from 'Theme/colors';
 
-export const container = css`
-   position: relative;
+export const scheme = css`
+   grid-area: scheme;
 
    display: grid;
-   grid-template:
-      'settings btn theme' 1fr
-      /1fr 1fr 1fr;
-   place-items: center;
-   background: transparent;
-`;
+   grid-template-columns: 2fr 0.5fr 1fr;
+   grid-template-rows: 1fr;
+   direction: rtl;
 
-export const theme = css`
-   position: relative;
-   grid-area: theme;
-
-   display: grid;
-   place-items: center;
-   font-size: 0.5em;
-   font-family: 'Decovar';
-
-   > input {
-      opacity: 0;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-   }
-
-   > span {
-      display: none;
+   @media ${BREAKPOINTS.large} {
+      direction: ltr;
    }
 `;
 
-export const button = css`
-   > svg {
-      filter: drop-shadow(0 0 2px ${COLORS['black-50']});
-   }
-`;
-
-export const settings = css`
-   grid-area: settings;
-
+export const range = css`
    display: grid;
    grid-template: 1fr 1fr / 1fr;
    place-items: center;
@@ -54,5 +28,31 @@ export const settings = css`
       display: grid;
       grid-template: 1fr / 1fr 1fr;
       column-gap: 1em;
+   }
+`;
+
+export const btnRange = css`
+   > svg {
+      height: 2rem;
+      filter: drop-shadow(0 0 2px ${COLORS['black-50']});
+   }
+`;
+
+export const inputTheme = css`
+   grid-area: 1 / 3 / -1 / 4;
+   place-self: center;
+   opacity: 0;
+
+   &:focus + label[for='theme'] {
+      outline: 1px solid grey;
+   }
+`;
+
+export const theme = css`
+   grid-area: 1 / 3 / -1 / 4;
+   place-self: center;
+
+   > span {
+      display: none;
    }
 `;

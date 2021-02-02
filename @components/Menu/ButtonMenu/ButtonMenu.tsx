@@ -5,14 +5,14 @@ import { menuSettings } from './ButtonMenu.variants';
 import { useRouter } from 'next/router';
 
 import * as styles from './ButtonMenu.styles';
+import { COLORS } from 'Theme/colors';
 
 type TButtonMenu = {
    isOpen: boolean;
    setIsOpen: (value: React.SetStateAction<boolean>) => void;
-   area: string;
 };
 
-export function ButtonMenu({ isOpen, setIsOpen, area }: TButtonMenu) {
+export function ButtonMenu({ isOpen, setIsOpen }: TButtonMenu) {
    const { VIEWBOX, ORIGIN, burger, hexes } = menuSettings;
    const { HEXMAP, HEX_SIZE, hexesMenuVariants } = hexes;
    const { topPathVariants, midPathVariants, botPathVariants } = burger;
@@ -33,22 +33,22 @@ export function ButtonMenu({ isOpen, setIsOpen, area }: TButtonMenu) {
    return (
       <button
          aria-label="Menu Button"
-         tabIndex={0}
-         className={styles.button}
-         data-area={area}
          onClick={() => setIsOpen((prev) => !prev)}
+         className={styles.button}
+         onFocus={() => controls.start('onHoverStart')}
       >
          <motion.svg
             className={styles.svg}
             viewBox={VIEWBOX}
             xmlns="http://www.w3.org/2000/svg"
             version="1.1"
-            preserveAspectRatio="xMidYMid"
+            preserveAspectRatio="xMidYMid meet"
             aria-hidden="true"
             focusable="false"
             initial="initial"
             animate={controls}
             {...hexesAnimation}
+            filter="url(#shadow-color)"
          >
             <title>Menu button</title>
             <desc>Hamburger menu with a hexes background animated</desc>
@@ -61,11 +61,12 @@ export function ButtonMenu({ isOpen, setIsOpen, area }: TButtonMenu) {
                      variants={hexesMenuVariants({
                         delay: i,
                         isOpen: isOpen,
-                        color: 'red',
+                        color: COLORS.background,
                      })}
                      originHex={ORIGIN}
                      sizeHex={HEX_SIZE}
                      cube={hex}
+                     filter="url(#shadow-color)"
                   />
                );
             })}

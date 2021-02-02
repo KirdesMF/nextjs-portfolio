@@ -1,14 +1,30 @@
+import { HeadTag } from '@components/HeadTag/HeadTag';
 import { Layout } from '@components/Layout/Layout';
-import { MaintTitle } from '@components/MainTitle/MainTitle';
 import { NavHome } from '@components/NavHome/NavHome';
+import { InferGetStaticPropsType } from 'next';
 
-const title = 'Ced | Home';
+export const getStaticProps = async () => {
+   const content = (await import('../data/data.json')).default;
 
-export default function Home() {
+   return {
+      props: {
+         content,
+      },
+   };
+};
+
+export default function Home({
+   content,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
    return (
-      <Layout name="home" title={title}>
-         {/* <MaintTitle title="home" /> */}
-         <NavHome />
-      </Layout>
+      <>
+         <HeadTag title={content[0].title} />
+         <Layout name="home">
+            <div></div>
+         </Layout>
+         <Layout name="home">
+            <NavHome />
+         </Layout>
+      </>
    );
 }

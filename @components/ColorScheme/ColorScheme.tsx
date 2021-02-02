@@ -13,31 +13,24 @@ import { COLORS, generateTheme } from 'Theme/colors';
 import * as styles from './ColorScheme.styles';
 import * as variants from './ColorScheme.variants';
 
-type AdaptiveProps = {
-   area: string;
-};
+type Mode = 'light' | 'dark';
 
-const colors = {
-   '/': COLORS['intro-200'],
-   '/home': COLORS['home-200'],
-   '/about': COLORS['about-200'],
-   '/works': COLORS['works-200'],
-   '/contact': COLORS['contact-200'],
-};
-
-type Mode = 'light' | 'dark' | string;
-
-function ColorScheme({ area }: AdaptiveProps) {
+function ColorScheme() {
    const { pathname } = useRouter();
    const { setColor } = useCanvasContext();
 
    const contrastRef = useRef<HTMLInputElement>(null!);
    const brightnessRef = useRef<HTMLInputElement>(null!);
 
-   const [mode, setMode] = useState<Mode>('');
+   const [mode, setMode] = useState<Mode>('light');
    const [isOpen, setIsOpen] = useState(false);
 
    const customPathname = Utils.customURLCanvas(pathname);
+   const colorSliderIcon = `${customPathname}-200` as keyof typeof COLORS;
+
+   function handleClick() {
+      setIsOpen((prev) => !prev);
+   }
 
    function setAdaptiveColors() {
       const brightnessInput = brightnessRef.current;
@@ -57,6 +50,10 @@ function ColorScheme({ area }: AdaptiveProps) {
       setColor(background);
    }
 
+   const debounceInput = useMemo(() => Utils.debounce(setAdaptiveColors, 150), [
+      setAdaptiveColors,
+   ]);
+
    function setMinMaxLight() {
       contrastRef.current.min = '0';
       contrastRef.current.max = '4';
@@ -69,14 +66,14 @@ function ColorScheme({ area }: AdaptiveProps) {
    }
 
    function setMinMaxDark() {
-      contrastRef.current.min = '-3';
+      contrastRef.current.min = '0';
       contrastRef.current.max = '4';
 
       brightnessRef.current.min = '0';
       brightnessRef.current.max = '25';
 
       contrastRef.current.value = '2';
-      brightnessRef.current.value = '12';
+      brightnessRef.current.value = '25';
    }
 
    function checkThemeAndMode() {
@@ -107,45 +104,20 @@ function ColorScheme({ area }: AdaptiveProps) {
       setAdaptiveColors();
    }
 
-   const debounceInput = useMemo(() => Utils.debounce(setAdaptiveColors, 150), [
-      setAdaptiveColors,
-   ]);
-
    useEffect(() => {
       checkThemeAndMode();
    }, []);
 
    useEffect(() => {
+      const mode = localStorage.getItem('mode') as Mode;
       setAdaptiveColors();
-      setMode(localStorage.getItem('mode')!);
+      setMode(mode);
    }, [pathname]);
 
-   function handleClick() {
-      setIsOpen((prev) => !prev);
-   }
-
    return (
-      <article className={styles.container} data-area={area}>
-         <label className={styles.theme}>
-            <input
-               type="checkbox"
-               onChange={handleOnChangeRadioBtn}
-               checked={mode === 'light'}
-            />
-            <IconTheme mode={mode} />
-            <span>Mode</span>
-         </label>
-
-         <button className={styles.button} onClick={handleClick}>
-            <Icon
-               name="sliders"
-               size="2rem"
-               iconColor={colors[pathname as keyof typeof colors]}
-            />
-         </button>
-
+      <article className={styles.scheme}>
          <motion.section
-            className={styles.settings}
+            className={styles.range}
             variants={variants.section}
             animate={isOpen ? 'in' : 'out'}
             initial="out"
@@ -174,6 +146,23 @@ function ColorScheme({ area }: AdaptiveProps) {
                <span>contrast</span>
             </label>
          </motion.section>
+
+         <button className={styles.btnRange} onClick={handleClick}>
+            <Icon name="sliders" iconColor={COLORS[colorSliderIcon]} />
+         </button>
+
+         <input
+            className={styles.inputTheme}
+            type="checkbox"
+            onChange={handleOnChangeRadioBtn}
+            checked={mode === 'light'}
+            id="theme"
+         />
+
+         <label className={styles.theme} htmlFor="theme">
+            <IconTheme mode={mode} />
+            <span>Mode</span>
+         </label>
       </article>
    );
 }

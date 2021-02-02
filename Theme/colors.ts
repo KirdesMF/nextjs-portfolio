@@ -14,6 +14,7 @@ const BASE_COLORS = {
 };
 
 const RATIOS = {
+   0: -7,
    25: -3,
    50: -1.5,
    100: 1,
@@ -101,7 +102,7 @@ const generateTheme = (baseScale: string) =>
    generateAdaptiveTheme({
       colorScales: [...SCALES],
       baseScale: baseScale,
-      output: 'HSL',
+      output: 'HEX',
    });
 
 const COLORS = createCustomProp();

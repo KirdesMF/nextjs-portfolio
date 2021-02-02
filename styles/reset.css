@@ -6,9 +6,9 @@ html {
 *:before,
 *:after {
    box-sizing: inherit;
-   transition: color 1s ease-in-out -0.5s, fill 1s ease-in-out -0.5s,
-      stroke 1s ease-in-out -0.5s, background 1s ease-in-out -0.5s,
-      border-color 1s ease-in-out -0.5s, box-shadow 1s ease-in-out -0.5s;
+   transition: color 1s ease-in-out 2s, fill 1s ease-in-out 2s,
+      stroke 1s ease-in-out 2s, background 1s ease-in-out 2s,
+      border-color 1s ease-in-out 2s, box-shadow 1s ease-in-out 2s;
 }
 
 html,
@@ -17,6 +17,7 @@ body {
    padding: 0;
 
    height: 100%;
+   width: 100%;
    background: black;
 }
 

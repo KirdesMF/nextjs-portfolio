@@ -18,14 +18,6 @@ const LINKS = [
    { name: 'contact', href: '/contact' },
 ];
 
-const colors = {
-   '/': COLORS['intro-200'],
-   '/home': COLORS['home-200'],
-   '/about': COLORS['about-200'],
-   '/works': COLORS['works-200'],
-   '/contact': COLORS['contact-200'],
-};
-
 export function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
    const { pathname } = useRouter();
 
@@ -43,7 +35,7 @@ export function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
             >
                <nav className={styles.nav}>
                   {LINKS.map((link, i) => (
-                     <Link key={link.name} href={link.href}>
+                     <Link key={link.href} href={link.href} passHref>
                         <motion.a
                            className={styles.anchor}
                            onClick={handleClick}
@@ -52,6 +44,7 @@ export function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
                            animate="in"
                            exit="out"
                            initial="out"
+                           data-active={pathname === link.href && 'active'}
                         >
                            <motion.span
                               variants={variants.span}
@@ -60,9 +53,6 @@ export function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
                               exit="out"
                               initial="initial"
                               className={styles.span}
-                              style={{
-                                 color: colors[pathname as keyof typeof colors],
-                              }}
                               data-active={pathname === link.href && 'active'}
                            >
                               {link.name}

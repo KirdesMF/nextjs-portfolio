@@ -41,7 +41,7 @@ const toFixNumber = (num: number) => Number(num.toFixed(2));
 
 const rangeHue = (s: number, c: number, e: number) => (s < e ? c : -c);
 
-const getNumberFromString = (color: string) => {
+const getHSLNumberfromHSLString = (color: string) => {
    const match = color.match(/\d+/g)!;
 
    return {
@@ -93,7 +93,7 @@ const hexToHSL = (hex: string) => {
 };
 
 const pathnames = {
-   '/': 'welcome',
+   '/': 'intro',
    '/home': 'home',
    '/about': 'about',
    '/works': 'works',
@@ -104,7 +104,7 @@ const pathnames = {
 
 export type Pathnames = keyof typeof pathnames;
 
-const customURL = (pathname: Pathnames) => pathnames[pathname];
+const customURL = (pathname: string) => pathnames[pathname as Pathnames];
 
 const customURLCanvas = (pathname: string) => {
    if (pathname === '/') return 'intro';
@@ -142,7 +142,7 @@ export const Utils = {
    secondsToFrame,
    toFixNumber,
    rangeHue,
-   getNumberFromString,
+   getHSLNumberfromHSLString,
    randomHSL,
    hexToHSL,
    customURL,
