@@ -3,22 +3,22 @@ import { Layout } from '@components/Layout/Layout';
 import { NavHome } from '@components/NavHome/NavHome';
 import { InferGetStaticPropsType } from 'next';
 
-import data from '../data/data.json';
+export const getStaticProps = async () => {
+   const content = (await import('../data/data.json')).default;
 
-// export const getStaticProps = async () => {
-//    const content = (await import('../data/data.json')).default;
+   return {
+      props: {
+         content,
+      },
+   };
+};
 
-//    return {
-//       props: {
-//          content,
-//       },
-//    };
-// };
-
-export default function Home() {
+export default function Home({
+   content,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
    return (
       <>
-         <HeadTag title={data[0].title} />
+         <HeadTag title={content[0].title} />
          <Layout name="home">
             <div></div>
          </Layout>
