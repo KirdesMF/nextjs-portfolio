@@ -1,10 +1,16 @@
 import { HeadTag } from '@components/HeadTag/HeadTag';
 import { Layout } from '@components/Layout/Layout';
 import { NavHome } from '@components/NavHome/NavHome';
-import { InferGetStaticPropsType } from 'next';
+import { GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
 
-export const getStaticProps = async () => {
-   const content = (await import('../data/data.json')).default;
+type Data = typeof import('../locales/fr.json');
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+   const content =
+      locale === 'fr'
+         ? (await import(`../locales/fr.json`)).default
+         : (await import(`../locales/en-US.json`)).default;
 
    return {
       props: {
@@ -13,17 +19,28 @@ export const getStaticProps = async () => {
    };
 };
 
-export default function Home({
-   content,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home({ content }: { content: Data }) {
+   const router = useRouter();
+   const { locale } = router;
+
+   const changeLanguage = () => {
+      router.push('/home', '/home', {
+         locale: locale === 'fr' ? 'en-US' : 'fr',
+      });
+   };
    return (
       <>
-         <HeadTag title={content[0].title} />
+         <HeadTag title={content.home.title} />
          <Layout name="home">
-            <div></div>
+            <button
+               style={{ position: 'fixed', top: '50px', left: '350px' }}
+               onClick={changeLanguage}
+            >
+               {locale}
+            </button>
          </Layout>
          <Layout name="home">
-            <NavHome />
+            <NavHome content={content.sections} />
          </Layout>
       </>
    );

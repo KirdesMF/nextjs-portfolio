@@ -8,24 +8,21 @@ const linksArray = [
    {
       area: 'about',
       href: '/about',
-      content: 'ABOUT',
    },
    {
       area: 'works',
       href: '/works',
-      content: 'WORKS',
    },
    {
       area: 'contact',
       href: '/contact',
-      content: 'CONTACT',
    },
 ];
 
-export function NavHome() {
+export function NavHome({ content }: { content: string[] }) {
    return (
       <nav className={styles.nav}>
-         {linksArray.map((link) => (
+         {linksArray.map((link, index) => (
             <Link key={link.area} href={link.href}>
                <motion.a
                   variants={variants.anchor}
@@ -38,7 +35,7 @@ export function NavHome() {
                   <div className={styles.div} data-name={link.area}>
                      {Array.from({ length: 5 }).map((_, i) => (
                         <span key={i} className={styles.span}>
-                           {link.content}
+                           {content[index + 1]}
                         </span>
                      ))}
                   </div>

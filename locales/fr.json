@@ -1,0 +1,6 @@
+{
+   "sections": ["accueil", "a propos", "projets", "contact"],
+   "home": {
+      "title": "accueil"
+   }
+}
