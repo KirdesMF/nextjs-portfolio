@@ -1,4 +1,4 @@
-import { AppInitialProps, AppProps } from 'next/app';
+import { AppProps } from 'next/app';
 import { AppContextProvider } from 'context/AppContext';
 
 import { SharedLayout } from '@components/SharedLayout/SharedLayout';
