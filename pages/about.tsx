@@ -4,60 +4,50 @@ import { Layout } from '@components/Layout/Layout';
 import { MaintTitle } from '@components/MainTitle/MainTitle';
 import { ResumePages } from '@components/ResumePages/ResumePages';
 import { SkillPanel } from '@components/SkillPanel/SkillPanel';
+import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 
-const spanArray = [
-   { content: 'Hi, I’m Cédric,' },
-   { content: 'a Freelance web developer,' },
-   { content: 'living in France, near Paris.' },
-   { content: 'I love to create websites, apps' },
-   { content: 'and everything related to the web.' },
-];
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+   const datas = (await import('../data/data.json')).default;
+   const content =
+      locale === 'fr'
+         ? (await import(`../locales/fr.json`)).about
+         : (await import(`../locales/en-US.json`)).about;
 
-const title = 'Ced | About';
-const mainTitle = 'about';
+   return {
+      props: {
+         datas,
+         content,
+      },
+   };
+}
 
-const codeIcons: NameIconType[] = ['html', 'css', 'javascript', 'typescript'];
-
-const libsIcons: NameIconType[] = [
-   'react',
-   'nextjs',
-   'styled-components',
-   'sass',
-   'framer',
-   'git',
-];
-
-const toolsIcons: NameIconType[] = [
-   'illustrator',
-   'xd',
-   'after effect',
-   'blender',
-];
-
-export default function About() {
+export default function About({
+   content,
+   datas,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
    return (
       <>
-         <HeadTag title={title} />
+         <HeadTag title={content.title} />
          <Layout name="about">
-            <ResumePages spans={spanArray} />
-            <MaintTitle title={mainTitle} />
+            <ResumePages content={content.content} />
+            <MaintTitle title={content.title} />
          </Layout>
          <Layout name="skills">
             <SkillPanel
                area="code"
-               icons={codeIcons}
+               icons={datas.codeIcons as NameIconType[]}
                title="code"
                titleIcon="code"
             />
             <SkillPanel
                area="libs"
-               icons={libsIcons}
+               icons={datas.libsIcons as NameIconType[]}
                title="libs"
                titleIcon="gear"
             />
             <SkillPanel
                area="tools"
-               icons={toolsIcons}
+               icons={datas.toolsIcons as NameIconType[]}
                title="tools"
                titleIcon="tools"
             />

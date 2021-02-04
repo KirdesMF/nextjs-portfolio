@@ -2,5 +2,9 @@
    "sections": ["home", "about", "works", "contact"],
    "home": {
       "title": "home"
+   },
+   "about": {
+      "title": "about",
+      "content": "Freelance Web developer. Living Near Paris. Love to create accessible and beautiful websites, apps."
    }
 }

@@ -2,5 +2,9 @@
    "sections": ["accueil", "a propos", "projets", "contact"],
    "home": {
       "title": "accueil"
+   },
+   "about": {
+      "title": "about",
+      "content": "Développeur Web indépendant.  Près de Paris. Aime créer des sites web, applications,  accessibles et modernes"
    }
 }

@@ -1,7 +1,7 @@
 const withCSS = require('@zeit/next-css');
 
 const i18n = {
-   locales: ['en-US', 'fr'],
+   locales: ['fr', 'en-US'],
    defaultLocale: 'fr',
 };
 

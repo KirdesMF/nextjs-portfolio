@@ -1,3 +1,8 @@
 {
-   "pics": "https://github.com/KirdesMF.png"
+   "pics": "https://github.com/KirdesMF.png",
+   "name": "Cedric",
+   "lastName": "Gourville",
+   "codeIcons": ["html", "css", "javascript", "typescript"],
+   "libsIcons": ["react", "framer", "git", "nextjs", "styled-components"],
+   "toolsIcons": ["illustrator", "after effect", "xd", "blender"]
 }

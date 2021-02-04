@@ -1,12 +1,10 @@
 import { HeadTag } from '@components/HeadTag/HeadTag';
 import { Layout } from '@components/Layout/Layout';
 import { NavHome } from '@components/NavHome/NavHome';
-import { GetStaticProps } from 'next';
+import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 
-type Data = typeof import('../locales/fr.json');
-
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
    const content =
       locale === 'fr'
          ? (await import(`../locales/fr.json`)).default
@@ -19,7 +17,9 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
    };
 };
 
-export default function Home({ content }: { content: Data }) {
+export default function Home({
+   content,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
    const router = useRouter();
    const { locale } = router;
 
