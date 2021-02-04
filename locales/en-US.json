@@ -6,5 +6,13 @@
    "about": {
       "title": "about",
       "content": "Freelance Web developer. Living Near Paris. Love to create accessible and beautiful websites, apps."
+   },
+   "works": {
+      "title": "works",
+      "content": "You will find here all my projects with details of the different technologies used."
+   },
+   "contact": {
+      "title": "contact",
+      "content": "Contact me via social networks or Discord"
    }
 }

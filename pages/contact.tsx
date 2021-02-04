@@ -1,15 +1,30 @@
 import { HeadTag } from '@components/HeadTag/HeadTag';
 import { Layout } from '@components/Layout/Layout';
 import { LinkContact } from '@components/LinkContact/LinkContact';
+import { MaintTitle } from '@components/MainTitle/MainTitle';
+import { ResumePages } from '@components/ResumePages/ResumePages';
+import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 
-const title = 'Ced | Contact';
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+   const content =
+      locale === 'fr'
+         ? (await import(`../locales/fr.json`)).contact
+         : (await import(`../locales/en-US.json`)).contact;
 
-export default function Contact() {
+   return {
+      props: { content },
+   };
+}
+
+export default function Contact({
+   content,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
    return (
       <>
-         <HeadTag title={title} />
+         <HeadTag title={content.title} />
          <Layout name="contact">
-            <div />
+            <MaintTitle title={content.title} />
+            <ResumePages content={content.content} />
          </Layout>
          <Layout name="contact">
             <LinkContact />

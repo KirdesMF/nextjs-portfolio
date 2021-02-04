@@ -2,21 +2,28 @@ import { HeadTag } from '@components/HeadTag/HeadTag';
 import { Layout } from '@components/Layout/Layout';
 import { MaintTitle } from '@components/MainTitle/MainTitle';
 import { ResumePages } from '@components/ResumePages/ResumePages';
+import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 
-const title = 'Ced | Works';
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+   const content =
+      locale === 'fr'
+         ? (await import(`../locales/fr.json`)).works
+         : (await import(`../locales/en-US.json`)).works;
 
-const spanArray = [
-   { content: 'Here, you can find' },
-   { content: 'my personal & professional projects' },
-];
+   return {
+      props: { content },
+   };
+}
 
-export default function Works() {
+export default function Works({
+   content,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
    return (
       <>
-         <HeadTag title={title} />
+         <HeadTag title={content.title} />
          <Layout name="works">
-            <MaintTitle title="works" />
-            <ResumePages spans={spanArray} />
+            <MaintTitle title={content.title} />
+            <ResumePages content={content.content} />
          </Layout>
          <Layout name="projects">
             <div />
