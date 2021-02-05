@@ -4,9 +4,7 @@ import { HeadTag } from '@components/HeadTag/HeadTag';
 import { InferGetStaticPropsType } from 'next';
 
 export async function getStaticProps() {
-   const importedAnimationData = await import(
-      '../public/assets/bodymovin/data.json'
-   );
+   const importedAnimationData = await import('../data/lottie/intro.json');
    const animationData = JSON.stringify(importedAnimationData);
 
    return {
