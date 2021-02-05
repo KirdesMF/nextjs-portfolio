@@ -1,7 +1,7 @@
 {
-   "sections": ["accueil", "a propos", "projets", "contact"],
    "home": {
-      "title": "accueil"
+      "title": "accueil",
+      "content": "Bienvenue"
    },
    "about": {
       "title": "a propos",

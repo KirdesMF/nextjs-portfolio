@@ -1,7 +1,7 @@
 {
-   "sections": ["home", "about", "works", "contact"],
    "home": {
-      "title": "home"
+      "title": "home",
+      "content": "welcome"
    },
    "about": {
       "title": "about",

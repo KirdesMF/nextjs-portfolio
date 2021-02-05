@@ -2,6 +2,10 @@
    "pics": "https://github.com/KirdesMF.png",
    "name": "Cedric",
    "lastName": "Gourville",
+   "social": {
+      "twitter": "",
+      "github": ""
+   },
    "codeIcons": ["html", "css", "javascript", "typescript"],
    "libsIcons": ["react", "framer", "git", "nextjs", "styled-components"],
    "toolsIcons": ["illustrator", "after effect", "xd", "blender"]

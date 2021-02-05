@@ -1,8 +1,8 @@
 import { HeadTag } from '@components/HeadTag/HeadTag';
 import { Layout } from '@components/Layout/Layout';
-import { LinkContact } from '@components/LinkContact/LinkContact';
 import { MaintTitle } from '@components/MainTitle/MainTitle';
 import { ResumePages } from '@components/ResumePages/ResumePages';
+import { LinkContact } from '@components/LinkContact/LinkContact';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {

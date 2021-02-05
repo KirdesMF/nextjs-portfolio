@@ -26,7 +26,7 @@ export default function Home({
             <div></div>
          </Layout>
          <Layout name="home">
-            <NavHome content={content.sections} />
+            <NavHome content={['']} />
          </Layout>
       </>
    );

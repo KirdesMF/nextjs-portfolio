@@ -1,46 +1,22 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useDatas } from 'hooks/useDatas';
+
 import { AnimatePresence, motion } from 'framer-motion';
 
 import * as styles from './NavMenu.styles';
 import variants from './NavMenu.variants';
-import { COLORS } from 'Theme/colors';
-import { useEffect, useState } from 'react';
-import { Data } from '_types/locales';
 
 type TNavMenu = {
    isOpen: boolean;
    setIsOpen: (value: React.SetStateAction<boolean>) => void;
 };
 
-const LINKS = [
-   { name: 'home', href: '/home' },
-   { name: 'about', href: '/about' },
-   { name: 'works', href: '/works' },
-   { name: 'contact', href: '/contact' },
-];
-
-const useData = () => {
-   const [data, setData] = useState<Data>(null!);
-   const router = useRouter();
-   const { locale } = router;
-
-   useEffect(() => {
-      const getDatas = async () => {
-         const content = (await import(`locales/${locale}.json`)).default;
-         setData(content);
-      };
-
-      getDatas();
-   }, [locale]);
-
-   return data;
-};
-
 export function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
    const router = useRouter();
    const { pathname } = router;
-   const data = useData();
+   const data = useDatas();
+
    const handleClick = () => setIsOpen(false);
 
    if (!data) return <div>Loading</div>;
@@ -56,8 +32,8 @@ export function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
                className={styles.section}
             >
                <nav className={styles.nav}>
-                  {LINKS.map((link, i) => (
-                     <Link key={link.href} href={link.href} passHref>
+                  {Object.values(data).map((link, i) => (
+                     <Link key={link.title} href={`/${link.title}`} passHref>
                         <motion.a
                            className={styles.anchor}
                            onClick={handleClick}
@@ -66,7 +42,9 @@ export function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
                            animate="in"
                            exit="out"
                            initial="out"
-                           data-active={pathname === link.href && 'active'}
+                           data-active={
+                              pathname === `/${link.title}` && 'active'
+                           }
                         >
                            <motion.span
                               variants={variants.span}
@@ -75,9 +53,11 @@ export function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
                               exit="out"
                               initial="initial"
                               className={styles.span}
-                              data-active={pathname === link.href && 'active'}
+                              data-active={
+                                 pathname === `/${link.title}` && 'active'
+                              }
                            >
-                              {data.home.title}
+                              {link.title}
                            </motion.span>
                         </motion.a>
                      </Link>
