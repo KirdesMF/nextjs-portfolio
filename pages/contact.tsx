@@ -23,8 +23,8 @@ export default function Contact({
       <>
          <HeadTag title={content.title} />
          <Layout name="contact">
-            <MaintTitle title={content.title} />
             <ResumePages content={content.content} />
+            <MaintTitle title={content.title} />
          </Layout>
          <Layout name="contact">
             <LinkContact />

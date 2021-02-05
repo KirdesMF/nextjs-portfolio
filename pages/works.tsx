@@ -22,8 +22,8 @@ export default function Works({
       <>
          <HeadTag title={content.title} />
          <Layout name="works">
-            <MaintTitle title={content.title} />
             <ResumePages content={content.content} />
+            <MaintTitle title={content.title} />
          </Layout>
          <Layout name="projects">
             <div />

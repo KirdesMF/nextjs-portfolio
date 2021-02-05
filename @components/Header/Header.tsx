@@ -6,10 +6,10 @@ import * as styles from './Header.styles';
 
 export function Header() {
    const router = useRouter();
-   const { locale, pathname } = router;
+   const { locale, query, pathname } = router;
 
    const changeLanguage = () => {
-      router.push(pathname, pathname, {
+      router.push(`/`, `/`, {
          locale: locale === 'fr' ? 'en-US' : 'fr',
       });
    };

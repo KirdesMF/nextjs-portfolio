@@ -1,5 +1,4 @@
 import { motion, Orchestration, Repeat, Tween } from 'framer-motion';
-import React from 'react';
 import { CSSLayout } from './Layout.styles';
 
 const transition: Orchestration | Repeat | Tween = {

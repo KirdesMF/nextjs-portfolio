@@ -1,10 +1,15 @@
 import Lottie from 'lottie-react';
 import { useRouter } from 'next/router';
-import animation from 'public/assets/bodymovin/data.json';
 
 import * as styles from './Introduction.styles';
 
-export function Introduction() {
+export function Introduction({
+   title,
+   animationData,
+}: {
+   title?: string;
+   animationData: Record<string, unknown>;
+}) {
    const router = useRouter();
 
    const goHome = () =>
@@ -14,16 +19,15 @@ export function Introduction() {
 
    return (
       <Lottie
-         animationData={animation}
+         animationData={animationData}
          className={styles.lottie}
          loop={false}
          rendererSettings={{
-            progressiveLoad: true,
             hideOnTransparent: true,
             viewBoxOnly: true,
             className: styles.svg,
             focusable: false,
-            title: 'introduction portfolio Ced Grvl',
+            title: title,
          }}
          onComplete={goHome}
       />

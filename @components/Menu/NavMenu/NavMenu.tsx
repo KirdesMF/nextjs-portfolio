@@ -5,6 +5,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import * as styles from './NavMenu.styles';
 import variants from './NavMenu.variants';
 import { COLORS } from 'Theme/colors';
+import { useEffect, useState } from 'react';
+import { Data } from '_types/locales';
 
 type TNavMenu = {
    isOpen: boolean;
@@ -18,10 +20,30 @@ const LINKS = [
    { name: 'contact', href: '/contact' },
 ];
 
-export function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
-   const { pathname } = useRouter();
+const useData = () => {
+   const [data, setData] = useState<Data>(null!);
+   const router = useRouter();
+   const { locale } = router;
 
+   useEffect(() => {
+      const getDatas = async () => {
+         const content = (await import(`locales/${locale}.json`)).default;
+         setData(content);
+      };
+
+      getDatas();
+   }, [locale]);
+
+   return data;
+};
+
+export function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
+   const router = useRouter();
+   const { pathname } = router;
+   const data = useData();
    const handleClick = () => setIsOpen(false);
+
+   if (!data) return <div>Loading</div>;
 
    return (
       <AnimatePresence>
@@ -55,7 +77,7 @@ export function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
                               className={styles.span}
                               data-active={pathname === link.href && 'active'}
                            >
-                              {link.name}
+                              {data.home.title}
                            </motion.span>
                         </motion.a>
                      </Link>
