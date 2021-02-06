@@ -24,6 +24,7 @@ export function Introduction({
          loop={false}
          rendererSettings={{
             hideOnTransparent: true,
+            progressiveLoad: true,
             viewBoxOnly: true,
             className: styles.svg,
             focusable: false,

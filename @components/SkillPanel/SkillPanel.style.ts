@@ -5,14 +5,10 @@ import { FONTS } from 'Theme/fonts';
 export const container = css`
    position: relative;
 
-   width: 70%;
-   height: 80%;
-   place-self: center;
+   width: 70rem;
+   height: 10rem;
 
    display: grid;
-   grid-template:
-      'icons' 1fr
-      /1fr;
 
    box-shadow: 0px 0px 8px 3px ${COLORS['black-50']};
    overflow: hidden;
@@ -44,7 +40,6 @@ export const iconTitle = css`
 `;
 
 export const list = css`
-   grid-area: icons;
    place-self: center;
    width: 80%;
    display: grid;

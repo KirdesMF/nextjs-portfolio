@@ -1,4 +1,8 @@
 {
+   "intro": {
+      "title": "intro",
+      "content": "intro animation"
+   },
    "home": {
       "title": "home",
       "content": "welcome"

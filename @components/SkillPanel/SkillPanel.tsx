@@ -12,7 +12,7 @@ export function SkillPanel(props: SkillPanelProps) {
    const { icons, area, title, titleIcon } = props;
 
    return (
-      <article className={styles.container} style={{ gridArea: area }}>
+      <article className={styles.container}>
          <Icon name={titleIcon} classname={styles.iconTitle} />
          <ul className={styles.list}>
             {icons.map((icon) => (

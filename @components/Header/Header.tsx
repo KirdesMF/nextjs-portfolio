@@ -9,7 +9,7 @@ export function Header() {
    const { locale, query, pathname } = router;
 
    const changeLanguage = () => {
-      router.push(`/`, `/`, {
+      router.push(`${pathname}`, `${pathname}`, {
          locale: locale === 'fr' ? 'en-US' : 'fr',
       });
    };

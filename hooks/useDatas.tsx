@@ -9,8 +9,15 @@ export const useDatas = () => {
 
    useEffect(() => {
       const getDatas = async () => {
-         const content = (await import(`locales/${locale}.json`)).default;
-         setData(content);
+         try {
+            const content: Data = (await import(`locales/${locale}.json`))
+               .default;
+            setData(content);
+         } catch (err) {
+            console.log(err);
+         } finally {
+            console.log('done');
+         }
       };
 
       getDatas();

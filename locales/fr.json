@@ -1,4 +1,8 @@
 {
+   "intro": {
+      "title": "intro",
+      "content": "animation d'intro"
+   },
    "home": {
       "title": "accueil",
       "content": "Bienvenue"

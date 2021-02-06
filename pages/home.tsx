@@ -1,6 +1,5 @@
 import { HeadTag } from '@components/HeadTag/HeadTag';
 import { Layout } from '@components/Layout/Layout';
-import { NavHome } from '@components/NavHome/NavHome';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 
 export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
@@ -26,7 +25,7 @@ export default function Home({
             <div></div>
          </Layout>
          <Layout name="home">
-            <NavHome content={['']} />
+            <div></div>
          </Layout>
       </>
    );

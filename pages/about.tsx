@@ -32,7 +32,7 @@ export default function About({
             <ResumePages content={content.content} />
             <MaintTitle title={content.title} />
          </Layout>
-         <Layout name="skills">
+         <Layout name="about">
             <SkillPanel
                area="code"
                icons={datas.codeIcons as NameIconType[]}

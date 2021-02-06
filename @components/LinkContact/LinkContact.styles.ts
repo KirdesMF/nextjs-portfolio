@@ -3,36 +3,26 @@ import { COLORS } from 'Theme/colors';
 import { FONTS } from 'Theme/fonts';
 
 export const container = css`
-   grid-area: card;
-
-   width: 80%;
-   height: 90%;
+   width: 70rem;
+   height: 50rem;
 
    display: grid;
-   grid-auto-rows: 1fr;
-   grid-template-columns: 1fr;
-   place-items: center;
+   row-gap: 2rem;
 `;
 
 export const anchor = css`
-   width: 90%;
-   height: 80%;
-
    display: grid;
    place-items: center;
 
-   border-radius: 10px;
-   box-shadow: 0px 0px 5px black;
    overflow: hidden;
-
    position: relative;
 
+   border-radius: 10px;
+   box-shadow: 0px 0px 5px black;
    background: ${COLORS.background};
 `;
 
 export const span = css`
-   grid-area: 1 / 1 / -1 / -1;
-   z-index: 1;
    font-family: ${FONTS.amstelvar};
    font-size: 2rem;
    font-variation-settings: 'wght' 800, 'XOPQ' 200;

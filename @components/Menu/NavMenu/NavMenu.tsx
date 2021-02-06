@@ -19,10 +19,10 @@ export function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
 
    const handleClick = () => setIsOpen(false);
 
-   if (!data) return <div>Loading</div>;
+   if (!data) return <div>Loading...</div>;
 
    return (
-      <AnimatePresence>
+      <AnimatePresence exitBeforeEnter>
          {isOpen && (
             <motion.section
                animate="in"
@@ -32,41 +32,43 @@ export function NavMenu({ isOpen, setIsOpen }: TNavMenu) {
                className={styles.section}
             >
                <nav className={styles.nav}>
-                  {Object.values(data).map((link, i) => (
-                     <Link key={link.title} href={`/${link.title}`} passHref>
-                        <motion.a
-                           className={styles.anchor}
-                           onClick={handleClick}
-                           custom={i}
-                           variants={variants.anchor}
-                           animate="in"
-                           exit="out"
-                           initial="out"
-                           data-active={
-                              pathname === `/${link.title}` && 'active'
-                           }
-                        >
-                           <motion.span
-                              variants={variants.span}
-                              custom={i}
-                              animate="in"
-                              exit="out"
-                              initial="initial"
-                              className={styles.span}
-                              data-active={
-                                 pathname === `/${link.title}` && 'active'
-                              }
-                           >
-                              {link.title}
-                           </motion.span>
-                        </motion.a>
-                     </Link>
-                  ))}
+                  {Object.entries(data).map(([key, link], index) => {
+                     if (key !== 'intro') {
+                        return (
+                           <Link key={link.title} href={`/${key}`} passHref>
+                              <motion.a
+                                 className={styles.anchor}
+                                 onClick={handleClick}
+                                 custom={index}
+                                 variants={variants.anchor}
+                                 animate="in"
+                                 exit="out"
+                                 initial="out"
+                                 data-active={
+                                    pathname === `/${link.title}` && 'active'
+                                 }
+                              >
+                                 <motion.span
+                                    variants={variants.span}
+                                    custom={index}
+                                    className={styles.span}
+                                    data-active={
+                                       pathname === `/${link.title}` && 'active'
+                                    }
+                                 >
+                                    {link.title}
+                                 </motion.span>
+                              </motion.a>
+                           </Link>
+                        );
+                     }
+                  })}
                </nav>
 
                <motion.div
                   variants={variants.overlay}
                   className={styles.overlay}
+                  onClick={handleClick}
                ></motion.div>
             </motion.section>
          )}
