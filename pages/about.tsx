@@ -1,7 +1,6 @@
 import { HeadTag } from '@components/HeadTag/HeadTag';
 import { NameIconType } from '@components/Icon/icons';
 import { Layout } from '@components/Layout/Layout';
-import { MaintTitle } from '@components/MainTitle/MainTitle';
 import { ResumePages } from '@components/ResumePages/ResumePages';
 import { SkillPanel } from '@components/SkillPanel/SkillPanel';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
@@ -30,7 +29,6 @@ export default function About({
          <HeadTag title={content.title} />
          <Layout name="about">
             <ResumePages content={content.content} />
-            <MaintTitle title={content.title} />
          </Layout>
          <Layout name="about">
             <SkillPanel

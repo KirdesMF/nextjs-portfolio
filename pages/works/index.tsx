@@ -1,6 +1,5 @@
 import { HeadTag } from '@components/HeadTag/HeadTag';
 import { Layout } from '@components/Layout/Layout';
-import { MaintTitle } from '@components/MainTitle/MainTitle';
 import { ResumePages } from '@components/ResumePages/ResumePages';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
@@ -24,7 +23,6 @@ export default function Works({
          <HeadTag title={content.title} />
          <Layout name="works">
             <ResumePages content={content.content} />
-            <MaintTitle title={content.title} />
          </Layout>
          <Layout name="projects">
             <div
