@@ -1,28 +1,16 @@
-html {
+html,
+body {
+   margin: 0;
+   padding: 0;
    box-sizing: border-box;
+
+   font-family: 'Amstelvar';
 }
 
 *,
 *:before,
 *:after {
-   box-sizing: inherit;
-   transition: color 1s ease-in-out 2s, fill 1s ease-in-out 2s,
-      stroke 1s ease-in-out 2s, background 1s ease-in-out 2s,
-      border-color 1s ease-in-out 2s, box-shadow 1s ease-in-out 2s;
-}
-
-html,
-body {
-   margin: 0;
-   padding: 0;
-
-   height: 100%;
-   width: 100%;
-   background: black;
-}
-
-body > * {
-   height: inherit;
+   box-sizing: border-box;
 }
 
 h1,
@@ -32,6 +20,7 @@ h4,
 h5,
 h6,
 p {
+   all: unset;
    margin: 0;
    padding: 0;
 }
@@ -55,8 +44,4 @@ button {
    color: inherit;
    background-color: transparent;
    cursor: default;
-}
-
-button:focus {
-   outline: 1px solid grey;
 }

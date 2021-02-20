@@ -12,8 +12,8 @@ export const anchor = css`
    display: grid;
    place-items: center;
 
-   background: ${COLORS['black-100']};
-   color: ${COLORS['white-100']};
+   background: ${COLORS.contact};
+   color: ${COLORS.contact};
    text-shadow: 0px 0px 2px black;
    box-shadow: 0px 0px 2px black;
 

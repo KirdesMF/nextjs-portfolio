@@ -1,4 +1,5 @@
 import { motion, Orchestration, Repeat, Tween } from 'framer-motion';
+import { globalColors } from 'Theme/colors';
 import { CSSLayout } from './Layout.styles';
 
 const transition: Orchestration | Repeat | Tween = {
@@ -25,7 +26,7 @@ export function Layout(props: LayoutProps) {
          initial={{ opacity: 0 }}
          animate={{ opacity: 1, transition: transition }}
          exit={{ opacity: 0, transition: endTransition }}
-         className={`${className}`}
+         className={`${CSSLayout.home} ${globalColors}`}
       >
          {children}
       </motion.section>

@@ -2,12 +2,13 @@ import { css } from '@linaria/core';
 import { COLORS } from 'Theme/colors';
 
 export const canvas = css`
-   width: 100%;
-   height: 100%;
-
+   width: 50%;
+   height: 50%;
+   margin: 0 auto;
    position: fixed;
-   top: 0;
-   left: 0;
+   top: 15%;
+   left: 40%;
    pointer-events: none;
-   background-color: ${COLORS['black-0']};
+   background-color: ${COLORS.text};
+   box-shadow: 0px 0px 10px black;
 `;

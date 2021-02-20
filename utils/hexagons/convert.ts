@@ -20,9 +20,9 @@ const Point = ({ ...points }: TPoint) => points;
 const Cube = ({ ...cubes }: TCube) => cubes;
 
 const cubeToPoint = ({ cube, size, origin }: Omit<TConvert, 'point'>) => {
-   let x =
+   const x =
       (Math.sqrt(3) * cube.q + (Math.sqrt(3) / 2) * cube.r) * size + origin.x;
-   let y = (3 / 2) * cube.r * size + origin.y;
+   const y = (3 / 2) * cube.r * size + origin.y;
 
    return Point({ x, y });
 };

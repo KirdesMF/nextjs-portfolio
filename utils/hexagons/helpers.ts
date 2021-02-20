@@ -10,6 +10,8 @@ const directions = [
    Cube({ q: 0, r: 1, s: -1 }),
 ];
 
+export const originCube = Cube({ q: 0, r: 0, s: 0 });
+
 const cubeDirection = (direction: number) => directions[direction];
 
 type TNeighbor = {
@@ -32,13 +34,18 @@ export const cubeRing = ({ center, radius }: TRing) => {
    let cube = MathCubeCoord.add({
       cubeA: center,
       cubeB: MathCubeCoord.multiply({ cubeA: cubeDirection(4), k: radius }),
-   });
+   }) as TCube & { radius: number };
 
-   const results: TCube[] = [];
+   const results: (TCube & { radius: number })[] = [];
+
+   if (radius === 0) results.push({ ...originCube, radius });
 
    for (let i = 0; i < 6; i++) {
       for (let j = 0; j < radius; j++) {
-         cube = cubeNeighbor({ cube: cube, direction: i });
+         cube = {
+            ...cubeNeighbor({ cube: cube, direction: i }),
+            radius,
+         };
          results.push(cube);
       }
    }
@@ -113,4 +120,10 @@ export const createHexMapShapeHexagons = (radius: number) => {
       }
    }
    return hexmap;
+};
+
+export const createHexMapRing = (radius: number) => {
+   return Array.from({ length: radius }).flatMap((_, i) => {
+      return cubeRing({ center: originCube, radius: i });
+   });
 };

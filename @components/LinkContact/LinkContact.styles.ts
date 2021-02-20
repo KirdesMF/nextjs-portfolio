@@ -19,14 +19,14 @@ export const anchor = css`
 
    border-radius: 10px;
    box-shadow: 0px 0px 5px black;
-   background: ${COLORS.background};
+   background: ${COLORS.text};
 `;
 
 export const span = css`
    font-family: ${FONTS.amstelvar};
    font-size: 2rem;
    font-variation-settings: 'wght' 800, 'XOPQ' 200;
-   color: ${COLORS['white-100']};
+   color: ${COLORS.home};
    text-shadow: 0px 5px 10px black;
    text-transform: uppercase;
 `;
@@ -36,16 +36,16 @@ export const icon = css`
    right: 5%;
    width: 10rem;
    transform: rotate(15deg);
-   color: ${COLORS['contact-300']};
+   color: ${COLORS.home};
    filter: drop-shadow(0 5px 5px black);
 
    > polygon {
       fill: none;
-      stroke: ${COLORS['white-100']};
+      stroke: ${COLORS.home};
       stroke-width: 5;
    }
 
    > g {
-      color: ${COLORS['black-100']};
+      color: ${COLORS.home};
    }
 `;

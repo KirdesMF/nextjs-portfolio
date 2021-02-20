@@ -1,19 +1,24 @@
 import { css } from '@linaria/core';
+import { BREAKPOINTS } from 'Theme/breakpoints';
 import { COLORS } from 'Theme/colors';
 
 export const nav = css`
-   position: fixed;
-   z-index: 20;
-   left: 0;
-   top: 50%;
-   transform: translateY(-50%);
+   display: none;
 
-   height: 200px;
-   width: 100px;
+   @media screen and (min-width: ${BREAKPOINTS.large}) {
+      position: fixed;
+      z-index: 20;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
 
-   display: grid;
-   row-gap: 1rem;
-   place-items: center;
+      height: 12rem;
+      width: 6rem;
+
+      display: grid;
+      row-gap: 1rem;
+      place-items: center;
+   }
 `;
 
 export const anchor = css`
@@ -24,22 +29,22 @@ export const anchor = css`
    width: var(--size);
 
    border-radius: 50%;
-   box-shadow: 0px 0px 5px ${COLORS['black-25']};
+   box-shadow: 0px 0px 5px ${COLORS.text};
 
-   &[href='/home'] {
-      background-color: ${COLORS['home-200']};
+   &[href*='/home'] {
+      background-color: ${COLORS.home};
    }
 
-   &[href='/about'] {
-      background-color: ${COLORS['about-200']};
+   &[href*='/about'] {
+      background-color: ${COLORS.about};
    }
 
-   &[href='/works'] {
-      background-color: ${COLORS['works-200']};
+   &[href*='/works'] {
+      background-color: ${COLORS.works};
    }
 
-   &[href='/contact'] {
-      background-color: ${COLORS['contact-200']};
+   &[href*='/contact'] {
+      background-color: ${COLORS.contact};
    }
 `;
 
@@ -51,6 +56,6 @@ export const span = css`
    left: var(--position);
    right: var(--position);
 
-   border: 3px solid ${COLORS.background};
+   border: 3px solid ${COLORS.home};
    border-radius: 50%;
 `;

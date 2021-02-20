@@ -42,7 +42,7 @@ export const nav = css`
    place-items: center;
    row-gap: 3rem;
 
-   background: ${COLORS.background};
+   background: ${COLORS.text};
    box-shadow: 0px 0px 2px black;
 
    padding: 10rem 0;
@@ -57,7 +57,7 @@ export const anchor = css`
    place-items: center;
 
    transform: rotate(2deg);
-   background: ${COLORS.background};
+   background: ${COLORS.text};
    box-shadow: 0px 0px 10px black;
    /** https://github.com/TypeNetwork/Decovar */
    font-family: 'Decovar';
@@ -97,19 +97,19 @@ export const anchor = css`
    }
 
    &:nth-of-type(1) {
-      color: ${COLORS['home-300']};
+      color: ${COLORS.home};
    }
 
    &:nth-of-type(2) {
-      color: ${COLORS['about-300']};
+      color: ${COLORS.home};
    }
 
    &:nth-of-type(3) {
-      color: ${COLORS['works-300']};
+      color: ${COLORS.home};
    }
 
    &:nth-of-type(4) {
-      color: ${COLORS['contact-300']};
+      color: ${COLORS.home};
    }
 `;
 

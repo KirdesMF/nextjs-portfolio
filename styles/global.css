@@ -16,3 +16,13 @@ body::-webkit-scrollbar-thumb {
    background-color: pink;
    outline: 1px solid slategrey;
 }
+
+:root {
+   --height-header: 50px;
+}
+
+@media screen and (min-width: 600px) {
+   :root {
+      --height-header: 100px;
+   }
+}

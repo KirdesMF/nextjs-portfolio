@@ -10,10 +10,10 @@ export const container = css`
 
    display: grid;
 
-   box-shadow: 0px 0px 8px 3px ${COLORS['black-50']};
+   box-shadow: 0px 0px 8px 3px ${COLORS.text};
    overflow: hidden;
    border-radius: 10px;
-   background: ${COLORS['about-200']};
+   background: ${COLORS.works};
 `;
 
 export const title = css`
@@ -25,7 +25,7 @@ export const title = css`
    text-transform: uppercase;
    font-family: ${FONTS.amstelvar};
    font-size: 2rem;
-   color: ${COLORS['about-100']};
+   color: ${COLORS.works};
 `;
 
 export const iconTitle = css`
@@ -34,7 +34,7 @@ export const iconTitle = css`
    bottom: -40%;
    width: 10rem;
    transform: rotate(15deg);
-   color: ${COLORS.background};
+   color: ${COLORS.text};
    opacity: 0.85;
    filter: url(#shadow-color);
 `;
@@ -53,6 +53,6 @@ export const list = css`
 
 export const icon = css`
    width: 3rem;
-   color: ${COLORS['about-300']};
+   color: ${COLORS.works};
    filter: url(#shadow-color);
 `;

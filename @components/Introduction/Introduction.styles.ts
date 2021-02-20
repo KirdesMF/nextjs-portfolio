@@ -12,47 +12,47 @@ export const lottie = css`
 export const svg = css`
    width: 100%;
    height: 100%;
-   filter: drop-shadow(0 0 2px ${COLORS['black-200']});
+   filter: drop-shadow(0 0 2px ${COLORS.works});
 
    :global() {
       .home-stroke {
-         stroke: ${COLORS['home-200']};
+         stroke: ${COLORS.works};
       }
 
       .home-fill {
-         fill: ${COLORS['home-200']};
+         fill: ${COLORS.works};
       }
 
       .about-stroke {
-         stroke: ${COLORS['about-200']};
+         stroke: ${COLORS.works};
       }
 
       .about-fill {
-         fill: ${COLORS['about-200']};
+         fill: ${COLORS.works};
       }
 
       .works-stroke {
-         stroke: ${COLORS['works-200']};
+         stroke: ${COLORS.works};
       }
 
       .works-fill {
-         fill: ${COLORS['works-200']};
+         fill: ${COLORS.works};
       }
 
       .contact-stroke {
-         stroke: ${COLORS['contact-200']};
+         stroke: ${COLORS.works};
       }
 
       .contact-fill {
-         fill: ${COLORS['contact-200']};
+         fill: ${COLORS.works};
       }
 
       .neutral-stroke {
-         stroke: ${COLORS['white-200']};
+         stroke: ${COLORS.works};
       }
 
       .neutral-fill {
-         fill: ${COLORS['black-200']};
+         fill: ${COLORS.works};
       }
    }
 `;

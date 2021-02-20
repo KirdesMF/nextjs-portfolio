@@ -1,28 +1,45 @@
-import { ColorScheme } from '@components/ColorScheme/ColorScheme';
 import { Menu } from '@components/Menu/Menu';
-import { useRouter } from 'next/router';
-
-import * as styles from './Header.styles';
+import { SwitchLanguage } from '@components/SwitchLanguage/SwitchLanguage';
+import { SwitchTheme } from '@components/SwitchTheme/SwitchTheme';
+import { css } from '@linaria/core';
+import { BREAKPOINTS } from 'Theme/breakpoints';
 
 export function Header() {
-   const router = useRouter();
-   const { locale, query, pathname } = router;
-
-   const changeLanguage = () => {
-      router.push(`${pathname}`, `${pathname}`, {
-         locale: locale === 'fr' ? 'en-US' : 'fr',
-      });
-   };
    return (
-      <header className={styles.header}>
+      <header className={header}>
          <Menu />
-         <button
-            style={{ height: '8rem', width: '15rem' }}
-            onClick={changeLanguage}
-         >
-            {locale}
-         </button>
-         <ColorScheme />
+         <section className={settings}>
+            <SwitchLanguage />
+            <SwitchTheme />
+         </section>
       </header>
    );
 }
+
+const settings = css`
+   display: grid;
+   place-items: center;
+
+   grid-auto-flow: column;
+   column-gap: 2rem;
+`;
+
+const header = css`
+   /** Mobile */
+   position: fixed;
+   z-index: 1;
+   bottom: 0;
+
+   width: 100%;
+   height: var(--height-header);
+
+   display: flex;
+   justify-content: space-between;
+   padding: 0 2rem;
+
+   /** Desktop */
+   @media screen and (min-width: ${BREAKPOINTS.large}) {
+      top: 0;
+      bottom: unset;
+   }
+`;

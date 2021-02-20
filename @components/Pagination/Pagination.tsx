@@ -1,19 +1,24 @@
 import { AnimateSharedLayout, motion } from 'framer-motion';
+import useMatchMedia from 'hooks/useMatchMedia';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { BREAKPOINTS } from 'Theme/breakpoints';
 import { COLORS } from 'Theme/colors';
 
 import * as styles from './Pagination.styles';
 
 const LINKS = [
-   { href: '/home', color: COLORS['home-300'] },
-   { href: '/about', color: COLORS['about-300'] },
-   { href: '/works', color: COLORS['works-300'] },
-   { href: '/contact', color: COLORS['contact-300'] },
+   { href: '/home', color: COLORS.works },
+   { href: '/about', color: COLORS.works },
+   { href: '/works', color: COLORS.works },
+   { href: '/contact', color: COLORS.works },
 ];
 
 export function Pagination() {
    const { pathname } = useRouter();
+   const isMobile = useMatchMedia(`(min-width: ${BREAKPOINTS.large})`);
+
+   if (!isMobile) return null;
 
    return (
       <nav className={styles.nav}>

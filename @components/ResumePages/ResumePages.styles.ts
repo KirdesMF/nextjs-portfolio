@@ -17,7 +17,7 @@ export const span = css`
    font-family: ${FONTS.amstelvar};
    font-size: 2rem;
    font-variation-settings: 'wght' 600, 'YTLC' 450;
-   color: ${COLORS['about-100']};
+   color: ${COLORS.text};
    text-shadow: 0px 0px 2px black;
    transform-origin: left;
 `;

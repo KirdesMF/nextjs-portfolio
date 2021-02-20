@@ -1,7 +1,12 @@
 import React from 'react';
 import { hexCornersPoints } from 'utils/hexagons/helpers';
 import { TPoint, TCube, cubeToPoint } from 'utils/hexagons/convert';
-import { AnimationControls, motion, Variants } from 'framer-motion';
+import {
+   AnimationControls,
+   motion,
+   MotionStyle,
+   Variants,
+} from 'framer-motion';
 
 type TCreateAtt = {
    originHex: TPoint;
@@ -29,8 +34,10 @@ type THex = {
    clipPath?: string;
    animate?: string | AnimationControls;
    initial?: string;
+   whileHover?: string;
    exit?: string;
    className?: string;
+   style?: MotionStyle;
 };
 
 function Hexagon(props: THex) {
@@ -46,6 +53,8 @@ function Hexagon(props: THex) {
       animate,
       initial,
       exit,
+      style,
+      whileHover,
    } = props;
 
    const points = createAttribPoints({ originHex, sizeHex, cube });
@@ -61,7 +70,11 @@ function Hexagon(props: THex) {
          animate={animate}
          initial={initial}
          exit={exit}
-         style={{ transformOrigin: `${~~centers.x}px ${~~centers.y}px` }}
+         whileHover={whileHover}
+         style={{
+            transformOrigin: `${~~centers.x}px ${~~centers.y}px`,
+            ...style,
+         }}
          className={className}
       />
    );

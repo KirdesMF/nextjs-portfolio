@@ -15,11 +15,11 @@ export const nav = css`
    row-gap: 1em;
    place-items: center;
 
-   box-shadow: 0px 0px 5px ${COLORS['home-25']};
+   box-shadow: 0px 0px 5px ${COLORS.works};
    transform: translate3d(0, 0, 0);
    border-radius: 10px;
    padding: 2rem 0;
-   background: ${COLORS.background};
+   background: ${COLORS.text};
 `;
 
 export const span = css`
@@ -70,8 +70,8 @@ export const anchor = css`
    height: 100%;
    overflow: hidden;
 
-   background: ${COLORS.background};
-   box-shadow: 0px 0px 5px ${COLORS['home-25']};
+   background: ${COLORS.text};
+   box-shadow: 0px 0px 5px ${COLORS.works};
 
    transform: var(--rotate) scaleY(1);
    transform-origin: left;
@@ -101,18 +101,18 @@ export const anchor = css`
 
    &[data-area='about'] {
       grid-area: about;
-      color: ${COLORS['about-300']};
+      color: ${COLORS.works};
    }
 
    &[data-area='works'] {
       --rotate: rotate(-2deg);
       grid-area: works;
       transform-origin: right;
-      color: ${COLORS['works-300']};
+      color: ${COLORS.works};
    }
 
    &[data-area='contact'] {
       grid-area: contact;
-      color: ${COLORS['contact-300']};
+      color: ${COLORS.works};
    }
 `;

@@ -1,7 +1,7 @@
 body {
    /* font-size: min(max(100%, calc(1rem + 2vw)), 32px); */
 
-   font-size: 100%;
+   /* font-size: 100%; */
 }
 
 /* @supports (font-size: clamp(100%, 1rem + 2vw, 32px)) {

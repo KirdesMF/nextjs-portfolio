@@ -2,20 +2,19 @@ import { css } from '@linaria/core';
 import { COLORS } from 'Theme/colors';
 
 export const button = css`
-   grid-area: menu;
    place-self: center;
 
-   height: 5.5rem;
+   height: var(--height-header);
    width: 6rem;
 
    border-radius: 10px;
    z-index: 2;
-   border: 0px solid ${COLORS['white-450']};
+   border: 0px solid ${COLORS.works};
    appearance: none;
 
    &:focus {
       outline: none;
-      border: 0.5px solid ${COLORS['white-450']};
+      border: 0.5px solid ${COLORS.works};
    }
 `;
 
@@ -25,7 +24,7 @@ export const svg = css`
 `;
 
 export const path = css`
-   stroke: ${COLORS['white-300']};
+   stroke: ${COLORS.works};
    stroke-width: 10;
    stroke-linecap: round;
    transform-box: fill-box;

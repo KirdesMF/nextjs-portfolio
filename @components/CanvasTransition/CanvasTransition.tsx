@@ -20,7 +20,7 @@ export function CanvasTransition() {
    const { color } = useCanvasContext();
    const { medium } = useAppContext();
 
-   const START_COLOR = Utils.getHSLNumberfromHSLString(COLORS['black-25']);
+   const START_COLOR = Utils.getHSLNumberfromHSLString(`hsl(100, 50%, 30%)`);
    const nextColor = Utils.hexToHSL(color);
    const HEX_SIZE = medium ? 150 : 75;
 

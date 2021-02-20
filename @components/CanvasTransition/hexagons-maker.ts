@@ -75,7 +75,7 @@ const setCanvasHexagons = (props: TSetCanvasHexagons) => {
 
    hexmap.splice(0, 1, [originCube]);
 
-   const flattedHexmap: THexagons[] = hexmap.flatMap((arr, index) =>
+   const flattedHexmap = hexmap.flatMap((arr, index) =>
       arr.map((hex) => ({
          cube: hex,
          delay: index,
