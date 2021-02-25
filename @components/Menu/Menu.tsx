@@ -5,14 +5,12 @@ import { useState } from 'react';
 import { COLORS } from 'Theme/colors';
 
 const MENU = [
-   { name: 'home', href: '/home' },
+   { name: 'home', href: '/' },
    { name: 'about', href: '/about' },
    { name: 'works', href: '/works' },
    { name: 'contact', href: '/contact' },
 ];
 const BTN_SIZE = 45;
-const RADIUS = BTN_SIZE * 2;
-const angle = (2 * Math.PI) / MENU.length / 4;
 
 export function Menu() {
    const [isOpen, setIsOpen] = useState(false);
@@ -62,7 +60,7 @@ export function Menu() {
                         }}
                      >
                         <Link href={href}>
-                           <a>{name[0]}</a>
+                           <a>{name}</a>
                         </Link>
                      </motion.li>
                   ))}
@@ -106,11 +104,9 @@ const ul = css`
       display: grid;
       place-items: center;
 
-      height: ${BTN_SIZE}px;
-      width: ${BTN_SIZE}px;
-
-      border-radius: 50%;
       background: ${COLORS.background};
+      height: 40px;
+      width: 100px;
 
       & > a {
          text-transform: uppercase;

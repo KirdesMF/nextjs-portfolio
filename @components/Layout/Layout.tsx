@@ -1,34 +1,14 @@
-import { motion, Orchestration, Repeat, Tween } from 'framer-motion';
-import { globalColors } from 'Theme/colors';
-import { CSSLayout } from './Layout.styles';
-
-const transition: Orchestration | Repeat | Tween = {
-   when: 'beforeChildren',
-   duration: 1,
-};
-
-const endTransition: Orchestration | Repeat | Tween = {
-   when: 'afterChildren',
-   duration: 1,
-};
+import { motion } from 'framer-motion';
 
 type LayoutProps = {
    children: React.ReactNode;
-   name: keyof typeof CSSLayout;
 };
 
 export function Layout(props: LayoutProps) {
-   const { children, name } = props;
-   const className = CSSLayout[name];
-
+   const { children } = props;
    return (
-      <motion.section
-         initial={{ opacity: 0 }}
-         animate={{ opacity: 1, transition: transition }}
-         exit={{ opacity: 0, transition: endTransition }}
-         className={`${CSSLayout.home} ${globalColors}`}
-      >
+      <motion.main role="main" animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
          {children}
-      </motion.section>
+      </motion.main>
    );
 }

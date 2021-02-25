@@ -1,8 +1,8 @@
 import { css } from '@linaria/core';
 
 const baseColors = {
-   home: `hsl(340, 50%, 50%)`,
-   works: `hsl(200, 50%, 50%)`,
+   home: `hsl(300, 50%, 50%)`,
+   works: `hsl(10, 50%, 50%)`,
    about: `hsl(180, 50%, 50%)`,
    contact: `hsl(70, 50%, 50%)`,
    text: `hsl(0, 0%, 10%)`,

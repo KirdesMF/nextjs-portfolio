@@ -4,46 +4,33 @@ import { Variants } from 'framer-motion';
 import { adjustLightness, adjustSaturation, COLORS } from 'Theme/colors';
 import { createHexMapRing } from 'utils/hexagons/helpers';
 import { motion } from 'framer-motion';
+import { BREAKPOINTS } from 'Theme/breakpoints';
+import { useRouter } from 'next/router';
 
-const HEX_SIZE = 50;
-
-const HEXMAP = createHexMapRing(5);
+const HEX_SIZE = 70;
+const HEXMAP = createHexMapRing(6);
 const originHex = { x: 250, y: 250 };
 
-const parents = {
-   animate: {
-      transition: {
-         when: 'beforeChildren',
-         duration: 5,
-      },
-   },
-};
-const variants: Variants = {
-   animate: (custom: number) => ({
-      scale: [1, 0, 1],
-      transition: {
-         delay: custom * 0.2,
-      },
-   }),
-};
-
 export function HexesGrid() {
+   const router = useRouter();
+   const pathname =
+      router.pathname === '/'
+         ? 'home'
+         : (router.pathname.substr(1) as keyof typeof COLORS);
+
    return (
       <div className={container}>
-         <motion.svg
-            viewBox="0 0 500 500"
-            className={svg}
-            animate="animate"
-            variants={parents}
-         >
+         <motion.svg viewBox="0 0 500 500" className={svg}>
             {HEXMAP.map(({ radius, ...cube }, index) => (
                <Hexagon
                   key={index}
                   sizeHex={HEX_SIZE}
                   originHex={originHex}
                   cube={cube}
+                  animate="animate"
+                  initial="initial"
                   variants={variants}
-                  custom={radius}
+                  custom={{ custom: radius, color: COLORS[pathname] }}
                   className={hexes}
                />
             ))}
@@ -52,21 +39,47 @@ export function HexesGrid() {
    );
 }
 
+const variants: Variants = {
+   animate: ({ custom, color }) => ({
+      scale: [1, 0, 1],
+      fill: color,
+      stroke: color,
+      transition: {
+         delay: custom * 0.2,
+      },
+   }),
+   initial: ({ color }) => ({
+      fill: color,
+      stroke: color,
+   }),
+};
+
 const container = css`
-   width: 500px;
-   height: 500px;
-   margin: 0 auto;
+   width: 100%;
+   height: 100%;
    position: fixed;
-   top: 15%;
-   left: 40%;
+   top: 0;
+   left: 0;
+   z-index: -1;
+
+   @media screen and (min-width: ${BREAKPOINTS.large}) {
+      width: 40%;
+      height: 60%;
+
+      position: absolute;
+      top: 15%;
+      left: 42%;
+   }
 `;
 const svg = css`
    width: 100%;
    height: 100%;
+
+   @media screen and (min-width: ${BREAKPOINTS.large}) {
+      border-radius: 20px;
+   }
 `;
 
 const hexes = css`
-   fill: ${COLORS.home};
-   stroke: ${COLORS.home};
-   stroke-width: 1px;
+   stroke-width: 2px;
 `;

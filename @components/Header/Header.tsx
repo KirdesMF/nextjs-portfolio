@@ -28,7 +28,7 @@ const header = css`
    /** Mobile */
    position: fixed;
    z-index: 1;
-   bottom: 0;
+   top: 0;
 
    width: 100%;
    height: var(--height-header);
@@ -36,10 +36,4 @@ const header = css`
    display: flex;
    justify-content: space-between;
    padding: 0 2rem;
-
-   /** Desktop */
-   @media screen and (min-width: ${BREAKPOINTS.large}) {
-      top: 0;
-      bottom: unset;
-   }
 `;

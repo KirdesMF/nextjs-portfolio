@@ -1,19 +1,21 @@
 import { css } from '@linaria/core';
+import { BREAKPOINTS } from 'Theme/breakpoints';
 import { COLORS } from 'Theme/colors';
 import { FONTS } from 'Theme/fonts';
 
 export const container = css`
    position: relative;
 
-   width: 70rem;
-   height: 10rem;
-
    display: grid;
 
    box-shadow: 0px 0px 8px 3px ${COLORS.text};
    overflow: hidden;
    border-radius: 10px;
-   background: ${COLORS.works};
+   background: ${COLORS.text};
+
+   @media screen and (min-width: ${BREAKPOINTS.large}) {
+      background: ${COLORS.works};
+   }
 `;
 
 export const title = css`
@@ -43,7 +45,8 @@ export const list = css`
    place-self: center;
    width: 80%;
    display: grid;
-   grid-auto-flow: column;
+   grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+   gap: 2rem;
 
    & > li {
       display: grid;

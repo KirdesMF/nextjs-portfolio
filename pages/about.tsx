@@ -27,28 +27,40 @@ export default function About({
    return (
       <>
          <HeadTag title={content.title} />
-         <Layout name="about">
-            <ResumePages content={content.content} />
-         </Layout>
-         <Layout name="about">
-            <SkillPanel
-               area="code"
-               icons={datas.codeIcons as NameIconType[]}
-               title="code"
-               titleIcon="code"
-            />
-            <SkillPanel
-               area="libs"
-               icons={datas.libsIcons as NameIconType[]}
-               title="libs"
-               titleIcon="gear"
-            />
-            <SkillPanel
-               area="tools"
-               icons={datas.toolsIcons as NameIconType[]}
-               title="tools"
-               titleIcon="tools"
-            />
+         <Layout>
+            <ResumePages section="about" content={content.content} />
+
+            <section
+               style={{
+                  minHeight: '100vh',
+               }}
+            >
+               <div
+                  style={{
+                     display: 'grid',
+                     rowGap: '2rem',
+                  }}
+               >
+                  <SkillPanel
+                     area="code"
+                     icons={datas.codeIcons as NameIconType[]}
+                     title="code"
+                     titleIcon="code"
+                  />
+                  <SkillPanel
+                     area="libs"
+                     icons={datas.libsIcons as NameIconType[]}
+                     title="libs"
+                     titleIcon="gear"
+                  />
+                  <SkillPanel
+                     area="tools"
+                     icons={datas.toolsIcons as NameIconType[]}
+                     title="tools"
+                     titleIcon="tools"
+                  />
+               </div>
+            </section>
          </Layout>
       </>
    );

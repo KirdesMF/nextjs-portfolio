@@ -18,11 +18,5 @@ body::-webkit-scrollbar-thumb {
 }
 
 :root {
-   --height-header: 50px;
-}
-
-@media screen and (min-width: 600px) {
-   :root {
-      --height-header: 100px;
-   }
+   --height-header: 100px;
 }

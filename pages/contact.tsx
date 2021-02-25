@@ -7,6 +7,7 @@ import {
    GetStaticPropsContext,
    InferGetStaticPropsType,
 } from 'next';
+import { HexesGrid } from '@components/HexesGrid/HexesGrid';
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
    const content =
