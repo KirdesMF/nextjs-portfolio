@@ -20,6 +20,7 @@ export function NavHome({ content }: { content: string[] }) {
                </Link>
             ))}
          </nav>
+         <h1>Cedric Gourville</h1>
       </section>
    );
 }
