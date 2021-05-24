@@ -10,6 +10,6 @@ globalStyle('#__next', {
    backgroundSize: '40px 40px',
 });
 
-globalStyle('[data-main~=main]', {
-   gridArea: 'main',
+globalStyle('[data-col~=main]', {
+   gridColumn: 'main',
 });

@@ -8,16 +8,23 @@ import 'styles/reset.css';
 import 'styles/colors.css';
 import 'styles/fonts.css';
 import 'styles/global.css';
+import { Fragment } from 'react';
+import { Header } from '@components/Header/Header';
+import { Footer } from '@components/Footer/Footer';
 
 function App({ Component, pageProps }: AppProps) {
    const router = useRouter();
 
    return (
-      <AnimatePresence exitBeforeEnter>
-         <MotionWrapper>
-            <Component {...pageProps} key={router.route} />
-         </MotionWrapper>
-      </AnimatePresence>
+      <Fragment>
+         <Header />
+         <AnimatePresence>
+            <MotionWrapper>
+               <Component {...pageProps} key={router.route} />
+            </MotionWrapper>
+         </AnimatePresence>
+         <Footer />
+      </Fragment>
    );
 }
 

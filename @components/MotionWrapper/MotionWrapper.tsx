@@ -17,15 +17,15 @@ const variants: Variants = {
 
 export function MotionWrapper({ children }: { children: ReactNode }) {
    return (
-      <motion.div
+      <motion.main
          variants={variants}
          initial="initial"
          animate="animate"
          exit="exit"
-         data-main="main"
+         data-col="main"
          className={styles.layout}
       >
          {children}
-      </motion.div>
+      </motion.main>
    );
 }
