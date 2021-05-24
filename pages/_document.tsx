@@ -5,7 +5,6 @@ import Document, {
    NextScript,
    DocumentContext,
 } from 'next/document';
-import { globalColors } from 'Theme/colors';
 
 class MyDocument extends Document {
    static async getInitialProps(ctx: DocumentContext) {
@@ -17,7 +16,7 @@ class MyDocument extends Document {
       return (
          <Html>
             <Head />
-            <body className={globalColors}>
+            <body>
                <Main />
                <NextScript />
             </body>

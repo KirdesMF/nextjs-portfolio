@@ -1,4 +1,0 @@
-#__next {
-   display: grid;
-   grid-template-columns: [gutter-left]0.2fr [main]2fr [gutter-right]0.2fr;
-}
