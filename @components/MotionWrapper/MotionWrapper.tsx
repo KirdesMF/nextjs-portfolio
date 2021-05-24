@@ -1,7 +1,7 @@
 import { motion, Variants } from 'framer-motion';
 import { ReactNode } from 'react';
 
-import * as styles from './styles.css';
+import * as styles from './motion-wrapper.css';
 
 const variants: Variants = {
    initial: {
@@ -23,7 +23,7 @@ export function MotionWrapper({ children }: { children: ReactNode }) {
          animate="animate"
          exit="exit"
          data-col="main"
-         className={styles.layout}
+         className={styles.main}
       >
          {children}
       </motion.main>

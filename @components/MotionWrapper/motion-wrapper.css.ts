@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-export const layout = style({
+export const main = style({
    gridRow: 'main',
    display: 'grid',
 });
