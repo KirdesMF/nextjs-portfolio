@@ -8,28 +8,23 @@
       "start": "next start"
    },
    "dependencies": {
-      "@babel/core": "^7.13.8",
-      "@linaria/babel-preset": "^3.0.0-beta.1",
-      "@linaria/core": "^3.0.0-beta.1",
-      "@linaria/react": "^3.0.0-beta.1",
-      "@linaria/shaker": "^3.0.0-beta.1",
-      "@linaria/webpack-loader": "^3.0.0-beta.1",
-      "@zeit/next-css": "^1.0.1",
-      "framer-motion": "^3.10.0",
-      "lottie-react": "^2.1.0",
-      "next": "^10.0.5",
-      "react": "17.0.1",
-      "react-dom": "17.0.1"
+      "framer-motion": "^4.1.17",
+      "linaria": "^2.1.0",
+      "next": "^10.2.2",
+      "next-linaria": "^0.10.0",
+      "react": "17.0.2",
+      "react-dom": "17.0.2"
    },
    "devDependencies": {
-      "@types/node": "^14.14.31",
-      "@types/react": "^17.0.2",
-      "@typescript-eslint/eslint-plugin": "^4.16.1",
-      "@typescript-eslint/parser": "^4.16.1",
-      "eslint": "^7.21.0",
+      "@babel/core": "^7.14.3",
+      "@types/node": "^15.6.0",
+      "@types/react": "^17.0.6",
+      "@typescript-eslint/eslint-plugin": "^4.24.0",
+      "@typescript-eslint/parser": "^4.24.0",
+      "eslint": "^7.27.0",
       "eslint-plugin-jsx-a11y": "^6.4.1",
-      "eslint-plugin-react": "^7.22.0",
+      "eslint-plugin-react": "^7.23.2",
       "eslint-plugin-react-hooks": "^4.2.0",
-      "typescript": "^4.2.2"
+      "typescript": "^4.2.4"
    }
 }

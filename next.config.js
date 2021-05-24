@@ -1,25 +1,8 @@
-const withCSS = require('@zeit/next-css');
+const withLinaria = require('next-linaria');
 
 const i18n = {
    locales: ['fr', 'en-US'],
    defaultLocale: 'fr',
 };
 
-module.exports = withCSS({
-   i18n: i18n,
-   webpack(config) {
-      config.module.rules.push({
-         test: /\.tsx?$/,
-         use: [
-            {
-               loader: '@linaria/webpack-loader',
-               options: {
-                  sourceMap: process.env.NODE_ENV !== 'production',
-               },
-            },
-         ],
-      });
-
-      return config;
-   },
-});
+module.exports = withLinaria({});
