@@ -1,4 +1,4 @@
-import { css } from '@linaria/core';
+import { css } from 'linaria';
 
 const baseColors = {
    home: `hsl(300, 50%, 50%)`,
