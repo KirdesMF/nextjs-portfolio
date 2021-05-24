@@ -2,7 +2,7 @@ import { AppProps } from 'next/app';
 
 import { AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { MotionLayout } from '@components/MotionLayout/MotionLayout';
+import { MotionWrapper } from '@components/MotionWrapper/MotionWrapper';
 
 import 'styles/reset.css';
 import 'styles/colors.css';
@@ -14,9 +14,9 @@ function App({ Component, pageProps }: AppProps) {
 
    return (
       <AnimatePresence exitBeforeEnter>
-         <MotionLayout>
+         <MotionWrapper>
             <Component {...pageProps} key={router.route} />
-         </MotionLayout>
+         </MotionWrapper>
       </AnimatePresence>
    );
 }
