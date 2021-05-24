@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
 
 import 'styles/reset.css';
+import 'styles/colors.css';
 import 'styles/fonts.css';
 import 'styles/global.css';
 

@@ -1,0 +1,8 @@
+:root {
+   --color-text: hsl(0, 100%, 100%);
+   --color-background-text: hsl(0, 0%, 10%);
+   --color-home: hsl(300, 50%, 50%);
+   --color-about: hsl(180, 50%, 50%);
+   --color-works: hsl(10, 50%, 50%);
+   --color-contact: hsl(70, 50%, 50%);
+}
